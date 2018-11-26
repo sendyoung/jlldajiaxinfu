@@ -10,8 +10,8 @@ import javax.persistence.Id;
 /**
  * 角色与权限中间表
  */
-@Entity(name = "org_group_permission_middle")
-public class Group_Permission_Middle extends Base_Model {
+@Entity(name = "org_role_permission_middle")
+public class Role_Permission_Middle extends Base_Model {
 
     /**
      * 主键

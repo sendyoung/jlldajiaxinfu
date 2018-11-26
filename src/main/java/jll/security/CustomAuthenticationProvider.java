@@ -78,7 +78,7 @@ public class CustomAuthenticationProvider extends
 		}else if(null==result ){
 			 throw new BadAnswerException("密码错误!");
 		 }
-		
+
 		return null;
 		
 	}
