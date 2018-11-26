@@ -50,7 +50,7 @@ public class LoginController extends BaseClass {
 	@RequestMapping(value = { "/" })
 	public ModelAndView main(final ModelMap model, HttpServletRequest request,
 		HttpServletResponse response) throws Exception {
-		System.out.println("=================登陆================");
+		System.out.println("=================44444================");
 		ModelAndView models = new ModelAndView();
 		models.setViewName("login");
 		return models;

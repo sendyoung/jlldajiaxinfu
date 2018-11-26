@@ -43,7 +43,6 @@ public class CustomAuthenticationProvider extends
 		String password = (String) authentication.getCredentials();
 		System.out.println("登陆验证用户名"+username);
 		System.out.println("登陆验证密码"+password);
-		System.out.println("==========1=2=3=4=5=6======7=8====");
 		//String[] whiteLists = new String[] { "531677565@QQ.COM", "SUPERVISOR", "JIMMY" };
 		List  result = userservice.getUserUnPw(username, password);
 		

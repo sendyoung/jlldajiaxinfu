@@ -43,14 +43,15 @@ public class HomeScreenController {
 	@ResponseBody
 	public String getBarData(HttpServletRequest request, HttpServletResponse response) {
 
-	    return "idea 搭建maven spring+spring+hibernate项目-json";
+	    return "idea 搭建maven spring+spring+hibernate项目-json11111";
     }
 
-    @RequestMapping(value = "/login")
+   /** @RequestMapping(value = "/login")
     public ModelAndView main(final ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         ModelAndView models = new ModelAndView();
+        System.out.println("12222233333");
         models.setViewName("login");
         return models;
-    }
+    }**/
 
 }

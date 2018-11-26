@@ -119,6 +119,7 @@ public class UserController  extends BaseClass {
 		//parame.put("seachnumId", seachnumId);
 		//parame.put("seachmanuFacturer", seachmanuFacturer);
 		Page pagess = userservice.findPageUser(parame);
+
 		PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
 		long lon = pagess.getTotal();
 		pageView.setTotalrecord(pagess.getTotal());
