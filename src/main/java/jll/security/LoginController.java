@@ -1,7 +1,5 @@
-package zkfh.security;
+package jll.security;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jll.framework.base.BaseClass;
+import jll.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,8 +19,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cn.zyzs.bi.user.service.UserService;
-import com.cn.zyzs.framework.base.BaseClass;
 
 /*import cn.com.llovef.application.role.service.RoleService;
 import cn.com.llovef.framework.base.BaseClass;*/
@@ -40,7 +38,7 @@ import cn.com.llovef.framework.base.BaseClass;*/
 @Controller
 @Scope("prototype")
 @RequestMapping("/login")
-public class LoginController extends BaseClass  {
+public class LoginController extends BaseClass {
 
 	@Autowired
 	private UserService userservice;
