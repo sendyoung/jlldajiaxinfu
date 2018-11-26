@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cn.zyzs.utils.base.BaseClass;
 import jll.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -77,26 +79,15 @@ public class LoginController extends BaseClass {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = { "/successHandler" })
-	public ModelAndView successHandler(final ModelMap model,
+	@ResponseBody
+	public String successHandler(final ModelMap model,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		ModelAndView models = new ModelAndView();
+		JSONObject json = new JSONObject();
 		String username = getDetails().getUsername();
 		String password = getDetails().getPassword();
-		Map parame = new HashMap();
-		parame.put("username", username);
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
-		List roleList = userservice.getUserUnPw(username, password);
-		Map map = null;
-		for(int i=0;i<roleList.size();i++){
-			 map = (Map)roleList.get(i);
-		}
-		List list = userservice.findUserRoleList(map.get("id").toString());
-		model.addAttribute("roleList", roleList);
-		model.put("roleList", list);
-		models.setViewName("index");
-		return models;
+		List result = userservice.findUserRoleList(username,password);
+		return json.toJSONString(result);
 	}
 	
 	/**
@@ -104,14 +95,13 @@ public class LoginController extends BaseClass {
 	 */
 	@SuppressWarnings("unused")
 	@RequestMapping(value = { "/failureHandler" })
-	public ModelAndView failureHandler(final ModelMap model,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		System.out.println("=================登陆成功11================");
-		ModelAndView models = new ModelAndView();
-		models.addObject("error",getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
-		models.setViewName("login");
-		return models;
+	@ResponseBody
+	public String failureHandler(final ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		JSONObject json = new JSONObject();
+		System.out.println("=================登陆失敗================");
+		json.put("flag","0");//0 成功  1失敗
+		json.put("error",getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));//0 成功  1失敗
+		return json.toJSONString();
 	}
 
 	private String getErrorMessage(HttpServletRequest request, String key) {
