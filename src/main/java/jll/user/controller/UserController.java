@@ -6,9 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cn.zyzs.utils.base.BaseClass;
 import com.cn.zyzs.utils.utils.PageContext;
 import com.cn.zyzs.utils.utils.PageView;
-import jll.framework.base.BaseClass;
 import jll.model.zyzs_group_bi;
 import jll.model.zyzs_user_bi;
 import jll.roleAndGroup.service.GroupService;
@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+
+
 
 
 import com.cn.zyzs.hibernate.util.Page;
@@ -157,7 +159,7 @@ public class UserController  extends BaseClass {
 		Map parame = getParameters(request);
 		System.out.println(parame.get("userId")+"============");
 		List result = userservice.getUserOne(parame.get("userId").toString());
-		return JSON.toJSONString(result);
+		return null;
 		
 	}
 	

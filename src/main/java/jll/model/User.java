@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 用户表
+ */
 @Entity(name = "org_user_account")
-public class User {
-
+public class User extends Base_Model {
 
     /**主键id**/
-    private int user_id;
+    private String user_id;
 
     /**密码**/
     private String password;
@@ -44,9 +46,6 @@ public class User {
     /**省**/
     private int province_id;
 
-    /**创建时间**/
-    private Date create_time;
-
     /**性别**/
     private String sex;
 
@@ -76,21 +75,14 @@ public class User {
     /**自我介绍**/
     private String self_introduction;
 
-    /**更新时间**/
-    private Date update_time;
-
-    /**是否删除**/
-    private String isDelete;
-
-
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
     @GeneratedValue(generator="systemUUID")
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -166,13 +158,6 @@ public class User {
         this.province_id = province_id;
     }
 
-    public Date getCreate_time() {
-        return create_time;
-    }
-
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
-    }
 
     public String getSex() {
         return sex;
@@ -237,34 +222,5 @@ public class User {
     public void setSelf_introduction(String self_introduction) {
         this.self_introduction = self_introduction;
     }
-
-    public Date getUpdate_time() {
-        return update_time;
-    }
-
-    public void setUpdate_time(Date update_time) {
-        this.update_time = update_time;
-    }
-
-    public String getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(String isDelete) {
-        this.isDelete = isDelete;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    /**备注**/
-    private String comment;
-
-
 
 }

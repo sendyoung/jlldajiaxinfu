@@ -1,13 +1,8 @@
 package jll.role.controller;
 
-import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.cn.zyzs.utils.base.BaseClass;
 import com.cn.zyzs.utils.utils.PageContext;
-import jll.framework.base.BaseClass;
 import jll.model.zyzs_role_bi;
 import jll.role.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+
+import static com.alibaba.druid.sql.dialect.mysql.ast.clause.MySqlFormatName.JSON;
 
 /**
  * 权限管理
@@ -52,7 +52,7 @@ public class RoleController extends BaseClass {
 		System.out.println(PageContext.getPageSize() + "========1");
 		System.out.println(PageContext.getOffSet() + "=========2");
 		List result = roleService.indexPageDataService(parame);
-		return JSON.toJSONString(result);
+		return null;
 	}
 
 }

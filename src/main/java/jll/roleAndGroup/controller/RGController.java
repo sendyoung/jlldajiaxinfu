@@ -7,9 +7,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cn.zyzs.utils.base.BaseClass;
 import com.cn.zyzs.utils.utils.PageContext;
 import com.cn.zyzs.utils.utils.PageView;
-import jll.framework.base.BaseClass;
 import jll.model.zyzs_group_bi;
 import jll.model.zyzs_role_group_bi;
 import jll.roleAndGroup.service.GroupService;
@@ -146,7 +146,7 @@ public class RGController extends BaseClass {
 		System.out.println("444444");
 		List<zyzs_group_bi> groupList = groupService.getGroupList();
 		
-		String jsonString = JSON.toJSONString(groupList);
+		String jsonString =null;
 		
 		System.out.println(jsonString);
 		

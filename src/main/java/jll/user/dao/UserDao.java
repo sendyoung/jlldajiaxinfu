@@ -30,7 +30,7 @@ public class UserDao extends SimpleHibernateTemplate<zyzs_user_bi> {
 	public List queryUserUnPwList(String username, String password) {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append(" select id,groupId,username,password from zyzs_user_bi user where 1=1 and isDelete='0'  ");
+		sql.append(" select username,password from org_user_account user where 1=1 and isDelete='0'  ");
 		if(!"".equals(username) && null!=username){
 			sql.append(" and user.username='"+username+"' ");
 		}
