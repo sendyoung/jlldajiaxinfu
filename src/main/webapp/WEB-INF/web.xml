@@ -19,6 +19,7 @@
       classpath:config/spring/spring.xml;
       classpath:config/hibernate/datasource.xml;
       classpath:config/hibernate/hibernate.xml;
+      classpath:config/spring/spring-security.xml;
     </param-value>
   </context-param>
 
@@ -34,6 +35,16 @@
     <param-value>classpath:config/log/log4j.properties</param-value>
   </context-param>
 
+
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
 
 
