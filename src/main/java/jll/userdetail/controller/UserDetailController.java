@@ -83,8 +83,23 @@ public class UserDetailController {
      * @return
      */
     @CrossOrigin(origins = "*", maxAge=3600)
-    public XinfuResult saveOrUpdateUserDetail(UserDetail userDetail,String userId){
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST}, value = "/addorupdateuserdetail")
+    public @ResponseBody XinfuResult saveOrUpdateUserDetail(UserDetail userDetail,String userId){
         return userDetailService.saveOrUpdateUserDetails(userDetail,userId);
+    }
+
+    /**
+     * 新增或更新家庭成员
+     * @param list
+     * @param userDetailId
+     * @return
+     */
+    @CrossOrigin(origins = "*", maxAge=3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST}, value = "/addorupdateuserfamily")
+    public @ResponseBody XinfuResult saveOrUpdateUserFamily(List list,String userDetailId){
+        return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
     }
 
 }
