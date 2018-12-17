@@ -1,0 +1,12 @@
+jll\security\CustomAuthenticationToken.class
+jll\model\User_Permission_Group.class
+jll\model\Permission.class
+jll\security\CustomAuthenticationProvider.class
+jll\security\CustomLogoutHandler.class
+jll\security\CustomLogoutFilter.class
+jll\security\BadAnswerException.class
+jll\security\CustomLoginHandler.class
+jll\user\controller\UserController.class
+jll\user\dao\UserDao.class
+jll\model\Role_Permission_Middle.class
+jll\model\Role.class

@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * 用户表
@@ -13,73 +12,139 @@ import java.util.Date;
 @Entity(name = "org_user_account")
 public class User extends Base_Model {
 
-    /**主键id**/
+    /**
+     * 主键id
+     **/
     private String user_id;
 
-    /**密码**/
+    /**
+     * 真实姓名
+     */
+    private String realname;
+
+    /**
+     * 身份证号码
+     */
+    private String idcard;
+
+    /**
+     * 密码
+     **/
     private String password;
 
-    /**认证id**/
+    /**
+     * 认证id
+     **/
     private String authentication_id;
 
-    /**认证类型
-     0、企业
-     1、组织
+    /**
+     * 认证类型
+     * 0、企业
+     * 1、组织
      **/
     private String authentication_type;
 
-    /**用户详情外键**/
+    /**
+     * 用户详情外键
+     **/
     private String user_detail_id;
 
-    /**手机号**/
+    /**
+     * 手机号
+     **/
     private String iphone;
 
-    /**昵称**/
+    /**
+     * 昵称
+     **/
     private String nickname;
 
-    /**邮箱**/
+    /**
+     * 邮箱
+     **/
     private String email;
 
-    /**用户名**/
+    /**
+     * 用户名
+     **/
     private String username;
 
-    /**省**/
+    /**
+     * 省
+     **/
     private int province_id;
 
-    /**性别**/
+    /**
+     * 性别
+     **/
     private String sex;
 
-    /**市**/
+    /**
+     * 市
+     **/
     private int city_id;
 
-    /**区**/
+    /**
+     * 区
+     **/
     private int area_id;
 
-    /**联系地址**/
+    /**
+     * 联系地址
+     **/
     private String address;
 
-    /**头像**/
+    /**
+     * 头像
+     **/
     private String head_portrait_image;
 
-    /**用户类型
-     *  默认为0  未定义
+    /**
+     * 用户类型
+     * 默认为0  未定义
      * 1 个人用户
      * 2 企业用户
      * 3 组织用户
-     * **/
+     **/
     private String org_user_role_middle;
 
-    /**工作经历**/
+    /**
+     * 工作经历
+     **/
     private String work_experience;
 
-    /**自我介绍**/
+    /**
+     * 自我介绍
+     **/
     private String self_introduction;
 
+    /**
+     * 个人签名
+     */
+    private String personalSignature;
+
+
     @Id
-    @GenericGenerator(name="systemUUID",strategy="uuid")
-    @GeneratedValue(generator="systemUUID")
+    @GenericGenerator(name = "systemUUID", strategy = "uuid")
+    @GeneratedValue(generator = "systemUUID")
     public String getUser_id() {
         return user_id;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
     }
 
     public void setUser_id(String user_id) {
@@ -158,7 +223,6 @@ public class User extends Base_Model {
         this.province_id = province_id;
     }
 
-
     public String getSex() {
         return sex;
     }
@@ -222,5 +286,14 @@ public class User extends Base_Model {
     public void setSelf_introduction(String self_introduction) {
         this.self_introduction = self_introduction;
     }
+
+    public String getPersonalSignature() {
+        return personalSignature;
+    }
+
+    public void setPersonalSignature(String personalSignature) {
+        this.personalSignature = personalSignature;
+    }
+
 
 }

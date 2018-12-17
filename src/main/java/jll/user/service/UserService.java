@@ -1,9 +1,10 @@
 package jll.user.service;
 
-import java.util.List;
-import java.util.Map;
+import jll.model.User;
+import jll.model.User_Role_Middle;
+import jll.utils.XinfuResult;
 
-import com.cn.zyzs.hibernate.util.Page;
+import java.util.List;
 
 public interface UserService {
 
@@ -22,14 +23,46 @@ public interface UserService {
 	/**
 	 * <一句话功能简述> 获取用户权限列表 <功能详细描述>
 	 * 
-	 * @param id
+	 * @param username
+	 * @param password
 	 * @return 
 	 * @creator @KeNan
-	 * @see [修改人,修改内容,修改时间]
 	 */
 	public List findUserRoleList(String username , String password );
-	
 
-	
-	
+	/**
+	 * 注册用户
+	 * @param user
+	 * @param user_role_middle
+	 * @return
+	 */
+	public XinfuResult addUser(User user, User_Role_Middle user_role_middle);
+
+	/**
+	 * 账号校验
+	 * @param username
+	 * @return
+	 */
+	public XinfuResult checkData(String username);
+
+	/**
+	 * 修改密码
+	 * @param username
+	 * @param newPassWord
+	 * @param oldPassWord
+	 * @return
+	 */
+	public XinfuResult updatePassWord(String username, String newPassWord, String oldPassWord);
+
+	/**
+	 * 更新用户数据
+	 * @param user
+	 */
+	public void updateUserAccount(User user);
+
+	/**
+	 * 根据用户名查看用户数据
+	 */
+	public List findUserByUserName(String username);
+
 }

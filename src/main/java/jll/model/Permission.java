@@ -28,10 +28,24 @@ public class Permission extends Base_Model {
     private String url;
 
     /**
+     * 名称
+     */
+    private String ch_name;
+
+    /**
      * 类别
      */
     private String category;
 
+    /**
+     * 排序
+     */
+    private int sort;
+
+    /**
+     * 页面模板地址
+     */
+    private String component;
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
     @GeneratedValue(generator="systemUUID")
@@ -75,12 +89,20 @@ public class Permission extends Base_Model {
         this.ch_name = ch_name;
     }
 
-    /**
-     * 名称
-     */
-    private String ch_name;
 
+    public int getSort() {
+        return sort;
+    }
 
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
 
+    public String getComponent() {
+        return component;
+    }
 
+    public void setComponent(String component) {
+        this.component = component;
+    }
 }

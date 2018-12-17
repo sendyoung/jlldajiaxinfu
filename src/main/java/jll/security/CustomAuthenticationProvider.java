@@ -1,11 +1,5 @@
 package jll.security;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import jll.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.*;
 
 
 /*import cn.com.llovef.application.role.service.RoleService;
@@ -45,7 +41,8 @@ public class CustomAuthenticationProvider extends
 		System.out.println("登陆验证密码"+password);
 		//String[] whiteLists = new String[] { "531677565@QQ.COM", "SUPERVISOR", "JIMMY" };
 		List  result = userservice.getUserUnPw(username, password);
-		
+		System.out.println(username+"===================111==============");
+		System.out.println(password);
 		// 如果用户在白名单里,直接放行(注:仅仅只是演示,千万不要在实际项目中这么干!)
 		/*if (Arrays.asList(whiteLists).contains(username)) {
 			Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

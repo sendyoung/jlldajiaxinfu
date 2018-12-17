@@ -8,9 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>idea 搭建maven spring+spring+hibernate项目-html</title>
+    <title>1111111111</title>
 </head>
 <body>
-idea 搭建maven spring+spring+hibernate项目-html
+
+<form action="/zyzs_bi/bi/activity/xxxxxxxxxx" method="post">
+    <p>First name: <input type="text" name="username" /></p>
+    <p>Last name: <input type="text" name="password" /></p>
+    <input type="submit" value="Submit" />
+</form>
+
 </body>
 </html>
