@@ -6,68 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc9c92e7-5c38-440b-87cc-bd0869bf0072" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/jll-dajiaxinfu.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/userdetail/UserDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/userdetail/UserEducation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/userdetail/UserFamily.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/userdetail/UserWorkPlace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/userdetail/controller/UserDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/userdetail/dao/UserDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/userdetail/service/UserDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/userdetail/service/impl/UserDetailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/utils/MapTrunPojo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/utils/XinfuResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sources/config/deploy/develope/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sources/config/deploy/develope/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sources/rebel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/deploy/develope/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/deploy/develope/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/hibernate/hibernate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/hibernate/hibernate.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/spring-mvc/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/spring-mvc/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/spring/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/spring/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/zkfh/controller/HomeScreenController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/deploy/develope/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/deploy/develope/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/hibernate/hibernate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/hibernate/hibernate.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/spring-mvc/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/spring-mvc/spring-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/spring/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/config/spring/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/classes/zkfh/controller/HomeScreenController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/commons-codec-1.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/commons-fileupload-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/commons-lang3-3.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/dubbo-2.5.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/ezmorph-1.0.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/fastdfs-client-java-1.27.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/fastjson-1.2.41.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/guava-19.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/javassist-3.15.0-GA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/jcl-over-slf4j-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/jline-0.9.94.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/json-lib-2.4-jdk15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/log4j-1.2.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/netty-3.2.5.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/slf4j-log4j12-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/spring-test-4.3.3.RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/zkclient-0.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/zookeeper-3.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/html/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/html/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="bc9c92e7-5c38-440b-87cc-bd0869bf0072" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/" />
@@ -128,8 +67,8 @@
       <file leaf-file-name="UserDetailController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/userdetail/controller/UserDetailController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="48" column="74" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
+            <state relative-caret-position="575">
+              <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -641,8 +580,16 @@
       <workItem from="1543893959922" duration="10542000" />
       <workItem from="1544405052456" duration="157000" />
       <workItem from="1544405349367" duration="8770000" />
-      <workItem from="1544664932833" duration="17912000" />
+      <workItem from="1544664932833" duration="18644000" />
     </task>
+    <task id="LOCAL-00001" summary="杨森栋12月17日上传">
+      <created>1545034427322</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545034427322</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -678,7 +625,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156472000" />
+    <option name="totallyTimeSpent" value="157204000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -690,7 +637,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -777,6 +724,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="杨森栋12月17日上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="杨森栋12月17日上传" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1247,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/userdetail/controller/UserDetailController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="48" column="74" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
+        <state relative-caret-position="575">
+          <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
