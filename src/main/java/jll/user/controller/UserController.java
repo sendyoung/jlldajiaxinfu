@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 权限管理
@@ -39,15 +40,15 @@ public class UserController extends BaseClass {
     /**
      * 注册账号
      *
-     * @param username
-     * @param password
      * @return
      */
 
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = {"/registerUser/{username}/{password}"})
+    @RequestMapping(value = {"/registerUser"})
     public @ResponseBody
-    XinfuResult registerUser(@PathVariable String username, @PathVariable String password) {
+    XinfuResult registerUser(@RequestBody Map map) {
+        String username = (String)map.get("username");
+        String password = (String)map.get("password");
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
@@ -60,16 +61,16 @@ public class UserController extends BaseClass {
     /**
      * 修改密码
      *
-     * @param userName
-     * @param newPassWord
-     * @param oldPassWord
      * @return
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
-            RequestMethod.POST}, value = "/changePassWord/{userName}/{newPassWord}/{oldPassWord}")
+            RequestMethod.POST}, value = "/changePassWord")
     public @ResponseBody
-    XinfuResult changePassWord(@PathVariable String userName, @PathVariable String newPassWord, @PathVariable String oldPassWord) {
+    XinfuResult changePassWord(@RequestBody Map map) {
+        String userName = (String)map.get("username");
+        String newPassWord = (String)map.get("newpassword");
+        String oldPassWord = (String)map.get("oldpassword");
         return userservice.updatePassWord(userName, newPassWord, oldPassWord);
     }
 

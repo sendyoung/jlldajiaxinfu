@@ -2,16 +2,15 @@ package jll.userdetail.controller;
 
 import jll.model.userdetail.UserDetail;
 import jll.userdetail.service.UserDetailService;
+import jll.utils.JsonUtils;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 个人信息填报
@@ -78,14 +77,14 @@ public class UserDetailController {
 
     /**
      * 新增或更新个人详情信息
-     * @param userDetail
-     * @param userId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge=3600)
     @RequestMapping(method = {RequestMethod.GET,
-            RequestMethod.POST}, value = "/addorupdateuserdetail")
-    public @ResponseBody XinfuResult saveOrUpdateUserDetail(UserDetail userDetail,String userId){
+            RequestMethod.POST}, value = "/fillinuserdetail")
+    public @ResponseBody XinfuResult saveOrUpdateUserDetail(@RequestBody Map map){
+        String userId = (String)map.get("userId");
+        UserDetail userDetail = JsonUtils.jsonToPojo((String)map.get("userDetail"),UserDetail.class);
         return userDetailService.saveOrUpdateUserDetails(userDetail,userId);
     }
 
@@ -97,9 +96,35 @@ public class UserDetailController {
      */
     @CrossOrigin(origins = "*", maxAge=3600)
     @RequestMapping(method = {RequestMethod.GET,
-            RequestMethod.POST}, value = "/addorupdateuserfamily")
+            RequestMethod.POST}, value = "/fillinuserfamily")
     public @ResponseBody XinfuResult saveOrUpdateUserFamily(List list,String userDetailId){
         return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
+    }
+
+    /**
+     * 新增或更新教育经历
+     * @param list
+     * @param userDetailId
+     * @return
+     */
+    @CrossOrigin(origins = "*", maxAge=3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST}, value = "/fillinusereducation")
+    public @ResponseBody XinfuResult saveOrUpdateUserEducation(List list,String userDetailId){
+        return userDetailService.saveOrUpdateUserEducation(list,userDetailId);
+    }
+
+    /**
+     * 新增或更新职场履历
+     * @param list
+     * @param userDetailId
+     * @return
+     */
+    @CrossOrigin(origins = "*", maxAge=3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST}, value = "/fillinuserworkplace")
+    public @ResponseBody XinfuResult saveOrUpdateUserWorkPlace(List list,String userDetailId){
+        return userDetailService.saveOrUpdateUserWorkPlace(list,userDetailId);
     }
 
 }
