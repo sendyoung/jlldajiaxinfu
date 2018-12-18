@@ -26,8 +26,8 @@ public class AuthEnterpriseBase extends Base_Model {
     private String legal_idcard;// 法定代表人身份证号
     private String registration_authority;//登记机关
     private String residence;//住所
-    private Date end_date;// 登记截止日期
-    private Date level_registration_start_date;//登记注册信息时间
+    private Date end_date;// 有效截止日期
+    private Date level_registration_start_date;//登记注册日期
     private int types_enterprises;// 企业类型
     private Date date_establishment;//成立日期
     private double registered_capital;//注册资本

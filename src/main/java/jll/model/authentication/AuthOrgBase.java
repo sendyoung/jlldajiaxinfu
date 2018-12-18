@@ -16,17 +16,17 @@ public class AuthOrgBase extends Base_Model {
     private String auth_org_id;//主键
     private Date rule_date;//审核时间规则期限
     private String org_information_id;//     组织id
-    private String enterprise_introduction;//企业介绍
-    private String enterprise_email;//       企业邮箱
-    private String enterprise_website;//     企业网址
-    private String enterprise_tel;//         企业电话
-    private String enterprise_address;//     企业地址
-    private String scope_business;//         业务范围
-    private String residence;//              住所
+    private String org_introduction;//组织介绍
+    private String org_email;//组织邮箱
+    private String org_website;//组织网址
+    private String org_tel;// 组织电话
+    private String org_address;//组织联系地址
+    private String scope_business;// 业务范围
+    private String residence;// 住所
     private String legal_idcard_just_imager;//法定身份证正面
     private String legal_idcard_back_imager;//法定身份证反面
-    private String legal_repersentative_idcard;//法定代表人登记证书
-    private String registration_certificate_imarge;//  登记证书
+    private String legal_idcard;//法定代表人身份证号
+    private String social_groups_certificate_imager;//社会团体法人登记证书
     private String certification_authority;//   发证机关
     private String organization_name;//     组织名称
     private String social_credit_code;//    社会信用代码
@@ -36,6 +36,7 @@ public class AuthOrgBase extends Base_Model {
     private String activity_area;//       活动区域
     private Date validity_start_date;// 有效期开始时间
     private Date validity_end_date;//   有效期结束时间
+
 
     @Id
     @GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -64,44 +65,44 @@ public class AuthOrgBase extends Base_Model {
         this.org_information_id = org_information_id;
     }
 
-    public String getEnterprise_introduction() {
-        return enterprise_introduction;
+    public String getOrg_introduction() {
+        return org_introduction;
     }
 
-    public void setEnterprise_introduction(String enterprise_introduction) {
-        this.enterprise_introduction = enterprise_introduction;
+    public void setOrg_introduction(String org_introduction) {
+        this.org_introduction = org_introduction;
     }
 
-    public String getEnterprise_email() {
-        return enterprise_email;
+    public String getOrg_email() {
+        return org_email;
     }
 
-    public void setEnterprise_email(String enterprise_email) {
-        this.enterprise_email = enterprise_email;
+    public void setOrg_email(String org_email) {
+        this.org_email = org_email;
     }
 
-    public String getEnterprise_website() {
-        return enterprise_website;
+    public String getOrg_website() {
+        return org_website;
     }
 
-    public void setEnterprise_website(String enterprise_website) {
-        this.enterprise_website = enterprise_website;
+    public void setOrg_website(String org_website) {
+        this.org_website = org_website;
     }
 
-    public String getEnterprise_tel() {
-        return enterprise_tel;
+    public String getOrg_tel() {
+        return org_tel;
     }
 
-    public void setEnterprise_tel(String enterprise_tel) {
-        this.enterprise_tel = enterprise_tel;
+    public void setOrg_tel(String org_tel) {
+        this.org_tel = org_tel;
     }
 
-    public String getEnterprise_address() {
-        return enterprise_address;
+    public String getOrg_address() {
+        return org_address;
     }
 
-    public void setEnterprise_address(String enterprise_address) {
-        this.enterprise_address = enterprise_address;
+    public void setOrg_address(String org_address) {
+        this.org_address = org_address;
     }
 
     public String getScope_business() {
@@ -136,20 +137,20 @@ public class AuthOrgBase extends Base_Model {
         this.legal_idcard_back_imager = legal_idcard_back_imager;
     }
 
-    public String getLegal_repersentative_idcard() {
-        return legal_repersentative_idcard;
+    public String getLegal_idcard() {
+        return legal_idcard;
     }
 
-    public void setLegal_repersentative_idcard(String legal_repersentative_idcard) {
-        this.legal_repersentative_idcard = legal_repersentative_idcard;
+    public void setLegal_idcard(String legal_idcard) {
+        this.legal_idcard = legal_idcard;
     }
 
-    public String getRegistration_certificate_imarge() {
-        return registration_certificate_imarge;
+    public String getSocial_groups_certificate_imager() {
+        return social_groups_certificate_imager;
     }
 
-    public void setRegistration_certificate_imarge(String registration_certificate_imarge) {
-        this.registration_certificate_imarge = registration_certificate_imarge;
+    public void setSocial_groups_certificate_imager(String social_groups_certificate_imager) {
+        this.social_groups_certificate_imager = social_groups_certificate_imager;
     }
 
     public String getCertification_authority() {
