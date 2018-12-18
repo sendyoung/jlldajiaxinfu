@@ -1,5 +1,6 @@
 package jll.model.enterprise;
 
+import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import java.util.Date;
  * 企业工商信息表
  */
 @Entity(name="ent_basics")
-public class EntBasics {
+public class EntBasics extends Base_Model {
     private String ent_id;//主键(企业ID)
     private String company_introduce;//公司介绍
     private String business_scope;//经营范围
