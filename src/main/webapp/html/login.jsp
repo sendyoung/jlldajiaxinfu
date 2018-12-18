@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="/zyzs_bi/bi/activity/xxxxxxxxxx" method="post">
+<form action="/bi/dajiaxinfu/login" method="post">
     <p>First name: <input type="text" name="username" /></p>
     <p>Last name: <input type="text" name="password" /></p>
     <input type="submit" value="Submit" />

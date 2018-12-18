@@ -19,6 +19,8 @@
 	  </beans:bean>
 
 	<security:http security="none" pattern="/bi/login/login" />
+    <security:http security="none" pattern="/bi/user/checkData" />
+     <security:http security="none" pattern="/bi/user/registerUser" />
 
       <!-- 所以当我们同时定义多个http元素时要确保将更具有特性的URL配置在前 -->
       <!-- entry-point-ref指定登录入口 -->
@@ -35,7 +37,7 @@
           
      <beans:bean id="customLoginFilter" class="jll.security.CustomLoginFilter">
          <!-- 校验登录是否有效的虚拟url -->
-         <beans:property name="filterProcessesUrl" value="/bi/activity/xxxxxxxxxx" />
+         <beans:property name="filterProcessesUrl" value="/bi/dajiaxinfu/login" />
          <beans:property name="authenticationManager" ref="authenticationManager" /> 
          <beans:property name="usernameParameter" value="username" />
          <beans:property name="passwordParameter" value="password" />
