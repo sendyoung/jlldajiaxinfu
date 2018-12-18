@@ -14,6 +14,7 @@ import java.util.Date;
 @Entity(name="auth_org_base ")
 public class AuthOrgBase extends Base_Model {
     private String auth_org_id;//主键
+    private String org_logo;//组织logo
     private Date rule_date;//审核时间规则期限
     private String org_information_id;//     组织id
     private String org_introduction;//组织介绍
@@ -47,6 +48,14 @@ public class AuthOrgBase extends Base_Model {
 
     public void setAuth_org_id(String auth_org_id) {
         this.auth_org_id = auth_org_id;
+    }
+
+    public String getOrg_logo() {
+        return org_logo;
+    }
+
+    public void setOrg_logo(String org_logo) {
+        this.org_logo = org_logo;
     }
 
     public Date getRule_date() {

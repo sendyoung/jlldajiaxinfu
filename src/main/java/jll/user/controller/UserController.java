@@ -102,4 +102,13 @@ public class UserController extends BaseClass {
         return userservice.findUserByUserName(username);
     }
 
+
+    //测试更新账号方法
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = {"/test"})
+    public @ResponseBody
+    XinfuResult test(User user) {
+        return userservice.test(user);
+    }
+
 }

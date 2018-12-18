@@ -7,6 +7,9 @@ import jll.model.userdetail.UserFamily;
 import jll.model.userdetail.UserWorkPlace;
 import jll.user.dao.UserDao;
 import jll.userdetail.dao.UserDetailDao;
+import jll.userdetail.dao.UserEducationDao;
+import jll.userdetail.dao.UserFamilyDao;
+import jll.userdetail.dao.UserWorkPlaceDao;
 import jll.userdetail.service.UserDetailService;
 import jll.utils.MapTrunPojo;
 import jll.utils.XinfuResult;
@@ -25,6 +28,12 @@ public class UserDetailServiceImpl implements UserDetailService {
     @Autowired
     private UserDetailDao userDetailDao;
     @Autowired
+    private UserFamilyDao userFamilyDao;
+    @Autowired
+    private UserEducationDao userEducationDao;
+    @Autowired
+    private UserWorkPlaceDao userWorkPlaceDao;
+    @Autowired
     private UserDao userDao;
 
     //回显个人详情信息
@@ -42,7 +51,7 @@ public class UserDetailServiceImpl implements UserDetailService {
     //回显家庭成员信息
     @Override
     public List findUserFamilyDetails(String userDetailId) {
-       List list =  userDetailDao.findUserFamilyDetails(userDetailId);
+       List list =  userFamilyDao.findUserFamilyDetails(userDetailId);
        if(list!=null && list.size()>0){
            List list2 = new ArrayList();
            for (Object obj:list){
@@ -58,7 +67,7 @@ public class UserDetailServiceImpl implements UserDetailService {
     //回显教育经历
     @Override
     public List findUserEducation(String userDetailId) {
-        List list = userDetailDao.findUserEducation(userDetailId);
+        List list = userEducationDao.findUserEducation(userDetailId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
             for (Object obj:list){
@@ -74,7 +83,7 @@ public class UserDetailServiceImpl implements UserDetailService {
     //回显职场履历
     @Override
     public List findUserWorkPlace(String userDetailId) {
-        List list = userDetailDao.findUserWorkPlace(userDetailId);
+        List list = userWorkPlaceDao.findUserWorkPlace(userDetailId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
             for (Object obj:list){
@@ -98,7 +107,7 @@ public class UserDetailServiceImpl implements UserDetailService {
             user.setUser_id(userId);
             user.setUser_detail_id(userDetail.getUser_detail_id());
             userDao.updateUserAccount(user);
-            return XinfuResult.build(20,"新增或更新详情信息成功");
+            return XinfuResult.build(200,"新增或更新详情信息成功");
         } catch (Exception e) {
             e.printStackTrace();
             return XinfuResult.build(400,"新增或更新详情信息失败");
@@ -112,7 +121,7 @@ public class UserDetailServiceImpl implements UserDetailService {
             if(list!=null&&list.size()>0){
                 for (UserFamily userFamily:list) {
                     userFamily.setUser_detail_id(userDetailId);
-                    userDetailDao.saveOrUpdateUserFamily(userFamily);
+                    userFamilyDao.saveOrUpdateUserFamily(userFamily);
                 }
                 return XinfuResult.build(200,"新增或更新家庭成员信息成功");
             }
@@ -129,7 +138,7 @@ public class UserDetailServiceImpl implements UserDetailService {
             if(list!=null&&list.size()>0){
                 for (UserEducation userEducation : list){
                     userEducation.setUser_detail_id(userDetailId);
-                    userDetailDao.saveOrUpdateUserEducation(userEducation);
+                    userEducationDao.saveOrUpdateUserEducation(userEducation);
                 }
                 return XinfuResult.build(200,"新增或更新教育经历成功");
             }
@@ -146,7 +155,7 @@ public class UserDetailServiceImpl implements UserDetailService {
             if(list!=null&&list.size()>0){
                 for (UserWorkPlace userWorkPlace : list){
                     userWorkPlace.setUser_detail_id(userDetailId);
-                    userDetailDao.saveOrUpdateUserWorkPlace(userWorkPlace);
+                    userWorkPlaceDao.saveOrUpdateUserWorkPlace(userWorkPlace);
                 }
                 return XinfuResult.build(200,"新增或更新职场履历成功");
             }

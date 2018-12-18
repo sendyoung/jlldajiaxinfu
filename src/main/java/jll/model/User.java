@@ -39,8 +39,11 @@ public class User extends Base_Model {
 
     /**
      * 认证类型
-     * 0、企业
-     * 1、组织
+     * 0、未认证
+     * 1、企业认证审核中
+     * 2、企业已认证
+     * 3、组织认证审核中
+     * 4、组织已认证
      **/
     private String authentication_type;
 
@@ -101,7 +104,7 @@ public class User extends Base_Model {
 
     /**
      * 用户类型
-     * 默认为0  未定义
+     * 默认为1
      * 1 个人用户
      * 2 企业用户
      * 3 组织用户

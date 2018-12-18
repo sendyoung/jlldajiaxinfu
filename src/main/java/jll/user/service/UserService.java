@@ -65,4 +65,5 @@ public interface UserService {
 	 */
 	public List findUserByUserName(String username);
 
+	public XinfuResult test(User user);
 }

@@ -23,9 +23,10 @@ public class Permission extends Base_Model {
     private String parent_id;
 
     /**
-     * 地址
+     * 页面地址
      */
     private String url;
+
 
     /**
      * 名称

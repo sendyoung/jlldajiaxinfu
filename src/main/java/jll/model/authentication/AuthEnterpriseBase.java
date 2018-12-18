@@ -14,6 +14,7 @@ import java.util.Date;
 @Entity(name="auth_enterprise_base")
 public class AuthEnterpriseBase extends Base_Model {
     private String auth_enterprise_id;//主键
+    private String enterprise_logo;//企业logo
     private String enterprise_address;//企业地址
     private String enterprise_website;//网址
     private String enterprise_tel;//企业电话
@@ -44,6 +45,14 @@ public class AuthEnterpriseBase extends Base_Model {
 
     public void setAuth_enterprise_id(String auth_enterprise_id) {
         this.auth_enterprise_id = auth_enterprise_id;
+    }
+
+    public String getEnterprise_logo() {
+        return enterprise_logo;
+    }
+
+    public void setEnterprise_logo(String enterprise_logo) {
+        this.enterprise_logo = enterprise_logo;
     }
 
     public String getEnterprise_address() {
