@@ -89,6 +89,7 @@ public class LoginController extends BaseClass {
         List result = userservice.findUserRoleList(username, password);
         List user = userservice.findUserByUserName(username);
         Map map = new HashMap();
+        System.out.println("11222111");
         map.put("menu", result);
         map.put("user", user);
         return map;

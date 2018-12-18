@@ -73,7 +73,7 @@ public class CustomAuthenticationProvider extends
 		if(null==userVal){
 			 throw new BadAnswerException("手机号不存在或已禁用!");
 		}else if(null==result ){
-			 throw new BadAnswerException("密码错误!");
+			 throw new BadAnswerException("密码错误1!");
 		 }
 
 		return null;
