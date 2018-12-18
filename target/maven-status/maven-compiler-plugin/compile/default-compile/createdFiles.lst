@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jll\authentication\service\AccountAuthenticationService.class
 jll\security\CustomAuthenticationToken.class
 jll\model\BasicPnformationSubmit\EquityInvestment.class
@@ -60,3 +61,40 @@ jll\model\OrgOrganization\PositionDetail.class
 jll\model\BasicPnformationSubmit\CopyrightInWorks.class
 jll\model\Role_Permission_Middle.class
 jll\bad_information\service\CourtSessionNoticeService.class
+=======
+jll\user\service\UserService.class
+jll\security\CustomAuthenticationToken.class
+jll\model\InformationPrivided.class
+jll\good_information\service\impl\HonorServiceImpl.class
+jll\security\CustomLoginHandler.class
+jll\bad_information\controller\BadInformationController.class
+jll\model\User_Permission_Group.class
+jll\good_information\dao\IndustryInfrastructureDao.class
+jll\security\CustomLoginFilter.class
+jll\security\CustomLogoutFilter.class
+jll\good_information\service\impl\IndustryInfrastructureServiceImpl.class
+jll\user\dao\UserDao.class
+jll\good_information\dao\PublicWelfareActivityDao.class
+jll\good_information\service\impl\PublicWelfareActivityServiceImpl.class
+jll\good_information\service\PublicWelfareActivityService.class
+jll\good_information\service\HonorService.class
+jll\model\Permission.class
+jll\model\Base_Model.class
+jll\user\service\impl\UserServiceImpl.class
+jll\good_information\service\impl\OthersCertificateServiceImpl.class
+jll\security\CustomAuthenticationProvider.class
+jll\security\LoginController.class
+jll\model\User.class
+jll\controller\HomeScreenController.class
+jll\user\controller\UserController.class
+jll\good_information\dao\HonorDao.class
+jll\good_information\service\IndustryInfrastructureService.class
+jll\good_information\service\OthersCertificateService.class
+jll\model\User_Role_Middle.class
+jll\model\Role.class
+jll\good_information\controller\GoodInformationController.class
+jll\security\CustomLogoutHandler.class
+jll\security\BadAnswerException.class
+jll\good_information\dao\OthersCertificateDao.class
+jll\model\Role_Permission_Middle.class
+>>>>>>> 9f938b35c27a366f9124b6967ac6e70c94db243c

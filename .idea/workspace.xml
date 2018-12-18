@@ -7,19 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc9c92e7-5c38-440b-87cc-bd0869bf0072" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/authentication/controller/AccountAuthenticationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/authentication/dao/AccountAuthenticationDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/authentication/service/AccountAuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/authentication/service/impl/AccountAuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sources/config/deploy/develope/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sources/config/deploy/develope/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/sources/config/spring/spring-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sources/config/spring/spring-security.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/deploy/develope/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/config/deploy/develope/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/controller/ApplyEvaluateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/service/ApplyEvaluateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/service/impl/ApplyEvaluateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/WEB-INF/lib/dom4j-1.1.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu/html/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu/html/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
@@ -60,11 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="80" column="45" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="45" />
+            <state relative-caret-position="-153">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
@@ -141,11 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomAuthenticationProvider.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CustomAuthenticationProvider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1500">
-              <caret line="70" column="64" lean-forward="true" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+              <caret line="70" column="64" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
               <folding>
                 <element signature="e#2403#2421#0" expanded="true" />
               </folding>
@@ -258,7 +251,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="651" />
     <option name="y" value="16" />
     <option name="width" value="1101" />
@@ -604,7 +597,7 @@
       <workItem from="1545100326771" duration="316000" />
       <workItem from="1545100660866" duration="50000" />
       <workItem from="1545101134307" duration="81000" />
-      <workItem from="1545101274448" duration="2157000" />
+      <workItem from="1545101274448" duration="2737000" />
     </task>
     <task id="LOCAL-00001" summary="杨森栋12月17日上传">
       <created>1545034427322</created>
@@ -634,7 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545097376457</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="杨森栋12月18日上传">
+      <created>1545103449218</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545103449218</updated>
+    </task>
+    <task id="LOCAL-00006" summary="杨森栋12月18日上传">
+      <created>1545103545550</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1545103545550</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -670,7 +677,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176825000" />
+    <option name="totallyTimeSpent" value="177405000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -685,9 +692,9 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24520256" side_tool="true" weight="0.36165577" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24253732" side_tool="true" visible="true" weight="0.4640523" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.576226" weight="0.32897604" />
-      <window_info anchor="bottom" id="JRebel Console" order="7" sideWeight="0.24253732" side_tool="true" visible="true" weight="0.45969498" />
+      <window_info anchor="bottom" id="JRebel Console" order="7" sideWeight="0.24253732" side_tool="true" weight="0.46078432" />
       <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.12953092" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="JRebel Executor" order="7" sideWeight="0.63539445" weight="0.30283225" />
@@ -697,7 +704,7 @@
       <window_info id="Structure" order="1" sideWeight="0.44805196" side_tool="true" weight="0.16950959" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24946696" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7574627" visible="true" weight="0.45969498" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7574627" visible="true" weight="0.4640523" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49840087" weight="0.32897604" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4989339" weight="0.28540304" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -773,17 +780,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="杨森栋12月17日上传" />
     <MESSAGE value="杨森栋12月18日九点上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="杨森栋12月18日九点上传" />
+    <MESSAGE value="杨森栋12月18日上传" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/doudoulihaijun/jlldajiaxingfu&#10;&#10;# Conflicts:&#10;#&#9;target/jll-dajiaxinfu.war&#10;#&#9;target/jll-dajiaxinfu/html/login.jsp&#10;#&#9;target/maven-archiver/pom.properties&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/doudoulihaijun/jlldajiaxingfu&#10;&#10;# Conflicts:&#10;#&#9;target/jll-dajiaxinfu.war&#10;#&#9;target/jll-dajiaxinfu/html/login.jsp&#10;#&#9;target/maven-archiver/pom.properties&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst&#10;#&#9;target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java</url>
-          <line>67</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java</url>
           <line>53</line>
@@ -801,12 +804,6 @@
           <line>117</line>
           <properties />
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java</url>
-          <line>86</line>
-          <properties />
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="26" />
@@ -1137,13 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="80" column="45" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/CustomLoginFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -1154,10 +1144,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1500">
-          <caret line="70" column="64" lean-forward="true" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+          <caret line="70" column="64" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
           <folding>
             <element signature="e#2403#2421#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jll/security/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
