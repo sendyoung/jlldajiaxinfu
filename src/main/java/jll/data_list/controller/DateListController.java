@@ -5,10 +5,7 @@ import jll.data_list.service.*;
 import jll.data_list.utils.DateUtils;
 import jll.data_list.utils.FileUploadUtil;
 import jll.data_list.utils.POIUtil;
-import jll.model.data_list.BranchOffice;
-import jll.model.data_list.Customer;
 import jll.model.data_list.ReportFile;
-import jll.model.data_list.SubsidiaryCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -105,25 +102,30 @@ public class DateListController extends BaseClass {
     @RequestMapping(value = "/UploadDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object uploadDateListFile(HttpServletRequest request,@RequestParam String type,@RequestParam String entId,@RequestParam(name="multfile") MultipartFile multfile) throws IOException {
         ReportFile rf=new ReportFile();
+        rf.setCreate_time(new Date());
         rf.setEnt_id(entId);
         rf.setFile_name(multfile.getOriginalFilename());
         rf.setFile_type(type);
         //上传文件路径
-        String path = request.getSession().getServletContext().getRealPath("/WEB-INF/datalist/");
+        String path = request.getSession().getServletContext().getRealPath("/datalist/");
+
+        //String path="/webapp/datalist/";
         String result=null;
         // 保存文件
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
-        rf.setFile_url(filename);
+        rf.setFile_url(path+filename);
         result=FileUploadUtil.imageUpload(multfile, path,filename);
         if(result.equals("success")){
             reportFileService.editReportFile(rf);
-            return "success";
+            return rf;
         }
         return "error";
     }
     /**
      * 查询企业上传的材料
      * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object findDataListFile(@RequestParam String entId){
         Map map=new HashMap();
         //员工信息
@@ -153,8 +155,10 @@ public class DateListController extends BaseClass {
     /**
      * 下载填报材料
      * */
-    public void downloadDataListFile(HttpServletResponse response,String fileUrl,String fileName){
-        response.setContentType("multipart/form-data");
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/DownloadDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
+    public void downloadDataListFile(HttpServletResponse response,@RequestParam  String fileUrl,@RequestParam String fileName){
+        /*response.setContentType("multipart/form-data");
         response.setHeader("Content-Disposition","fileName="+fileName);
         File file=new File(fileUrl);
         InputStream in= null;
@@ -170,6 +174,31 @@ public class DateListController extends BaseClass {
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+        File file = new File(fileUrl);
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setContentLength((int) file.length());
+        response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+        byte[] buff = new byte[1024];
+        BufferedInputStream bis = null;
+        OutputStream os = null;
+        try {
+            os = response.getOutputStream();
+            bis = new BufferedInputStream(new FileInputStream(file));
+            int i = 0;
+            while ((i = bis.read(buff)) != -1) {
+                os.write(buff, 0, i);
+                os.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

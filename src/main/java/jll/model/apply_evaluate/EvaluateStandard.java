@@ -18,7 +18,7 @@ public class EvaluateStandard extends Base_Model {
     private String parent_id;//父级ID
     private String is_son;//有无子节点
     private String stype;//类型：定量，定性
-    private String org_id;//组织ID
+    private String auth_org_id;//组织ID
     private String operation_type;//性质类型，-1扣分项，1加分项
     private String calculate_type;//计算类型：1 区间型 ，2 判断型，3 计算型，4 其他型
     private String seq;//排列顺序
@@ -74,12 +74,12 @@ public class EvaluateStandard extends Base_Model {
         this.stype = stype;
     }
 
-    public String getOrg_id() {
-        return org_id;
+    public String getAuth_org_id() {
+        return auth_org_id;
     }
 
-    public void setOrg_id(String org_id) {
-        this.org_id = org_id;
+    public void setAuth_org_id(String auth_org_id) {
+        this.auth_org_id = auth_org_id;
     }
 
     public String getOperation_type() {

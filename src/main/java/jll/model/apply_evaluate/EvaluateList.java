@@ -15,7 +15,9 @@ public class EvaluateList extends Base_Model {
     private String evaluate_list_id;//评价榜单ID
     private String title;//标题
     private String content;//内容
-    private String org_id;//组织ID
+    private String auth_org_id;//组织ID
+    private String status;//是否作废
+    private String public_status;//是否公示
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -44,11 +46,27 @@ public class EvaluateList extends Base_Model {
         this.content = content;
     }
 
-    public String getOrg_id() {
-        return org_id;
+    public String getAuth_org_id() {
+        return auth_org_id;
     }
 
-    public void setOrg_id(String org_id) {
-        this.org_id = org_id;
+    public void setAuth_org_id(String auth_org_id) {
+        this.auth_org_id = auth_org_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPublic_status() {
+        return public_status;
+    }
+
+    public void setPublic_status(String public_status) {
+        this.public_status = public_status;
     }
 }
