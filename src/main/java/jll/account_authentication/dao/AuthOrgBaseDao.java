@@ -38,4 +38,8 @@ public class AuthOrgBaseDao extends SimpleHibernateTemplate<AuthOrgBase> {
         this.getSession().saveOrUpdate(authOrgBase);
     }
 
+    /**
+     * 组织认证表findOrgNameByAuthId
+     */
+
 }

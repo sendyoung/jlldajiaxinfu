@@ -37,4 +37,11 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
         this.getSession().saveOrUpdate(authEnterpriseBase);
     }
 
+    /**
+     * 企业认证表findEnterpriseNameByAuthId
+     *
+     *
+     * 									  申请评价关系表findEntAuthIdByOrgAuthId
+     */
+
 }

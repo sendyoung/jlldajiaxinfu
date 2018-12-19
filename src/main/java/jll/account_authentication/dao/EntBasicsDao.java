@@ -15,7 +15,7 @@ import java.util.List;
 public class EntBasicsDao extends SimpleHibernateTemplate<EntBasics> {
 
     /**
-     *回显企业认证数据
+     *回显企业工商数据
      */
     public List findEntBasics(String unified_social_credit_code) {
         StringBuffer sql = new StringBuffer();

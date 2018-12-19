@@ -193,4 +193,8 @@ public class UserDao extends SimpleHibernateTemplate<User> {
 
         }
 
+    /**
+     * 用户表findUserIdByAuthId
+     */
+
 }
