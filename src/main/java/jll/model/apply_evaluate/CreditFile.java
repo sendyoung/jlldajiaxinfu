@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity(name="eva_credit_file")
 public class CreditFile extends Base_Model {
     private String credit_file_id;
-    private String ent_id;//企业ID
+    private String auth_enterprise_id;//企业ID
     private String doc_url;//档案url
     private String doc_name;//档案名称
     private String doc_remark;//档案备注
@@ -29,12 +29,12 @@ public class CreditFile extends Base_Model {
         this.credit_file_id = credit_file_id;
     }
 
-    public String getEnt_id() {
-        return ent_id;
+    public String getAuth_enterprise_id() {
+        return auth_enterprise_id;
     }
 
-    public void setEnt_id(String ent_id) {
-        this.ent_id = ent_id;
+    public void setAuth_enterprise_id(String auth_enterprise_id) {
+        this.auth_enterprise_id = auth_enterprise_id;
     }
 
     public String getDoc_url() {

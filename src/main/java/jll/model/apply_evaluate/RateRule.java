@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity(name="eva_rate_rule")
 public class RateRule extends Base_Model {
     private String rate_rule_id;
-    private String org_id;//组织ID
+    private String auth_org_id;//组织ID
     private String rank_code;//等级名称
     private String score_bottom;//分值下限
     private String score_top;//分值上限
@@ -29,12 +29,12 @@ public class RateRule extends Base_Model {
         this.rate_rule_id = rate_rule_id;
     }
 
-    public String getOrg_id() {
-        return org_id;
+    public String getAuth_org_id() {
+        return auth_org_id;
     }
 
-    public void setOrg_id(String org_id) {
-        this.org_id = org_id;
+    public void setAuth_org_id(String auth_org_id) {
+        this.auth_org_id = auth_org_id;
     }
 
     public String getRank_code() {
