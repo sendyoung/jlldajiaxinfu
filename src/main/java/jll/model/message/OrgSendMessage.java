@@ -20,7 +20,7 @@ public class OrgSendMessage extends Base_Model {
     private String receiver_name;//接收者名称
     private String message_title;//消息标题
     private String message_content;//消息内容
-    private String send_type;//发送类型(组织对企业,企业对组织等)
+    private String send_type;//发送类型(1组织对企业,2企业对组织,3群发等)
     private String message_status;//(消息状态0草稿,1已发送)
     private String message_type;//消息类型
 
