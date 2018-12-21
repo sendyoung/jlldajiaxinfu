@@ -2,10 +2,12 @@ package jll.account_authentication.service.impl;
 
 import jll.account_authentication.dao.AuthEnterpriseBaseDao;
 import jll.account_authentication.dao.AuthOrgBaseDao;
+import jll.account_authentication.dao.EntBasicsDao;
 import jll.account_authentication.service.AccountAuthenticationService;
 import jll.model.User;
 import jll.model.authentication.AuthEnterpriseBase;
 import jll.model.authentication.AuthOrgBase;
+import jll.model.enterprise.EntBasics;
 import jll.user.dao.UserDao;
 import jll.utils.MapTrunPojo;
 import jll.utils.XinfuResult;
@@ -26,6 +28,8 @@ public class AccountAuthenticationServiceImpl implements AccountAuthenticationSe
     private AuthOrgBaseDao authOrgBaseDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private EntBasicsDao entBasicsDao;
 
     //回显企业认证数据
     @Override
@@ -87,5 +91,21 @@ public class AccountAuthenticationServiceImpl implements AccountAuthenticationSe
             e.printStackTrace();
             return XinfuResult.build(400,"新增或更新认证信息失败");
         }
+    }
+
+    /**
+     * 根据社会信用统一代码查询有没有对应的企业数据
+     * @param unified_social_credit_code
+     * @return
+     */
+    @Override
+    public EntBasics findEntBasics(String unified_social_credit_code) {
+        List list = entBasicsDao.findEntBasics(unified_social_credit_code);
+        if (list != null && list.size() > 0) {
+            Map map = (Map) list.get(0);
+            EntBasics entBasics = (EntBasics) MapTrunPojo.map2Object(map, EntBasics.class);
+            return entBasics;
+        }
+        return null;
     }
 }

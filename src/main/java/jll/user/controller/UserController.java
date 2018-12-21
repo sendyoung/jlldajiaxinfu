@@ -44,7 +44,7 @@ public class UserController extends BaseClass {
      */
 
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = {"/registerUser"})
+    @RequestMapping(method = {RequestMethod.POST},value = {"/registerUser"})
     public @ResponseBody
     XinfuResult registerUser(@RequestBody Map map) {
         String username = (String)map.get("username");

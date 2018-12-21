@@ -38,4 +38,23 @@ public class AuthOrgBaseDao extends SimpleHibernateTemplate<AuthOrgBase> {
         this.getSession().saveOrUpdate(authOrgBase);
     }
 
+    /**
+     * 组织认证表findOrgNameByAuthId
+     * 根据认证ID查询组织名称
+     */
+    public List findOrgNameByAuthId(String authId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT                                                                                      ");
+        sql.append(" 	authOrgBase.organization_name                                                                            ");
+        sql.append(" FROM                                                                                        ");
+        sql.append(" 	auth_org_base authOrgBase                                                                ");
+        sql.append(" WHERE                                                                                       ");
+        sql.append(" 1 = 1        ");
+        sql.append(" AND authOrgBase.isDelete = '0'                                                                                      ");
+        sql.append(" AND authOrgBase .auth_org_id = '" + authId + "'                                                               ");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        return query.list();
+    }
 }

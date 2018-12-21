@@ -193,4 +193,26 @@ public class UserDao extends SimpleHibernateTemplate<User> {
 
         }
 
+    /**
+     * 用户表findUserIdByAuthId
+     * 根据认证ID查询用户ID
+     */
+    public List findUserIdByAuthId(String authId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT                                                                                      ");
+        sql.append(" 	u.user_id                                                                             ");
+        sql.append(" FROM                                                                                        ");
+        sql.append(" 	org_user_account u                                                                      ");
+        sql.append(" WHERE                                                                                       ");
+        sql.append(" 	1 = 1                                                                                      ");
+        sql.append(" AND u .isDelete = '0'                                                                    ");
+        sql.append(" AND u .authentication_id = '" + authId + "'                                                               ");
+        sql.append(" ORDER BY sort ASC ");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        return query.list();
+
+    }
+
 }

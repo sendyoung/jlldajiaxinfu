@@ -37,4 +37,24 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
         this.getSession().saveOrUpdate(authEnterpriseBase);
     }
 
+    /**
+     * 企业认证表findEnterpriseNameByAuthId
+     * 根据认证ID查询企业名称
+     */
+    public List findEnterpriseNameByAuthId(String authId){
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT                                                                                      ");
+        sql.append(" 	authEnterpriseBase.enterprise_name                                                                             ");
+        sql.append(" FROM                                                                                        ");
+        sql.append(" 	auth_enterprise_base authEnterpriseBase                                                                ");
+        sql.append(" WHERE                                                                                       ");
+        sql.append(" 1 = 1        ");
+        sql.append(" AND authEnterpriseBase.isDelete = '0'                                                                                      ");
+        sql.append(" AND authEnterpriseBase.auth_enterprise_id = '" + authId + "'                                                               ");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        return query.list();
+    }
+
 }
