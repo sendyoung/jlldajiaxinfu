@@ -1,4 +1,4 @@
-package jll.apply_evaluate.service;
+package jll.message.dao.service;
 
 public interface AuthEnterpriseBaseService {
     /**

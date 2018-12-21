@@ -1,11 +1,10 @@
-package jll.apply_evaluate.service.impl;
+package jll.message.dao.service.impl;
 
 import com.cn.zyzs.hibernate.util.Page;
 import com.cn.zyzs.utils.utils.PageContext;
 import com.cn.zyzs.utils.utils.PageView;
-import jll.apply_evaluate.dao.ApplyEvaluateDao;
 import jll.apply_evaluate.dao.ApplyModuleDao;
-import jll.apply_evaluate.service.ApplyEvaluateService;
+import jll.message.dao.service.ApplyEvaluateService;
 import jll.model.apply_evaluate.ApplyModule;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;

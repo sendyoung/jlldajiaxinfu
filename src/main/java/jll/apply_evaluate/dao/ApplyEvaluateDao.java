@@ -1,4 +1,4 @@
-package jll.apply_evaluate.dao;
+﻿package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import com.cn.zyzs.hibernate.util.Page;
@@ -152,6 +152,67 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
     }
+    /**
+     * 添加评价批语
+     * */
+    public void updateApplyEvaluateForRemarks(String applyEvaluateId,String title,String remarks){
+        StringBuffer sql = new StringBuffer();
+        sql.append("update eva_apply_evaluate set title='"+title+"',remarks='"+remarks+"' where apply_evaluate_id="+applyEvaluateId+" ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        query.executeUpdate();
+    }
+    /**
+     * 查询企业的所有请求
+     * */
+    public Page queryApplyEvaluateByAuthEnterpriseId(String authEnterpriseId,String date,String level){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append("select eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
+                "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
+                "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
+                "where 1=1 and eae.auth_enterprise_id="+authEnterpriseId+" and audit_status in ('1','2','3','4')");
+        if(date!=null&&!date.equals("")){
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+        }
+        if(level!=null&&!level.equals("")){
+            sql.append("and esr.level="+level+" ");
+        }
+        sql.append(" order by eae.create_time desc");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
+    }
+    /**
+     * 查询企业的所有可申诉请求（评价已完成）
+     * */
+    public Page queryApplyEvaluateByAuthEnterpriseIdForAppeal(String authEnterpriseId,String date,String level){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
+                "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
+                "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
+                "where 1=1 and eae.auth_enterprise_id="+authEnterpriseId+" and audit_status=4");
+        if(date!=null&&!date.equals("")){
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+        }
+        if(level!=null&&!level.equals("")){
+            sql.append("and esr.level="+level+" ");
+        }
+        sql.append(" order by eae.create_time desc");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
+    }
+    /**
+     * 修改申诉状态
+     * */
+    public void updateApplyEvaluateForAppealStatus(String applyEvaluateId,String appealStatus){
+        StringBuffer sql = new StringBuffer();
+        sql.append("update eva_apply_evaluate set appeal_status="+appealStatus+" where apply_evaluate_id="+applyEvaluateId+" ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        query.executeUpdate();
+    }
+
 
     /**
      * 申请评价关系表findEntAuthIdByOrgAuthId
@@ -165,5 +226,6 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
     }
+
 
 }

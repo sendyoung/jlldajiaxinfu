@@ -1,8 +1,7 @@
-package jll.apply_evaluate.service.impl;
+package jll.message.dao.service.impl;
 
-import jll.apply_evaluate.dao.ApplyEvaluateDao;
 import jll.apply_evaluate.dao.ApplyModuleDao;
-import jll.apply_evaluate.service.ApplyModuleService;
+import jll.message.dao.service.ApplyModuleService;
 import jll.model.apply_evaluate.ApplyModule;
 import jll.utils.MapTrunPojo;
 import org.springframework.beans.factory.annotation.Autowired;

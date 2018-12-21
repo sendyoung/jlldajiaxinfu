@@ -80,5 +80,32 @@ public class ApplyEvaluateController {
         map.put("info",applyEvaluateService.findApplyEvaluateForCreditEvaluate(authOrgId,name,date,level,auditStatus,page,rows));
         return map;
     }
+    /**
+     * 评价批语
+     * title标题
+     * remarks批语
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/EditApplyEvaluateForRemarks",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object editApplyEvaluateForRemarks(@RequestParam String applyEvaluateId,@RequestParam String title,@RequestParam String remarks){
+        applyEvaluateService.editApplyEvaluateByRemarks(applyEvaluateId,title,remarks);
+        return "success";
+    }
+    /**
+     * 查询企业的所有请求
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindApplyEvaluateByAuthEnterpriseId",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findApplyEvaluateByAuthEnterpriseId(@RequestParam String authEnterpriseId,@RequestParam(required = false) String date,@RequestParam(required = false) String level,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
+        return applyEvaluateService.findApplyEvaluateByAuthEnterpriseId(authEnterpriseId,date,level,page,rows);
+    }
+    /**
+     *  查询企业的所有可申诉请求（评价已完成）
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindApplyEvaluateByAuthEnterpriseIdForAppeal",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findApplyEvaluateByAuthEnterpriseIdForAppeal(@RequestParam String authEnterpriseId,@RequestParam(required = false) String date,@RequestParam(required = false) String level,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
+        return applyEvaluateService.findApplyEvaluateByAuthEnterpriseIdForAppeal(authEnterpriseId,date,level,page,rows);
+    }
 
 }

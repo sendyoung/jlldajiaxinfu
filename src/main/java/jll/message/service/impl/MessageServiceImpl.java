@@ -3,7 +3,6 @@ package jll.message.service.impl;
 import com.cn.zyzs.utils.utils.PageView;
 import jll.account_authentication.dao.AuthEnterpriseBaseDao;
 import jll.account_authentication.dao.AuthOrgBaseDao;
-import jll.apply_evaluate.dao.ApplyEvaluateDao;
 import jll.message.dao.ReceiveMessageDao;
 import jll.message.dao.SendMessageDao;
 import jll.message.service.MessageService;

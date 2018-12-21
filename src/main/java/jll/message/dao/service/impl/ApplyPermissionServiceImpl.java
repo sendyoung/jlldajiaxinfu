@@ -1,7 +1,7 @@
-package jll.apply_evaluate.service.impl;
+package jll.message.dao.service.impl;
 
 import jll.apply_evaluate.dao.ApplyPermissionDao;
-import jll.apply_evaluate.service.ApplyPermissionService;
+import jll.message.dao.service.ApplyPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

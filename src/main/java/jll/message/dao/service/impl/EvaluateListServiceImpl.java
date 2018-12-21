@@ -1,9 +1,8 @@
-package jll.apply_evaluate.service.impl;
+package jll.message.dao.service.impl;
 
-import jll.apply_evaluate.dao.ApplyEvaluateDao;
 import jll.apply_evaluate.dao.EvaluateListDao;
 import jll.apply_evaluate.dao.EvaluateListDetailsDao;
-import jll.apply_evaluate.service.EvaluateListService;
+import jll.message.dao.service.EvaluateListService;
 import jll.model.apply_evaluate.ApplyEvaluate;
 import jll.model.apply_evaluate.EvaluateList;
 import jll.model.apply_evaluate.EvaluateListDetails;
