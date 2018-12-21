@@ -1,0 +1,88 @@
+ <beans:beans
+      xmlns:security="http://www.springframework.org/schema/security"
+      xmlns:beans="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:mvc="http://www.springframework.org/schema/mvc"
+	  xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/mvc   
+      http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	  http://www.springframework.org/schema/context 
+	  http://www.springframework.org/schema/context/spring-context-2.5.xsd
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+  
+	  <beans:bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+	         <!-- 默认登录页的url -->
+	         <beans:constructor-arg value="/bi/login/login" />
+	  </beans:bean>
+
+	<security:http security="none" pattern="/bi/login/login" />
+    <security:http security="none" pattern="/bi/user/checkData" />
+     <security:http security="none" pattern="/bi/user/registerUser" />
+
+      <!-- 所以当我们同时定义多个http元素时要确保将更具有特性的URL配置在前 -->
+      <!-- entry-point-ref指定登录入口 -->
+      <security:http  entry-point-ref="loginEntryPoint">
+         <security:intercept-url pattern="/bi/**"  />
+         <!-- 替换默认的LogoutFilter -->
+         <security:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER" />
+         <!-- 替换默认的LoginFilter -->
+         <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER" />
+         <!-- session 超时 -->
+         <security:session-management invalid-session-url="/bi/login/login"></security:session-management>
+      </security:http>
+          
+          
+     <beans:bean id="customLoginFilter" class="jll.security.CustomLoginFilter">
+         <!-- 校验登录是否有效的虚拟url -->
+         <beans:property name="filterProcessesUrl" value="/bi/dajiaxinfu/login" />
+         <beans:property name="authenticationManager" ref="authenticationManager" /> 
+         <beans:property name="usernameParameter" value="username" />
+         <beans:property name="passwordParameter" value="password" />
+         <beans:property name="authenticationSuccessHandler">
+             <!-- 自定义登录成功后的处理handler(认证成功后的处理类) -->
+             <beans:bean class="jll.security.CustomLoginHandler">
+                 <!-- 登录成功后的默认url -->
+                 <beans:property name="defaultTargetUrl" value="/bi/login/successHandler" />
+             </beans:bean>
+         </beans:property>
+         <beans:property name="authenticationFailureHandler">
+             <beans:bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+                <!-- 登录失败后的默认Url -->
+                <beans:property name="defaultFailureUrl" value="/bi/login/failureHandler" />
+             </beans:bean>
+         </beans:property>
+     </beans:bean>
+     
+	 <beans:bean id="customLogoutFilter" class="jll.security.CustomLogoutFilter">
+	 	<!-- 处理退出的虚拟url -->
+         <beans:property name="filterProcessesUrl" value="/bi/activity/logout" />
+         <!-- 退出处理成功后的默认显示url -->
+         <beans:constructor-arg index="0" value="/bi/login/login" />
+         <beans:constructor-arg index="1">
+             <!-- 退出成功后的handler列表 -->
+             <beans:array>
+                <!--  <beans:bean id="securityContextLogoutHandler" class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" /> -->
+                 <!-- 加入了开发人员自定义的退出成功处理 -->
+             <!--   <beans:bean id="customLogoutSuccessHandler" class="cn.com.llovef.framework.security.CustomLogoutHandler" />   -->  
+             	 <beans:bean id="customLogoutHandler" class="jll.security.CustomLogoutHandler" /> 	
+             </beans:array>
+         </beans:constructor-arg>    
+	     
+	 </beans:bean>
+      
+      <security:authentication-manager alias="authenticationManager">
+        <!-- <security:authentication-provider>
+            <security:user-service>
+                <security:user name="531677565@qq.com" password="123456" authorities="ROLE_USER" />
+            </security:user-service>
+        </security:authentication-provider> -->
+        <!-- 加入开发人员自定义的Provider -->
+       <security:authentication-provider ref="customProvider" /> 
+    </security:authentication-manager>
+
+     <beans:bean id="customProvider" class="jll.security.CustomAuthenticationProvider" /> 
+    
+ </beans:beans>
