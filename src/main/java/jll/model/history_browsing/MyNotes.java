@@ -15,7 +15,10 @@ public class MyNotes extends Base_Model {
     private String note_id;//主键
     private String user_id;//用户id
     private String ent_id;//企业id
-
+    private String ent_name;//企业名称
+    private String ent_credit;//企业社会信用统一代码
+    private String ent_representative;//企业法定代表人
+    private String note_content;//笔记内容
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -42,5 +45,37 @@ public class MyNotes extends Base_Model {
 
     public void setEnt_id(String ent_id) {
         this.ent_id = ent_id;
+    }
+
+    public String getEnt_name() {
+        return ent_name;
+    }
+
+    public void setEnt_name(String ent_name) {
+        this.ent_name = ent_name;
+    }
+
+    public String getEnt_credit() {
+        return ent_credit;
+    }
+
+    public void setEnt_credit(String ent_credit) {
+        this.ent_credit = ent_credit;
+    }
+
+    public String getEnt_representative() {
+        return ent_representative;
+    }
+
+    public void setEnt_representative(String ent_representative) {
+        this.ent_representative = ent_representative;
+    }
+
+    public String getNote_content() {
+        return note_content;
+    }
+
+    public void setNote_content(String note_content) {
+        this.note_content = note_content;
     }
 }
