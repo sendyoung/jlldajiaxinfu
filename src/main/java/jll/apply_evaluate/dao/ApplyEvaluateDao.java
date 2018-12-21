@@ -1,4 +1,4 @@
-﻿package jll.apply_evaluate.dao;
+package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import com.cn.zyzs.hibernate.util.Page;
