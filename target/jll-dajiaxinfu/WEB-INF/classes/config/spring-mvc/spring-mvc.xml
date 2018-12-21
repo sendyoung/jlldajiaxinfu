@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <description>Spring MVC Configuration</description>
+    
+	
+	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
+	<context:component-scan base-package="jll" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 要使用spring mvc中的@Controller注解，就必须要配置<mvc:annotation-driven />，否则org.springframework.web.servlet.DispatcherServlet无法找到控制器并把请求分发到控制器 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+	     <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	       <property name="supportedMediaTypes">
+	         <list>
+	           <value>text/plain;charset=UTF-8</value>
+	           <value>text/html;charset=UTF-8</value>
+	         </list>
+	       </property>
+	     </bean>
+	     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	       <property name="supportedMediaTypes">
+	         <list>
+	           <value>application/json; charset=UTF-8</value>
+	           <value>application/x-www-form-urlencoded; charset=UTF-8</value>
+	         </list>
+	       </property>
+	     </bean>
+	   </mvc:message-converters>
+		
+	</mvc:annotation-driven>
+
+	
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">  
+        <property name="favorParameter" value="false" />
+        <property name="ignoreAcceptHeader" value="true" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="xml" value="application/xml" />
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+    </bean>  
+    
+    
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager" ref="contentNegotiationManager"/>  
+		
+		<property name="viewResolvers">
+			<list>
+				<ref bean="jspViewResolver" />
+			</list>
+		</property>
+
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+			</list>
+			
+		</property>
+	</bean>
+	
+	<!-- jsp视图解析器 -->
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/html/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="3"></property>
+	</bean>
+
+	<!-- 支持上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	 <property name="maxUploadSize"><value>9999999999999</value></property> 
+         <property name="defaultEncoding"><value>UTF-8</value></property> 
+    </bean>  
+    
+ </beans>
