@@ -17,7 +17,7 @@ public class ApplyEvaluate extends Base_Model {
     private String auth_org_id;//组织ID
     private String apply_status;//申请状态：
     private String audit_status;//审核状态
-    private String appeal_status;//申诉状态
+    private String appeal_status;//申诉状态 1、已申诉 2、已受理 3、已驳回 4、已完成
     private String title;//标题
     private String remarks;//备注批语
 

@@ -123,4 +123,43 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
     public Object findApplyEvaluateByAuditStatusForCount(String authOrgId, String auditStatus) {
         return applyEvaluateDao.queryApplyEvaluateByAuditStatusForCount(authOrgId,auditStatus);
     }
+
+    @Override
+    public void editApplyEvaluateByRemarks(String applyEvaluateId, String title, String remarks) {
+        applyEvaluateDao.updateApplyEvaluateForRemarks(applyEvaluateId,title,remarks);
+    }
+
+    @Override
+    public Object findApplyEvaluateByAuthEnterpriseId(String authEnterpriseId, String date, String level, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=applyEvaluateDao.queryApplyEvaluateByAuthEnterpriseId(authEnterpriseId,date,level);
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findApplyEvaluateByAuthEnterpriseIdForAppeal(String authEnterpriseId, String date, String level, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=applyEvaluateDao.queryApplyEvaluateByAuthEnterpriseIdForAppeal(authEnterpriseId,date,level);
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
 }

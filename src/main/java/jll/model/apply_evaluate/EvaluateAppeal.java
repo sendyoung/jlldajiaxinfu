@@ -15,7 +15,7 @@ import java.util.Date;
 public class EvaluateAppeal extends Base_Model {
     private String evaluate_appeal_id;//评价申诉ID
     private String apply_evaluate_id;//申请评价ID
-    private String stype;//申诉类型
+    private String stype;//申诉类型  1 资料有误 2 补全信息 3 恶意诋毁 4 其他
     private String status;//申诉状态
     private Date date;//申诉时间
     private String details;//申诉详情

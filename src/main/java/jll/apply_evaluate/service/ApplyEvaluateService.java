@@ -29,4 +29,16 @@ public interface ApplyEvaluateService {
      * 查询组织所有的各审核状态数量
      * */
     public Object findApplyEvaluateByAuditStatusForCount(String authOrgId,String auditStatus);
+    /**
+     * 添加评价批语
+     * */
+    public void editApplyEvaluateByRemarks(String applyEvaluateId,String title,String remarks);
+    /**
+     * 查询企业的所有请求
+     * */
+    public Object findApplyEvaluateByAuthEnterpriseId(String authEnterpriseId,String date,String level,Integer page,Integer rows);
+    /**
+     * 查询企业的所有可申诉请求（评价已完成）
+     * */
+    public Object findApplyEvaluateByAuthEnterpriseIdForAppeal(String authEnterpriseId,String date,String level,Integer page,Integer rows);
 }

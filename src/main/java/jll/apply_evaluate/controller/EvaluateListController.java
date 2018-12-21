@@ -23,6 +23,14 @@ public class EvaluateListController {
        evaluateListService.editEvaluateList(authOrgId,title,content);
        return "success";
     }
-
+    /**
+     * 查询年度榜单
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindEvaluateListByDate",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findEvaluateListByDate(@RequestParam String authOrgId,@RequestParam String date,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10") Integer rows){
+        evaluateListService.findEvaluateListByDate(authOrgId,date,page,rows);
+        return "success";
+    }
 
 }

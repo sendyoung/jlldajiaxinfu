@@ -16,8 +16,8 @@ public class EvaluateList extends Base_Model {
     private String title;//标题
     private String content;//内容
     private String auth_org_id;//组织ID
-    private String status;//是否作废
-    private String public_status;//是否公示
+    private String status;//是否作废 1 未作废 2 已作废
+    private String public_status;//是否公示 1 已公示 2 未公示
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
