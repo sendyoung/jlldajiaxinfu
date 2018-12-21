@@ -6,33 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc9c92e7-5c38-440b-87cc-bd0869bf0072" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/document_release/controller/DocumentReleaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/document_release/dao/DocumentReleaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/document_release/service/DocumentReleaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/document_release/service/impl/DocumentReleaseServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/document_release/DocumentRelease.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jll/utils/Encrypt.java" afterDir="false" />
+    <list default="true" id="bc9c92e7-5c38-440b-87cc-bd0869bf0072" name="Default" comment="杨森栋12月20日上午上传">
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/EnterprisesPunishment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/RedBlackEvaluate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/account_authentication/controller/AccountAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/account_authentication/controller/AccountAuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthEnterpriseBaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthEnterpriseBaseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthOrgBaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthOrgBaseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/account_authentication/service/AccountAuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/account_authentication/service/AccountAuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/account_authentication/service/impl/AccountAuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/account_authentication/service/impl/AccountAuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/message/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/message/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/message/dao/ReceiveMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/message/dao/ReceiveMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/message/dao/SendMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/message/dao/SendMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/message/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/message/service/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/message/service/impl/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/message/service/impl/MessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/CustomAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/security/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jll/utils/HibernatePageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/utils/HibernatePageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/jll-dajiaxinfu.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/ApplyEvaluate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/ApplyEvaluate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/EvaluateAppeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/EvaluateAppeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/EvaluateList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/EvaluateList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/RateRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/RateRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/RedBlackList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/RedBlackList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/ScoreResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jll/model/apply_evaluate/ScoreResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/ApplyEvaluate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/EvaluateAppeal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/EvaluateList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/RateRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/RedBlackList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/jll/model/apply_evaluate/ScoreResult.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,11 +59,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AccountAuthenticationServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AccountAuthenticationServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/account_authentication/service/impl/AccountAuthenticationServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1658">
               <caret line="106" column="49" selection-start-line="106" selection-start-column="49" selection-end-line="106" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplyEvaluateDao.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="606">
+              <caret line="213" column="5" lean-forward="true" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
+              <folding>
+                <element signature="e#8448#8464#0" expanded="true" />
+                <element signature="e#8580#8596#0" expanded="true" />
+                <element signature="e#9672#9688#0" expanded="true" />
+                <element signature="e#9804#9820#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,7 +138,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="171" column="12" lean-forward="true" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="48" />
+              <caret line="171" column="12" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,19 +159,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/jll/account_authentication/controller/AccountAuthenticationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="58">
-              <caret line="72" column="1" lean-forward="true" selection-start-line="72" selection-start-column="1" selection-end-line="81" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DocumentReleaseService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/jll/document_release/service/DocumentReleaseService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="11" column="78" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="72" column="1" selection-start-line="72" selection-start-column="1" selection-end-line="81" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -219,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/EntBasicsDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/model/mymessage/OrgReceiveMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/utils/HPageUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/model/message/OrgReceiveMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/model/message/OrgSendMessage.java" />
         <option value="$PROJECT_DIR$/src/main/sources/config/spring/spring-security.xml" />
@@ -244,6 +236,7 @@
         <option value="$PROJECT_DIR$/src/main/java/jll/document_release/controller/DocumentReleaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthOrgBaseDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/jll/account_authentication/dao/AuthEnterpriseBaseDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java" />
       </list>
     </option>
   </component>
@@ -319,6 +312,60 @@
               <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
               <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jll" type="462c0819:PsiDirectoryNode" />
+              <item name="apply_evaluate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jll" type="462c0819:PsiDirectoryNode" />
+              <item name="apply_evaluate" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jlldajiaxingfu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jlldajiaxingfu" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jll" type="462c0819:PsiDirectoryNode" />
+              <item name="message" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -343,11 +390,11 @@
       <recent name="jll.model.message" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\work\Desktop\project\jlldajiaxingfu\src\main\java\jll\apply_evaluate\dao" />
       <recent name="C:\Users\work\Desktop\project\jlldajiaxingfu\src\main\java\jll\utils" />
       <recent name="D:\IdeaPr\jlldajiaxinfu\src\main\java\zkfh" />
       <recent name="D:\IdeaPr\jlldajiaxinfu\src\main\sources" />
       <recent name="D:\IdeaPr\jlldajiaxinfu\src\main\sources\config\spring" />
-      <recent name="D:\IdeaPr\jlldajiaxinfu\src\main\webapp\html" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -587,7 +634,7 @@
       <workItem from="1545101274448" duration="27396000" />
       <workItem from="1545185234334" duration="36947000" />
       <workItem from="1545290389108" duration="43000" />
-      <workItem from="1545290465137" duration="27737000" />
+      <workItem from="1545290465137" duration="29230000" />
     </task>
     <task id="LOCAL-00001" summary="杨森栋12月17日上传">
       <created>1545034427322</created>
@@ -673,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545288153164</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="杨森栋12月20日上午上传">
+      <created>1545364838184</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1545364838184</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -709,7 +763,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266791000" />
+    <option name="totallyTimeSpent" value="268284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -722,6 +776,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.24520256" side_tool="true" weight="0.5348584" />
@@ -736,7 +791,7 @@
       <window_info id="Structure" order="1" sideWeight="0.44805196" side_tool="true" weight="0.16950959" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24946696" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="17" sideWeight="0.8731343" visible="true" weight="0.5206972" />
+      <window_info active="true" anchor="bottom" id="Debug" order="17" sideWeight="0.8731343" visible="true" weight="0.14923747" />
       <window_info anchor="bottom" id="TODO" order="5" sideWeight="0.49840087" weight="0.32897604" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4989339" weight="0.3224401" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -748,7 +803,7 @@
       <window_info anchor="bottom" id="Spring" order="14" sideWeight="0.4978678" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="15" weight="0.32897604" />
       <window_info anchor="bottom" id="Problems" order="16" sideWeight="0.49946696" weight="0.32897604" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5174292" visible="true" weight="0.1705757" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5174292" visible="true" weight="0.1705757" />
       <window_info id="Web" order="2" sideWeight="0.46039605" side_tool="true" weight="0.18443497" />
       <window_info id="JRebel" order="2" sideWeight="0.4825708" side_tool="true" weight="0.1913646" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4978678" weight="0.24509804" />
@@ -858,13 +913,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/utils/HPageUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="161" column="41" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/sources/config/spring/spring-security.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1156,7 +1204,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/account_authentication/controller/AccountAuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
-          <caret line="72" column="1" lean-forward="true" selection-start-line="72" selection-start-column="1" selection-end-line="81" selection-end-column="5" />
+          <caret line="72" column="1" selection-start-line="72" selection-start-column="1" selection-end-line="81" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1246,7 +1294,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/jll/user/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="171" column="12" lean-forward="true" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="48" />
+          <caret line="171" column="12" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1257,6 +1305,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1658">
           <caret line="106" column="49" selection-start-line="106" selection-start-column="49" selection-end-line="106" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jll/apply_evaluate/dao/ApplyEvaluateDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="213" column="5" lean-forward="true" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
+          <folding>
+            <element signature="e#8448#8464#0" expanded="true" />
+            <element signature="e#8580#8596#0" expanded="true" />
+            <element signature="e#9672#9688#0" expanded="true" />
+            <element signature="e#9804#9820#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

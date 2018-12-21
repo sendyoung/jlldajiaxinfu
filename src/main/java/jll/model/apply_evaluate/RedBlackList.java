@@ -13,12 +13,13 @@ import javax.persistence.Id;
 @Entity(name="eva_red_black_list")
 public class RedBlackList extends Base_Model {
     private String red_black_list_id;//榜单ID
+    private String type;//名单类型，1 红名单，2 黑名单
     private String list_name;//名单名称
     private String list_content;//名单说明
     private String auth_org_id;//组织ID
     private String period;//年度
-    private String status;//是否作废
-    private String public_status;//是否公示
+    private String status;//是否作废 1 未作废 2 已作废
+    private String public_status;//是否公示 1 已公示 2 未公示
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -29,6 +30,14 @@ public class RedBlackList extends Base_Model {
 
     public void setRed_black_list_id(String red_black_list_id) {
         this.red_black_list_id = red_black_list_id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getList_name() {
