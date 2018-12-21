@@ -1,9 +1,10 @@
-﻿package jll.apply_evaluate.dao;
+package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import com.cn.zyzs.hibernate.util.Page;
 import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.apply_evaluate.ApplyEvaluate;
+import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
@@ -177,7 +178,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
             sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
         }
         if(level!=null&&!level.equals("")){
-            sql.append("and esr.level="+level+" ");
+            sql.append("and esr.level='"+level+"' ");
         }
         sql.append(" order by eae.create_time desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -197,7 +198,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
             sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
         }
         if(level!=null&&!level.equals("")){
-            sql.append("and esr.level="+level+" ");
+            sql.append("and esr.level='"+level+"' ");
         }
         sql.append(" order by eae.create_time desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -212,17 +213,33 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
     }
+
     /**
      * 申请评价关系表findEntAuthIdByOrgAuthId
      * 根据组织ID查询所有有关联的企业ID
      */
-    public List findEntAuthIdByOrgAuthId(String authOrgId){
+    public List findEntAuthIdByOrgAuthId(String authOrgId) {
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT applyEvaluate.auth_enterprise_id FROM eva_apply_evaluate applyEvaluate WHERE 1=1 AND applyEvaluate.isDelete = '0'");
         sql.append(" AND applyEvaluate.auth_org_id = '" + authOrgId + "' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
+    }
+    /**
+     * 根据申请Id查询所有申请信息
+     * */
+    public ApplyEvaluate queryApplyEvaluateByApplyEvaluateId(String applyEvaluateId){
+        StringBuffer sql = new StringBuffer();
+        sql.append("select * count from eva_apply_evaluate where 1=1 apply_evaluate_id="+applyEvaluateId+" ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List list=query.list();
+        if(list==null||list.size()==0){
+            return null;
+        }
+        ApplyEvaluate ae=(ApplyEvaluate)MapTrunPojo.map2Object((Map)list.get(0),ApplyEvaluate.class);
+        return ae;
     }
 
 }

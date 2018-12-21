@@ -6,6 +6,7 @@ import com.cn.zyzs.utils.utils.PageView;
 import jll.apply_evaluate.dao.ApplyEvaluateDao;
 import jll.apply_evaluate.dao.ApplyModuleDao;
 import jll.apply_evaluate.service.ApplyEvaluateService;
+import jll.model.apply_evaluate.ApplyEvaluate;
 import jll.model.apply_evaluate.ApplyModule;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,8 +126,8 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
     }
 
     @Override
-    public void editApplyEvaluateByRemarks(String applyEvaluateId, String title, String remarks) {
-        applyEvaluateDao.updateApplyEvaluateForRemarks(applyEvaluateId,title,remarks);
+    public void editApplyEvaluateByRemarks(String applyEvaluateId, String remarks) {
+        applyEvaluateDao.updateApplyEvaluateForRemarks(applyEvaluateId,null,remarks);
     }
 
     @Override
@@ -160,6 +161,18 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
         } catch (Exception e) {
             e.printStackTrace();
             return "500";
+        }
+    }
+
+    @Override
+    public void editApplyEvaluateForAuditStatusOrAppealStatus(String applyEvaluateId) {
+        //申请的审核状态变为1(待审核)申请状态变为4(已完成)
+        applyEvaluateDao.updateApplyEvaluateForAuditStatus(applyEvaluateId,"4","4");
+        //查询申诉详情
+        ApplyEvaluate ae=applyEvaluateDao.queryApplyEvaluateByApplyEvaluateId(applyEvaluateId);
+        //如果申诉状态不为空修改申诉状态
+        if(ae.getAppeal_status()!=null&&!ae.getAppeal_status().equals("")){
+            applyEvaluateDao.updateApplyEvaluateForAppealStatus(applyEvaluateId,"4");
         }
     }
 }
