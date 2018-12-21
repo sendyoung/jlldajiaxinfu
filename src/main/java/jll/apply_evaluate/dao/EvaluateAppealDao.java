@@ -27,7 +27,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
     /**
      * 查询历史申诉
      * */
-    public Page queryEvaluateAppealHistory(String applyEvaluateId,String appealStype,String appealCreateTime,String appealStatus){
+    public Page queryEvaluateAppealHistory(String applyEvaluateId,String appealStype,String appealCreateTime, String appealStatus){
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
