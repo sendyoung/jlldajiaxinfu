@@ -1,4 +1,5 @@
 ﻿package jll.apply_evaluate.dao;
+
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import com.cn.zyzs.hibernate.util.Page;
 import com.cn.zyzs.utils.utils.PageContext;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 @Repository
 public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
     private static final long serialVersionUID = 1L;
@@ -210,11 +212,12 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
     }
+
     /**
      * 申请评价关系表findEntAuthIdByOrgAuthId
      * 根据组织ID查询所有有关联的企业ID
      */
-    public List findEntAuthIdByOrgAuthId(String authOrgId){
+    public List findEntAuthIdByOrgAuthId(String authOrgId) {
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT applyEvaluate.auth_enterprise_id FROM eva_apply_evaluate applyEvaluate WHERE 1=1 AND applyEvaluate.isDelete = '0'");
         sql.append(" AND applyEvaluate.auth_org_id = '" + authOrgId + "' ");
