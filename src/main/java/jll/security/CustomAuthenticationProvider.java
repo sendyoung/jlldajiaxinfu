@@ -1,6 +1,7 @@
 package jll.security;
 
 import jll.user.service.UserService;
+import jll.utils.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -40,7 +41,8 @@ public class CustomAuthenticationProvider extends
 		System.out.println("登陆验证用户名"+username);
 		System.out.println("登陆验证密码"+password);
 		//String[] whiteLists = new String[] { "531677565@QQ.COM", "SUPERVISOR", "JIMMY" };
-		List  result = userservice.getUserUnPw(username, password);
+		String md5Password = Encrypt.md5(password, username);
+		List  result = userservice.getUserUnPw(username, md5Password);
 		System.out.println(username+"===================111==============");
 		System.out.println(password);
 		// 如果用户在白名单里,直接放行(注:仅仅只是演示,千万不要在实际项目中这么干!)
@@ -71,7 +73,7 @@ public class CustomAuthenticationProvider extends
 		List  userVal = userservice.getUserUnPw(username, null);
 		//List  pwdVal = userservice.getUserUnPw(null, password);
 		if(null==userVal){
-			 throw new BadAnswerException("手机号不存在或已禁用!");
+			 throw new BadAnswerException("账号密码错误或已被禁用!");
 		}else if(null==result ){
 			 throw new BadAnswerException("密码错误1!");
 		 }

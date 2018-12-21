@@ -26,6 +26,7 @@ public class SendMessageDao extends SimpleHibernateTemplate<OrgSendMessage> {
         sql.append(" 1 = 1        ");
         sql.append(" AND sendMessage.isDelete = '0'                                                                                      ");
         sql.append(" AND sendMessage .sender_id = '" + senderId + "'                                                               ");
+        sql.append(" ORDER BY create_time DESC ");
 
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
     }

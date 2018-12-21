@@ -37,6 +37,7 @@ import cn.com.llovef.framework.base.BaseClass;*/
  * @date 2015年10月30日 下午5:09:55 声明:总统府所有-不经本人允许随意散播到公众平台-本人将追究法律责任-特此声明.
  * Tel:13811348643 email:531677565@qq.com
  */
+
 @Controller
 @Scope("prototype")
 @RequestMapping("/login")

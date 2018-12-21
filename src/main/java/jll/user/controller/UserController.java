@@ -4,6 +4,8 @@ import com.cn.zyzs.utils.base.BaseClass;
 import jll.model.User;
 import jll.model.User_Role_Middle;
 import jll.user.service.UserService;
+import jll.utils.Encrypt;
+import jll.utils.JsonUtils;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -51,7 +53,7 @@ public class UserController extends BaseClass {
         String password = (String)map.get("password");
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(Encrypt.md5(password,username));
         user.setIsDelete("0");
         user.setIphone(username);
         User_Role_Middle user_role_middle = new User_Role_Middle();
@@ -77,13 +79,15 @@ public class UserController extends BaseClass {
     /**
      * 填写或修改个人账号信息
      *
-     * @param user
+     * @param map
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "/fillinuser")
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = "/fillinuser")
     public @ResponseBody
-    XinfuResult fillInUser(User user) {
+    XinfuResult fillInUser(@RequestBody Map map) {
         try {
+            User user = JsonUtils.jsonToPojo((String)map.get("user"),User.class);
             userservice.updateUserAccount(user);
             return XinfuResult.build(200, "填写或修改数据成功");
         } catch (Exception e) {
@@ -96,7 +100,8 @@ public class UserController extends BaseClass {
      * 回显账号信息个人信息
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = {"/displayUser"})
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = {"/displayUser"})
     public @ResponseBody
     List displayUserDetail(@RequestParam String username) {
         return userservice.findUserByUserName(username);

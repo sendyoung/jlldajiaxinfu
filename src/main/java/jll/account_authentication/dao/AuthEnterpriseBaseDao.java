@@ -34,7 +34,11 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
      * 新增认证或者更新认证数据
      */
     public void saveOrUpdateAuthEnterpriseBase(AuthEnterpriseBase authEnterpriseBase){
-        this.getSession().saveOrUpdate(authEnterpriseBase);
+        if(!"".equals(authEnterpriseBase.getAuth_enterprise_id()) && null != authEnterpriseBase.getAuth_enterprise_id()){
+            this.getSession().saveOrUpdate(authEnterpriseBase);
+        }else{
+            this.getSession().save(authEnterpriseBase);
+        }
     }
 
     /**

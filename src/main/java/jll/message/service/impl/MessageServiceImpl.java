@@ -1,5 +1,6 @@
 package jll.message.service.impl;
 
+import com.cn.zyzs.utils.utils.PageView;
 import jll.account_authentication.dao.AuthEnterpriseBaseDao;
 import jll.account_authentication.dao.AuthOrgBaseDao;
 import jll.apply_evaluate.dao.ApplyEvaluateDao;
@@ -39,7 +40,7 @@ public class MessageServiceImpl implements MessageService {
 
     //查看发件箱列表
     @Override
-    public Object findSendMessageList(String userId,int currentPage,int rows) {
+    public PageView findSendMessageList(String userId, int currentPage, int rows) {
         return HibernatePageUtil.sqlPageUtil(sendMessageDao.findSendMessageList(userId),currentPage,rows);
     }
 
@@ -57,14 +58,16 @@ public class MessageServiceImpl implements MessageService {
 
     //查看收件箱列表
     @Override
-    public Object findReceiveMessageList(String userId,int currentPage,int rows) {
+    public PageView findReceiveMessageList(String userId,int currentPage,int rows) {
        return HibernatePageUtil.sqlPageUtil(receiveMessageDao.findReceiveMessageList(userId),currentPage,rows);
     }
 
     //查看收件详情
     @Override
     public OrgReceiveMessage findReceiveMessage(String receiveMessageId) {
-       List list = receiveMessageDao.findReceiveMessage(receiveMessageId);
+        List list = receiveMessageDao.findReceiveMessage(receiveMessageId);
+        //查看消息后将消息状态修改为已读
+        receiveMessageDao.updateMessageStatus(receiveMessageId);
         if(list!=null&&list.size()>0){
             Map map = (Map) list.get(0);
             OrgReceiveMessage orgReceiveMessage = (OrgReceiveMessage)MapTrunPojo.map2Object(map, OrgReceiveMessage.class);
@@ -193,6 +196,7 @@ public class MessageServiceImpl implements MessageService {
     public XinfuResult orgToAllMember(String userId, String sendAuthId, String messagetitle,String messagecontent,String messagetype) {
         OrgSendMessage sendMessage = new OrgSendMessage();
         OrgReceiveMessage receiveMessage = new OrgReceiveMessage();
+        Date date = new Date();
         try {
             //发送方组织名称
             List list1 = authOrgBaseDao.findOrgNameByAuthId(sendAuthId);
@@ -235,6 +239,7 @@ public class MessageServiceImpl implements MessageService {
             sendMessage.setMessage_status("1");//这里写死的,1代表已发送   0草稿 1已发送
             sendMessage.setIsDelete("0");//默认未删除
             sendMessage.setSend_type("3");//1组织对企业 2 企业对组织 3群发
+            sendMessage.setCreate_time(date);
 
             //收件箱内容添加(这里是共同的信息)
             receiveMessage.setSender_id(userId);
@@ -245,6 +250,7 @@ public class MessageServiceImpl implements MessageService {
             receiveMessage.setMessage_status("0");//默认未读   0未读 1已读
             receiveMessage.setIsDelete("0");//默认未删除
             receiveMessage.setSend_type("3");// 1组织对企业  2企业对组织  3群发
+            receiveMessage.setCreate_time(date);
 
             List<OrgReceiveMessage> receiveMessageList = new ArrayList<>();
             for(int i = 0;i<receiveUserIdList.size();i++){

@@ -26,6 +26,7 @@ public class ReceiveMessageDao extends SimpleHibernateTemplate<OrgReceiveMessage
         sql.append(" 1 = 1        ");
         sql.append(" AND receiveMessage.isDelete = '0'                                                                                      ");
         sql.append(" AND receiveMessage .receiver_id = '" + receiverId + "'                                                               ");
+        sql.append(" ORDER BY create_time DESC ");
 
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
     }
@@ -55,6 +56,14 @@ public class ReceiveMessageDao extends SimpleHibernateTemplate<OrgReceiveMessage
         this.getSession().save(receiveMessage);
     }
 
-
+    /**
+     * 更新收件箱消息状态
+     */
+    public int updateMessageStatus(String receive_message_id){
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE org_receive_message SET message_status = '1' WHERE receive_message_id = '" + receive_message_id + "' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        return query.executeUpdate();
+    }
 
 }

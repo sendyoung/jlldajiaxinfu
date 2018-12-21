@@ -27,12 +27,8 @@ public class UserDao extends SimpleHibernateTemplate<User> {
 
         StringBuffer sql = new StringBuffer();
         sql.append(" select username,password from org_user_account user where 1=1 and isDelete='0'  ");
-        if (!"".equals(username) && null != username) {
-            sql.append(" and user.username='" + username + "' ");
-        }
-        if (!"".equals(password) && null != password) {
-            sql.append(" and user.password='" + password + "' ");
-        }
+        sql.append(" and user.username='" + username + "' ");
+        sql.append(" and user.password='" + password + "' ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
@@ -117,7 +113,7 @@ public class UserDao extends SimpleHibernateTemplate<User> {
      */
     public List findUserByUserName(String username){
         StringBuffer sql = new StringBuffer();
-        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,org_user_role_middle from org_user_account user where 1=1 and isDelete='0'  ");
+        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,authentication_type,org_user_role_middle from org_user_account user where 1=1 and isDelete='0'  ");
         if (!"".equals(username) && null != username) {
             sql.append(" and user.username='" + username + "' ");
         }
@@ -207,7 +203,6 @@ public class UserDao extends SimpleHibernateTemplate<User> {
         sql.append(" 	1 = 1                                                                                      ");
         sql.append(" AND u .isDelete = '0'                                                                    ");
         sql.append(" AND u .authentication_id = '" + authId + "'                                                               ");
-        sql.append(" ORDER BY sort ASC ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
