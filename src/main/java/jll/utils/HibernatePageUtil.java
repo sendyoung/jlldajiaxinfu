@@ -5,7 +5,7 @@ import com.cn.zyzs.hibernate.util.PageContext;
 import com.cn.zyzs.utils.utils.PageView;
 
 public class HibernatePageUtil {
-    public static Object sqlPageUtil(Page pages, int currentPage, int rows){
+    public static PageView sqlPageUtil(Page pages, int currentPage, int rows){
         try {
             PageContext.setOffSet(currentPage);
             PageContext.setPageSize(rows);

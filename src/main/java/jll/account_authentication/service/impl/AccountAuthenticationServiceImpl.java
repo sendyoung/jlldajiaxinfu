@@ -99,13 +99,13 @@ public class AccountAuthenticationServiceImpl implements AccountAuthenticationSe
      * @return
      */
     @Override
-    public EntBasics findEntBasics(String unified_social_credit_code) {
+    public XinfuResult findEntBasics(String unified_social_credit_code) {
         List list = entBasicsDao.findEntBasics(unified_social_credit_code);
         if (list != null && list.size() > 0) {
             Map map = (Map) list.get(0);
             EntBasics entBasics = (EntBasics) MapTrunPojo.map2Object(map, EntBasics.class);
-            return entBasics;
+            return XinfuResult.build(200,"在后台中查到了相关企业数据",entBasics);
         }
-        return null;
+        return XinfuResult.build(400,"在后台中没有查到相关企业数据",null);
     }
 }

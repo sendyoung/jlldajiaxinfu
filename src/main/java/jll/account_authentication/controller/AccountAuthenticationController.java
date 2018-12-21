@@ -3,7 +3,6 @@ package jll.account_authentication.controller;
 import jll.account_authentication.service.AccountAuthenticationService;
 import jll.model.authentication.AuthEnterpriseBase;
 import jll.model.authentication.AuthOrgBase;
-import jll.model.enterprise.EntBasics;
 import jll.utils.JsonUtils;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +77,7 @@ public class AccountAuthenticationController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST},value = {"/findentbasicsincode"})
     public @ResponseBody
-    EntBasics findEntBasicsByCode(String unified_social_credit_code){
+    XinfuResult findEntBasicsByCode(String unified_social_credit_code){
         return accountAuthenticationService.findEntBasics(unified_social_credit_code);
     }
 

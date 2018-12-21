@@ -35,7 +35,12 @@ public class AuthOrgBaseDao extends SimpleHibernateTemplate<AuthOrgBase> {
      * 新增认证或者更新认证数据
      */
     public void saveOrUpdateAuthOrgBase(AuthOrgBase authOrgBase){
-        this.getSession().saveOrUpdate(authOrgBase);
+        if(authOrgBase.getAuth_org_id()!=null && !"".equals(authOrgBase.getAuth_org_id())){
+            this.getSession().saveOrUpdate(authOrgBase);
+        }else{
+            this.getSession().save(authOrgBase);
+        }
+
     }
 
     /**
