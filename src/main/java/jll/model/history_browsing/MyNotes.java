@@ -16,6 +16,7 @@ public class MyNotes extends Base_Model {
     private String user_id;//用户id
     private String ent_id;//企业id
 
+
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
     @GeneratedValue(generator="systemUUID")
