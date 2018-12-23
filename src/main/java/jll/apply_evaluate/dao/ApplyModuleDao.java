@@ -26,7 +26,7 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
     public List queryApplyModuleByApplyEvaluateId(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT eam.apply_module_id,eam.status,eam.apply_permission_id,eap.name from eva_apply_module eam left join eva_apply_permission eap" +
-                " on eam.apply_permission_id=eap.apply_permission_id where 1=1 and eam.apply_permission_id!=8 and eam.apply_evaluate_id="+applyEvaluateId);
+                " on eam.apply_permission_id=eap.apply_permission_id where 1=1 and eam.apply_permission_id!=8 and eam.apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
@@ -37,7 +37,7 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
     public List queryApplyModuleByApplyEvaluateIdForAll(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT eam.apply_module_id,eam.status,eam.apply_permission_id,eap.name from eva_apply_module eam left join eva_apply_permission eap" +
-                " on eam.apply_permission_id=eap.apply_permission_id where 1=1 and eam.apply_evaluate_id="+applyEvaluateId);
+                " on eam.apply_permission_id=eap.apply_permission_id where 1=1 and eam.apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
@@ -47,7 +47,7 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * */
     public void updateApplyModuleForStatus(String applyModuleId,String status,String remarks){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_module set status="+status+",remarks='"+remarks+"' where apply_module_id="+applyModuleId+" ");
+        sql.append("update eva_apply_module set status='"+status+"',remarks='"+remarks+"' where apply_module_id='"+applyModuleId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
@@ -57,7 +57,7 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * */
     public List queryApplyModuleByApplyModuleId(String applyModuleId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_apply_module where 1=1 and apply_permission_id!=8 and apply_evaluate_id=(select apply_evaluate_id from eva_apply_module where apply_module_id="+applyModuleId+") ");
+        sql.append("select * from eva_apply_module where 1=1 and apply_permission_id!=8 and apply_evaluate_id=(select apply_evaluate_id from eva_apply_module where apply_module_id='"+applyModuleId+"') ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
@@ -67,7 +67,7 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * */
     public ApplyModule queryApplyModuleDetailByApplyModuleId(String applyModuleId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_apply_module where 1=1 and apply_module_id="+applyModuleId+" ");
+        sql.append("select * from eva_apply_module where 1=1 and apply_module_id='"+applyModuleId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();

@@ -27,7 +27,7 @@ public class ScoreRecordDao extends SimpleHibernateTemplate<ScoreRecord> {
      * */
     public List queryScoreRecordByApplyEvaluateId(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_score_record where 1=1 and apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("select * from eva_score_record where 1=1 and apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

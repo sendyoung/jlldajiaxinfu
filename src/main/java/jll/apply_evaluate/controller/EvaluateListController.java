@@ -1,5 +1,6 @@
 package jll.apply_evaluate.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import jll.apply_evaluate.service.EvaluateListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,12 +18,22 @@ public class EvaluateListController {
     /**
      * 生成评价榜单
      * */
-    @CrossOrigin(origins = "*", maxAge = 3600)
+    /*@CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditEvaluateList",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object editEvaluateList(@RequestParam String authOrgId,@RequestParam String title,@RequestParam String content){
-       evaluateListService.editEvaluateList(authOrgId,title,content);
-       return "success";
+        evaluateListService.editEvaluateList(authOrgId,title,content);
+        return "success";
+    }*/
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/EditEvaluateList",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object editEvaluateList(@RequestBody JSONObject module){
+        String authOrgId=module.getString("authOrgId");
+        String title=module.getString("title");
+        String content=module.getString("content");
+        evaluateListService.editEvaluateList(authOrgId,title,content);
+        return "success";
     }
+
     /**
      * 查询年度榜单
      * */

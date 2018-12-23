@@ -25,12 +25,12 @@ public class AuthEnterpriseDao extends SimpleHibernateTemplate<AuthEnterpriseBas
                 "from auth_enterprise_base aeb left join ent_basics eb on aeb.social_credit_code=eb.unified_social_credit_code " +
                 "where 1=1 ");
         if(name!=null&&!name.equals("")){
-            sql.append("and aeb.enterprise_name="+name+" ");
+            sql.append("and aeb.enterprise_name='"+name+"' ");
         }
         if(typesEnterprises!=null&&!typesEnterprises.equals("")){
-            sql.append("and aeb.types_enterprises="+typesEnterprises+" ");
+            sql.append("and aeb.types_enterprises='"+typesEnterprises+"' ");
         }
-        sql.append("and eb.industry=(select industry from org_organization where org_id="+authOrgId+")");
+        sql.append("and eb.industry=(select industry from org_organization where org_id='"+authOrgId+"')");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 }

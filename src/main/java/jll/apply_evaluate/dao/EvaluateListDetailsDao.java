@@ -33,7 +33,7 @@ public class EvaluateListDetailsDao extends SimpleHibernateTemplate<EvaluateList
                 " LEFT JOIN eva_apply_evaluate eae ON eae.apply_evaluate_id = eeld.apply_evaluate_id " +
                 " LEFT JOIN eva_score_result esr ON esr.apply_evaluate_id = eae.apply_evaluate_id " +
                 " LEFT JOIN auth_enterprise_base aeb ON aeb.auth_enterprise_id = eae.auth_enterprise_id " +
-                " where eeld.evaluate_list_id="+evaluateListId+" ");
+                " where eeld.evaluate_list_id='"+evaluateListId+"' ");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 }

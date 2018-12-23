@@ -1,5 +1,8 @@
 package jll.apply_evaluate.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import jll.apply_evaluate.service.ApplyEvaluateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -50,11 +53,29 @@ public class ApplyEvaluateController {
     /**
      *  申请评价完成
      * */
-    @CrossOrigin(origins = "*", maxAge = 3600)
+    /*@CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditApplyEvaluateForAuditStatus",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object editApplyEvaluateForAuditStatus(@RequestParam String applyEvaluateId,@RequestParam String module){
+    public @ResponseBody Object editApplyEvaluateForAuditStatus(@RequestParam String applyEvaluateId,String[] module){
         System.out.println(applyEvaluateId+"-------------"+module);
-        //applyEvaluateService.editApplyEvaluateForAuditStatus(applyEvaluateId,module);
+        applyEvaluateService.editApplyEvaluateForAuditStatus(applyEvaluateId,module);
+        return "success";
+    }*/
+    /**
+     *  申请评价完成
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/EditApplyEvaluateForAuditStatusToFinish",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object editApplyEvaluateForAuditStatusToFinish(@RequestBody JSONObject module){
+        //解析json数据
+        JSONObject json = JSON.parseObject(module.toJSONString());
+        String modules=json.getString("module");
+        String id=json.getString("applyEvaluateId");
+        JSONArray mods=JSONArray.parseArray(modules);
+        String[] str=new String[mods.size()];
+        for (int i = 0; i < mods.size(); i++) {
+            str[i]=mods.get(i).toString();
+        }
+        applyEvaluateService.editApplyEvaluateForAuditStatus(id,str);
         return "success";
     }
     /**
