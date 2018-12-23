@@ -54,7 +54,7 @@ public class EvaluateAppealController {
     }
     /**
      * 查询历史申诉
-     * applyEvaluateId申请Id
+     * authEnterpriseId企业Id
      * appealStype申诉类型  1 资料有误 2 补全信息 3 恶意诋毁 4 其他
      * appealCreateTime申诉日期
      * appealStatus申诉状态 1、已申诉 2、已受理 3、已驳回 4、已完成
@@ -62,8 +62,8 @@ public class EvaluateAppealController {
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/FindEvaluateAppealHistory",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object findEvaluateAppealHistory(@RequestParam String applyEvaluateId,@RequestParam(required = false) String appealStype,@RequestParam(required = false) String appealCreateTime,@RequestParam(required = false) String appealStatus,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer rows){
-       return evaluateAppealService.findEvaluateAppealHistory(applyEvaluateId,appealStype,appealCreateTime,appealStatus,page,rows);
+    public @ResponseBody Object findEvaluateAppealHistory(@RequestParam String authEnterpriseId,@RequestParam(required = false) String appealStype,@RequestParam(required = false) String appealCreateTime,@RequestParam(required = false) String appealStatus,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer rows){
+       return evaluateAppealService.findEvaluateAppealHistory(authEnterpriseId,appealStype,appealCreateTime,appealStatus,page,rows);
     }
     /**
      * 历史申诉详情
