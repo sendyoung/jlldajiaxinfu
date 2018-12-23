@@ -74,7 +74,6 @@ public class DocumentReleaseController {
             RequestMethod.POST},value = {"/updatedocument"})
     public @ResponseBody XinfuResult updateDocumentRelease(@RequestBody Map map ){
         DocumentRelease documentRelease = JsonUtils.jsonToPojo((String)map.get("documentRelease"),DocumentRelease.class);
-        documentReleaseService.addNewDocument(documentRelease);
         return documentReleaseService.updateDocumentRelease(documentRelease);
     }
 

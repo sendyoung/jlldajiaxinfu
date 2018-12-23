@@ -67,7 +67,7 @@ public class DocumentReleaseDao extends SimpleHibernateTemplate<DocumentRelease>
      */
     public int updateDocumentRelease(DocumentRelease documentRelease){
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE org_documetn_release SET    ");
+        sql.append("UPDATE org_document_release SET    ");
         if (!"".equals(documentRelease.getDocument_title()) && null != documentRelease.getDocument_title()) {
             sql.append("document_title = '"+ documentRelease.getDocument_title() + "',");
         }
