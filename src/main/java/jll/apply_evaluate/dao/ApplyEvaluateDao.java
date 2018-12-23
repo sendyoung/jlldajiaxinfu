@@ -26,9 +26,9 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
         sql.append("select eae.apply_evaluate_id,eae.apply_status,aob.organization_name,aob.org_tel,aob.org_address,aob.org_email,aob.org_website,aob.org_introduction,aob.auth_org_id " +
-                "from eva_apply_evaluate eae left join auth_org_base aob on eae.org_id=aob.auth_org_id " +
-                "where 1=1 and (eae.apply_status=2 or eae.apply_status=3) and eae.auth_enterprise_id="+entId+
-                " order by eae.apply_status asc");
+                "from eva_apply_evaluate eae left join auth_org_base aob on eae.auth_org_id=aob.auth_org_id " +
+                "where 1=1 and (eae.apply_status=2 or eae.apply_status=3) and eae.auth_enterprise_id='"+entId+
+                "' order by eae.apply_status asc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
     /**
@@ -39,10 +39,10 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
         sql.append("select eae.create_time,aob.organization_name,aob.org_tel,eae.audit_status,eae.apply_evaluate_id " +
-                "from eva_apply_evaluate eae left join auth_org_base aob on eae.org_id=aob.auth_org_id " +
-                "where 1=1 and eae.audit_status>0 and eae.auth_enterprise_id="+entId+" ");
+                "from eva_apply_evaluate eae left join auth_org_base aob on eae.auth_org_id=aob.auth_org_id " +
+                "where 1=1 and eae.audit_status>0 and eae.auth_enterprise_id='"+entId+"' ");
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         sql.append("order by eae.create_time desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -52,7 +52,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public void updateApplyEvaluateForAuditStatus(String applyEvaluateId,String applyStatus,String auditStatus){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_evaluate set apply_status="+applyStatus+",audit_status="+auditStatus+" where apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("update eva_apply_evaluate set apply_status='"+applyStatus+"',audit_status='"+auditStatus+"' where apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
@@ -68,20 +68,20 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
                 "from auth_enterprise_base aeb right join eva_apply_evaluate eae on aeb.auth_enterprise_id=eae.auth_enterprise_id " +
                 "where 1=1 ");
         if(status!=null&&!status.equals("")){
-            sql.append("and eae.audit_status="+status+" ");
+            sql.append("and eae.audit_status='"+status+"' ");
         }else{
             sql.append("and eae.audit_status IN ('1', '2') ");
         }
         if(name!=null&&!name.equals("")){
-            sql.append("and aeb.enterprise_name="+name+" ");
+            sql.append("and aeb.enterprise_name='"+name+"' ");
         }
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         if(type!=null&&!type.equals("")){
-            sql.append("and aeb.types_enterprises="+type+" ");
+            sql.append("and aeb.types_enterprises='"+type+"' ");
         }
-        sql.append("and eae.auth_org_id= "+authOrgId+ " ");
+        sql.append("and eae.auth_org_id='"+authOrgId+ "' ");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
     /**
@@ -93,7 +93,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.create_time,eae.apply_status,eae.audit_status,aob.organization_name,aob.org_tel " +
                 "from eva_apply_evaluate eae left join auth_org_base aob " +
                 "on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and apply_evaluate_id="+applyEvaluateId+" ");
+                "where 1=1 and apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();
@@ -114,18 +114,18 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "where 1=1 ");
         if(name!=null&&!name.equals("")){
-            sql.append("and aeb.enterprise_name="+name+" ");
+            sql.append("and aeb.enterprise_name='"+name+"' ");
         }
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         if(level!=null&&!level.equals("")){
-            sql.append("and esr.level="+level+" ");
+            sql.append("and esr.level='"+level+"' ");
         }
         if(auditStatus!=null&&!auditStatus.equals("")){
-            sql.append("and eae.audit_status="+auditStatus+" ");
+            sql.append("and eae.audit_status='"+auditStatus+"' ");
         }
-        sql.append(" and eae.auth_org_id="+authOrgId+" ");
+        sql.append(" and eae.auth_org_id='"+authOrgId+"' ");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
     /**
@@ -134,7 +134,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public Object queryApplyEvaluateByAuditStatusForCount(String authOrgId,String auditStatus){
         StringBuffer sql = new StringBuffer();
-        sql.append("select count(apply_evaluate_id) count from eva_apply_evaluate where 1=1 and auth_org_id="+authOrgId+" and audit_status="+auditStatus+" ");
+        sql.append("select count(apply_evaluate_id) count from eva_apply_evaluate where 1=1 and auth_org_id='"+authOrgId+"' and audit_status='"+auditStatus+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();
@@ -148,7 +148,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public List queryApplyEvaluateByAuthOrgId(String authOrgId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_apply_evaluate where 1=1 and auth_org_id="+authOrgId+" and audit_status=4 ");
+        sql.append("select * from eva_apply_evaluate where 1=1 and auth_org_id='"+authOrgId+"' and audit_status=4 ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
@@ -158,7 +158,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public void updateApplyEvaluateForRemarks(String applyEvaluateId,String title,String remarks){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_evaluate set title='"+title+"',remarks='"+remarks+"' where apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("update eva_apply_evaluate set title='"+title+"',remarks='"+remarks+"' where apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
@@ -173,9 +173,9 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id="+authEnterpriseId+" and audit_status in ('1','2','3','4')");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status in ('1','2','3','4')");
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         if(level!=null&&!level.equals("")){
             sql.append("and esr.level='"+level+"' ");
@@ -193,9 +193,9 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id="+authEnterpriseId+" and audit_status=4");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4");
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')="+date+" ");
+            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         if(level!=null&&!level.equals("")){
             sql.append("and esr.level='"+level+"' ");
@@ -208,7 +208,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public void updateApplyEvaluateForAppealStatus(String applyEvaluateId,String appealStatus){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_evaluate set appeal_status="+appealStatus+" where apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("update eva_apply_evaluate set appeal_status='"+appealStatus+"' where apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();
@@ -231,7 +231,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public ApplyEvaluate queryApplyEvaluateByApplyEvaluateId(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * count from eva_apply_evaluate where 1=1 apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("select * count from eva_apply_evaluate where 1=1 apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();

@@ -69,7 +69,7 @@ public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
         sql.append("select eae.apply_evaluate_id,aeb.enterprise_name from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
                 " on eae.auth_enterprise_id=aeb.auth_enterprise_id " +
                 " left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id" +
-                " where 1=1 and eae.auth_org_id="+authOrgId+" and eae.audit_status=4 and esr.level='"+level+"' ");
+                " where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status=4 and esr.level='"+level+"' ");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 

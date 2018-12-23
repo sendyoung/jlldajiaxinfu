@@ -29,7 +29,7 @@ public class EnterprisesPunishmentDao extends SimpleHibernateTemplate<Enterprise
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id " +
                 "left join ent_basics eb on aeb.social_credit_code=eb.unified_social_credit_code " +
                 "left join ent_enterprises_punishment eep on eep.ent_id=eb.ent_id " +
-                "where 1=1 and eae.auth_org_id="+authOrgId+" and eae.audit_status in ('3','4') " +
+                "where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status in ('3','4') " +
                 "having count>0");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
@@ -44,7 +44,7 @@ public class EnterprisesPunishmentDao extends SimpleHibernateTemplate<Enterprise
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id " +
                 "left join ent_basics eb on aeb.social_credit_code=eb.unified_social_credit_code " +
                 "left join ent_enterprises_punishment eep on eep.ent_id=eb.ent_id " +
-                "where 1=1 and eae.auth_org_id="+authOrgId+" and eae.audit_status in ('3','4') " +
+                "where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status in ('3','4') " +
                 "having count>0");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

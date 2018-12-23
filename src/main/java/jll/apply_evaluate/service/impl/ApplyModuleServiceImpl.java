@@ -74,5 +74,7 @@ public class ApplyModuleServiceImpl implements ApplyModuleService {
             //模块审核通过
             applyModuleDao.updateApplyModuleForStatus(am.getApply_module_id(),"1","");
         }
+        //申请的审核状态变为3(待评价)申请状态变为4(已完成)
+        applyEvaluateDao.updateApplyEvaluateForAuditStatus(applyEvaluateId,"4","3");
     }
 }

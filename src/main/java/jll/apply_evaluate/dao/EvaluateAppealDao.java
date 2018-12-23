@@ -39,13 +39,13 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
                 "where 1=1 and eae.auth_enterprise_id="+applyEvaluateId+" ");
         if(appealStype!=null&&!appealStype.equals("")){
-            sql.append(" and eea.stype="+appealStype+" ");
+            sql.append(" and eea.stype='"+appealStype+"' ");
         }
         if(appealCreateTime!=null&&!appealCreateTime.equals("")){
-            sql.append(" and date_format(eea.create_time,'%Y-%c-%d')="+appealCreateTime+" ");
+            sql.append(" and date_format(eea.create_time,'%Y-%c-%d')='"+appealCreateTime+"' ");
         }
-        if(appealStatus!=null&&!appealStatus.equals(" ")){
-            sql.append(" and eae.appeal_status="+appealStatus+" ");
+        if(appealStatus!=null&&!appealStatus.equals("")){
+            sql.append(" and eae.appeal_status='"+appealStatus+"' ");
         }else{
             sql.append(" and eae.appeal_status in ('1','2','3','4')");
         }
@@ -62,7 +62,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
                 "left join eva_evaluate_appeal eea on eea.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
-                "where 1=1 and eae.apply_evaluate_id="+applyEvalateId+" ");
+                "where 1=1 and eae.apply_evaluate_id='"+applyEvalateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
@@ -78,7 +78,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eae.apply_evaluate_id=eea.apply_evaluate_id " +
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id  " +
-                "where 1=1 and eae.auth_org_id="+authOrgId+" ");
+                "where 1=1 and eae.auth_org_id='"+authOrgId+"' ");
         if(appealStatus!=null&&!appealStatus.equals("")){
             sql.append(" and eae.appeal_status='"+appealStatus+"' ");
         }else{

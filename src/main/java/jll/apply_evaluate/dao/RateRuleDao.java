@@ -17,7 +17,7 @@ public class RateRuleDao extends SimpleHibernateTemplate<ScoreResult> {
      * */
     public List queryRateRuleByAuthOrgId(String authOrgId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_rate_rule where 1=1 and auth_org_id="+authOrgId+" ");
+        sql.append("select * from eva_rate_rule where 1=1 and auth_org_id='"+authOrgId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

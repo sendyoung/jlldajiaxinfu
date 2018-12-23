@@ -10,7 +10,7 @@ import javax.persistence.Id;
 /**
  * 收信表
  */
-@Entity(name="org_my_notes")
+//@Entity(name="org_my_notes")
 public class MyNotes extends Base_Model {
     private String note_id;//主键
     private String user_id;//用户id
