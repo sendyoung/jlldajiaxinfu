@@ -23,6 +23,7 @@ public class DocumentReleaseServiceImpl implements DocumentReleaseService {
     @Override
     public XinfuResult addNewDocument(DocumentRelease documentRelease) {
         try {
+            //documentRelease.setIsDelete("0");
             documentReleaseDao.addNewDocument(documentRelease);
             return XinfuResult.build(200,"添加新的公文成功!");
         } catch (Exception e) {

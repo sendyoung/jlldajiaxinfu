@@ -16,7 +16,8 @@ public class DocumentRelease extends Base_Model {
     private String auth_org_id;//组织认证id
     private String document_title;//公文标题
     private String document_content;//公文内容
-    private String document_status;//公文状态 0草稿 1状态  2撤回
+    private String document_status;//公文状态 0草稿 1发布  2撤回
+    private String release_time;//发布时间
 
     @Id
     @GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -59,5 +60,13 @@ public class DocumentRelease extends Base_Model {
 
     public void setDocument_status(String document_status) {
         this.document_status = document_status;
+    }
+
+    public String getRelease_time() {
+        return release_time;
+    }
+
+    public void setRelease_time(String release_time) {
+        this.release_time = release_time;
     }
 }
