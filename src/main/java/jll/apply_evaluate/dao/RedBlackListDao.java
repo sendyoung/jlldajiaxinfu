@@ -63,4 +63,17 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
         return query.list();
     }
 
+    /**
+     *
+     * @Author:Young
+     * 发布公示的时候修改列表的公示状态
+     * red_black_list_id榜单ID
+     * publicStatus榜单公示状态  1已公示  未公示
+     */
+    public void updateRedBlackListPublicStatus(String red_black_list_id,String publicStatus){
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE eva_red_black_list SET public_status = '" +publicStatus +"' " );
+        sql.append(" WHERE eva_red_black_list_id = '" + red_black_list_id + "'");
+    }
+
 }

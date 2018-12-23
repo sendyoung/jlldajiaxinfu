@@ -48,4 +48,18 @@ public class EvaluateListDao extends SimpleHibernateTemplate<EvaluateList> {
         EvaluateList el=(EvaluateList)MapTrunPojo.map2Object((Map)list.get(0),EvaluateList.class);
         return el;
     }
+
+    /**
+     *
+     * @Author:Young
+     * 发布公示的时候修改列表的公示状态
+     * evaluate_list_id榜单id
+     * publicStatus榜单公示状态  1已公示  未公示
+     */
+    public void updateEvaluateListPublicStatus(String evaluate_list_id,String publicStatus){
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE eva_evaluate_list SET public_status = '" +publicStatus +"' " );
+        sql.append(" WHERE evaluate_list_id = '" + evaluate_list_id + "'");
+    }
+
 }
