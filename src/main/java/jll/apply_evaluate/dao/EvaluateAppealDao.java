@@ -29,7 +29,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
     /**
      * 查询历史申诉
      * */
-    public Page queryEvaluateAppealHistory(String applyEvaluateId,String appealStype,String appealCreateTime, String appealStatus){
+    public Page queryEvaluateAppealHistory(String authEnterpriseId,String appealStype,String appealCreateTime, String appealStatus){
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
@@ -37,7 +37,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eea.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id="+applyEvaluateId+" ");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' ");
         if(appealStype!=null&&!appealStype.equals("")){
             sql.append(" and eea.stype='"+appealStype+"' ");
         }

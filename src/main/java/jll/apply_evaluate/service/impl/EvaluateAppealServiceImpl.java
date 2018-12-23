@@ -33,12 +33,12 @@ public class EvaluateAppealServiceImpl implements EvaluateAppealService {
     }
 
     @Override
-    public Object findEvaluateAppealHistory(String applyEvaluateId, String appealStype, String appealCreateTime, String appealStatus, Integer page, Integer rows) {
+    public Object findEvaluateAppealHistory(String authEnterpriseId, String appealStype, String appealCreateTime, String appealStatus, Integer page, Integer rows) {
         try {
             Map param = new HashedMap();
             PageContext.setOffSet(page);
             PageContext.setPageSize(rows);
-            Page pages=evaluateAppealDao.queryEvaluateAppealHistory(applyEvaluateId,appealStype,appealCreateTime,appealStatus);
+            Page pages=evaluateAppealDao.queryEvaluateAppealHistory(authEnterpriseId,appealStype,appealCreateTime,appealStatus);
             PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
             pageView.setTotalpage(pages.getTotal());
             pageView.setRecords(pages.getItems());

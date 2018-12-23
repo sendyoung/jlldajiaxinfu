@@ -10,7 +10,7 @@ public interface EvaluateAppealService {
     /**
      * 查询历史申诉
      * */
-    public Object findEvaluateAppealHistory(String applyEvaluateId,String appealStype,String appealCreateTime, String appealStatus,Integer page,Integer rows);
+    public Object findEvaluateAppealHistory(String authEnterpriseId,String appealStype,String appealCreateTime, String appealStatus,Integer page,Integer rows);
     /**
      * 历史申诉详情
      * */
