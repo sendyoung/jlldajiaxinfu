@@ -3,11 +3,14 @@ package jll.document_release.controller;
 import com.cn.zyzs.utils.utils.PageView;
 import jll.document_release.service.DocumentReleaseService;
 import jll.model.document_release.DocumentRelease;
+import jll.utils.JsonUtils;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * 公文发布
@@ -26,14 +29,10 @@ public class DocumentReleaseController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST},value = {"/newdocument"})
     public @ResponseBody
-    XinfuResult addNewDocument(DocumentRelease documentRelease){
-        try {
-            documentReleaseService.addNewDocument(documentRelease);
-            return XinfuResult.build(200,"添加新的公文成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return XinfuResult.build(400,"添加新的公文失败");
-        }
+    XinfuResult addNewDocument(@RequestBody Map map){
+        DocumentRelease documentRelease = JsonUtils.jsonToPojo((String)map.get("documentRelease"),DocumentRelease.class);
+       // System.out.println("看看有没有" + documentRelease.toString() + "aaaaaaaaaaaaaaaaaaa");
+        return documentReleaseService.addNewDocument(documentRelease);
     }
 
     /**
@@ -73,7 +72,9 @@ public class DocumentReleaseController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST},value = {"/updatedocument"})
-    public @ResponseBody XinfuResult updateDocumentRelease(DocumentRelease documentRelease){
+    public @ResponseBody XinfuResult updateDocumentRelease(@RequestBody Map map ){
+        DocumentRelease documentRelease = JsonUtils.jsonToPojo((String)map.get("documentRelease"),DocumentRelease.class);
+        documentReleaseService.addNewDocument(documentRelease);
         return documentReleaseService.updateDocumentRelease(documentRelease);
     }
 
