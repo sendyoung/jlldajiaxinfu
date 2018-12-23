@@ -1,14 +1,20 @@
 package jll.model;
 
-import javax.persistence.Entity;
+import org.hibernate.annotations.GenericGenerator;
 
-@Entity(name = "check_code")
-public class CheckCode {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name = "system_check_code")
+public class CheckDataCode {
 
     private String code_id;//校验码id
     private String code_value;//校验码数据
-    
 
+    @Id
+    @GenericGenerator(name = "systemUUID", strategy = "uuid")
+    @GeneratedValue(generator = "systemUUID")
     public String getCode_id() {
         return code_id;
     }

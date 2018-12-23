@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 校验码工具类
  */
-public class CheckCode {
+public class CheckCodeUtil {
 
     /**
      *随机生成6位数字符串
