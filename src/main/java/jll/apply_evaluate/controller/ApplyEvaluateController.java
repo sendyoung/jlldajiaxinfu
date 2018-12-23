@@ -87,8 +87,8 @@ public class ApplyEvaluateController {
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditApplyEvaluateForRemarks",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object editApplyEvaluateForRemarks(@RequestParam String applyEvaluateId,@RequestParam String title,@RequestParam String remarks){
-        applyEvaluateService.editApplyEvaluateByRemarks(applyEvaluateId,title,remarks);
+    public @ResponseBody Object editApplyEvaluateForRemarks(@RequestParam String applyEvaluateId,@RequestParam String remarks){
+        applyEvaluateService.editApplyEvaluateByRemarks(applyEvaluateId,remarks);
         return "success";
     }
     /**

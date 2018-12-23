@@ -52,5 +52,34 @@ public class EvaluateAppealController {
         }
         return "error";
     }
+    /**
+     * 查询历史申诉
+     * applyEvaluateId申请Id
+     * appealStype申诉类型  1 资料有误 2 补全信息 3 恶意诋毁 4 其他
+     * appealCreateTime申诉日期
+     * appealStatus申诉状态 1、已申诉 2、已受理 3、已驳回 4、已完成
+     * page   rows
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindEvaluateAppealHistory",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findEvaluateAppealHistory(@RequestParam String applyEvaluateId,@RequestParam(required = false) String appealStype,@RequestParam(required = false) String appealCreateTime,@RequestParam(required = false) String appealStatus,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer rows){
+       return evaluateAppealService.findEvaluateAppealHistory(applyEvaluateId,appealStype,appealCreateTime,appealStatus,page,rows);
+    }
+    /**
+     * 历史申诉详情
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindEvaluateAppealByApplyEvaluateId",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findEvaluateAppealByApplyEvaluateId(@RequestParam String applyEvaluateId){
+        return evaluateAppealService.findEvaluateAppealByApplyEvaluateId(applyEvaluateId);
+    }
+    /**
+     * 组织异议管理
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindEvaluateAppealByAuthOrgId",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findEvaluateAppealByAuthOrgId(@RequestParam String authOrgId,@RequestParam(required = false)String stype,@RequestParam(required = false)String appealTime,@RequestParam(required = false)String appealStatus,@RequestParam(required = false)String name,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
+        return evaluateAppealService.findEvaluateAppealByAuthOrgId(authOrgId,stype,appealTime,appealStatus,name,page,rows);
+    }
 
 }

@@ -32,7 +32,7 @@ public interface ApplyEvaluateService {
     /**
      * 添加评价批语
      * */
-    public void editApplyEvaluateByRemarks(String applyEvaluateId,String title,String remarks);
+    public void editApplyEvaluateByRemarks(String applyEvaluateId,String remarks);
     /**
      * 查询企业的所有请求
      * */
@@ -41,4 +41,8 @@ public interface ApplyEvaluateService {
      * 查询企业的所有可申诉请求（评价已完成）
      * */
     public Object findApplyEvaluateByAuthEnterpriseIdForAppeal(String authEnterpriseId,String date,String level,Integer page,Integer rows);
+    /**
+     * 评分完成
+     * */
+    public void editApplyEvaluateForAuditStatusOrAppealStatus(String applyEvaluateId);
 }
