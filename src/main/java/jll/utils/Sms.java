@@ -128,7 +128,7 @@ public class Sms {
 
 
 
-    String verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);
+   /* String verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);*/
     public static void main(String[] args) throws ClientException, InterruptedException {
 
         //发短信
