@@ -134,6 +134,12 @@ public class UserDao extends SimpleHibernateTemplate<User> {
     }
 
     //修改手机号
+    public int updateUserPhone(String phonenum,String userId){
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE org_user_account SET username = '" + phonenum + "', iphone = '" + phonenum + "' WHERE user_id = '" + userId + "'");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        return query.executeUpdate();
+    }
 
     //更新用户信息
     public int updateUserAccount(User user){

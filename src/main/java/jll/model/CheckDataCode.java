@@ -5,12 +5,16 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity(name = "system_check_code")
 public class CheckDataCode {
 
     private String code_id;//校验码id
     private String code_value;//校验码数据
+    private Date create_time;//创建时间
+    private String status;//状态  是否有效 0否 1是
+
 
     @Id
     @GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -29,5 +33,21 @@ public class CheckDataCode {
 
     public void setCode_value(String code_value) {
         this.code_value = code_value;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

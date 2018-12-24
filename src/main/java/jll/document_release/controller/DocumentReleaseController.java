@@ -62,7 +62,9 @@ public class DocumentReleaseController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST},value = {"/updatedocumentstatus"})
-    public @ResponseBody XinfuResult updateDocumentStatus(String documentStatus,String documentId){
+    public @ResponseBody XinfuResult updateDocumentStatus(@RequestBody Map map){
+        String documentStatus = (String)map.get("documentStatus");
+        String documentId = (String)map.get("documentId");
         return documentReleaseService.updateDocumentStatus(documentStatus,documentId);
     }
 

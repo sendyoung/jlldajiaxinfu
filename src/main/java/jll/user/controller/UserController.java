@@ -53,12 +53,13 @@ public class UserController extends BaseClass {
         String password = (String)map.get("password");
         User user = new User();
         user.setUsername(username);
-        user.setPassword(Encrypt.md5(password,username));
+        user.setPassword(Encrypt.md5(password,"junlelian"));
         user.setIsDelete("0");
         user.setIphone(username);
         User_Role_Middle user_role_middle = new User_Role_Middle();
         return userservice.addUser(user, user_role_middle);
     }
+
 
     /**
      * 修改密码
@@ -72,8 +73,10 @@ public class UserController extends BaseClass {
     XinfuResult changePassWord(@RequestBody Map map) {
         String userName = (String)map.get("username");
         String newPassWord = (String)map.get("newpassword");
+        String newpw = Encrypt.md5(newPassWord, "junlelian");
         String oldPassWord = (String)map.get("oldpassword");
-        return userservice.updatePassWord(userName, newPassWord, oldPassWord);
+        String oldpw = Encrypt.md5(oldPassWord, "junlelian");
+        return userservice.updatePassWord(userName, newpw, oldpw);
     }
 
     /**
