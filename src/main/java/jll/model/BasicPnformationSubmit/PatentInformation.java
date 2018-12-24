@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 专利信息
@@ -17,7 +18,7 @@ public class PatentInformation extends Base_Model {
     // 企业id
     private String ent_id;
     // 专利申请日
-    private String date_of_application;
+    private Date date_of_application;
     // 专利名称
     private String patents_name;
     // 专利号
@@ -46,11 +47,11 @@ public class PatentInformation extends Base_Model {
         this.ent_id = ent_id;
     }
 
-    public String getDate_of_application() {
+    public Date getDate_of_application() {
         return date_of_application;
     }
 
-    public void setDate_of_application(String date_of_application) {
+    public void setDate_of_application(Date date_of_application) {
         this.date_of_application = date_of_application;
     }
 

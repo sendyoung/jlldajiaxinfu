@@ -1,8 +1,4 @@
 package jll.OrganizationCreditInformation.service.impl;
 
-public class OrganizationServiceImpl {
-
-
-
-
+public class AnnualDevelopmentReportServiceImpl {
 }

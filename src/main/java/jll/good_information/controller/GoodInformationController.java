@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +60,7 @@ public class GoodInformationController extends BaseClass {
     /**
      * type良好信息的分类
      * content内容
-     *添加良好信息
+     * 添加良好信息
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditGoodInformation",method = { RequestMethod.GET, RequestMethod.POST })

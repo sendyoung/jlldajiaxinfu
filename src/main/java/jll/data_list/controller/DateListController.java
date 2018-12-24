@@ -5,10 +5,7 @@ import jll.data_list.service.*;
 import jll.data_list.utils.DateUtils;
 import jll.data_list.utils.FileUploadUtil;
 import jll.data_list.utils.POIUtil;
-import jll.model.data_list.BranchOffice;
-import jll.model.data_list.Customer;
 import jll.model.data_list.ReportFile;
-import jll.model.data_list.SubsidiaryCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -114,7 +111,7 @@ public class DateListController extends BaseClass {
         // 保存文件
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
         rf.setFile_url(filename);
-        result=FileUploadUtil.imageUpload(multfile, path,filename);
+        result=FileUploadUtil.imageUpload(multfile, path, filename);
         if(result.equals("success")){
             reportFileService.editReportFile(rf);
             return "success";

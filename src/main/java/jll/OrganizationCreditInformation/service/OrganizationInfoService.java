@@ -3,6 +3,8 @@ package jll.OrganizationCreditInformation.service;
 
 import jll.model.OrgOrganization.Organization;
 
+import java.util.List;
+
 
 /**
  * 组织信息
@@ -17,5 +19,5 @@ public interface OrganizationInfoService {
     /**
      * 返回组织信息
      */
-    public String queryOrganizationInfo(String org_id);
+    public List queryOrganizationInfo(String auth_org_id);
 }
