@@ -27,12 +27,8 @@ public class UserDao extends SimpleHibernateTemplate<User> {
 
         StringBuffer sql = new StringBuffer();
         sql.append(" select username,password from org_user_account user where 1=1 and isDelete='0'  ");
-        if (!"".equals(username) && null != username) {
-            sql.append(" and user.username='" + username + "' ");
-        }
-        if (!"".equals(password) && null != password) {
-            sql.append(" and user.password='" + password + "' ");
-        }
+        sql.append(" and user.username='" + username + "' ");
+        sql.append(" and user.password='" + password + "' ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
@@ -117,7 +113,7 @@ public class UserDao extends SimpleHibernateTemplate<User> {
      */
     public List findUserByUserName(String username){
         StringBuffer sql = new StringBuffer();
-        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,org_user_role_middle from org_user_account user where 1=1 and isDelete='0'  ");
+        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,authentication_type,org_user_role_middle from org_user_account user where 1=1 and isDelete='0'  ");
         if (!"".equals(username) && null != username) {
             sql.append(" and user.username='" + username + "' ");
         }
@@ -138,85 +134,86 @@ public class UserDao extends SimpleHibernateTemplate<User> {
     }
 
     //修改手机号
+    public int updateUserPhone(String phonenum,String userId){
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE org_user_account SET username = '" + phonenum + "', iphone = '" + phonenum + "' WHERE user_id = '" + userId + "'");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        return query.executeUpdate();
+    }
 
     //更新用户信息
     public int updateUserAccount(User user){
         StringBuffer sql = new StringBuffer();
         sql.append("UPDATE org_user_account SET    ");
         if (!"".equals(user.getHead_portrait_image()) && null != user.getHead_portrait_image()) {
-            sql.append("head_portrait_image = :head_portrait_image,");
+            sql.append("head_portrait_image = '"+ user.getHead_portrait_image() + "',");
         }
         if (!"".equals(user.getNickname()) && null != user.getNickname()) {
-            sql.append("nickname = :nickname,");
+            sql.append("nickname = '"+user.getNickname()+"',");
         }
         if (!"".equals(user.getEmail()) && null != user.getEmail()) {
-            sql.append("email = :email,");
+            sql.append("email = '"+user.getEmail()+"',");
         }
         if (!"".equals(user.getRealname()) && null != user.getRealname()) {
-            sql.append("realname = :realname,");
+            sql.append("realname = '"+user.getRealname()+"',");
         }
         if (!"".equals(user.getIdcard()) && null != user.getIdcard()) {
-            sql.append("idcard = :idcard,");
+            sql.append("idcard = '"+user.getIdcard()+"',");
         }
         if (!"".equals(user.getProvince_id()) && 0 != user.getProvince_id()) {
-            sql.append("province_id = :province_id,");
+            sql.append("province_id = '"+user.getProvince_id()+"',");
         }
         if (!"".equals(user.getCity_id()) && 0 != user.getCity_id()) {
-            sql.append("city_id = :city_id,");
+            sql.append("city_id = '"+user.getCity_id()+"',");
         }
         if (!"".equals(user.getArea_id()) && 0 != user.getArea_id()) {
-            sql.append("area_id = :area_id,");
+            sql.append("area_id = '"+user.getArea_id()+"',");
         }
         if (!"".equals(user.getPersonalSignature()) && null != user.getPersonalSignature()) {
-            sql.append("personalSignature = :personalSignature,");
+            sql.append("personalSignature = '"+user.getPersonalSignature()+"',");
         }
         if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
-            sql.append("user_detail_id = :user_detail_id,");
+            sql.append("user_detail_id = '"+user.getUser_detail_id()+"',");
         }
         if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
-            sql.append("user_detail_id = :user_detail_id,");
+            sql.append("user_detail_id = '"+user.getUser_detail_id()+"',");
         }
         if (!"".equals(user.getAuthentication_id()) && null != user.getAuthentication_id()) {
-            sql.append("authentication_id = :authentication_id,");
+            sql.append("authentication_id = '"+user.getAuthentication_id()+"',");
         }
-        sql.append("WHERE user_id = " + user.getUser_id());
+        if (!"".equals(user.getAuthentication_type()) && null != user.getAuthentication_type()) {
+            sql.append("authentication_type = '"+user.getAuthentication_type()+"',");
+        }
+        if (!"".equals(user.getOrg_user_role_middle()) && null != user.getOrg_user_role_middle()) {
+            sql.append("org_user_role_middle = '"+user.getOrg_user_role_middle()+"',");
+        }
+       sql.replace(sql.length() - 1, sql.length(), "");
+        sql.append(" WHERE user_id = '" + user.getUser_id() +"' ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
-        if (!"".equals(user.getHead_portrait_image()) && null != user.getHead_portrait_image()) {
-            query.setParameter("head_portrait_image", user.getHead_portrait_image());
-        }
-        if (!"".equals(user.getNickname()) && null != user.getNickname()) {
-            query.setParameter("nickname",user.getNickname());
-        }
-        if (!"".equals(user.getEmail()) && null != user.getEmail()) {
-            query.setParameter("email",user.getEmail());
-        }
-        if (!"".equals(user.getRealname()) && null != user.getRealname()) {
-            query.setParameter("realname",user.getRealname());
-        }
-        if (!"".equals(user.getIdcard()) && null != user.getIdcard()) {
-            query.setParameter("idcard",user.getIdcard());
-        }
-        if (!"".equals(user.getProvince_id()) && 0 != user.getProvince_id()) {
-            query.setParameter("province_id",user.getProvince_id());
-        }
-        if (!"".equals(user.getCity_id()) && 0 != user.getCity_id()) {
-            query.setParameter("city_id",user.getCity_id());
-        }
-        if (!"".equals(user.getArea_id()) && 0 != user.getArea_id()) {
-            query.setParameter("area_id",user.getArea_id());
-        }
-        if (!"".equals(user.getPersonalSignature()) && null != user.getPersonalSignature()) {
-            query.setParameter("personalSignature",user.getPersonalSignature());
-        }
-        if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
-            query.setParameter("user_detail_id",user.getUser_detail_id());
-        }
-        if (!"".equals(user.getAuthentication_id()) && null != user.getAuthentication_id()) {
-            query.setParameter("authentication_id",user.getAuthentication_id());
-        }
         return query.executeUpdate();
 
         }
+
+    /**
+     * 用户表findUserIdByAuthId
+     * 根据认证ID查询用户ID
+     */
+    public List findUserIdByAuthId(String authId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT                                                                                      ");
+        sql.append(" 	u.user_id                                                                             ");
+        sql.append(" FROM                                                                                        ");
+        sql.append(" 	org_user_account u                                                                      ");
+        sql.append(" WHERE                                                                                       ");
+        sql.append(" 	1 = 1                                                                                      ");
+        sql.append(" AND u .isDelete = '0'                                                                    ");
+        sql.append(" AND u .authentication_id = '" + authId + "'                                                               ");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        return query.list();
+
+    }
 
 }

@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity(name="eva_score_result")
 public class ScoreResult extends Base_Model {
     private String score_result_id;//评分结果ID
-    private String score;//综合评分
+    private Float score;//综合评分
     private String level;//评分等级
     private String apply_evaluate_id;//申请评价ID
 
@@ -28,11 +28,11 @@ public class ScoreResult extends Base_Model {
         this.score_result_id = score_result_id;
     }
 
-    public String getScore() {
+    public Float getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Float score) {
         this.score = score;
     }
 

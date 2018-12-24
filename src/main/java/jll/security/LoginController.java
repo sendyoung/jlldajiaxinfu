@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,6 +37,7 @@ import cn.com.llovef.framework.base.BaseClass;*/
  * @date 2015年10月30日 下午5:09:55 声明:总统府所有-不经本人允许随意散播到公众平台-本人将追究法律责任-特此声明.
  * Tel:13811348643 email:531677565@qq.com
  */
+
 @Controller
 @Scope("prototype")
 @RequestMapping("/login")
@@ -78,7 +80,7 @@ public class LoginController extends BaseClass {
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @SuppressWarnings({"rawtypes", "unchecked"})
-    @RequestMapping(value = {"/successHandler"})
+    @RequestMapping(value = {"/successHandler"},method = RequestMethod.GET)
     @ResponseBody
     public Map successHandler(final ModelMap model,
                               HttpServletRequest request, HttpServletResponse response)
@@ -89,8 +91,9 @@ public class LoginController extends BaseClass {
         List result = userservice.findUserRoleList(username, password);
         List user = userservice.findUserByUserName(username);
         Map map = new HashMap();
+        System.out.println("11222111");
         map.put("menu", result);
-        map.put("user", user);
+        map.put("user", user.get(0));
         return map;
         //return json.toJSONString(result);
     }
@@ -100,7 +103,7 @@ public class LoginController extends BaseClass {
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @SuppressWarnings("unused")
-    @RequestMapping(value = {"/failureHandler"})
+    @RequestMapping(value = {"/failureHandler"},method = RequestMethod.GET)
     @ResponseBody
     public String failureHandler(final ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
         JSONObject json = new JSONObject();

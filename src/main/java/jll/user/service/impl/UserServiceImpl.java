@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService {
             user.setNickname("JLL" + sdf.format(new Date()));
             //注册后默认是个人用户
             user.setOrg_user_role_middle("1");
+            user.setAuthentication_type("0");
             userdao.addUser(user);
             user_role_middle.setRole_id("1");
             user_role_middle.setUser_id(user.getUser_id());
@@ -143,6 +144,22 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 更改手机号
+     * @param phonenum
+     * @param userId
+     * @return
+     */
+    @Override
+    public XinfuResult updateUserPhone(String phonenum, String userId) {
+        int i = userdao.updateUserPhone(phonenum,userId);
+        if (i>0){
+            return XinfuResult.build(200,"手机号修改成功");
+        }else{
+            return XinfuResult.build(400,"手机号修改失败");
+        }
+    }
+
+    /**
      * 更新用户账号信息(个人信息)
      * @param user
      */
@@ -160,5 +177,21 @@ public class UserServiceImpl implements UserService {
     public List findUserByUserName(String username) {
         List list = userdao.findUserByUserName(username);
         return list;
+    }
+
+    @Override
+    public XinfuResult test(User user){
+        try {
+            user.setUser_id("1");
+            user.setEmail("test@test.com");
+            user.setNickname("testname");
+            int i = userdao.updateUserAccount(user);
+            System.out.println("+++++++++++++++++"+i+ "+++++++++++++++++++++++++");
+            return XinfuResult.build(200,"测试成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return XinfuResult.build(400,"失败");
+        }
+
     }
 }
