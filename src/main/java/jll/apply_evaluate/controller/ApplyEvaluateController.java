@@ -32,6 +32,14 @@ public class ApplyEvaluateController {
        return applyEvaluateService.findApplyEvaluateForApplyStatus(entId,page,rows);
     }
     /**
+     * 根据所属行业查询可申请组织并查询企业关联
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindApplyEvaluateByIndustry",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findApplyEvaluateByIndustry(@RequestParam String authEnterpriseId,@RequestParam(required = false) String industry,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer rows){
+        return applyEvaluateService.findApplyEvaluateByIndustry(authEnterpriseId,industry,page,rows);
+    }
+    /**
      * entId企业ID
      * page当前页数
      * rows每页条数

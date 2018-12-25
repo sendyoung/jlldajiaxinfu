@@ -46,6 +46,23 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
     }
 
     @Override
+    public Object findApplyEvaluateByIndustry(String authEnterpriseId, String industry, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=applyEvaluateDao.queryApplyEvaluateByIndustry(authEnterpriseId,industry);
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
     public Object findApplyEvaluateByDate(String entId, Integer page, Integer rows, String date) {
         try {
             Map param = new HashedMap();
