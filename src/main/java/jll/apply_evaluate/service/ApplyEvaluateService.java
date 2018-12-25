@@ -45,4 +45,8 @@ public interface ApplyEvaluateService {
      * 评分完成
      * */
     public void editApplyEvaluateForAuditStatusOrAppealStatus(String applyEvaluateId);
+    /**
+     *  组织企业建立关系
+     * */
+    public void authOrgIdApplyEvaluateForAppeal(String authEnterpriseId,String authOrgId,String status);
 }

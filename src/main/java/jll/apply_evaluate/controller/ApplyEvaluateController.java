@@ -128,5 +128,17 @@ public class ApplyEvaluateController {
     public @ResponseBody Object findApplyEvaluateByAuthEnterpriseIdForAppeal(@RequestParam String authEnterpriseId,@RequestParam(required = false) String date,@RequestParam(required = false) String level,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
         return applyEvaluateService.findApplyEvaluateByAuthEnterpriseIdForAppeal(authEnterpriseId,date,level,page,rows);
     }
+    /**
+     *  组织企业建立关系
+     *  authEnterpriseId企业Id
+     *  authOrgId组织ID
+     *  status通过（2）不通过（3）
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/AuthOrgIdApplyEvaluateForAppeal",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object authOrgIdApplyEvaluateForAppeal(@RequestParam String authEnterpriseId,@RequestParam String authOrgId,@RequestParam String status){
+        applyEvaluateService.authOrgIdApplyEvaluateForAppeal(authEnterpriseId,authOrgId,status);
+        return "success";
+    }
 
 }

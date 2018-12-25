@@ -1,6 +1,7 @@
 package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import jll.model.apply_evaluate.RateRule;
 import jll.model.apply_evaluate.ScoreResult;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class RateRuleDao extends SimpleHibernateTemplate<ScoreResult> {
+public class RateRuleDao extends SimpleHibernateTemplate<RateRule> {
     private static final long serialVersionUID = 1L;
 
     /**

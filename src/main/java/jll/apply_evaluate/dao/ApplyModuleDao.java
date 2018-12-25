@@ -47,7 +47,11 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * */
     public void updateApplyModuleForStatus(String applyModuleId,String status,String remarks){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_module set status='"+status+"',remarks='"+remarks+"' where apply_module_id='"+applyModuleId+"' ");
+        sql.append("update eva_apply_module set status='"+status+"' ");
+        if(remarks!=null){
+            sql.append(",remarks='"+remarks+"' ");
+        }
+        sql.append(" where apply_module_id='"+applyModuleId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();

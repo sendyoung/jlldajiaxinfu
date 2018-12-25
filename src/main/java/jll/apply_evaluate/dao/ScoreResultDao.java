@@ -33,7 +33,7 @@ public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
      * */
     public ScoreResult queryScoreResultByApplyEvaluateId(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_score_result where 1=1 and apply_evaluate_id="+applyEvaluateId+" ");
+        sql.append("select * from eva_score_result where 1=1 and apply_evaluate_id='"+applyEvaluateId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();
@@ -50,7 +50,7 @@ public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
         StringBuffer sql = new StringBuffer();
         sql.append("select count(eae.apply_evaluate_id) count from eva_apply_evaluate eae" +
                 " left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id" +
-                " where 1=1 and eae.auth_org_id="+authOrgId+" and eae.audit_status=4 and esr.level='"+level+"' ");
+                " where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status=4 and esr.level='"+level+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();

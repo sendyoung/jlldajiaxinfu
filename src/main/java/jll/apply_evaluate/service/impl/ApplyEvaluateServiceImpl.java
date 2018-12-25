@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -174,5 +175,18 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
         if(ae.getAppeal_status()!=null&&!ae.getAppeal_status().equals("")){
             applyEvaluateDao.updateApplyEvaluateForAppealStatus(applyEvaluateId,"4");
         }
+    }
+
+    @Override
+    public void authOrgIdApplyEvaluateForAppeal(String authEnterpriseId, String authOrgId, String status) {
+        ApplyEvaluate ae=applyEvaluateDao.queryApplyEvaluate(authEnterpriseId,authOrgId);
+        if(ae==null){
+            ae.setAuth_enterprise_id(authEnterpriseId);
+            ae.setAuth_org_id(authOrgId);
+            ae.setCreate_time(new Date());
+        }
+        ae.setAppeal_status(status);
+        applyEvaluateDao.saveApplyEvaluate(ae);
+
     }
 }

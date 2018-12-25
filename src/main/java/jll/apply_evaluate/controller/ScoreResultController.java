@@ -34,7 +34,7 @@ public class ScoreResultController {
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditScoreResult",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object editScoreResult(@RequestParam String authOrgId,@RequestParam String applyEvaluateId,@RequestParam String content){
+    public @ResponseBody Object editScoreResult(@RequestParam String authOrgId,@RequestParam String applyEvaluateId,@RequestParam(required = false) String content){
         //保存评分记录
 
         //计算总评分

@@ -19,4 +19,16 @@ public interface EvaluateAppealService {
      * 组织的所有申诉
      * */
     public Object findEvaluateAppealByAuthOrgId(String authOrgId,String stype,String appealTime,String appealStatus,String name,Integer page,Integer rows);
+    /**
+     * 查看组织异议详情
+     * */
+    public Object findEvaluateAppealDetailsForApplyEvaluateId(String evaluateAppealId);
+    /**
+     * 查询申诉详情
+     * */
+    public EvaluateAppeal findEvaluateAppeal(String evaluateAppealId);
+    /**
+     * 修改组织异议详情
+     * */
+    public void editEvaluateAppealForAuthOrgId(String authOrgId,EvaluateAppeal evaluateAppeal,String appealStatus);
 }
