@@ -73,7 +73,9 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
     public void updateRedBlackListPublicStatus(String red_black_list_id,String publicStatus){
         StringBuffer sql = new StringBuffer();
         sql.append("UPDATE eva_red_black_list SET public_status = '" +publicStatus +"' " );
-        sql.append(" WHERE eva_red_black_list_id = '" + red_black_list_id + "'");
+        sql.append(" WHERE red_black_list_id = '" + red_black_list_id + "'");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.executeUpdate();
     }
 
 }

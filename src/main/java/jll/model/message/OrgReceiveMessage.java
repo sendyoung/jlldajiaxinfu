@@ -22,7 +22,7 @@ public class OrgReceiveMessage extends Base_Model {
     private String message_content;//消息内容
     private String send_type;//发送类型(1组织对企业,2企业对组织,3群发等)
     private String message_status;//(消息状态0未读,1已读)
-    private String message_type;//消息类型
+    private String message_type;//消息类型1申请评价2评价申诉3评价审核4消息提醒5会内通知
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")

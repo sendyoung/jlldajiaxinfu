@@ -40,8 +40,8 @@ public class MessageServiceImpl implements MessageService {
 
     //查看发件箱列表
     @Override
-    public PageView findSendMessageList(String userId, int currentPage, int rows) {
-        return HibernatePageUtil.sqlPageUtil(sendMessageDao.findSendMessageList(userId),currentPage,rows);
+    public PageView findSendMessageList(String userId,String messageType, int currentPage, int rows) {
+        return HibernatePageUtil.sqlPageUtil(sendMessageDao.findSendMessageList(userId,messageType),currentPage,rows);
     }
 
     //查看发件内容

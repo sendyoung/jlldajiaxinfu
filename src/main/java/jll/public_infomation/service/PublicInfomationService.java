@@ -13,7 +13,7 @@ public interface PublicInfomationService {
     //查看新的公示详情中的红黑榜单
     public PageView findNewRedBlackList(String redblackListId,int currentPage, int rows);
     //发布公示
-    public XinfuResult addPublictyInfomation(InfomationPublicty infomationPublicty,String public_status);
+    public XinfuResult addPublictyInfomation(InfomationPublicty infomationPublicty);
 
 
     //查看历史公示列表
@@ -24,4 +24,8 @@ public interface PublicInfomationService {
     public PageView findHistoryRedBlackList(String publictyId,int currentPage,int rows);
     //查看历史公示中的公示内容
     public InfomationPublicty findInfomationPublicty(String publictyId);
+    //修改公示内容
+    public XinfuResult updatePubictyInfomation(InfomationPublicty infomationPublicty);
+    //修改公示状态
+    public XinfuResult updatePublictyStatus(String publictyId,String listId,String type,String publicStatus);
 }

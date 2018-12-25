@@ -7,7 +7,7 @@ import jll.utils.XinfuResult;
 
 public interface MessageService {
     //查看发件箱列表
-    public PageView findSendMessageList(String userId, int currentPage, int rows);
+    public PageView findSendMessageList(String userId,String messageType, int currentPage, int rows);
     //查看发件箱内容
     public OrgSendMessage findSendMessage(String sendMessageId);
     //查看收件箱列表

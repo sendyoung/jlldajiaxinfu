@@ -18,8 +18,9 @@ public class InfomationPublicty extends Base_Model {
     private String title;//标题
     private String introduction;//简介
     private String publicty_type;//公示类型
-    private Date start_time;//开始时间
-    private Date end_time;//结束时间
+    private String start_time;//开始时间
+    private String end_time;//结束时间
+    private String public_status;//公示状态
     private String upload_data;//上传资料地址
     private String evaluate_list_id;//评价榜单id
     private String red_black_list_id;//红黑名单id
@@ -67,20 +68,28 @@ public class InfomationPublicty extends Base_Model {
         this.publicty_type = publicty_type;
     }
 
-    public Date getStart_time() {
+    public String getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Date start_time) {
+    public void setStart_time(String start_time) {
         this.start_time = start_time;
     }
 
-    public Date getEnd_time() {
+    public String getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Date end_time) {
+    public void setEnd_time(String end_time) {
         this.end_time = end_time;
+    }
+
+    public String getPublic_status() {
+        return public_status;
+    }
+
+    public void setPublic_status(String public_status) {
+        this.public_status = public_status;
     }
 
     public String getUpload_data() {

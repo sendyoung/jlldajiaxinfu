@@ -60,6 +60,8 @@ public class EvaluateListDao extends SimpleHibernateTemplate<EvaluateList> {
         StringBuffer sql = new StringBuffer();
         sql.append("UPDATE eva_evaluate_list SET public_status = '" +publicStatus +"' " );
         sql.append(" WHERE evaluate_list_id = '" + evaluate_list_id + "'");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.executeUpdate();
     }
 
 }
