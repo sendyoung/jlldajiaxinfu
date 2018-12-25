@@ -55,6 +55,11 @@ public interface UserService {
 	public XinfuResult updatePassWord(String username, String newPassWord, String oldPassWord);
 
 	/**
+	 * 修改手机号
+	 */
+	public XinfuResult updateUserPhone(String phonenum,String userId);
+
+	/**
 	 * 更新用户数据
 	 * @param user
 	 */

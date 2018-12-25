@@ -4,6 +4,7 @@ import jll.model.CheckDataCode;
 import jll.user.dao.CheckDataDao;
 import jll.user.service.CheckDataService;
 import jll.utils.MapTrunPojo;
+import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,11 @@ public class CheckDataServiceImpl implements CheckDataService {
      * 根据id查到此校验码值
      */
     @Override
-    public String findCodeById(String codeId) {
-        List list = checkDataDao.findCodeById(codeId);
-        CheckDataCode checkDataCode = (CheckDataCode)MapTrunPojo.map2Object((Map)list.get(0),CheckDataCode.class);
-        return checkDataCode.getCode_value();
+    public int findCodeById(String codeId, String inputCode) {
+        List list = checkDataDao.findCodeById(codeId,inputCode);
+        if(list!=null&&list.size()>0){
+            return 200;
+        }
+        return 400;
     }
 }

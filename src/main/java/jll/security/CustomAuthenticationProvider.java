@@ -41,7 +41,7 @@ public class CustomAuthenticationProvider extends
 		System.out.println("登陆验证用户名"+username);
 		System.out.println("登陆验证密码"+password);
 		//String[] whiteLists = new String[] { "531677565@QQ.COM", "SUPERVISOR", "JIMMY" };
-		String md5Password = Encrypt.md5(password, username);
+		String md5Password = Encrypt.md5(password, "junlelian");
 		List  result = userservice.getUserUnPw(username, md5Password);
 		System.out.println(username+"===================111==============");
 		System.out.println(password);

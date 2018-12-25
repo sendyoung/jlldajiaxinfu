@@ -115,6 +115,7 @@ public class DateListController extends BaseClass {
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
         rf.setFile_url(path+filename);
         result=FileUploadUtil.imageUpload(multfile, path,filename);
+
         if(result.equals("success")){
             reportFileService.editReportFile(rf);
             return rf;

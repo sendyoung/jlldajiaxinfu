@@ -21,11 +21,11 @@ public class ShareholderContributionInfo extends Base_Model{
     // 持股比例
     private String shareholding_ratio;
     // 认缴出资额
-    private float subscribed_capital_contribution;
+    private String subscribed_capital_contribution;
     // 股东类型
     private String shareholder_type;
     //证件类型
-    private int papers_type;
+    private String papers_type;
     // 护照/证件号码
     private String passport;
     @Id
@@ -64,11 +64,11 @@ public class ShareholderContributionInfo extends Base_Model{
         this.shareholding_ratio = shareholding_ratio;
     }
 
-    public float getSubscribed_capital_contribution() {
+    public String getSubscribed_capital_contribution() {
         return subscribed_capital_contribution;
     }
 
-    public void setSubscribed_capital_contribution(float subscribed_capital_contribution) {
+    public void setSubscribed_capital_contribution(String subscribed_capital_contribution) {
         this.subscribed_capital_contribution = subscribed_capital_contribution;
     }
 
@@ -80,11 +80,11 @@ public class ShareholderContributionInfo extends Base_Model{
         this.shareholder_type = shareholder_type;
     }
 
-    public int getPapers_type() {
+    public String getPapers_type() {
         return papers_type;
     }
 
-    public void setPapers_type(int papers_type) {
+    public void setPapers_type(String papers_type) {
         this.papers_type = papers_type;
     }
 
@@ -95,6 +95,4 @@ public class ShareholderContributionInfo extends Base_Model{
     public void setPassport(String passport) {
         this.passport = passport;
     }
-
-
 }

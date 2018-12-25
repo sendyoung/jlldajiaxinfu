@@ -18,8 +18,8 @@ public class CheckDataDao extends SimpleHibernateTemplate<CheckDataCode> {
     public String addCheckCode(String codeValue){
         StringBuffer sql = new StringBuffer();
         String codeId = UUID.randomUUID().toString().replace("-","");
-        sql.append("INSERT INTO system_check_code(code_id,code_value) ");
-        sql.append(" VALUES('" + codeId + "','" + codeValue + "')");
+        sql.append("INSERT INTO system_check_code(code_id,code_value,create_time,status) ");
+        sql.append(" VALUES('" + codeId + "','" + codeValue + "', now(),'1')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.executeUpdate();
         return codeId;
@@ -28,9 +28,9 @@ public class CheckDataDao extends SimpleHibernateTemplate<CheckDataCode> {
     /**
      * 根据ID查询校验码
      */
-    public List findCodeById(String codeId){
+    public List findCodeById(String codeId,String inputCode){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT code_value FROM system_check_code WHERE code_id = '" + codeId + "'");
+        sql.append("SELECT code_value FROM system_check_code WHERE code_id = '" + codeId + "' AND code_value = '" + inputCode +"' AND status = '1'");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

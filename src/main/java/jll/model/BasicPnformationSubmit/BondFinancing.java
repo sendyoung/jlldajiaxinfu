@@ -24,6 +24,7 @@ public class BondFinancing extends Base_Model {
     private String mortgage_credit;
     // 借贷金额
     private String borrowing_amount;
+
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
     @GeneratedValue(generator="systemUUID")

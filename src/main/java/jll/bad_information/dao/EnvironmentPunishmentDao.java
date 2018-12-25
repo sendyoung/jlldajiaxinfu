@@ -35,4 +35,7 @@ public class EnvironmentPunishmentDao extends SimpleHibernateTemplate<Environmen
         }
     }
 
+
+
+
 }

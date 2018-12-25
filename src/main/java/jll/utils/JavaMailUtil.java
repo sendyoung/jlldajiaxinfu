@@ -49,8 +49,8 @@ public class JavaMailUtil {
     }
 
 
-  /* public static void main(String[] args) { // 做测试用
-       JavaMailUtil.sendMail("645759256@qq.com", "李朝你好，这是一封测试邮件，无需回复。", "测试邮件");
+  /*public static void main(String[] args) { // 做测试用
+       JavaMailUtil.sendMail("1347820928@qq.com", "你好，这是一封测试邮件，无需回复。", "测试邮件");
     }*/
 
 }

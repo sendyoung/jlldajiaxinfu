@@ -144,6 +144,22 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 更改手机号
+     * @param phonenum
+     * @param userId
+     * @return
+     */
+    @Override
+    public XinfuResult updateUserPhone(String phonenum, String userId) {
+        int i = userdao.updateUserPhone(phonenum,userId);
+        if (i>0){
+            return XinfuResult.build(200,"手机号修改成功");
+        }else{
+            return XinfuResult.build(400,"手机号修改失败");
+        }
+    }
+
+    /**
      * 更新用户账号信息(个人信息)
      * @param user
      */

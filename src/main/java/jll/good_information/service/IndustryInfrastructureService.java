@@ -4,6 +4,7 @@ import jll.model.good_information.IndustryInfrastructure;
 
 import java.util.List;
 
+
 public interface IndustryInfrastructureService {
 
     /**

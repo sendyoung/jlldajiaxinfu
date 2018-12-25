@@ -11,6 +11,6 @@ public interface CheckDataService {
     /**
      * 根据ID查到此校验码
      */
-    public String findCodeById(String codeId);
+    public int findCodeById(String codeId,String inputCode);
 
 }

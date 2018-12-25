@@ -10,7 +10,7 @@ import javax.persistence.Id;
 /**
  * 联系人员填报
  */
-@Entity(name = "ent_contact_personnel")
+@Entity(name = "ent_contact_personne")
 public class ContactPersonnel extends Base_Model {
     // 主键
     private String id;
