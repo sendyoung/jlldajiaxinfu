@@ -30,7 +30,7 @@ public class AuthEnterpriseDao extends SimpleHibernateTemplate<AuthEnterpriseBas
         if(typesEnterprises!=null&&!typesEnterprises.equals("")){
             sql.append("and aeb.types_enterprises='"+typesEnterprises+"' ");
         }
-        sql.append("and eb.industry=(select industry from org_organization where org_id='"+authOrgId+"')");
+        sql.append("and eb.industry=(select industry from org_organization where auth_org_id='"+authOrgId+"')");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 }

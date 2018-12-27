@@ -1,24 +1,29 @@
 package jll.model.data_list;
 
-import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 企业填报材料文档记录
  * */
 @Entity(name="ent_report_file")
-public class ReportFile extends Base_Model {
+public class ReportFile {
     private String report_file_id;
-    private String ent_id;//企业ID
+    private String auth_enterprise_id;//企业ID
     private String file_url;//文档url
     private String file_name;//文档名称
     private String file_remark;//文档案备注
     private String file_type;//文档类型
-    private String audit_status;//审核状态：1.审核通过，2.审核不通过
+    private String audit_status;//审核状态：0.未审核 1.审核通过，2.审核不通过
+
+    private Date create_time;
+    private Date update_time;
+    private String isDelete;
+    private String comment;
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -31,12 +36,12 @@ public class ReportFile extends Base_Model {
         this.report_file_id = report_file_id;
     }
 
-    public String getEnt_id() {
-        return ent_id;
+    public String getAuth_enterprise_id() {
+        return auth_enterprise_id;
     }
 
-    public void setEnt_id(String ent_id) {
-        this.ent_id = ent_id;
+    public void setAuth_enterprise_id(String auth_enterprise_id) {
+        this.auth_enterprise_id = auth_enterprise_id;
     }
 
     public String getFile_url() {
@@ -77,5 +82,37 @@ public class ReportFile extends Base_Model {
 
     public void setAudit_status(String audit_status) {
         this.audit_status = audit_status;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

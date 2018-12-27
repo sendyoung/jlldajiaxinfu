@@ -102,8 +102,9 @@ public class DateListController extends BaseClass {
     @RequestMapping(value = "/UploadDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object uploadDateListFile(HttpServletRequest request,@RequestParam String type,@RequestParam String entId,@RequestParam(name="multfile") MultipartFile multfile) throws IOException {
         ReportFile rf=new ReportFile();
+        rf.setAudit_status("0");
         rf.setCreate_time(new Date());
-        rf.setEnt_id(entId);
+        rf.setAuth_enterprise_id(entId);
         rf.setFile_name(multfile.getOriginalFilename());
         rf.setFile_type(type);
         //上传文件路径
