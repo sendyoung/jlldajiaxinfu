@@ -19,14 +19,14 @@ public class SendMessageDao extends SimpleHibernateTemplate<OrgSendMessage> {
     public Page findSendMessageList(String senderId,String messageType) {
         StringBuffer sql = new StringBuffer();
         sql.append(" SELECT                                                                                      ");
-        sql.append(" 	sendMessage.send_message_id,sendMessage.send_id,sendMessage.sender_name,sendMessage.receiver_id,sendMessage.receiver_name,sendMessage.message_title,sendMessage.send_type,sendMessage.message_type,sendMessage.message_status,sendMessage.create_time                                                                             ");
+        sql.append(" 	sendMessage.send_message_id,sendMessage.sender_id,sendMessage.sender_name,sendMessage.receiver_id,sendMessage.receiver_name,sendMessage.message_title,sendMessage.send_type,sendMessage.message_type,sendMessage.message_status,sendMessage.create_time                                                                             ");
         sql.append(" FROM                                                                                        ");
         sql.append(" 	org_send_message sendMessage                                                                ");
         sql.append(" WHERE                                                                                       ");
         sql.append(" 1 = 1        ");
         sql.append(" AND sendMessage.isDelete = '0'                                                                                      ");
-        sql.append(" AND sendMessage .sender_id = '" + senderId + "'                                                               ");
-        sql.append(" AND sendMessage .message_type = '" + messageType + "'                                                               ");
+        sql.append(" AND sendMessage.sender_id = '" + senderId + "'                                                               ");
+        sql.append(" AND sendMessage.message_type = '" + messageType + "'                                                               ");
         sql.append(" ORDER BY create_time DESC ");
 
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);

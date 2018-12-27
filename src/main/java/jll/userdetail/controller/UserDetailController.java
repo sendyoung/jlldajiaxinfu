@@ -1,6 +1,9 @@
 package jll.userdetail.controller;
 
 import jll.model.userdetail.UserDetail;
+import jll.model.userdetail.UserEducation;
+import jll.model.userdetail.UserFamily;
+import jll.model.userdetail.UserWorkPlace;
 import jll.userdetail.service.UserDetailService;
 import jll.utils.JsonUtils;
 import jll.utils.XinfuResult;
@@ -90,40 +93,40 @@ public class UserDetailController {
 
     /**
      * 新增或更新家庭成员
-     * @param list
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge=3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/fillinuserfamily")
-    public @ResponseBody XinfuResult saveOrUpdateUserFamily(List list,String userDetailId){
+    public @ResponseBody XinfuResult saveOrUpdateUserFamily(@RequestBody Map map){
+        List list = JsonUtils.jsonToList((String)map.get("list"),UserFamily.class);
+        String userDetailId = (String)map.get("userDetailId");
         return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
     }
 
     /**
      * 新增或更新教育经历
-     * @param list
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge=3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/fillinusereducation")
-    public @ResponseBody XinfuResult saveOrUpdateUserEducation(List list,String userDetailId){
+    public @ResponseBody XinfuResult saveOrUpdateUserEducation(@RequestBody Map map){
+        List list = JsonUtils.jsonToList((String)map.get("list"),UserEducation.class);
+        String userDetailId = (String)map.get("userDetailId");
         return userDetailService.saveOrUpdateUserEducation(list,userDetailId);
     }
 
     /**
      * 新增或更新职场履历
-     * @param list
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge=3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/fillinuserworkplace")
-    public @ResponseBody XinfuResult saveOrUpdateUserWorkPlace(List list,String userDetailId){
+    public @ResponseBody XinfuResult saveOrUpdateUserWorkPlace(@RequestBody Map map){
+        List list = JsonUtils.jsonToList((String)map.get("list"),UserWorkPlace.class);
+        String userDetailId = (String)map.get("userDetailId");
         return userDetailService.saveOrUpdateUserWorkPlace(list,userDetailId);
     }
 

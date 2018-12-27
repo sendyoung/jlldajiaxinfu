@@ -5,6 +5,8 @@ import jll.model.message.OrgReceiveMessage;
 import jll.model.message.OrgSendMessage;
 import jll.utils.XinfuResult;
 
+import java.util.List;
+
 public interface MessageService {
     //查看发件箱列表
     public PageView findSendMessageList(String userId,String messageType, int currentPage, int rows);
@@ -34,4 +36,7 @@ public interface MessageService {
      * 会内通知是组织给成员企业群发消息
      */
     public XinfuResult orgToAllMember(String userId, String sendAuthId, String messagetitle,String messagecontent,String messagetype);
+
+    //查询组织下所有成员的名称和ID
+    public List findOrgEntMember(String auth_org_id);
 }

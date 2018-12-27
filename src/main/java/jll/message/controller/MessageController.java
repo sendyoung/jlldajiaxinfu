@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -134,4 +135,15 @@ public class MessageController {
         String messagetype = (String)map.get("messagetype");
         return messageService.orgToAllMember(userId,sendAuthId,messagetitle,messagecontent,messagetype);
     }
+
+    /**
+     * 查询组织下所有成员的企业名称和id
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = {"/orgEntMember"})
+    public @ResponseBody List findOrgEntMember(@RequestParam String authOrgId){
+        return messageService.findOrgEntMember(authOrgId);
+    }
+
 }

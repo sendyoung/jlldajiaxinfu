@@ -15,10 +15,11 @@ import java.util.Date;
 public class UserDetail extends Base_Model {
 
     private String user_detail_id;//主键
-
+    private String sex;//性别0女1男
     private String  corresponding_address;//通讯地址
     private String  emergency_contact;//紧急联系人
     private String home_address;//家庭住址
+    private String contact_email;//联系邮箱
     private String emergency_contact_tel;//紧急联系人电话
     private String registered_residence_address;//户口地址
     private String marriage;//婚姻
@@ -43,6 +44,14 @@ public class UserDetail extends Base_Model {
         this.user_detail_id = user_detail_id;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public String getCorresponding_address() {
         return corresponding_address;
     }
@@ -65,6 +74,14 @@ public class UserDetail extends Base_Model {
 
     public void setHome_address(String home_address) {
         this.home_address = home_address;
+    }
+
+    public String getContact_email() {
+        return contact_email;
+    }
+
+    public void setContact_email(String contact_email) {
+        this.contact_email = contact_email;
     }
 
     public String getEmergency_contact_tel() {
