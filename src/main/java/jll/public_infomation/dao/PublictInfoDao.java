@@ -13,12 +13,12 @@ public class PublictInfoDao extends SimpleHibernateTemplate<Object> {
      */
     public Page findNewPublicInfomation(String authOrgId, String period){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT red_black_list_id id,list_name title,type,create_time FROM eva_red_black_list WHERE status = '1'  AND public_status is null AND auth_org_id = '" + authOrgId + "'");
+        sql.append("SELECT red_black_list_id id,list_name title,type,create_time FROM eva_red_black_list WHERE status = '1'  AND public_status is null AND auth_org_id = '" + authOrgId + "'  AND isDelete = '0' ");
         if(!"".equals(period) && period !=null){
             sql.append(" AND period = '" + period + "'");
         }
         sql.append("            UNION ALL                  ");
-        sql.append(" SELECT evaluate_list_id,title,3 ,create_time FROM eva_evaluate_list WHERE status = '1' AND public_status is null  AND auth_org_id = '" + authOrgId + "' ");
+        sql.append(" SELECT evaluate_list_id,title,3 ,create_time FROM eva_evaluate_list WHERE status = '1' AND public_status is null  AND auth_org_id = '" + authOrgId + "' AND isDelete = '0' ");
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
     }
 
@@ -28,7 +28,7 @@ public class PublictInfoDao extends SimpleHibernateTemplate<Object> {
     public Page findNewEvaluationList(String evaluateListId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT base.enterprise_name,result.level grade,(@rownum \\:= @rownum+1) AS sort " +
-                " FROM eva_evaluate_list list,eva_evaluate_list_details details,eva_apply_evaluate apply,eva_score_result result, auth_enterprise_base base " +
+                " FROM (SELECT @rownum\\:=0) r, eva_evaluate_list list,eva_evaluate_list_details details,eva_apply_evaluate apply,eva_score_result result, auth_enterprise_base base " +
                 "WHERE list.evaluate_list_id = details.evaluate_list_id AND details.apply_evaluate_id = apply.apply_evaluate_id " +
                 " AND apply.apply_evaluate_id = result.apply_evaluate_id AND apply.auth_enterprise_id = base.auth_enterprise_id " +
                 " AND list.evaluate_list_id = '"+ evaluateListId + "' ORDER BY result.score DESC");
@@ -41,7 +41,7 @@ public class PublictInfoDao extends SimpleHibernateTemplate<Object> {
     public Page findNewRedBlackList(String redblackListId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT base.enterprise_name,result.level grade,(@rownum \\:= @rownum+1) AS sort " +
-                " FROM eva_red_black_list list,eva_red_black_list_details details,eva_apply_evaluate apply,eva_score_result result, auth_enterprise_base base " +
+                " FROM (SELECT @rownum\\:=0) r, eva_red_black_list list,eva_red_black_list_details details,eva_apply_evaluate apply,eva_score_result result, auth_enterprise_base base " +
                 " WHERE list.red_black_list_id = details.red_black_list_id AND details.apply_evaluate_id = apply.apply_evaluate_id " +
                 " AND apply.apply_evaluate_id = result.apply_evaluate_id AND apply.auth_enterprise_id = base.auth_enterprise_id " +
                 " AND list.red_black_list_id = '" + redblackListId + "' ORDER BY result.score DESC");
@@ -53,11 +53,11 @@ public class PublictInfoDao extends SimpleHibernateTemplate<Object> {
      */
     public Page findHistoryPublictyList(String userId){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT oip.publicty_id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,oip.evaluate_list_id listId From org_infomation_publicty oip,eva_evaluate_list list WHERE oip.evaluate_list_id = list.evaluate_list_id AND oip.user_id = '" + userId + "'  ");
+        sql.append("SELECT oip.publicty_id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,oip.evaluate_list_id listId From org_infomation_publicty oip,eva_evaluate_list list WHERE oip.evaluate_list_id = list.evaluate_list_id AND oip.user_id = '" + userId + "'  AND oip.isDelete = '0' ");
         sql.append("   UNION ALL  ");
-        sql.append("   SELECT oip.publicty_id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,oip.red_black_list_id listId From org_infomation_publicty oip,eva_red_black_list list WHERE oip.red_black_list_id = list.red_black_list_id AND oip.user_id = '" + userId + "'  ");
+        sql.append("   SELECT oip.publicty_id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,oip.red_black_list_id listId From org_infomation_publicty oip,eva_red_black_list list WHERE oip.red_black_list_id = list.red_black_list_id AND oip.user_id = '" + userId + "'  AND oip.isDelete = '0' ");
         sql.append(" UNION ALL ");
-        sql.append("  SELECT oip.publicty_id id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,null From org_infomation_publicty oip WHERE oip.evaluate_list_id = '' AND oip.red_black_list_id='' AND oip.user_id = '" + userId + "'");
+        sql.append("  SELECT oip.publicty_id id,oip.create_time time,oip.title,oip.publicty_type type,oip.public_status,null From org_infomation_publicty oip WHERE oip.evaluate_list_id = '' AND oip.red_black_list_id='' AND oip.user_id = '" + userId + "'  AND oip.isDelete = '0'");
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
     }
 
@@ -67,7 +67,7 @@ public class PublictInfoDao extends SimpleHibernateTemplate<Object> {
     public Page findDetailsEvaluateList(String publictyId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT oip.publicty_id,base.enterprise_name,result.level grade,(@rownum \\:= @rownum+1) AS sort " +
-                " FROM org_infomation_publicty oip,eva_evaluate_list list,eva_evaluate_list_details details,eva_apply_evaluate apply, " +
+                " FROM (SELECT @rownum\\:=0) r, org_infomation_publicty oip,eva_evaluate_list list,eva_evaluate_list_details details,eva_apply_evaluate apply, " +
                 "eva_score_result result, auth_enterprise_base base " +
                 " WHERE oip.evaluate_list_id = list.evaluate_list_id AND list.evaluate_list_id = details.evaluate_list_id AND " +
                 " details.apply_evaluate_id = apply.apply_evaluate_id AND apply.apply_evaluate_id = result.apply_evaluate_id AND " +

@@ -54,6 +54,7 @@ public class SendMessageDao extends SimpleHibernateTemplate<OrgSendMessage> {
      * 在发件箱中插入数据
      */
     public void addSendMessage(OrgSendMessage sendMessage){
+        System.out.println("发件箱测试.................................");
         this.getSession().save(sendMessage);
     }
 }

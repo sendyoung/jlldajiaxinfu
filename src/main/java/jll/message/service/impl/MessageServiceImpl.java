@@ -16,13 +16,15 @@ import jll.utils.XinfuResult;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("messageService")
+@Transactional
 public class MessageServiceImpl implements MessageService {
 
     @Autowired

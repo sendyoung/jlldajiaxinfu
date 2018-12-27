@@ -8,8 +8,10 @@ import jll.utils.HibernatePageUtil;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@Service("historyBrowseService")
+@Transactional
 public class HistoryBrowseServiceImpl implements HistoryBrowseService {
 
     @Autowired

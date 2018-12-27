@@ -21,8 +21,8 @@ public class PublicInfomationDao extends SimpleHibernateTemplate<InfomationPubli
     public void addInfomationPublicty(InfomationPublicty infomationPublicty){
 //        this.getSession().save(infomationPublicty);
         StringBuffer sql = new StringBuffer();
-        sql.append(" INSERT INTO org_infomation_publicty(publicty_id,user_id,title,introduction,publicty_type,start_time,end_time,upload_data,evaluate_list_id,red_black_list_id,create_time,public_status) ");
-        sql.append(" VALUES('" + UUID.randomUUID().toString().replace("-","") + "','" + infomationPublicty.getUser_id() + "','" + infomationPublicty.getTitle() + "','" + infomationPublicty.getIntroduction() + "','" + infomationPublicty.getPublicty_type() + "','" + infomationPublicty.getStart_time() + "','" + infomationPublicty.getEnd_time() + "','" + infomationPublicty.getUpload_data() + "','" + infomationPublicty.getEvaluate_list_id() + "','" + infomationPublicty.getRed_black_list_id() + "',now(),'" + infomationPublicty.getPublic_status() + "')");
+        sql.append(" INSERT INTO org_infomation_publicty(publicty_id,user_id,title,introduction,publicty_type,start_time,end_time,upload_data,evaluate_list_id,red_black_list_id,create_time,public_status,isDelete) ");
+        sql.append(" VALUES('" + UUID.randomUUID().toString().replace("-","") + "','" + infomationPublicty.getUser_id() + "','" + infomationPublicty.getTitle() + "','" + infomationPublicty.getIntroduction() + "','" + infomationPublicty.getPublicty_type() + "','" + infomationPublicty.getStart_time() + "','" + infomationPublicty.getEnd_time() + "','" + infomationPublicty.getUpload_data() + "','" + infomationPublicty.getEvaluate_list_id() + "','" + infomationPublicty.getRed_black_list_id() + "',now(),'" + infomationPublicty.getPublic_status() + "','0')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.executeUpdate();
     }

@@ -47,6 +47,7 @@ public class AccountAuthenticationServiceImpl implements AccountAuthenticationSe
     @Override
     public XinfuResult saveOrUpdateAuthEnterpriseBase(AuthEnterpriseBase authEnterpriseBase,String userId) {
         try {
+            authEnterpriseBase.setIsDelete("0");
             authEnterpriseBaseDao.saveOrUpdateAuthEnterpriseBase(authEnterpriseBase);
             //将新增后得到的主键存入用户表中
             User user = new User();
@@ -78,6 +79,7 @@ public class AccountAuthenticationServiceImpl implements AccountAuthenticationSe
     @Override
     public XinfuResult saveOrUpdateAuthOrgBase(AuthOrgBase authOrgBase,String userId) {
         try {
+            authOrgBase.setIsDelete("0");
             authOrgBaseDao.saveOrUpdateAuthOrgBase(authOrgBase);
             //将新增后得到的主键存入用户表中
             User user = new User();

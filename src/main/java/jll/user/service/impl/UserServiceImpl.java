@@ -194,4 +194,17 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    /**
+     * 根据用户id查询认证ID
+     */
+    @Override
+    public String findAuthIdByUserId(String userId) {
+        List list = userdao.findAuthIdByUserId(userId);
+        if(list!=null&&list.size()>0){
+            User user = (User)MapTrunPojo.map2Object((Map)list.get(0),User.class);
+            return user.getAuthentication_id();
+        }
+        return null;
+    }
 }

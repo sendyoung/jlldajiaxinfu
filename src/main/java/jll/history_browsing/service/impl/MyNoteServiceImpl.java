@@ -6,10 +6,12 @@ import jll.model.history_browsing.MyNotes;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-@Service
+@Service("myNoteService")
+@Transactional
 public class MyNoteServiceImpl implements MyNoteService {
 
     @Autowired
