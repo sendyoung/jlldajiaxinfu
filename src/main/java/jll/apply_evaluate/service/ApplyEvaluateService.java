@@ -52,5 +52,5 @@ public interface ApplyEvaluateService {
     /**
      *  组织企业建立关系
      * */
-    public void authOrgIdApplyEvaluateForAppeal(String authEnterpriseId,String authOrgId,String status);
+    public void authOrgIdApplyEvaluateForApply(String authEnterpriseId,String authOrgId,String status);
 }

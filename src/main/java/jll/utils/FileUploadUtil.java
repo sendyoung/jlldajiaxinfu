@@ -1,13 +1,9 @@
-package jll.data_list.utils;
+package jll.utils;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 图片上传

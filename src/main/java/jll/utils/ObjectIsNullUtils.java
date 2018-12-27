@@ -1,4 +1,4 @@
-package jll.data_list.utils;
+package jll.utils;
 
 import java.lang.reflect.Field;
 

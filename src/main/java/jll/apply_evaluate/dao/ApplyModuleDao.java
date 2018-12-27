@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * 添加申请模块
      * */
     public void saveApplyModule(ApplyModule applyModule){
+        applyModule.setIsDelete("0");
+        applyModule.setCreate_time(new Date());
         this.getSession().save(applyModule);
     }
     /**

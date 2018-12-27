@@ -9,10 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
@@ -25,6 +22,8 @@ public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
         if(scoreResult.getScore_result_id()!=null&&!scoreResult.getScore_result_id().equals("")){
             this.getSession().saveOrUpdate(scoreResult);
         }else{
+            scoreResult.setCreate_time(new Date());
+            scoreResult.setIsDelete("0");
             this.getSession().save(scoreResult);
         }
     }

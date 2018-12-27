@@ -1,13 +1,13 @@
 package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
-import jll.model.apply_evaluate.RedBlackList;
 import jll.model.apply_evaluate.RedBlackListDetails;
 import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +21,8 @@ public class RedBlackListDetailsDao extends SimpleHibernateTemplate<RedBlackList
         if(redBlackListDetails.getRed_black_list_details_id()!=null&&!redBlackListDetails.getRed_black_list_details_id().equals("")){
             this.getSession().saveOrUpdate(redBlackListDetails);
         }else{
+            redBlackListDetails.setIsDelete("0");
+            redBlackListDetails.setCreate_time(new Date());
             this.getSession().save(redBlackListDetails);
         }
     }

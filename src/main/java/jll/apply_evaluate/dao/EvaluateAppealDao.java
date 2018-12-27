@@ -9,10 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
@@ -25,6 +22,8 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
         if(evaluateAppeal.getEvaluate_appeal_id()!=null&&!evaluateAppeal.getEvaluate_appeal_id().equals("")){
             this.getSession().saveOrUpdate(evaluateAppeal);
         }else{
+            evaluateAppeal.setIsDelete("0");
+            evaluateAppeal.setCreate_time(new Date());
             this.getSession().save(evaluateAppeal);
         }
     }

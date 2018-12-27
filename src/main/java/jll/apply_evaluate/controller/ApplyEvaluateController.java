@@ -144,8 +144,8 @@ public class ApplyEvaluateController {
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/AuthOrgIdApplyEvaluateForAppeal",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object authOrgIdApplyEvaluateForAppeal(@RequestParam String authEnterpriseId,@RequestParam String authOrgId,@RequestParam String status){
-        applyEvaluateService.authOrgIdApplyEvaluateForAppeal(authEnterpriseId,authOrgId,status);
+    public @ResponseBody Object authOrgIdApplyEvaluateForApply(@RequestParam String authEnterpriseId,@RequestParam String authOrgId,@RequestParam String status){
+        applyEvaluateService.authOrgIdApplyEvaluateForApply(authEnterpriseId,authOrgId,status);
         return "success";
     }
 

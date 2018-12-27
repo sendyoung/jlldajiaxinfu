@@ -9,10 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
@@ -25,6 +22,8 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         if(applyEvaluate.getApply_evaluate_id()!=null&&!applyEvaluate.getApply_evaluate_id().equals("")){
             this.getSession().saveOrUpdate(applyEvaluate);
         }else{
+            applyEvaluate.setIsDelete("0");
+            applyEvaluate.setCreate_time(new Date());
             this.getSession().save(applyEvaluate);
         }
     }
@@ -38,7 +37,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
         sql.append("select eae.apply_evaluate_id,eae.apply_status,aob.organization_name,aob.org_tel,aob.org_address,aob.org_email,aob.org_website,aob.org_introduction,aob.auth_org_id,aob.org_logo " +
                 "from eva_apply_evaluate eae left join auth_org_base aob on eae.auth_org_id=aob.auth_org_id " +
-                "where 1=1 and (eae.apply_status=2 or eae.apply_status=3) and eae.auth_enterprise_id='"+entId+
+                "where 1=1 and eae.apply_status in ('0','1','3','2','4') and eae.auth_enterprise_id='"+entId+
                 "' order by eae.apply_status asc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
@@ -80,7 +79,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         if(authEnterpriseId!=null&&!authEnterpriseId.equals("")){
             sql.append(" AND eae.auth_enterprise_id ='"+authEnterpriseId+"' ");
         }
-        sql.append(" AND eae.apply_status IN ('2','3') " +
+        sql.append(" AND eae.apply_status IN ('0','1','2','3','4') " +
                 ") AS t2 ON t1.auth_org_id = t2.auth_org_id " +
                 "order by t2.apply_status desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -247,7 +246,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 and appeal_status not in ('1','2','3','4')");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 and appeal_status is not null and appeal_status not in('1','2','4','3') ");
         if(date!=null&&!date.equals("")){
             sql.append(" and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
@@ -300,7 +299,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public ApplyEvaluate queryApplyEvaluate(String authEnterpriseId,String authOrgId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_apply_evaluate where 1=1 and auth_enterprise_id='"+authEnterpriseId+"' and auth_org_id='="+authOrgId+"' ");
+        sql.append("select * from eva_apply_evaluate where 1=1 and auth_enterprise_id='"+authEnterpriseId+"' and auth_org_id='"+authOrgId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();

@@ -2,8 +2,8 @@ package jll.apply_evaluate.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import jll.apply_evaluate.service.EvaluateAppealService;
-import jll.data_list.utils.DateUtils;
-import jll.data_list.utils.FileUploadUtil;
+import jll.utils.DateUtils;
+import jll.utils.FileUploadUtil;
 import jll.model.apply_evaluate.EvaluateAppeal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -94,6 +94,7 @@ public class EvaluateAppealController {
      * 组织修改异议管理详情
      * authOrgId组织ID
      * handler处理人
+     * evaluateAppealId申请ID
      * handleMaterial处理材料
      * objectionTitle异议标题
      * handleContent异议批语
@@ -108,6 +109,7 @@ public class EvaluateAppealController {
         ea.setHandle_material(handleMaterial);
         ea.setHandle_content(handleContent);
         ea.setObjection_title(objectionTitle);
+        ea.setUpdate_time(new Date());
         //修改申诉信息
         evaluateAppealService.editEvaluateAppealForAuthOrgId(authOrgId,ea,appealStatus);
         return "success";

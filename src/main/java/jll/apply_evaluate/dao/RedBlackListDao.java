@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,8 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
         if(redBlackList.getRed_black_list_id()!=null&&!redBlackList.getRed_black_list_id().equals("")){
             this.getSession().saveOrUpdate(redBlackList);
         }else{
+            redBlackList.setIsDelete("0");
+            redBlackList.setCreate_time(new Date());
             this.getSession().save(redBlackList);
         }
         return redBlackList.getRed_black_list_id();
@@ -57,7 +60,7 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
      * */
     public List queryRedBlackListForRedList(String authOrgId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name,1 count from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
+        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
                 " on eae.auth_enterprise_id=aeb.auth_enterprise_id " +
                 " left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id" +
                 " where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status=4 and esr.level='AAA' ");

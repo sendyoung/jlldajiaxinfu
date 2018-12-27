@@ -30,7 +30,18 @@ public class ScoreResultServiceImpl implements ScoreResultService {
     @Override
     public void editScoreResult(String authOrgId,String applyEvaluateId, Float score) {
         //查询评分结果是否存在
-        ScoreResult sr=scoreResultDao.queryScoreResultByApplyEvaluateId(applyEvaluateId);
+        ScoreResult sr=new ScoreResult();
+        ScoreResult scoreResult=scoreResultDao.queryScoreResultByApplyEvaluateId(applyEvaluateId);
+        if(scoreResult!=null){
+            sr.setLevel(scoreResult.getLevel());
+            sr.setApply_evaluate_id(scoreResult.getApply_evaluate_id());
+            sr.setScore(scoreResult.getScore());
+            sr.setScore_result_id(scoreResult.getScore_result_id());
+            sr.setComment(scoreResult.getComment());
+            sr.setCreate_time(scoreResult.getCreate_time());
+            sr.setIsDelete(scoreResult.getIsDelete());
+            sr.setUpdate_time(scoreResult.getUpdate_time());
+        }
         sr.setScore(score);
         sr.setApply_evaluate_id(applyEvaluateId);
         //计算评分等级

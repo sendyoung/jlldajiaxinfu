@@ -98,6 +98,7 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
         //添加申请模块
         for(String str:module){
             ApplyModule am=new ApplyModule();
+            am.setCreate_time(new Date());
             am.setApply_permission_id(str);
             am.setApply_evaluate_id(applyEvaluateId);
             applyModuleDao.saveApplyModule(am);
@@ -195,15 +196,18 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
     }
 
     @Override
-    public void authOrgIdApplyEvaluateForAppeal(String authEnterpriseId, String authOrgId, String status) {
+    public void authOrgIdApplyEvaluateForApply(String authEnterpriseId, String authOrgId, String status) {
         ApplyEvaluate ae=applyEvaluateDao.queryApplyEvaluate(authEnterpriseId,authOrgId);
         if(ae==null){
-            ae.setAuth_enterprise_id(authEnterpriseId);
-            ae.setAuth_org_id(authOrgId);
-            ae.setCreate_time(new Date());
+            ApplyEvaluate applyEvaluate=new ApplyEvaluate();
+            applyEvaluate.setAuth_enterprise_id(authEnterpriseId);
+            applyEvaluate.setAuth_org_id(authOrgId);
+            applyEvaluate.setCreate_time(new Date());
+            applyEvaluate.setApply_status(status);
+            applyEvaluateDao.saveApplyEvaluate(applyEvaluate);
+        }else{
+            ae.setApply_status(status);
+            applyEvaluateDao.saveApplyEvaluate(ae);
         }
-        ae.setAppeal_status(status);
-        applyEvaluateDao.saveApplyEvaluate(ae);
-
     }
 }

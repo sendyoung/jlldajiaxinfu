@@ -1,17 +1,17 @@
 package jll.model.apply_evaluate;
 
-import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 红黑名单榜单
  * */
 @Entity(name="eva_red_black_list")
-public class RedBlackList extends Base_Model {
+public class RedBlackList{
     private String red_black_list_id;//榜单ID
     private String type;//名单类型，1 红名单，2 黑名单
     private String list_name;//名单名称
@@ -20,6 +20,11 @@ public class RedBlackList extends Base_Model {
     private String period;//年度
     private String status;//是否作废 1 未作废 2 已作废
     private String public_status;//是否公示 1 已公示 2 未公示
+
+    private Date create_time;
+    private Date update_time;
+    private String isDelete;
+    private String comment;
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -86,5 +91,37 @@ public class RedBlackList extends Base_Model {
 
     public void setPublic_status(String public_status) {
         this.public_status = public_status;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class EvaluateListDao extends SimpleHibernateTemplate<EvaluateList> {
         if(evaluateList.getEvaluate_list_id()!=null&&!evaluateList.getEvaluate_list_id().equals("")){
             this.getSession().saveOrUpdate(evaluateList);
         }else{
+            evaluateList.setIsDelete("0");
+            evaluateList.setCreate_time(new Date());
             this.getSession().save(evaluateList);
         }
         return evaluateList.getEvaluate_list_id();
