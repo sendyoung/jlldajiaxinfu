@@ -12,6 +12,7 @@ import jll.utils.MapTrunPojo;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,8 @@ import java.util.Map;
 /**
  * 信息公示
  */
-@Service
+@Service("publicInfomationService")
+@Transactional
 public class PublicInfomationServiceImpl implements PublicInfomationService {
 
     @Autowired
@@ -79,21 +81,23 @@ public class PublicInfomationServiceImpl implements PublicInfomationService {
      * 用户id
      */
     @Override
-    public XinfuResult addPublictyInfomation(InfomationPublicty infomationPublicty, String public_status) {
+    public XinfuResult addPublictyInfomation(InfomationPublicty infomationPublicty) {
         try {
             if (infomationPublicty.getPublicty_type().equals("1") || infomationPublicty.getPublicty_type().equals("2")) {
                 //红黑榜单的
                 publicInfomationDao.addInfomationPublicty(infomationPublicty);
-                redBlackListDao.updateRedBlackListPublicStatus(infomationPublicty.getRed_black_list_id(), public_status);
+                redBlackListDao.updateRedBlackListPublicStatus(infomationPublicty.getRed_black_list_id(), infomationPublicty.getPublic_status());
+                return XinfuResult.build(200, "发布红黑榜公示成功");
             } else if (infomationPublicty.getPublicty_type().equals("3")) {
                 //信用评价榜单的
                 publicInfomationDao.addInfomationPublicty(infomationPublicty);
-                evaluateListDao.updateEvaluateListPublicStatus(infomationPublicty.getEvaluate_list_id(), public_status);
+                evaluateListDao.updateEvaluateListPublicStatus(infomationPublicty.getEvaluate_list_id(), infomationPublicty.getPublic_status());
+                return XinfuResult.build(200, "发布信用评价公示成功");
             } else {
                 //资料公开
                 publicInfomationDao.addInfomationPublicty(infomationPublicty);
+                return XinfuResult.build(200, "发布资料公开公示成功");
             }
-            return XinfuResult.build(200, "发布公示成功");
         } catch (Exception e) {
             e.printStackTrace();
             return XinfuResult.build(400, "发布公示失败");
@@ -133,7 +137,7 @@ public class PublicInfomationServiceImpl implements PublicInfomationService {
      */
     @Override
     public PageView findHistoryRedBlackList(String publictyId, int currentPage, int rows) {
-        return HibernatePageUtil.sqlPageUtil(publictInfoDao.findNewRedBlackList(publictyId),currentPage,rows);
+        return HibernatePageUtil.sqlPageUtil(publictInfoDao.findDetailsRedBlackList(publictyId),currentPage,rows);
     }
 
     /**
@@ -146,5 +150,43 @@ public class PublicInfomationServiceImpl implements PublicInfomationService {
        Map map =  (Map)list.get(0);
        InfomationPublicty infomationPublicty = (InfomationPublicty)MapTrunPojo.map2Object(map,InfomationPublicty.class);
        return infomationPublicty;
+    }
+
+    /**
+     * 修改公示内容
+     */
+    @Override
+    public XinfuResult updatePubictyInfomation(InfomationPublicty infomationPublicty){
+        try {
+            publicInfomationDao.updatepublictyInfomation(infomationPublicty);
+            return XinfuResult.build(200,"修改公示内容成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return XinfuResult.build(400,"修改公示内容失败");
+        }
+    }
+
+    /**
+     * 修改公示状态
+     */
+    @Override
+    public XinfuResult updatePublictyStatus(String publictyId,String listId, String type, String publicStatus) {
+        try {
+            if(type.equals("1") || type.equals("2")){
+                publicInfomationDao.updatePublicStatus(publictyId,publicStatus);
+                redBlackListDao.updateRedBlackListPublicStatus(listId,publicStatus);
+                return XinfuResult.build(200,"红黑榜公示状态修改成功");
+            }else if(type.equals("3")){
+                publicInfomationDao.updatePublicStatus(publictyId,publicStatus);
+                evaluateListDao.updateEvaluateListPublicStatus(listId,publicStatus);
+                return XinfuResult.build(200,"信用评价公示状态修改成功");
+            }else {
+                publicInfomationDao.updatePublicStatus(publictyId,publicStatus);
+                return XinfuResult.build(200,"资料公开公示状态修改成功");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return XinfuResult.build(400,"公示状态修改失败");
+        }
     }
 }

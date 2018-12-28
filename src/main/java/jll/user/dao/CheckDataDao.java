@@ -15,11 +15,11 @@ public class CheckDataDao extends SimpleHibernateTemplate<CheckDataCode> {
     /**
      * 插入一条随机码
      */
-    public String addCheckCode(String codeValue){
+    public String addCheckCode(String codeValue,String phonenum){
         StringBuffer sql = new StringBuffer();
         String codeId = UUID.randomUUID().toString().replace("-","");
-        sql.append("INSERT INTO system_check_code(code_id,code_value,create_time,status) ");
-        sql.append(" VALUES('" + codeId + "','" + codeValue + "', now(),'1')");
+        sql.append("INSERT INTO system_check_code(code_id,phonenum,code_value,create_time,status) ");
+        sql.append(" VALUES('" + codeId + "','" + phonenum + "','" +codeValue + "', now(),'1')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.executeUpdate();
         return codeId;
@@ -28,9 +28,12 @@ public class CheckDataDao extends SimpleHibernateTemplate<CheckDataCode> {
     /**
      * 根据ID查询校验码
      */
-    public List findCodeById(String codeId,String inputCode){
+    public List findCodeById(String codeId,String inputCode,String phonenum){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT code_value FROM system_check_code WHERE code_id = '" + codeId + "' AND code_value = '" + inputCode +"' AND status = '1'");
+        if(!"".equals(phonenum)&&phonenum!=null){
+            sql.append(" AND phonenum = '" + phonenum + "' ");
+        }
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

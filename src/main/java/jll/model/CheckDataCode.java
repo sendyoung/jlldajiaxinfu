@@ -11,6 +11,7 @@ import java.util.Date;
 public class CheckDataCode {
 
     private String code_id;//校验码id
+    private String phonenum;//手机号
     private String code_value;//校验码数据
     private Date create_time;//创建时间
     private String status;//状态  是否有效 0否 1是
@@ -25,6 +26,14 @@ public class CheckDataCode {
 
     public void setCode_id(String code_id) {
         this.code_id = code_id;
+    }
+
+    public String getPhonenum() {
+        return phonenum;
+    }
+
+    public void setPhonenum(String phonenum) {
+        this.phonenum = phonenum;
     }
 
     public String getCode_value() {

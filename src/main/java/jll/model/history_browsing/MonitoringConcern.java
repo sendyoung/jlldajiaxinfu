@@ -1,5 +1,6 @@
 package jll.model.history_browsing;
 
+import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -9,8 +10,8 @@ import javax.persistence.Id;
 /**
  * 监控关注表
  */
-@Entity(name="org_monitoring_concern_list")
-public class MonitoringConcern {
+@Entity(name="org_monitoring_concern")
+public class MonitoringConcern extends Base_Model {
 
     private String monitoring_concern_id;//主键ID
     private String user_id;//用户ID

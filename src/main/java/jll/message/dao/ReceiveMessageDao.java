@@ -9,6 +9,7 @@ import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class ReceiveMessageDao extends SimpleHibernateTemplate<OrgReceiveMessage> {
@@ -53,6 +54,10 @@ public class ReceiveMessageDao extends SimpleHibernateTemplate<OrgReceiveMessage
      * 在收件箱中插入数据
      */
     public void addReceiveMessage(OrgReceiveMessage receiveMessage){
+       // StringBuffer sql = new StringBuffer();
+       // sql.append("INSERT INTO org_receive_message(receive_message_id,message_content,message_status,message_title,message_type,receiver_id,receiver_name,send_type,sender_id,sender_name,create_time) ");
+        //sql.append("  VALUES('" + UUID.randomUUID().toString().replace("-","") + "','" + receiveMessage.getMessage_content() + "','" + receiveMessage.getMessage_status() + "','" + receiveMessage.getMessage_title() + "','" + receiveMessage.getMessage_type() + "','" + receiveMessage.getReceiver_id() + "','" + receiveMessage.getReceiver_name() + "','" + receiveMessage.getSend_type() + "','" + receiveMessage.getSender_id() + "','" + receiveMessage.getSender_name() + "',now()" );
+        System.out.println("收件箱测试........................");
         this.getSession().save(receiveMessage);
     }
 

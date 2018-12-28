@@ -113,7 +113,9 @@ public class UserDao extends SimpleHibernateTemplate<User> {
      */
     public List findUserByUserName(String username){
         StringBuffer sql = new StringBuffer();
-        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,authentication_type,org_user_role_middle from org_user_account user where 1=1 and isDelete='0'  ");
+        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,authentication_type,org_user_role_middle,ent_id from org_user_account user ");
+        sql.append(" LEFT JOIN auth_enterprise_base base ON user.authentication_id = base.auth_enterprise_id LEFT JOIN ent_basics ent ON base.social_credit_code = ent.unified_social_credit_code ");
+        sql.append( " where 1=1 and user.isDelete='0'  ");
         if (!"".equals(username) && null != username) {
             sql.append(" and user.username='" + username + "' ");
         }
@@ -175,9 +177,6 @@ public class UserDao extends SimpleHibernateTemplate<User> {
         if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
             sql.append("user_detail_id = '"+user.getUser_detail_id()+"',");
         }
-        if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
-            sql.append("user_detail_id = '"+user.getUser_detail_id()+"',");
-        }
         if (!"".equals(user.getAuthentication_id()) && null != user.getAuthentication_id()) {
             sql.append("authentication_id = '"+user.getAuthentication_id()+"',");
         }
@@ -209,6 +208,27 @@ public class UserDao extends SimpleHibernateTemplate<User> {
         sql.append(" 	1 = 1                                                                                      ");
         sql.append(" AND u .isDelete = '0'                                                                    ");
         sql.append(" AND u .authentication_id = '" + authId + "'                                                               ");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        return query.list();
+
+    }
+
+    /**
+     * 用户表findAuthIdByUserId
+     * 根据用户ID查认证ID
+     */
+    public List findAuthIdByUserId(String userId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT                                                                                      ");
+        sql.append(" 	u.authentication_id                                                                             ");
+        sql.append(" FROM                                                                                        ");
+        sql.append(" 	org_user_account u                                                                      ");
+        sql.append(" WHERE                                                                                       ");
+        sql.append(" 	1 = 1                                                                                      ");
+        sql.append(" AND u .isDelete = '0'                                                                    ");
+        sql.append(" AND u .user_id = '" + userId + "'                                                               ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

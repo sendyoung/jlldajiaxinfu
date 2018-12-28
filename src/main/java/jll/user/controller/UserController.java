@@ -119,4 +119,12 @@ public class UserController extends BaseClass {
         return userservice.test(user);
     }
 
+    //根据用户id 查询认证ID
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = {"/authidbyuser"})
+    public @ResponseBody
+    String findAuthIdByUserId(@RequestParam String userId) {
+        return userservice.findAuthIdByUserId(userId);
+    }
+
 }

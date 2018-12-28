@@ -15,10 +15,11 @@ import java.util.Date;
 public class UserDetail extends Base_Model {
 
     private String user_detail_id;//主键
-
+    private String sex;//性别0女1男
     private String  corresponding_address;//通讯地址
     private String  emergency_contact;//紧急联系人
     private String home_address;//家庭住址
+    private String contact_email;//联系邮箱
     private String emergency_contact_tel;//紧急联系人电话
     private String registered_residence_address;//户口地址
     private String marriage;//婚姻
@@ -28,7 +29,7 @@ public class UserDetail extends Base_Model {
     private int height;//身高
     private String blood_type;//血型
     private String nation;//民族
-    private Date birthday;//生日
+    private String birthday;//生日
     //private String realname;//真实姓名
     //private String idcard;//身份证号
 
@@ -41,6 +42,14 @@ public class UserDetail extends Base_Model {
 
     public void setUser_detail_id(String user_detail_id) {
         this.user_detail_id = user_detail_id;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getCorresponding_address() {
@@ -65,6 +74,14 @@ public class UserDetail extends Base_Model {
 
     public void setHome_address(String home_address) {
         this.home_address = home_address;
+    }
+
+    public String getContact_email() {
+        return contact_email;
+    }
+
+    public void setContact_email(String contact_email) {
+        this.contact_email = contact_email;
     }
 
     public String getEmergency_contact_tel() {
@@ -139,12 +156,33 @@ public class UserDetail extends Base_Model {
         this.nation = nation;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
+    @Override
+    public String toString() {
+        return "UserDetail{" +
+                "user_detail_id='" + user_detail_id + '\'' +
+                ", sex='" + sex + '\'' +
+                ", corresponding_address='" + corresponding_address + '\'' +
+                ", emergency_contact='" + emergency_contact + '\'' +
+                ", home_address='" + home_address + '\'' +
+                ", contact_email='" + contact_email + '\'' +
+                ", emergency_contact_tel='" + emergency_contact_tel + '\'' +
+                ", registered_residence_address='" + registered_residence_address + '\'' +
+                ", marriage='" + marriage + '\'' +
+                ", political_outlook='" + political_outlook + '\'' +
+                ", social_groups='" + social_groups + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", blood_type='" + blood_type + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthday=" + birthday +
+                '}';
+    }
 }

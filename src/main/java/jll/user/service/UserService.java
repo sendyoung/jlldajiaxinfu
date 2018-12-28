@@ -71,4 +71,8 @@ public interface UserService {
 	public List findUserByUserName(String username);
 
 	public XinfuResult test(User user);
+	/**
+	 * 根据用户ID查询认证id
+	 */
+	public String findAuthIdByUserId(String userId);
 }

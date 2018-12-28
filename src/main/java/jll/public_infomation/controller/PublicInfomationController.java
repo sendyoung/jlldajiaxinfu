@@ -32,7 +32,7 @@ public class PublicInfomationController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
-            RequestMethod.POST},value = {"/newpulictylist"})
+            RequestMethod.POST},value = {"/newpublictylist"})
     public @ResponseBody PageView findNewPublicInfomationList(String authOrgId, String period , @RequestParam(defaultValue = "1") int currentPage, @RequestParam(defaultValue = "10") int rows){
         return publicInfomationService.findNewPublicInfomationList(authOrgId,period,currentPage,rows);
     }
@@ -74,8 +74,8 @@ public class PublicInfomationController {
     public @ResponseBody
     XinfuResult addPublictyInfomation(@RequestBody Map map){
         InfomationPublicty infomationPublicty = JsonUtils.jsonToPojo((String)map.get("infomationPublicty"),InfomationPublicty.class);
-        String publicStatus = (String)map.get("publicStatus");
-        return publicInfomationService.addPublictyInfomation(infomationPublicty,publicStatus);
+        //String publicStatus = (String)map.get("publicStatus");
+        return publicInfomationService.addPublictyInfomation(infomationPublicty);
     }
 
     /**
@@ -118,4 +118,28 @@ public class PublicInfomationController {
         return publicInfomationService.findInfomationPublicty(publictyId);
     }
 
+    /**
+     * 修改公示内容
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = {"/updatepublictyinfomation"})
+    public @ResponseBody XinfuResult updatePublictyInfomation(@RequestBody Map map){
+        InfomationPublicty infomationPublicty = JsonUtils.jsonToPojo((String)map.get("infomationPublicty"),InfomationPublicty.class);
+        return publicInfomationService.updatePubictyInfomation(infomationPublicty);
+    }
+
+    /**
+     * 修改公示状态
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = {"/updatepublicstatus"})
+    public @ResponseBody XinfuResult updatePublicStatus(@RequestBody Map map){
+        String publictyId = (String)map.get("publictyId");
+        String listId = (String)map.get("listId");
+        String type = (String)map.get("type");
+        String publicStatus = (String)map.get("publicStatus");
+        return publicInfomationService.updatePublictyStatus(publictyId,listId,type,publicStatus);
+    }
 }

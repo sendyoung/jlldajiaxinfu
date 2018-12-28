@@ -4,6 +4,7 @@ import com.cn.zyzs.utils.utils.PageView;
 import jll.account_authentication.dao.AuthEnterpriseBaseDao;
 import jll.account_authentication.dao.AuthOrgBaseDao;
 import jll.apply_evaluate.dao.ApplyEvaluateDao;
+import jll.message.dao.OrgEntMemberDao;
 import jll.message.dao.ReceiveMessageDao;
 import jll.message.dao.SendMessageDao;
 import jll.message.service.MessageService;
@@ -16,13 +17,15 @@ import jll.utils.XinfuResult;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service("messageService")
+@Transactional
 public class MessageServiceImpl implements MessageService {
 
     @Autowired
@@ -37,11 +40,13 @@ public class MessageServiceImpl implements MessageService {
     private UserDao userDao;
     @Autowired
     private ApplyEvaluateDao applyEvaluateDao;
+    @Autowired
+    private OrgEntMemberDao orgEntMemberDao;
 
     //查看发件箱列表
     @Override
-    public PageView findSendMessageList(String userId, int currentPage, int rows) {
-        return HibernatePageUtil.sqlPageUtil(sendMessageDao.findSendMessageList(userId),currentPage,rows);
+    public PageView findSendMessageList(String userId,String messageType, int currentPage, int rows) {
+        return HibernatePageUtil.sqlPageUtil(sendMessageDao.findSendMessageList(userId,messageType),currentPage,rows);
     }
 
     //查看发件内容
@@ -240,6 +245,7 @@ public class MessageServiceImpl implements MessageService {
             sendMessage.setIsDelete("0");//默认未删除
             sendMessage.setSend_type("3");//1组织对企业 2 企业对组织 3群发
             sendMessage.setCreate_time(date);
+            sendMessageDao.addSendMessage(sendMessage);
 
             //收件箱内容添加(这里是共同的信息)
             receiveMessage.setSender_id(userId);
@@ -265,6 +271,11 @@ public class MessageServiceImpl implements MessageService {
         }
     }
 
+    //查询组织下所有的企业名称和id
+    @Override
+    public List findOrgEntMember(String auth_org_id) {
+        return orgEntMemberDao.findOrgEntMember(auth_org_id);
+    }
 
     //将sql查到list(只要一个字段的),获取转换到指定的字段内容
     public String sqlToListToMapToString(List list,String key){

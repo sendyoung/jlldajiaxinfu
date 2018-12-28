@@ -100,14 +100,21 @@ public class UserDetailServiceImpl implements UserDetailService {
     @Override
     public XinfuResult saveOrUpdateUserDetails(UserDetail userDetail,String userId){
         try {
-            userDetailDao.saveOrUpdateUserDetails(userDetail);
-            //将新增后得到的主键存入用户表中
-            User user = new User();
-            //将当前用户的id存入实体类,根据id将对应的用户详情信息主键存入用户表中
-            user.setUser_id(userId);
-            user.setUser_detail_id(userDetail.getUser_detail_id());
-            userDao.updateUserAccount(user);
-            return XinfuResult.build(200,"新增或更新详情信息成功");
+           // userDetail.setIsDelete("0");
+            if (userDetail.getUser_detail_id()!= null && !"".equals(userDetail.getUser_detail_id())) {
+                userDetailDao.updateUserDetails(userDetail);
+                return XinfuResult.build(200,"更新详情信息成功",userDetail.getUser_detail_id());
+            }else{
+                String userDetailId = userDetailDao.saveUserDetails(userDetail);
+                //将新增后得到的主键存入用户表中
+                User user = new User();
+                //将当前用户的id存入实体类,根据id将对应的用户详情信息主键存入用户表中
+                user.setUser_id(userId);
+                //String userDetailId = userDetail.getUser_detail_id();
+                user.setUser_detail_id(userDetailId);
+                userDao.updateUserAccount(user);
+                return XinfuResult.build(200,"新增详情信息成功",userDetailId);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return XinfuResult.build(400,"新增或更新详情信息失败");
@@ -120,6 +127,7 @@ public class UserDetailServiceImpl implements UserDetailService {
         try {
             if(list!=null&&list.size()>0){
                 for (UserFamily userFamily:list) {
+                    userFamily.setIsDelete("0");
                     userFamily.setUser_detail_id(userDetailId);
                     userFamilyDao.saveOrUpdateUserFamily(userFamily);
                 }
@@ -137,6 +145,7 @@ public class UserDetailServiceImpl implements UserDetailService {
         try {
             if(list!=null&&list.size()>0){
                 for (UserEducation userEducation : list){
+                    userEducation.setIsDelete("0");
                     userEducation.setUser_detail_id(userDetailId);
                     userEducationDao.saveOrUpdateUserEducation(userEducation);
                 }
@@ -154,6 +163,7 @@ public class UserDetailServiceImpl implements UserDetailService {
         try {
             if(list!=null&&list.size()>0){
                 for (UserWorkPlace userWorkPlace : list){
+                    userWorkPlace.setIsDelete("0");
                     userWorkPlace.setUser_detail_id(userDetailId);
                     userWorkPlaceDao.saveOrUpdateUserWorkPlace(userWorkPlace);
                 }
