@@ -41,7 +41,7 @@ public class UserDetailDao extends SimpleHibernateTemplate<UserDetail> {
     }
 
     /**
-     *  新增或更新用户个人信息
+     *  新增用户个人信息
      */
     public String saveUserDetails(UserDetail userDetail){
         //this.save(userDetail);

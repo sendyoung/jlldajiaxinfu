@@ -33,7 +33,12 @@ public class UserFamilyDao extends SimpleHibernateTemplate<UserFamily> {
      * 新增或更新用户家庭成员信息
      */
     public void saveOrUpdateUserFamily(UserFamily userFamily){
-        this.getSession().saveOrUpdate(userFamily);
+        if (userFamily.getUser_family_id()!=null && !"".equals(userFamily.getUser_family_id())){
+            this.getSession().update(userFamily);
+        }else{
+            this.getSession().save(userFamily);
+        }
     }
+
 
 }

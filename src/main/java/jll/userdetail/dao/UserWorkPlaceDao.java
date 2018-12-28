@@ -32,7 +32,11 @@ public class UserWorkPlaceDao extends SimpleHibernateTemplate<UserWorkPlace> {
      * 新增或更新用户职场履历
      */
     public void saveOrUpdateUserWorkPlace(UserWorkPlace userWorkplace){
-        this.getSession().saveOrUpdate(userWorkplace);
+        if(userWorkplace.getUser_workplace_id()!=null && !"".equals(userWorkplace.getUser_workplace_id())){
+            this.getSession().update(userWorkplace);
+        }else{
+            this.getSession().update(userWorkplace);
+        }
     }
 
 }

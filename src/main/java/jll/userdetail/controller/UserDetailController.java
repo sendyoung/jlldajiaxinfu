@@ -103,6 +103,8 @@ public class UserDetailController {
         System.out.println("+++++++++++++++++"+map.get("familyList") + "+++++++++++++++++++");
         List<UserFamily> list = JsonUtils.jsonToList((String)map.get("familyList"),UserFamily.class);
         String userDetailId = (String)map.get("userDetailId");
+        System.out.println("++++测试打印集合++++" + list.toString() + "+++++" + list.size() +"++长度++++");
+        System.out.println("+++++打印ID测试" + userDetailId + "+++++++++++++++");
         return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
     }
 
