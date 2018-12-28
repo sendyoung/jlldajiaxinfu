@@ -17,8 +17,8 @@ import java.util.Date;
 
 @Controller
 @Scope("prototype")
-@RequestMapping("/CreateReport")
-public class CreateReportController {
+@RequestMapping("/CreditReport")
+public class CreditReportController {
 
     @Autowired
     private BuildPDF buildPDF;
@@ -32,8 +32,8 @@ public class CreateReportController {
         //报告详细信息
         DetailsInformation dic=new DetailsInformation();
         //生成路径
-        //String path=request.getSession().getServletContext().getRealPath("/pdf/");
-        String path="F:/pdf/";
+        String path=request.getSession().getServletContext().getRealPath("/pdf/");
+        //String path="F:/pdf/";
         //生成文件名
         String filename = DateUtils.DateToStringForNumber(new Date())+name;
         // 生成的pdf文件路径
