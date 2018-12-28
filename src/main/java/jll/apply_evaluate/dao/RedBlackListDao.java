@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,8 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
         if(redBlackList.getRed_black_list_id()!=null&&!redBlackList.getRed_black_list_id().equals("")){
             this.getSession().saveOrUpdate(redBlackList);
         }else{
+            redBlackList.setIsDelete("0");
+            redBlackList.setCreate_time(new Date());
             this.getSession().save(redBlackList);
         }
         return redBlackList.getRed_black_list_id();
@@ -28,17 +31,20 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
     /**
      * 查询组织未作废的榜单（1未作废，2已作废）（1已公示，2未公示）年份
      * */
-    public RedBlackList queryRedBlackListForStatus(String authOrgId, String status, String publicStatus, String date){
+    public RedBlackList queryRedBlackListForStatus(String authOrgId, String status, String publicStatus, String date,String type){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_red_black_list where 1=1 and auth_org_id="+authOrgId+" ");
+        sql.append("select * from eva_red_black_list where 1=1 and auth_org_id='"+authOrgId+"' ");
         if(status!=null&&!status.equals("")){
-            sql.append("and status="+status+" ");
+            sql.append("and status='"+status+"' ");
         }
         if(publicStatus!=null&&!publicStatus.equals("")){
-            sql.append("and public_status="+publicStatus+" ");
+            sql.append("and public_status='"+publicStatus+"' ");
         }
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(create_time,'%Y')="+date+" ");
+            sql.append("and date_format(create_time,'%Y')='"+date+"' ");
+        }
+        if(type!=null&&!type.equals("")){
+            sql.append(" and type='"+type+"' ");
         }
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
@@ -54,10 +60,10 @@ public class RedBlackListDao extends SimpleHibernateTemplate<RedBlackList> {
      * */
     public List queryRedBlackListForRedList(String authOrgId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name,1 count from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
-                " on eae.auth_enterprise_id=aeb.auth_enterprise " +
+        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
+                " on eae.auth_enterprise_id=aeb.auth_enterprise_id " +
                 " left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id" +
-                " where 1=1 and eae.auth_org_id="+authOrgId+" and eae.audit_status=4 and esr.level='AAA' ");
+                " where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status=4 and esr.level='AAA' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

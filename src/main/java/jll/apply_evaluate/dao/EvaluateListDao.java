@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class EvaluateListDao extends SimpleHibernateTemplate<EvaluateList> {
         if(evaluateList.getEvaluate_list_id()!=null&&!evaluateList.getEvaluate_list_id().equals("")){
             this.getSession().saveOrUpdate(evaluateList);
         }else{
+            evaluateList.setIsDelete("0");
+            evaluateList.setCreate_time(new Date());
             this.getSession().save(evaluateList);
         }
         return evaluateList.getEvaluate_list_id();
@@ -29,15 +32,15 @@ public class EvaluateListDao extends SimpleHibernateTemplate<EvaluateList> {
      * */
     public EvaluateList queryEvaluateListForStatus(String authOrgId,String status,String publicStatus,String date){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from eva_evaluate_list where 1=1 and auth_org_id="+authOrgId+" ");
+        sql.append("select * from eva_evaluate_list where 1=1 and auth_org_id='"+authOrgId+"' ");
         if(status!=null&&!status.equals("")){
-            sql.append("and status="+status+" ");
+            sql.append("and status='"+status+"' ");
         }
         if(publicStatus!=null&&!publicStatus.equals("")){
-            sql.append("and public_status="+publicStatus+" ");
+            sql.append("and public_status='"+publicStatus+"' ");
         }
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(create_time,'%Y')="+date+" ");
+            sql.append("and date_format(create_time,'%Y')='"+date+"' ");
         }
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

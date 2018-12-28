@@ -6,6 +6,10 @@ public interface ApplyEvaluateService {
      * */
     public Object findApplyEvaluateForApplyStatus(String entId,Integer page,Integer rows);
     /**
+     * 根据所属行业查询可申请组织并查询企业关联
+     * */
+    public Object findApplyEvaluateByIndustry(String authEnterpriseId,String industry,Integer page,Integer rows);
+    /**
      * 根据日期查询企业历史申请信息
      * */
     public Object findApplyEvaluateByDate(String entId,Integer page,Integer rows,String date);
@@ -45,4 +49,8 @@ public interface ApplyEvaluateService {
      * 评分完成
      * */
     public void editApplyEvaluateForAuditStatusOrAppealStatus(String applyEvaluateId);
+    /**
+     *  组织企业建立关系
+     * */
+    public void authOrgIdApplyEvaluateForApply(String authEnterpriseId,String authOrgId,String status);
 }

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,6 +20,8 @@ public class ScoreRecordDao extends SimpleHibernateTemplate<ScoreRecord> {
         if(scoreRecord.getScore_record_id()!=null&&!scoreRecord.getScore_record_id().equals("")){
             this.getSession().saveOrUpdate(scoreRecord);
         }else{
+            scoreRecord.setIsDelete("0");
+            scoreRecord.setCreate_time(new Date());
             this.getSession().save(scoreRecord);
         }
     }

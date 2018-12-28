@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +51,9 @@ public class EvaluateListServiceImpl implements EvaluateListService {
         evaluateList.setAuth_org_id(authOrgId);
         evaluateList.setContent(content);
         evaluateList.setTitle(title);
+        evaluateList.setCreate_time(new Date());
         evaluateList.setStatus("1");
-        evaluateList.setPublic_status("2");
+        //evaluateList.setPublic_status("2");
         String evaluateListId=evaluateListDao.saveEvaluateList(evaluateList);
         //查询组织下的所有已完成请求
         List list=applyEvaluateDao.queryApplyEvaluateByAuthOrgId(authOrgId);

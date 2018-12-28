@@ -8,7 +8,7 @@
   <!--多个Context启动冲突的问题解决 -->
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>zyza_bi</param-value>
+    <param-value>zyza_bis</param-value>
   </context-param>
 
   <!--配置文件 路径 -->

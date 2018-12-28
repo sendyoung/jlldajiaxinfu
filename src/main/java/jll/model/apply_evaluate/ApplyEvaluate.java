@@ -1,17 +1,17 @@
 package jll.model.apply_evaluate;
 
-import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 申请评价
  * */
 @Entity(name = "eva_apply_evaluate")
-public class ApplyEvaluate extends Base_Model {
+public class ApplyEvaluate {
     private String apply_evaluate_id;//申请评价ID
     private String auth_enterprise_id;//企业ID
     private String auth_org_id;//组织ID
@@ -20,6 +20,11 @@ public class ApplyEvaluate extends Base_Model {
     private String appeal_status;//申诉状态 1、已申诉 2、已受理 3、已驳回 4、已完成
     private String title;//标题
     private String remarks;//备注批语
+
+    private Date create_time;
+    private Date update_time;
+    private String isDelete;
+    private String comment;
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -86,5 +91,37 @@ public class ApplyEvaluate extends Base_Model {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

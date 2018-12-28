@@ -6,6 +6,7 @@ import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.apply_evaluate.EvaluateListDetails;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,6 +18,8 @@ public class EvaluateListDetailsDao extends SimpleHibernateTemplate<EvaluateList
      * 生成评价榜单结果
      * */
     public void saveEvaluateListDetails(EvaluateListDetails evaluateListDetails){
+        evaluateListDetails.setIsDelete("0");
+        evaluateListDetails.setCreate_time(new Date());
         this.getSession().save(evaluateListDetails);
     }
     /**

@@ -15,14 +15,13 @@ public class Organization {
     // 主键id
     private String org_information_id;
     // 组织id
-    private String org_id;
+    private String auth_org_id;
     // 所属行业
-    private int industry;
+    private String industry;
     // 公益材料文件地址
     private String commonweal_material_imager;
     // 会员数量
-    private int number_members;
-    // private
+    private String number_members;
     // 职责
     private String duty;
     //数据创建时间
@@ -45,11 +44,11 @@ public class Organization {
         this.org_information_id = org_information_id;
     }
 
-    public int getIndustry() {
+    public String getIndustry() {
         return industry;
     }
 
-    public void setIndustry(int industry) {
+    public void setIndustry(String industry) {
         this.industry = industry;
     }
 
@@ -61,11 +60,11 @@ public class Organization {
         this.commonweal_material_imager = commonweal_material_imager;
     }
 
-    public int getNumber_members() {
+    public String getNumber_members() {
         return number_members;
     }
 
-    public void setNumber_members(int number_members) {
+    public void setNumber_members(String number_members) {
         this.number_members = number_members;
     }
 
@@ -109,11 +108,11 @@ public class Organization {
         this.comment = comment;
     }
 
-    public String getOrg_id() {
-        return org_id;
+    public String getAuth_org_id() {
+        return auth_org_id;
     }
 
-    public void setOrg_id(String org_id) {
-        this.org_id = org_id;
+    public void setAuth_org_id(String auth_org_id) {
+        this.auth_org_id = auth_org_id;
     }
 }

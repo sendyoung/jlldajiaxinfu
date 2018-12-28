@@ -36,7 +36,7 @@ public class RedBlackListServiceImpl implements RedBlackListService {
         cale = Calendar.getInstance();
         int year = cale.get(Calendar.YEAR);
         //根据组织Id年度查看未作废的榜单
-        RedBlackList rbl=redBlackListDao.queryRedBlackListForStatus(redBlackList.getAuth_org_id(),"1",null,year+"");
+        RedBlackList rbl=redBlackListDao.queryRedBlackListForStatus(redBlackList.getAuth_org_id(),"1",null,year+"",redBlackList.getType());
         if(rbl!=null){
             //存在榜单，需作废
             rbl.setStatus("2");
@@ -54,7 +54,7 @@ public class RedBlackListServiceImpl implements RedBlackListService {
                 RedBlackListDetails rbld=new RedBlackListDetails();
                 rbld.setCreate_time(new Date());
                 rbld.setRed_black_list_id(redBlackListId);
-                rbld.setApply_evaluate_id(rbe.getApply_evaulate_id());
+                rbld.setApply_evaluate_id(rbe.getApply_evaluate_id());
                 redBlackListDetailsDao.saveRedBlackListDetails(rbld);
             }
         }
@@ -68,7 +68,7 @@ public class RedBlackListServiceImpl implements RedBlackListService {
                 RedBlackListDetails rbld=new RedBlackListDetails();
                 rbld.setCreate_time(new Date());
                 rbld.setRed_black_list_id(redBlackListId);
-                rbld.setApply_evaluate_id(rbe.getApply_evaulate_id());
+                rbld.setApply_evaluate_id(rbe.getApply_evaluate_id());
                 redBlackListDetailsDao.saveRedBlackListDetails(rbld);
             }
         }

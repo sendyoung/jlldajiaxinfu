@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 海关注册信息
@@ -25,7 +26,7 @@ public class CustomsRegistrationInformation extends Base_Model {
     // 海关注销标志
     private String cancellation_mark;
     // 注册日期
-    private String registration_date;
+    private Date registration_date;
     // 行业种类
     private String industry_types;
     // 海关注册编码
@@ -37,7 +38,7 @@ public class CustomsRegistrationInformation extends Base_Model {
     // 年报情况
     private String the_annual_report_of;
     // 报关有效期
-    private String validity_of_declaration;
+    private Date validity_of_declaration;
     // 跨境贸易电子商务类型
     private String types_of_e_commerce;
     @Id
@@ -92,14 +93,6 @@ public class CustomsRegistrationInformation extends Base_Model {
         this.cancellation_mark = cancellation_mark;
     }
 
-    public String getRegistration_date() {
-        return registration_date;
-    }
-
-    public void setRegistration_date(String registration_date) {
-        this.registration_date = registration_date;
-    }
-
     public String getIndustry_types() {
         return industry_types;
     }
@@ -140,11 +133,19 @@ public class CustomsRegistrationInformation extends Base_Model {
         this.the_annual_report_of = the_annual_report_of;
     }
 
-    public String getValidity_of_declaration() {
+    public Date getRegistration_date() {
+        return registration_date;
+    }
+
+    public void setRegistration_date(Date registration_date) {
+        this.registration_date = registration_date;
+    }
+
+    public Date getValidity_of_declaration() {
         return validity_of_declaration;
     }
 
-    public void setValidity_of_declaration(String validity_of_declaration) {
+    public void setValidity_of_declaration(Date validity_of_declaration) {
         this.validity_of_declaration = validity_of_declaration;
     }
 

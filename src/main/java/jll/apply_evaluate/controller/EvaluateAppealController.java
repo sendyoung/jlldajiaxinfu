@@ -2,8 +2,8 @@ package jll.apply_evaluate.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import jll.apply_evaluate.service.EvaluateAppealService;
-import jll.data_list.utils.DateUtils;
-import jll.data_list.utils.FileUploadUtil;
+import jll.utils.DateUtils;
+import jll.utils.FileUploadUtil;
 import jll.model.apply_evaluate.EvaluateAppeal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -81,5 +81,39 @@ public class EvaluateAppealController {
     public @ResponseBody Object findEvaluateAppealByAuthOrgId(@RequestParam String authOrgId,@RequestParam(required = false)String stype,@RequestParam(required = false)String appealTime,@RequestParam(required = false)String appealStatus,@RequestParam(required = false)String name,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
         return evaluateAppealService.findEvaluateAppealByAuthOrgId(authOrgId,stype,appealTime,appealStatus,name,page,rows);
     }
+    /**
+     * 查看异议管理详情
+     * evaluateAppealId 申诉ID
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindEvaluateAppealDetailsForApplyEvaluateId",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findEvaluateAppealDetailsForApplyEvaluateId(@RequestParam String evaluateAppealId){
+        return evaluateAppealService.findEvaluateAppealDetailsForApplyEvaluateId(evaluateAppealId);
+    }
+    /**
+     * 组织修改异议管理详情
+     * authOrgId组织ID
+     * handler处理人
+     * evaluateAppealId申请ID
+     * handleMaterial处理材料
+     * objectionTitle异议标题
+     * handleContent异议批语
+     * appealStatus申诉状态
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/EditEvaluateAppealForAuthOrgId",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object editEvaluateAppealForAuthOrgId(@RequestParam String authOrgId,@RequestParam String evaluateAppealId,@RequestParam(required = false) String handler,@RequestParam(required = false) String handleMaterial,@RequestParam(required = false) String objectionTitle,@RequestParam(required = false) String handleContent,@RequestParam(required = false) String appealStatus){
+        //查询申诉信息
+        EvaluateAppeal ea=evaluateAppealService.findEvaluateAppeal(evaluateAppealId);
+        ea.setHandler(handler);
+        ea.setHandle_material(handleMaterial);
+        ea.setHandle_content(handleContent);
+        ea.setObjection_title(objectionTitle);
+        ea.setUpdate_time(new Date());
+        //修改申诉信息
+        evaluateAppealService.editEvaluateAppealForAuthOrgId(authOrgId,ea,appealStatus);
+        return "success";
+    }
+
 
 }

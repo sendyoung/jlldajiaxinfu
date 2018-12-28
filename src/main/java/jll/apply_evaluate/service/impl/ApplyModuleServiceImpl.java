@@ -60,7 +60,7 @@ public class ApplyModuleServiceImpl implements ApplyModuleService {
     @Override
     public void editApplyModuleForStatusToNot(String applyModuleId) {
         //模块审核不通过
-        applyModuleDao.updateApplyModuleForStatus(applyModuleId,"2","");
+        applyModuleDao.updateApplyModuleForStatus(applyModuleId,"2",null);
         ApplyModule am=applyModuleDao.queryApplyModuleDetailByApplyModuleId(applyModuleId);
         //申请的审核状态变为2(审核中)申请状态变为4(已完成)
         applyEvaluateDao.updateApplyEvaluateForAuditStatus(am.getApply_evaluate_id(),"4","2");
@@ -72,7 +72,7 @@ public class ApplyModuleServiceImpl implements ApplyModuleService {
         for (int i=0;i<list.size();i++){
             ApplyModule am=(ApplyModule)MapTrunPojo.map2Object((Map)list.get(i),ApplyModule.class);
             //模块审核通过
-            applyModuleDao.updateApplyModuleForStatus(am.getApply_module_id(),"1","");
+            applyModuleDao.updateApplyModuleForStatus(am.getApply_module_id(),"1",null);
         }
         //申请的审核状态变为3(待评价)申请状态变为4(已完成)
         applyEvaluateDao.updateApplyEvaluateForAuditStatus(applyEvaluateId,"4","3");

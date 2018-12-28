@@ -2,9 +2,9 @@ package jll.data_list.controller;
 
 import com.cn.zyzs.utils.base.BaseClass;
 import jll.data_list.service.*;
-import jll.data_list.utils.DateUtils;
-import jll.data_list.utils.FileUploadUtil;
-import jll.data_list.utils.POIUtil;
+import jll.utils.DateUtils;
+import jll.utils.FileUploadUtil;
+import jll.utils.POIUtil;
 import jll.model.data_list.ReportFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -102,8 +102,9 @@ public class DateListController extends BaseClass {
     @RequestMapping(value = "/UploadDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object uploadDateListFile(HttpServletRequest request,@RequestParam String type,@RequestParam String entId,@RequestParam(name="multfile") MultipartFile multfile) throws IOException {
         ReportFile rf=new ReportFile();
+        rf.setAudit_status("0");
         rf.setCreate_time(new Date());
-        rf.setEnt_id(entId);
+        rf.setAuth_enterprise_id(entId);
         rf.setFile_name(multfile.getOriginalFilename());
         rf.setFile_type(type);
         //上传文件路径
@@ -115,6 +116,7 @@ public class DateListController extends BaseClass {
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
         rf.setFile_url(path+filename);
         result=FileUploadUtil.imageUpload(multfile, path,filename);
+
         if(result.equals("success")){
             reportFileService.editReportFile(rf);
             return rf;

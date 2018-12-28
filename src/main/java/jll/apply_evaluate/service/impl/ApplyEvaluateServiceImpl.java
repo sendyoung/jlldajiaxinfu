@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,23 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
             PageContext.setOffSet(page);
             PageContext.setPageSize(rows);
             Page pages=applyEvaluateDao.queryApplyEvaluateForApplyStatus(entId);
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findApplyEvaluateByIndustry(String authEnterpriseId, String industry, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=applyEvaluateDao.queryApplyEvaluateByIndustry(authEnterpriseId,industry);
             PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
             pageView.setTotalpage(pages.getTotal());
             pageView.setRecords(pages.getItems());
@@ -80,6 +98,7 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
         //添加申请模块
         for(String str:module){
             ApplyModule am=new ApplyModule();
+            am.setCreate_time(new Date());
             am.setApply_permission_id(str);
             am.setApply_evaluate_id(applyEvaluateId);
             applyModuleDao.saveApplyModule(am);
@@ -173,6 +192,22 @@ public class ApplyEvaluateServiceImpl implements ApplyEvaluateService {
         //如果申诉状态不为空修改申诉状态
         if(ae.getAppeal_status()!=null&&!ae.getAppeal_status().equals("")){
             applyEvaluateDao.updateApplyEvaluateForAppealStatus(applyEvaluateId,"4");
+        }
+    }
+
+    @Override
+    public void authOrgIdApplyEvaluateForApply(String authEnterpriseId, String authOrgId, String status) {
+        ApplyEvaluate ae=applyEvaluateDao.queryApplyEvaluate(authEnterpriseId,authOrgId);
+        if(ae==null){
+            ApplyEvaluate applyEvaluate=new ApplyEvaluate();
+            applyEvaluate.setAuth_enterprise_id(authEnterpriseId);
+            applyEvaluate.setAuth_org_id(authOrgId);
+            applyEvaluate.setCreate_time(new Date());
+            applyEvaluate.setApply_status(status);
+            applyEvaluateDao.saveApplyEvaluate(applyEvaluate);
+        }else{
+            ae.setApply_status(status);
+            applyEvaluateDao.saveApplyEvaluate(ae);
         }
     }
 }

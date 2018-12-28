@@ -1,19 +1,14 @@
 package jll.data_list.service.Impl;
 
-import jll.data_list.dao.FinancialExpensesDao;
 import jll.data_list.dao.MainTechnicalEquipmentDao;
-import jll.data_list.service.FinancialExpensesService;
 import jll.data_list.service.MainTechnicalEquipmentService;
-import jll.data_list.utils.DateUtils;
-import jll.data_list.utils.ObjectIsNullUtils;
-import jll.model.data_list.FinancialExpenses;
+import jll.utils.DateUtils;
 import jll.model.data_list.MainTechnicalEquipment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("mainTechnicalEquipmentService")

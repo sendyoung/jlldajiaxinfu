@@ -9,14 +9,24 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 修改请求
+     * */
+    public void saveApplyEvaluate(ApplyEvaluate applyEvaluate){
+        if(applyEvaluate.getApply_evaluate_id()!=null&&!applyEvaluate.getApply_evaluate_id().equals("")){
+            this.getSession().saveOrUpdate(applyEvaluate);
+        }else{
+            applyEvaluate.setIsDelete("0");
+            applyEvaluate.setCreate_time(new Date());
+            this.getSession().save(applyEvaluate);
+        }
+    }
 
     /**
      * 查询企业已有关联关系的组织信息
@@ -25,10 +35,53 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,eae.apply_status,aob.organization_name,aob.org_tel,aob.org_address,aob.org_email,aob.org_website,aob.org_introduction,aob.auth_org_id " +
+        sql.append("select eae.apply_evaluate_id,eae.apply_status,aob.organization_name,aob.org_tel,aob.org_address,aob.org_email,aob.org_website,aob.org_introduction,aob.auth_org_id,aob.org_logo " +
                 "from eva_apply_evaluate eae left join auth_org_base aob on eae.auth_org_id=aob.auth_org_id " +
-                "where 1=1 and (eae.apply_status=2 or eae.apply_status=3) and eae.auth_enterprise_id='"+entId+
+                "where 1=1 and eae.apply_status in ('0','1','3','2','4') and eae.auth_enterprise_id='"+entId+
                 "' order by eae.apply_status asc");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
+    }
+    /**
+     * 根据所属行业查询可申请组织并查询企业关联
+     * */
+    public Page queryApplyEvaluateByIndustry(String authEnterpriseId,String industry){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append("SELECT " +
+                " t2.apply_status,t2.apply_evaluate_id,t1.* " +
+                "FROM " +
+                " ( " +
+                "  SELECT " +
+                "   aob.auth_org_id,aob.organization_name,aob.org_tel, " +
+                "  aob.org_address,aob.org_email,aob.org_website,aob.org_introduction,aob.org_logo " +
+                "  FROM " +
+                "   auth_org_base aob " +
+                "  LEFT JOIN org_organization oo ON aob.auth_org_id = oo.auth_org_id " +
+                "  WHERE " +
+                "   1=1 ");
+        if(industry!=null&&!industry.equals("")){
+            sql.append(" and oo.industry = '"+industry+"' ");
+        }
+        sql.append(" ) AS t1 " +
+                "LEFT JOIN ( " +
+                " SELECT " +
+                "  aob.auth_org_id,eae.apply_evaluate_id,eae.apply_status, eae.auth_enterprise_id " +
+                " FROM " +
+                "  auth_org_base aob " +
+                " LEFT JOIN org_organization oo ON aob.auth_org_id = oo.auth_org_id " +
+                " LEFT JOIN eva_apply_evaluate eae ON aob.auth_org_id = eae.auth_org_id " +
+                " WHERE " +
+                "  1=1 ");
+        if(industry!=null&&!industry.equals("")){
+            sql.append(" and oo.industry = '"+industry+"' ");
+        }
+        if(authEnterpriseId!=null&&!authEnterpriseId.equals("")){
+            sql.append(" AND eae.auth_enterprise_id ='"+authEnterpriseId+"' ");
+        }
+        sql.append(" AND eae.apply_status IN ('0','1','2','3','4') " +
+                ") AS t2 ON t1.auth_org_id = t2.auth_org_id " +
+                "order by t2.apply_status desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
     /**
@@ -193,12 +246,12 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 and appeal_status is not null and appeal_status not in('1','2','4','3') ");
         if(date!=null&&!date.equals("")){
-            sql.append("and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
+            sql.append(" and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }
         if(level!=null&&!level.equals("")){
-            sql.append("and esr.level='"+level+"' ");
+            sql.append(" and esr.level='"+level+"' ");
         }
         sql.append(" order by eae.create_time desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -231,7 +284,22 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
      * */
     public ApplyEvaluate queryApplyEvaluateByApplyEvaluateId(String applyEvaluateId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select * count from eva_apply_evaluate where 1=1 apply_evaluate_id='"+applyEvaluateId+"' ");
+        sql.append("select * from eva_apply_evaluate where 1=1 and apply_evaluate_id='"+applyEvaluateId+"' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List list=query.list();
+        if(list==null||list.size()==0){
+            return null;
+        }
+        ApplyEvaluate ae=(ApplyEvaluate)MapTrunPojo.map2Object((Map)list.get(0),ApplyEvaluate.class);
+        return ae;
+    }
+    /**
+     * 根据组织跟企业ID查询请求
+     * */
+    public ApplyEvaluate queryApplyEvaluate(String authEnterpriseId,String authOrgId){
+        StringBuffer sql = new StringBuffer();
+        sql.append("select * from eva_apply_evaluate where 1=1 and auth_enterprise_id='"+authEnterpriseId+"' and auth_org_id='"+authOrgId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List list=query.list();

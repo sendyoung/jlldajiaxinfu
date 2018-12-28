@@ -1,6 +1,5 @@
 package jll.model.apply_evaluate;
 
-import jll.model.Base_Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import java.util.Date;
  * 评价申诉
  * */
 @Entity(name="eva_evaluate_appeal")
-public class EvaluateAppeal extends Base_Model {
+public class EvaluateAppeal {
     private String evaluate_appeal_id;//评价申诉ID
     private String apply_evaluate_id;//申请评价ID
     private String stype;//申诉类型  1 资料有误 2 补全信息 3 恶意诋毁 4 其他
@@ -25,6 +24,12 @@ public class EvaluateAppeal extends Base_Model {
     private String handler;//处理人
     private String handle_material;//处理材料
     private String handle_content;//处理批语
+
+    private Date create_time;
+    private Date update_time;
+    private String isDelete;
+    private String comment;
+
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -123,5 +128,37 @@ public class EvaluateAppeal extends Base_Model {
 
     public void setHandle_content(String handle_content) {
         this.handle_content = handle_content;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

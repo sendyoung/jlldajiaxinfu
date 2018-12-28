@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * 添加申请模块
      * */
     public void saveApplyModule(ApplyModule applyModule){
+        applyModule.setIsDelete("0");
+        applyModule.setCreate_time(new Date());
         this.getSession().save(applyModule);
     }
     /**
@@ -47,7 +50,11 @@ public class ApplyModuleDao extends SimpleHibernateTemplate<ApplyModule> {
      * */
     public void updateApplyModuleForStatus(String applyModuleId,String status,String remarks){
         StringBuffer sql = new StringBuffer();
-        sql.append("update eva_apply_module set status='"+status+"',remarks='"+remarks+"' where apply_module_id='"+applyModuleId+"' ");
+        sql.append("update eva_apply_module set status='"+status+"' ");
+        if(remarks!=null){
+            sql.append(",remarks='"+remarks+"' ");
+        }
+        sql.append(" where apply_module_id='"+applyModuleId+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         query.executeUpdate();

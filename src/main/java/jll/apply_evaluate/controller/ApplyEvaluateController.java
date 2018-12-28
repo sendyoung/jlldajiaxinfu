@@ -32,6 +32,14 @@ public class ApplyEvaluateController {
        return applyEvaluateService.findApplyEvaluateForApplyStatus(entId,page,rows);
     }
     /**
+     * 根据所属行业查询可申请组织并查询企业关联
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindApplyEvaluateByIndustry",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findApplyEvaluateByIndustry(@RequestParam String authEnterpriseId,@RequestParam(required = false) String industry,@RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "10") Integer rows){
+        return applyEvaluateService.findApplyEvaluateByIndustry(authEnterpriseId,industry,page,rows);
+    }
+    /**
      * entId企业ID
      * page当前页数
      * rows每页条数
@@ -127,6 +135,18 @@ public class ApplyEvaluateController {
     @RequestMapping(value = "/FindApplyEvaluateByAuthEnterpriseIdForAppeal",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object findApplyEvaluateByAuthEnterpriseIdForAppeal(@RequestParam String authEnterpriseId,@RequestParam(required = false) String date,@RequestParam(required = false) String level,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
         return applyEvaluateService.findApplyEvaluateByAuthEnterpriseIdForAppeal(authEnterpriseId,date,level,page,rows);
+    }
+    /**
+     *  组织企业建立关系
+     *  authEnterpriseId企业Id
+     *  authOrgId组织ID
+     *  status通过（2）不通过（3）
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/AuthOrgIdApplyEvaluateForAppeal",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object authOrgIdApplyEvaluateForApply(@RequestParam String authEnterpriseId,@RequestParam String authOrgId,@RequestParam String status){
+        applyEvaluateService.authOrgIdApplyEvaluateForApply(authEnterpriseId,authOrgId,status);
+        return "success";
     }
 
 }

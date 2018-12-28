@@ -7,6 +7,8 @@ public interface ReportFileService {
      * 根据类型查询企业上传的资料
      * */
     public ReportFile findReportFileByType(String type,String entId);
+
+
     /**
      * 添加上传的资料
      * */
