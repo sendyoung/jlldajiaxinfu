@@ -275,6 +275,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT applyEvaluate.auth_enterprise_id FROM eva_apply_evaluate applyEvaluate WHERE 1=1 AND applyEvaluate.isDelete = '0'");
         sql.append(" AND applyEvaluate.auth_org_id = '" + authOrgId + "' ");
+        sql.append(" AND apply_status in('2','4')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();

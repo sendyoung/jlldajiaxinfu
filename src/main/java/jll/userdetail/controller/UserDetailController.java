@@ -88,7 +88,6 @@ public class UserDetailController {
     public @ResponseBody XinfuResult saveOrUpdateUserDetail(@RequestBody Map map){
         String userId = (String)map.get("userId");
         UserDetail userDetail = JsonUtils.jsonToPojo((String)map.get("userDetail"),UserDetail.class);
-        //System.out.println("++++++++++++++++++++++++++++++++++++" + userDetail + "++++++++++++++++++++++++++++++");
         return userDetailService.saveOrUpdateUserDetails(userDetail,userId);
     }
 
@@ -100,11 +99,8 @@ public class UserDetailController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/fillinuserfamily")
     public @ResponseBody XinfuResult saveOrUpdateUserFamily(@RequestBody Map map){
-        System.out.println("+++++++++++++++++"+map.get("familyList") + "+++++++++++++++++++");
         List<UserFamily> list = JsonUtils.jsonToList((String)map.get("familyList"),UserFamily.class);
         String userDetailId = (String)map.get("userDetailId");
-        System.out.println("++++测试打印集合++++" + list.toString() + "+++++" + list.size() +"++长度++++");
-        System.out.println("+++++打印ID测试" + userDetailId + "+++++++++++++++");
         return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
     }
 
