@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Scope("prototype")
-@RequestMapping("/AuthEnterpriseBase")
-public class AuthEnterpriseBaseController {
+@RequestMapping("/AuthEnterpriseBaseAudit")
+public class AuthEnterpriseBaseAuditController {
 
 
 
