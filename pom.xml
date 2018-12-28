@@ -45,11 +45,11 @@
       <version>1.5.2</version>
     </dependency>
 
-    <dependency>
+    <!--<dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk14</artifactId>
       <version>1.58</version>
-    </dependency>
+    </dependency>-->
 
 
     <!--邮件-->
