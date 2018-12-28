@@ -24,8 +24,8 @@ public class UserDetail extends Base_Model {
     private String marriage;//婚姻
     private String political_outlook;//政治面貌
     private String social_groups;//社会团体
-    private int weight;//体重
-    private int height;//身高
+    private String weight;//体重
+    private String height;//身高
     private String blood_type;//血型
     private String nation;//民族
     private String birthday;//生日
@@ -124,19 +124,19 @@ public class UserDetail extends Base_Model {
         this.social_groups = social_groups;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
