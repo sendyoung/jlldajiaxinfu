@@ -12,7 +12,7 @@ public class UserEducationDao extends SimpleHibernateTemplate<UserEducation> {
     /**
      * 回显教育经历
      */
-    public List findUserEducation(String userDetailId){
+    public List findUserEducation(String userId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT          ");
         sql.append(" usereducation.*              ");
@@ -21,7 +21,7 @@ public class UserEducationDao extends SimpleHibernateTemplate<UserEducation> {
         sql.append( " WHERE       ");
         sql.append( "  1 = 1                ");
         sql.append( " AND usereducation.isDelete = '0'            ");
-        sql.append( "AND usereducation.user_detail_id = '" + userDetailId + "'   ");
+        sql.append( "AND usereducation.user_id = '" + userId + "'   ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

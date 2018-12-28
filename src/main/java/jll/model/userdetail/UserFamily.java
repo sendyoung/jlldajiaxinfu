@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Entity(name="org_user_family_member")
 public class UserFamily extends Base_Model {
     private String user_family_id;//  主键
-    private String user_detail_id;//  用户详情表主键
+    private String user_id;//  用户主键
     private String company_name;//     工作单位
     private String family_tel;// 		家庭联系人电话
     private String family_relationship;// 家庭成员关系
@@ -30,12 +30,12 @@ public class UserFamily extends Base_Model {
         this.user_family_id = user_family_id;
     }
 
-    public String getUser_detail_id() {
-        return user_detail_id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUser_detail_id(String user_detail_id) {
-        this.user_detail_id = user_detail_id;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getCompany_name() {

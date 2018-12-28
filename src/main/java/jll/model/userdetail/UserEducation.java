@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity(name="org_user_education")
 public class UserEducation extends Base_Model {
     private String user_education_id;//主键
-    private String user_detail_id;//用户详情表主键
+    private String user_id;//用户主键
     private String languages;//语言种类
     private String languages_level;//语言水平
     private String computer_level;// 计算机水平
@@ -36,12 +36,12 @@ public class UserEducation extends Base_Model {
         this.user_education_id = user_education_id;
     }
 
-    public String getUser_detail_id() {
-        return user_detail_id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUser_detail_id(String user_detail_id) {
-        this.user_detail_id = user_detail_id;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getLanguages() {

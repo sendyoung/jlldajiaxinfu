@@ -38,8 +38,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //回显个人详情信息
     @Override
-    public UserDetail findPersonalInformationDetails(String userDetailId) {
-       List list = userDetailDao.findPersonalInformationDetails(userDetailId);
+    public UserDetail findPersonalInformationDetails(String userId) {
+       List list = userDetailDao.findPersonalInformationDetails(userId);
         if (list != null && list.size() > 0) {
             Map map = (Map) list.get(0);
             UserDetail userDetail = (UserDetail) MapTrunPojo.map2Object(map, UserDetail.class);
@@ -50,8 +50,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //回显家庭成员信息
     @Override
-    public List findUserFamilyDetails(String userDetailId) {
-       List list =  userFamilyDao.findUserFamilyDetails(userDetailId);
+    public List findUserFamilyDetails(String userId) {
+       List list =  userFamilyDao.findUserFamilyDetails(userId);
        if(list!=null && list.size()>0){
            List list2 = new ArrayList();
            for (Object obj:list){
@@ -66,8 +66,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //回显教育经历
     @Override
-    public List findUserEducation(String userDetailId) {
-        List list = userEducationDao.findUserEducation(userDetailId);
+    public List findUserEducation(String userId) {
+        List list = userEducationDao.findUserEducation(userId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
             for (Object obj:list){
@@ -82,8 +82,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //回显职场履历
     @Override
-    public List findUserWorkPlace(String userDetailId) {
-        List list = userWorkPlaceDao.findUserWorkPlace(userDetailId);
+    public List findUserWorkPlace(String userId) {
+        List list = userWorkPlaceDao.findUserWorkPlace(userId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
             for (Object obj:list){
@@ -98,7 +98,7 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //新增或更新个人详情信息
     @Override
-    public XinfuResult saveOrUpdateUserDetails(UserDetail userDetail,String userId){
+    public XinfuResult saveOrUpdateUserDetails(UserDetail userDetail){
         try {
            // userDetail.setIsDelete("0");
             if (userDetail.getUser_detail_id()!= null && !"".equals(userDetail.getUser_detail_id())) {
@@ -107,12 +107,12 @@ public class UserDetailServiceImpl implements UserDetailService {
             }else{
                 String userDetailId = userDetailDao.saveUserDetails(userDetail);
                 //将新增后得到的主键存入用户表中
-                User user = new User();
+                //User user = new User();
                 //将当前用户的id存入实体类,根据id将对应的用户详情信息主键存入用户表中
-                user.setUser_id(userId);
+                //user.setUser_id(userId);
                 //String userDetailId = userDetail.getUser_detail_id();
-                user.setUser_detail_id(userDetailId);
-                userDao.updateUserAccount(user);
+                //user.setUser_detail_id(userDetailId);
+                //userDao.updateUserAccount(user);
                 return XinfuResult.build(200,"新增详情信息成功",userDetailId);
             }
         } catch (Exception e) {
@@ -123,12 +123,12 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //新增或更新家庭成员信息
     @Override
-    public XinfuResult saveOrUpdateUserFamily(List<UserFamily> list,String userDetailId){
+    public XinfuResult saveOrUpdateUserFamily(List<UserFamily> list){
         try {
             if(list!=null&&list.size()>0){
                 for (UserFamily userFamily:list) {
                     userFamily.setIsDelete("0");
-                    userFamily.setUser_detail_id(userDetailId);
+                    //userFamily.setUser_detail_id(userDetailId);
                     userFamilyDao.saveOrUpdateUserFamily(userFamily);
                 }
                 return XinfuResult.build(200,"新增或更新家庭成员信息成功");
@@ -141,12 +141,12 @@ public class UserDetailServiceImpl implements UserDetailService {
     }
     //新增或更新教育经历
     @Override
-    public XinfuResult saveOrUpdateUserEducation(List<UserEducation> list,String userDetailId){
+    public XinfuResult saveOrUpdateUserEducation(List<UserEducation> list){
         try {
             if(list!=null&&list.size()>0){
                 for (UserEducation userEducation : list){
                     userEducation.setIsDelete("0");
-                    userEducation.setUser_detail_id(userDetailId);
+                    //userEducation.setUser_detail_id(userDetailId);
                     userEducationDao.saveOrUpdateUserEducation(userEducation);
                 }
                 return XinfuResult.build(200,"新增或更新教育经历成功");
@@ -159,12 +159,12 @@ public class UserDetailServiceImpl implements UserDetailService {
     }
     //新增或更新职场履历
     @Override
-    public XinfuResult saveOrUpdateUserWorkPlace(List<UserWorkPlace> list,String userDetailId){
+    public XinfuResult saveOrUpdateUserWorkPlace(List<UserWorkPlace> list){
         try {
             if(list!=null&&list.size()>0){
                 for (UserWorkPlace userWorkPlace : list){
                     userWorkPlace.setIsDelete("0");
-                    userWorkPlace.setUser_detail_id(userDetailId);
+                    //userWorkPlace.setUser_detail_id(userDetailId);
                     userWorkPlaceDao.saveOrUpdateUserWorkPlace(userWorkPlace);
                 }
                 return XinfuResult.build(200,"新增或更新职场履历成功");

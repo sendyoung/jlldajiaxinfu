@@ -113,7 +113,7 @@ public class UserDao extends SimpleHibernateTemplate<User> {
      */
     public List findUserByUserName(String username){
         StringBuffer sql = new StringBuffer();
-        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,user_detail_id,authentication_id,authentication_type,org_user_role_middle,ent_id from org_user_account user ");
+        sql.append(" select user_id,iphone,username,head_portrait_image,nickname,email,realname,province_id,city_id,area_id,personalSignature,idcard,authentication_id,authentication_type,org_user_role_middle,ent_id from org_user_account user ");
         sql.append(" LEFT JOIN auth_enterprise_base base ON user.authentication_id = base.auth_enterprise_id LEFT JOIN ent_basics ent ON base.social_credit_code = ent.unified_social_credit_code ");
         sql.append( " where 1=1 and user.isDelete='0'  ");
         if (!"".equals(username) && null != username) {
@@ -162,21 +162,21 @@ public class UserDao extends SimpleHibernateTemplate<User> {
         if (!"".equals(user.getIdcard()) && null != user.getIdcard()) {
             sql.append("idcard = '"+user.getIdcard()+"',");
         }
-        if (!"".equals(user.getProvince_id()) && 0 != user.getProvince_id()) {
+        if (!"".equals(user.getProvince_id()) && null != user.getProvince_id()) {
             sql.append("province_id = '"+user.getProvince_id()+"',");
         }
-        if (!"".equals(user.getCity_id()) && 0 != user.getCity_id()) {
+        if (!"".equals(user.getCity_id()) && null != user.getCity_id()) {
             sql.append("city_id = '"+user.getCity_id()+"',");
         }
-        if (!"".equals(user.getArea_id()) && 0 != user.getArea_id()) {
+        if (!"".equals(user.getArea_id()) && null != user.getArea_id()) {
             sql.append("area_id = '"+user.getArea_id()+"',");
         }
         if (!"".equals(user.getPersonalSignature()) && null != user.getPersonalSignature()) {
             sql.append("personalSignature = '"+user.getPersonalSignature()+"',");
         }
-        if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
+        /*if (!"".equals(user.getUser_detail_id()) && null != user.getUser_detail_id()) {
             sql.append("user_detail_id = '"+user.getUser_detail_id()+"',");
-        }
+        }*/
         if (!"".equals(user.getAuthentication_id()) && null != user.getAuthentication_id()) {
             sql.append("authentication_id = '"+user.getAuthentication_id()+"',");
         }

@@ -12,7 +12,7 @@ public class UserWorkPlaceDao extends SimpleHibernateTemplate<UserWorkPlace> {
     /**
      * 回显职场履历
      */
-    public List findUserWorkPlace(String userDetailId){
+    public List findUserWorkPlace(String userId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT          ");
         sql.append(" userworkplace.*              ");
@@ -21,7 +21,7 @@ public class UserWorkPlaceDao extends SimpleHibernateTemplate<UserWorkPlace> {
         sql.append( " WHERE       ");
         sql.append( "  1 = 1                ");
         sql.append( " AND userworkplace.isDelete = '0'            ");
-        sql.append( "AND userworkplace.user_detail_id = '" + userDetailId + "'   ");
+        sql.append( "AND userworkplace.user_id = '" + userId + "'   ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

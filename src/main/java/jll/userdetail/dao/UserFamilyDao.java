@@ -13,7 +13,7 @@ public class UserFamilyDao extends SimpleHibernateTemplate<UserFamily> {
     /**
      *回显家庭成员信息
      */
-    public List findUserFamilyDetails(String userDetailId){
+    public List findUserFamilyDetails(String userId){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT          ");
         sql.append(" userfamily.*              ");
@@ -22,7 +22,7 @@ public class UserFamilyDao extends SimpleHibernateTemplate<UserFamily> {
         sql.append( " WHERE       ");
         sql.append( "  1 = 1                ");
         sql.append( " AND userfamily.isDelete = '0'            ");
-        sql.append( "AND userfamily.user_detail_id = '" + userDetailId + "'   ");
+        sql.append( "AND userfamily.user_id = '" + userId + "'   ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);

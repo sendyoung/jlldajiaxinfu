@@ -27,54 +27,50 @@ public class UserDetailController {
 
     /**
      * 回显个人信息填报基础信息
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserdetail")
     public @ResponseBody
-   UserDetail findPersonalInformationDetails(String userDetailId){
-        UserDetail userDetail = userDetailService.findPersonalInformationDetails(userDetailId);
+   UserDetail findPersonalInformationDetails(String userId){
+        UserDetail userDetail = userDetailService.findPersonalInformationDetails(userId);
         return userDetail;
     }
 
     /**
      * 回显家庭成员
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserfamily")
-    public @ResponseBody List findUserFamily(String userDetailId){
-        List list = userDetailService.findUserFamilyDetails(userDetailId);
+    public @ResponseBody List findUserFamily(String userId){
+        List list = userDetailService.findUserFamilyDetails(userId);
         return list;
     }
 
     /**
      *回显教育经历
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/findusereducation")
-    public @ResponseBody List findUserEducation(String userDetailId){
-        List list = userDetailService.findUserEducation(userDetailId);
+    public @ResponseBody List findUserEducation(String userId){
+        List list = userDetailService.findUserEducation(userId);
         return list;
     }
 
     /**
      *回显职场履历
-     * @param userDetailId
      * @return
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserworkplace")
-    public @ResponseBody List findUserWorkPlace(String userDetailId){
-        List list = userDetailService.findUserWorkPlace(userDetailId);
+    public @ResponseBody List findUserWorkPlace(String userId){
+        List list = userDetailService.findUserWorkPlace(userId);
         return list;
     }
 
@@ -86,9 +82,9 @@ public class UserDetailController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/fillinuserdetail")
     public @ResponseBody XinfuResult saveOrUpdateUserDetail(@RequestBody Map map){
-        String userId = (String)map.get("userId");
+        //String userId = (String)map.get("userId");
         UserDetail userDetail = JsonUtils.jsonToPojo((String)map.get("userDetail"),UserDetail.class);
-        return userDetailService.saveOrUpdateUserDetails(userDetail,userId);
+        return userDetailService.saveOrUpdateUserDetails(userDetail);
     }
 
     /**
@@ -100,8 +96,8 @@ public class UserDetailController {
             RequestMethod.POST}, value = "/fillinuserfamily")
     public @ResponseBody XinfuResult saveOrUpdateUserFamily(@RequestBody Map map){
         List<UserFamily> list = JsonUtils.jsonToList((String)map.get("familyList"),UserFamily.class);
-        String userDetailId = (String)map.get("userDetailId");
-        return userDetailService.saveOrUpdateUserFamily(list,userDetailId);
+        //String userDetailId = (String)map.get("userDetailId");
+        return userDetailService.saveOrUpdateUserFamily(list);
     }
 
     /**
@@ -113,8 +109,8 @@ public class UserDetailController {
             RequestMethod.POST}, value = "/fillinusereducation")
     public @ResponseBody XinfuResult saveOrUpdateUserEducation(@RequestBody Map map){
         List<UserEducation> list = JsonUtils.jsonToList((String)map.get("educationList"),UserEducation.class);
-        String userDetailId = (String)map.get("userDetailId");
-        return userDetailService.saveOrUpdateUserEducation(list,userDetailId);
+        //String userDetailId = (String)map.get("userDetailId");
+        return userDetailService.saveOrUpdateUserEducation(list);
     }
 
     /**
@@ -126,8 +122,8 @@ public class UserDetailController {
             RequestMethod.POST}, value = "/fillinuserworkplace")
     public @ResponseBody XinfuResult saveOrUpdateUserWorkPlace(@RequestBody Map map){
         List<UserWorkPlace> list = JsonUtils.jsonToList((String)map.get("workplaceList"),UserWorkPlace.class);
-        String userDetailId = (String)map.get("userDetailId");
-        return userDetailService.saveOrUpdateUserWorkPlace(list,userDetailId);
+        //String userDetailId = (String)map.get("userDetailId");
+        return userDetailService.saveOrUpdateUserWorkPlace(list);
     }
 
 }

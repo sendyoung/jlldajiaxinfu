@@ -6,7 +6,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 /**
  * 用户详情信息表
@@ -30,6 +29,7 @@ public class UserDetail extends Base_Model {
     private String blood_type;//血型
     private String nation;//民族
     private String birthday;//生日
+    private String user_id;//用户ID
     //private String realname;//真实姓名
     //private String idcard;//身份证号
 
@@ -164,25 +164,11 @@ public class UserDetail extends Base_Model {
         this.birthday = birthday;
     }
 
-    @Override
-    public String toString() {
-        return "UserDetail{" +
-                "user_detail_id='" + user_detail_id + '\'' +
-                ", sex='" + sex + '\'' +
-                ", corresponding_address='" + corresponding_address + '\'' +
-                ", emergency_contact='" + emergency_contact + '\'' +
-                ", home_address='" + home_address + '\'' +
-                ", contact_email='" + contact_email + '\'' +
-                ", emergency_contact_tel='" + emergency_contact_tel + '\'' +
-                ", registered_residence_address='" + registered_residence_address + '\'' +
-                ", marriage='" + marriage + '\'' +
-                ", political_outlook='" + political_outlook + '\'' +
-                ", social_groups='" + social_groups + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", blood_type='" + blood_type + '\'' +
-                ", nation='" + nation + '\'' +
-                ", birthday=" + birthday +
-                '}';
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 }

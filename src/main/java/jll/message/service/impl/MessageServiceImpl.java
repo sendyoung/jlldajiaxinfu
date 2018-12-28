@@ -156,14 +156,14 @@ public class MessageServiceImpl implements MessageService {
             String receiveUserId = sqlToListToMapToString(list2,"user_id");
             //接收方企业名称
             List list3 = authEnterpriseBaseDao.findEnterpriseNameByAuthId(receiveAuthId);
-            String receiveOrgName = sqlToListToMapToString(list3,"enterprise_name");
+            String receiveEntName = sqlToListToMapToString(list3,"enterprise_name");
             //当前时间
             Date date = new Date();
             //发件箱
             sendMessage.setSender_id(userId);
             sendMessage.setSender_name(senderName);
             sendMessage.setReceiver_id(receiveUserId);
-            sendMessage.setReceiver_name(receiveOrgName);
+            sendMessage.setReceiver_name(receiveEntName);
             sendMessage.setMessage_title(messagetitle);
             sendMessage.setMessage_content(messagecontent);
             sendMessage.setMessage_type(messagetype);
@@ -175,7 +175,7 @@ public class MessageServiceImpl implements MessageService {
             receiveMessage.setSender_id(userId);
             receiveMessage.setSender_name(senderName);
             receiveMessage.setReceiver_id(receiveUserId);
-            receiveMessage.setReceiver_name(receiveOrgName);
+            receiveMessage.setReceiver_name(receiveEntName);
             receiveMessage.setMessage_title(messagetitle);
             receiveMessage.setMessage_content(messagecontent);
             receiveMessage.setMessage_type(messagetype);

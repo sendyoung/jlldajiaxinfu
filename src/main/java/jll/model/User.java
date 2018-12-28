@@ -50,7 +50,7 @@ public class User extends Base_Model {
     /**
      * 用户详情外键
      **/
-    private String user_detail_id;
+    //private String user_detail_id;
 
     /**
      * 手机号
@@ -75,7 +75,7 @@ public class User extends Base_Model {
     /**
      * 省
      **/
-    private int province_id;
+    private String province_id;
 
     /**
      * 性别
@@ -85,12 +85,12 @@ public class User extends Base_Model {
     /**
      * 市
      **/
-    private int city_id;
+    private String city_id;
 
     /**
      * 区
      **/
-    private int area_id;
+    private String area_id;
 
     /**
      * 联系地址
@@ -178,13 +178,13 @@ public class User extends Base_Model {
         this.authentication_type = authentication_type;
     }
 
-    public String getUser_detail_id() {
+   /* public String getUser_detail_id() {
         return user_detail_id;
     }
 
     public void setUser_detail_id(String user_detail_id) {
         this.user_detail_id = user_detail_id;
-    }
+    }*/
 
     public String getIphone() {
         return iphone;
@@ -218,11 +218,11 @@ public class User extends Base_Model {
         this.username = username;
     }
 
-    public int getProvince_id() {
+    public String getProvince_id() {
         return province_id;
     }
 
-    public void setProvince_id(int province_id) {
+    public void setProvince_id(String province_id) {
         this.province_id = province_id;
     }
 
@@ -234,19 +234,19 @@ public class User extends Base_Model {
         this.sex = sex;
     }
 
-    public int getCity_id() {
+    public String getCity_id() {
         return city_id;
     }
 
-    public void setCity_id(int city_id) {
+    public void setCity_id(String city_id) {
         this.city_id = city_id;
     }
 
-    public int getArea_id() {
+    public String getArea_id() {
         return area_id;
     }
 
-    public void setArea_id(int area_id) {
+    public void setArea_id(String area_id) {
         this.area_id = area_id;
     }
 

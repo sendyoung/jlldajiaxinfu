@@ -24,7 +24,7 @@ public class UserDetailDao extends SimpleHibernateTemplate<UserDetail> {
     /**
      *回显用户详情信息数据
      */
-    public List findPersonalInformationDetails(String userDetailId) {
+    public List findPersonalInformationDetails(String userId) {
         StringBuffer sql = new StringBuffer();
         sql.append(" SELECT                                                                                      ");
         sql.append(" 	userdetail.*                                                                              ");
@@ -33,7 +33,7 @@ public class UserDetailDao extends SimpleHibernateTemplate<UserDetail> {
         sql.append(" WHERE                                                                                       ");
         sql.append(" 1 = 1        ");
         sql.append(" AND userdetail.isDelete = '0'                                                                                      ");
-        sql.append(" AND userdetail .user_detail_id = '" + userDetailId + "'                                                               ");
+        sql.append(" AND userdetail .user_id = '" + userId + "'                                                               ");
 
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
@@ -47,8 +47,8 @@ public class UserDetailDao extends SimpleHibernateTemplate<UserDetail> {
         //this.save(userDetail);
         String id =UUID.randomUUID().toString().replace("-","");
         StringBuffer sql = new StringBuffer();
-        sql.append(" INSERT INTO org_user_detail(user_detail_id,sex,corresponding_address,emergency_contact,home_address,contact_email,emergency_contact_tel,registered_residence_address,marriage,political_outlook,social_groups,weight,height,blood_type,nation,birthday,isDelete)");
-        sql.append(" VALUES( '" + id + "','" + userDetail.getSex() + "','" +  userDetail.getCorresponding_address() + "','" + userDetail.getEmergency_contact() + "','" + userDetail.getHome_address() + "','" + userDetail.getContact_email() + "','" + userDetail.getEmergency_contact_tel() + "','" + userDetail.getRegistered_residence_address() + "','" + userDetail.getMarriage() + "','" + userDetail.getPolitical_outlook() + "','" + userDetail.getSocial_groups() + "','" + userDetail.getWeight() + "','" + userDetail.getHeight() + "','" + userDetail.getBlood_type() + "','" + userDetail.getNation() + "','" + userDetail.getBirthday() + "','0')");
+        sql.append(" INSERT INTO org_user_detail(user_detail_id,sex,corresponding_address,emergency_contact,home_address,contact_email,emergency_contact_tel,registered_residence_address,marriage,political_outlook,social_groups,weight,height,blood_type,nation,birthday,isDelete,user_id)");
+        sql.append(" VALUES( '" + id + "','" + userDetail.getSex() + "','" +  userDetail.getCorresponding_address() + "','" + userDetail.getEmergency_contact() + "','" + userDetail.getHome_address() + "','" + userDetail.getContact_email() + "','" + userDetail.getEmergency_contact_tel() + "','" + userDetail.getRegistered_residence_address() + "','" + userDetail.getMarriage() + "','" + userDetail.getPolitical_outlook() + "','" + userDetail.getSocial_groups() + "','" + userDetail.getWeight() + "','" + userDetail.getHeight() + "','" + userDetail.getBlood_type() + "','" + userDetail.getNation() + "','" + userDetail.getBirthday() + "','0','" + userDetail.getUser_id() +"')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.executeUpdate();
         return id;

@@ -15,7 +15,7 @@ import java.util.Date;
 public class UserWorkPlace extends Base_Model {
 
     private String user_workplace_id;//主键
-    private String user_detail_id;//用户详情表主键
+    private String user_id;//用户主键
     private int si_years;//司龄
     private int this_industry_years;//这个行业年限
     private String honor;//获取的荣誉
@@ -41,12 +41,12 @@ public class UserWorkPlace extends Base_Model {
         this.user_workplace_id = user_workplace_id;
     }
 
-    public String getUser_detail_id() {
-        return user_detail_id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUser_detail_id(String user_detail_id) {
-        this.user_detail_id = user_detail_id;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public int getSi_years() {
