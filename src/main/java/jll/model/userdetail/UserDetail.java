@@ -29,7 +29,7 @@ public class UserDetail extends Base_Model {
     private int height;//身高
     private String blood_type;//血型
     private String nation;//民族
-    private Date birthday;//生日
+    private String birthday;//生日
     //private String realname;//真实姓名
     //private String idcard;//身份证号
 
@@ -156,12 +156,33 @@ public class UserDetail extends Base_Model {
         this.nation = nation;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
+    @Override
+    public String toString() {
+        return "UserDetail{" +
+                "user_detail_id='" + user_detail_id + '\'' +
+                ", sex='" + sex + '\'' +
+                ", corresponding_address='" + corresponding_address + '\'' +
+                ", emergency_contact='" + emergency_contact + '\'' +
+                ", home_address='" + home_address + '\'' +
+                ", contact_email='" + contact_email + '\'' +
+                ", emergency_contact_tel='" + emergency_contact_tel + '\'' +
+                ", registered_residence_address='" + registered_residence_address + '\'' +
+                ", marriage='" + marriage + '\'' +
+                ", political_outlook='" + political_outlook + '\'' +
+                ", social_groups='" + social_groups + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", blood_type='" + blood_type + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthday=" + birthday +
+                '}';
+    }
 }
