@@ -19,21 +19,33 @@ public class AreaServiceImpl implements AreaService {
 
     @Override
     public List<Area> findArea() {
-        List<Area>ebiOneList=areaDao.queryAreaForProvince();
-        List<Area>ebiThreeList=areaDao.queryAreaForCity();
+        List<Area>areaOneList=areaDao.queryAreaForProvince();
+        List<Area>areaThreeList=areaDao.queryAreaForCity();
+        List<Area>areaList=areaDao.queryAreaForCounty();
         List<Area> listAll=new ArrayList<Area>();
-        for(Area ebiOne:ebiOneList) {
+        for(Area areaOne:areaOneList) {
             List<Area> list=new ArrayList<Area>();
-            for(Area ebiThree:ebiThreeList) {
-                if(ebiOne.getCode().substring(0,2).equals(ebiThree.getCode().substring(0, 2))) {
+            for(Area areaThree:areaThreeList) {
+                List<Area> aList=new ArrayList<Area>();
+                for(Area area:areaList){
+                    if(area.getCode().substring(0,4).equals(areaThree.getCode().substring(0, 4))) {
+                        Area i=new Area();
+                        i.setCode(area.getCode());
+                        i.setFull_name(area.getFull_name());
+                        aList.add(i);
+                    }
+                }
+                areaThree.setArea(aList);
+                if(areaOne.getCode().substring(0,2).equals(areaThree.getCode().substring(0, 2))) {
                     Area i=new Area();
-                    i.setCode(ebiThree.getCode());
-                    i.setFull_name(ebiThree.getFull_name());
+                    i.setCode(areaThree.getCode());
+                    i.setFull_name(areaThree.getFull_name());
+                    i.setArea(areaThree.getArea());
                     list.add(i);
                 }
             }
-            ebiOne.setArea(list);
-            listAll.add(ebiOne);
+            areaOne.setArea(list);
+            listAll.add(areaOne);
         }
         return listAll;
     }

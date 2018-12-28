@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity(name="ent_report_file")
 public class ReportFile {
     private String report_file_id;
-    private String auth_enterprise_id;//企业ID
+    private String ent_id;//企业ID
     private String file_url;//文档url
     private String file_name;//文档名称
     private String file_remark;//文档案备注
@@ -36,12 +36,12 @@ public class ReportFile {
         this.report_file_id = report_file_id;
     }
 
-    public String getAuth_enterprise_id() {
-        return auth_enterprise_id;
+    public String getEnt_id() {
+        return ent_id;
     }
 
-    public void setAuth_enterprise_id(String auth_enterprise_id) {
-        this.auth_enterprise_id = auth_enterprise_id;
+    public void setEnt_id(String ent_id) {
+        this.ent_id = ent_id;
     }
 
     public String getFile_url() {

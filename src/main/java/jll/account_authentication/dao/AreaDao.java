@@ -49,5 +49,21 @@ public class AreaDao extends SimpleHibernateTemplate<Area> {
         }
         return list;
     }
+    /**
+     * 查询所有县级地区
+     * */
+    public List<Area> queryAreaForCounty(){
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT code,full_name FROM public_area WHERE right(code,4)!='0000' and right(code,2)!='00' order by code");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List<Area>list=new ArrayList<Area>();
+        List l=query.list();
+        for(int i=0;i<l.size();i++){
+            Area area=(Area)MapTrunPojo.map2Object((Map)l.get(i),Area.class);
+            list.add(area);
+        }
+        return list;
+    }
 
 }
