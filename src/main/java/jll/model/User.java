@@ -44,6 +44,8 @@ public class User extends Base_Model {
      * 2、企业已认证
      * 3、组织认证审核中
      * 4、组织已认证
+     * 5、企业认证驳回
+     * 6、组织认证驳回
      **/
     private String authentication_type;
 

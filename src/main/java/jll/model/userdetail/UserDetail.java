@@ -19,6 +19,7 @@ public class UserDetail extends Base_Model {
     private String  emergency_contact;//紧急联系人
     private String home_address;//家庭住址
     private String contact_email;//联系邮箱
+    private String contact_tel;//联系电话
     private String emergency_contact_tel;//紧急联系人电话
     private String registered_residence_address;//户口地址
     private String marriage;//婚姻
@@ -82,6 +83,14 @@ public class UserDetail extends Base_Model {
 
     public void setContact_email(String contact_email) {
         this.contact_email = contact_email;
+    }
+
+    public String getContact_tel() {
+        return contact_tel;
+    }
+
+    public void setContact_tel(String contact_tel) {
+        this.contact_tel = contact_tel;
     }
 
     public String getEmergency_contact_tel() {

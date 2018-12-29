@@ -11,13 +11,13 @@ import java.util.List;
 public interface UserDetailService {
 
     //回显个人详情信息
-    public UserDetail findPersonalInformationDetails(String userId);
+    public XinfuResult findPersonalInformationDetails(String userId);
     //回显家庭成员信息
-    public List findUserFamilyDetails(String userId);
+    public XinfuResult findUserFamilyDetails(String userId);
     //回显教育经历
-    public List findUserEducation(String userId);
+    public XinfuResult findUserEducation(String userId);
     //回显工作履历
-    public List findUserWorkPlace(String userId);
+    public XinfuResult findUserWorkPlace(String userId);
     //新增或更新个人详情信息
     public XinfuResult saveOrUpdateUserDetails(UserDetail userDetail);
     //新增或更新家庭成员信息

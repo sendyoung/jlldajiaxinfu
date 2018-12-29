@@ -33,9 +33,8 @@ public class UserDetailController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserdetail")
     public @ResponseBody
-   UserDetail findPersonalInformationDetails(String userId){
-        UserDetail userDetail = userDetailService.findPersonalInformationDetails(userId);
-        return userDetail;
+   XinfuResult findPersonalInformationDetails(String userId){
+        return userDetailService.findPersonalInformationDetails(userId);
     }
 
     /**
@@ -45,9 +44,8 @@ public class UserDetailController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserfamily")
-    public @ResponseBody List findUserFamily(String userId){
-        List list = userDetailService.findUserFamilyDetails(userId);
-        return list;
+    public @ResponseBody XinfuResult findUserFamily(String userId){
+        return userDetailService.findUserFamilyDetails(userId);
     }
 
     /**
@@ -57,9 +55,8 @@ public class UserDetailController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/findusereducation")
-    public @ResponseBody List findUserEducation(String userId){
-        List list = userDetailService.findUserEducation(userId);
-        return list;
+    public @ResponseBody XinfuResult findUserEducation(String userId){
+        return userDetailService.findUserEducation(userId);
     }
 
     /**
@@ -69,9 +66,8 @@ public class UserDetailController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/finduserworkplace")
-    public @ResponseBody List findUserWorkPlace(String userId){
-        List list = userDetailService.findUserWorkPlace(userId);
-        return list;
+    public @ResponseBody XinfuResult findUserWorkPlace(String userId){
+        return userDetailService.findUserWorkPlace(userId);
     }
 
     /**

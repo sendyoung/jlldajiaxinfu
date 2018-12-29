@@ -35,7 +35,7 @@ public class UserWorkPlaceDao extends SimpleHibernateTemplate<UserWorkPlace> {
         if(userWorkplace.getUser_workplace_id()!=null && !"".equals(userWorkplace.getUser_workplace_id())){
             this.getSession().update(userWorkplace);
         }else{
-            this.getSession().update(userWorkplace);
+            this.getSession().save(userWorkplace);
         }
     }
 

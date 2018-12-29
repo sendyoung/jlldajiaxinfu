@@ -35,7 +35,7 @@ public class UserEducationDao extends SimpleHibernateTemplate<UserEducation> {
         if(userEducation.getUser_education_id()!=null&&!"".equals(userEducation.getUser_education_id())){
             this.getSession().update(userEducation);
         }else{
-            this.getSession().update(userEducation);
+            this.getSession().save(userEducation);
         }
     }
 

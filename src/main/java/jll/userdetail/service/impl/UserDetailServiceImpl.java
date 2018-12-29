@@ -1,6 +1,5 @@
 package jll.userdetail.service.impl;
 
-import jll.model.User;
 import jll.model.userdetail.UserDetail;
 import jll.model.userdetail.UserEducation;
 import jll.model.userdetail.UserFamily;
@@ -38,19 +37,19 @@ public class UserDetailServiceImpl implements UserDetailService {
 
     //回显个人详情信息
     @Override
-    public UserDetail findPersonalInformationDetails(String userId) {
+    public XinfuResult findPersonalInformationDetails(String userId) {
        List list = userDetailDao.findPersonalInformationDetails(userId);
         if (list != null && list.size() > 0) {
             Map map = (Map) list.get(0);
             UserDetail userDetail = (UserDetail) MapTrunPojo.map2Object(map, UserDetail.class);
-            return userDetail;
+            return XinfuResult.build(200,"查到相关数据",userDetail);
         }
-        return null;
+        return XinfuResult.build(400,"没查到相关数据",null);
     }
 
     //回显家庭成员信息
     @Override
-    public List findUserFamilyDetails(String userId) {
+    public XinfuResult findUserFamilyDetails(String userId) {
        List list =  userFamilyDao.findUserFamilyDetails(userId);
        if(list!=null && list.size()>0){
            List list2 = new ArrayList();
@@ -59,14 +58,14 @@ public class UserDetailServiceImpl implements UserDetailService {
                UserFamily userFamily = (UserFamily)MapTrunPojo.map2Object(map,UserFamily.class);
                list2.add(userFamily);
            }
-           return list2;
+           return XinfuResult.build(200,"查到相关数据",list2);
        }
-        return null;
+        return XinfuResult.build(400,"没查到相关数据",null);
     }
 
     //回显教育经历
     @Override
-    public List findUserEducation(String userId) {
+    public XinfuResult findUserEducation(String userId) {
         List list = userEducationDao.findUserEducation(userId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
@@ -75,14 +74,14 @@ public class UserDetailServiceImpl implements UserDetailService {
                 UserEducation userEducation = (UserEducation)MapTrunPojo.map2Object(map,UserEducation.class);
                 list2.add(userEducation);
             }
-            return list2;
+            return XinfuResult.build(200,"查到相关数据",list2);
         }
-        return null;
+        return XinfuResult.build(400,"没查到相关数据",null);
     }
 
     //回显职场履历
     @Override
-    public List findUserWorkPlace(String userId) {
+    public XinfuResult findUserWorkPlace(String userId) {
         List list = userWorkPlaceDao.findUserWorkPlace(userId);
         if(list!=null && list.size()>0){
             List list2 = new ArrayList();
@@ -91,16 +90,16 @@ public class UserDetailServiceImpl implements UserDetailService {
                 UserWorkPlace userWorkPlace = (UserWorkPlace)MapTrunPojo.map2Object(map,UserWorkPlace.class);
                 list2.add(userWorkPlace);
             }
-            return list2;
+            return XinfuResult.build(200,"查到相关数据",list2);
         }
-        return null;
+        return XinfuResult.build(400,"没查到相关数据",null);
     }
 
     //新增或更新个人详情信息
     @Override
     public XinfuResult saveOrUpdateUserDetails(UserDetail userDetail){
         try {
-           // userDetail.setIsDelete("0");
+            userDetail.setIsDelete("0");
             if (userDetail.getUser_detail_id()!= null && !"".equals(userDetail.getUser_detail_id())) {
                 userDetailDao.updateUserDetails(userDetail);
                 return XinfuResult.build(200,"更新详情信息成功",userDetail.getUser_detail_id());
