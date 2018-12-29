@@ -29,7 +29,7 @@ public class AuthEnterpriseBase extends Base_Model {
     private String residence;//住所
     private Date end_date;// 有效截止日期
     private Date level_registration_start_date;//登记注册日期
-    private int types_enterprises;// 企业类型
+    private String types_enterprises;// 企业类型
     private Date date_establishment;//成立日期
     private double registered_capital;//注册资本
     private String legal_representative;//法定代表人
@@ -167,11 +167,11 @@ public class AuthEnterpriseBase extends Base_Model {
         this.level_registration_start_date = level_registration_start_date;
     }
 
-    public int getTypes_enterprises() {
+    public String getTypes_enterprises() {
         return types_enterprises;
     }
 
-    public void setTypes_enterprises(int types_enterprises) {
+    public void setTypes_enterprises(String types_enterprises) {
         this.types_enterprises = types_enterprises;
     }
 

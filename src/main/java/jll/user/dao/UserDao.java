@@ -236,4 +236,27 @@ public class UserDao extends SimpleHibernateTemplate<User> {
 
     }
 
+    /**
+     * ①修改用户信息中的认证类型为(2 企业认证通过 ,4 组织认证通过,5 企业认证驳回,6 组织认证驳回)    根据用户ID
+     * ②修改用户信息中的用户类型为3 组织用户  (不通过则不修改)       根据用户ID
+     */
+    public void updateUserAuthType(String userId,String authType){
+        StringBuffer sql = new StringBuffer();
+        sql.append(" UPDATE org_user_account SET ");
+        sql.append(" authentication_type = '" + authType + "'");
+        //认证状态为4时代表已经通过审核,将用户类型修改为3组织用户,否则不通过对用户类型不做修改
+        if(authType=="4"){
+            sql.append(", org_user_role_middle = '3'" );
+        }else if(authType=="2"){//认证状态为2时代表企业认证通过,将用户类型修改为2企业用户,否则不做修改
+            sql.append(", org_user_role_middle = '2'" );
+        }
+        sql.append("  WHERE user_id = '" + userId + "'");
+
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.executeUpdate();
+
+    }
+
+
+
 }
