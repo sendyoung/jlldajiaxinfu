@@ -93,19 +93,19 @@ public class BadInformationController extends BaseClass {
     @RequestMapping(value = "/EditBadInformation",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object editBadInformation(@RequestParam String type,@RequestParam String content){
         System.out.println(type+"----------------"+content);
-        if("othersCertificate".equals(type)){
+        if("unusualBusinessList".equals(type)){
             //经营异常
             List<UnusualBusinessList> ublList=JSONArray.parseArray(content,UnusualBusinessList.class);
             unusualBusinessListService.editUnusualBusinessList(ublList);
-        }else if("honor".equals(type)){
+        }else if("administrativePublishment".equals(type)){
             //行政处罚
             List<AdministrativePublishment> apList =JSONArray.parseArray(content,AdministrativePublishment.class);
             administrativePublishmentService.editAdministrativePublishment(apList);
-        }else if("publicWelfareActivity".equals(type)){
+        }else if("environmentPunishment".equals(type)){
             //环保处罚
             List<EnvironmentPunishment> epList=JSONArray.parseArray(content,EnvironmentPunishment.class);
             environmentPunishmentService.editEnvironmentPunishment(epList);
-        }else if("industryInfrastructure".equals(type)){
+        }else if("administrativeSanction".equals(type)){
             //海关行政处罚
             List<AdministrativeSanction> asList=JSONArray.parseArray(content,AdministrativeSanction.class);
             administrativeSanctionService.editAdministrativeSanction(asList);

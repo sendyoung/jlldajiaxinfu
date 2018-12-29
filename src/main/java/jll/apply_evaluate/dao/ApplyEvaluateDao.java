@@ -91,7 +91,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.create_time,aob.organization_name,aob.org_tel,eae.audit_status,eae.apply_evaluate_id " +
+        sql.append("select eae.auth_org_id,eae.create_time,aob.organization_name,aob.org_tel,eae.audit_status,eae.apply_evaluate_id " +
                 "from eva_apply_evaluate eae left join auth_org_base aob on eae.auth_org_id=aob.auth_org_id " +
                 "where 1=1 and eae.audit_status>0 and eae.auth_enterprise_id='"+entId+"' ");
         if(date!=null&&!date.equals("")){
@@ -117,7 +117,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.audit_status,eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,(select count(eam.apply_module_id) from eva_apply_module eam where eam.apply_evaluate_id=eae.apply_evaluate_id) count " +
+        sql.append("select eae.auth_enterprise_id,eae.audit_status,eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,(select count(eam.apply_module_id) from eva_apply_module eam where eam.apply_evaluate_id=eae.apply_evaluate_id) count " +
                 "from auth_enterprise_base aeb right join eva_apply_evaluate eae on aeb.auth_enterprise_id=eae.auth_enterprise_id " +
                 "where 1=1 ");
         if(status!=null&&!status.equals("")){
@@ -162,7 +162,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,eae.audit_status,eae.auth_org_id,esr.score,esr.level " +
+        sql.append("select eae.auth_enterprise_id,eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,eae.audit_status,eae.auth_org_id,esr.score,esr.level " +
                 "from auth_enterprise_base aeb left join eva_apply_evaluate eae on eae.auth_enterprise_id=aeb.auth_enterprise_id " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "where 1=1 ");
@@ -246,7 +246,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 and appeal_status is not null and appeal_status not in('1','2','4','3') ");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 or appeal_status is null and appeal_status not in('1','2','4','3') ");
         if(date!=null&&!date.equals("")){
             sql.append(" and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }

@@ -34,7 +34,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,eae.remarks,aob.organization_name,eea.create_time,eea.appeal_title,eea.details,eae.appeal_status " +
+        sql.append("select eae.auth_org_id,eae.apply_evaluate_id,eae.remarks,aob.organization_name,eea.create_time,eea.appeal_title,eea.details,eae.appeal_status " +
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eea.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
@@ -58,7 +58,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
      * */
     public Object queryEvaluateAppealByApplyEvaluateId(String applyEvalateId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select eae.apply_evaluate_id,eae.create_time apply_time,eea.appeal_title,eea.stype,eea.create_time appeal_time,eea.evidence,eea.details,esr.level " +
+        sql.append("select eae.auth_org_id,eae.apply_evaluate_id,eae.create_time apply_time,eea.appeal_title,eea.stype,eea.create_time appeal_time,eea.evidence,eea.details,esr.level " +
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eea.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
@@ -79,7 +79,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eea.evaluate_appeal_id,eae.apply_evaluate_id,eea.create_time appeal_time,aeb.enterprise_name,eea.appeal_title,eea.details,eea.stype,eae.appeal_status " +
+        sql.append("select eae.auth_enterprise_id,eea.evaluate_appeal_id,eae.apply_evaluate_id,eea.create_time appeal_time,aeb.enterprise_name,eea.appeal_title,eea.details,eea.stype,eae.appeal_status " +
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eae.apply_evaluate_id=eea.apply_evaluate_id " +
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id  " +
@@ -106,7 +106,7 @@ public class EvaluateAppealDao extends SimpleHibernateTemplate<EvaluateAppeal> {
      * */
     public Object queryEvaluateAppealDetailsForApplyEvaluateId(String evaluateAppealId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select eea.evaluate_appeal_id,eae.apply_evaluate_id,eea.create_time appeal_time,aeb.enterprise_name,eea.appeal_title,eea.details,eea.stype,eae.appeal_status,eea.evidence,eea.objection_title,eea.handle_content,eea.handle_material,eea.handler " +
+        sql.append("select eae.auth_enterprise_id,eea.evaluate_appeal_id,eae.apply_evaluate_id,eea.create_time appeal_time,aeb.enterprise_name,eea.appeal_title,eea.details,eea.stype,eae.appeal_status,eea.evidence,eea.objection_title,eea.handle_content,eea.handle_material,eea.handler " +
                 "from eva_apply_evaluate eae " +
                 "left join eva_evaluate_appeal eea on eae.apply_evaluate_id=eea.apply_evaluate_id " +
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id  " +

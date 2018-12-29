@@ -24,7 +24,7 @@ public class EnterprisesPunishmentDao extends SimpleHibernateTemplate<Enterprise
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name,count(eep.enterprises_punishment_id) count  " +
+        sql.append("select eae.auth_enterprise_id,eae.apply_evaluate_id,aeb.enterprise_name,count(eep.enterprises_punishment_id) count  " +
                 "from eva_apply_evaluate eae " +
                 "left join auth_enterprise_base aeb on aeb.auth_enterprise_id = eae.auth_enterprise_id " +
                 "left join ent_basics eb on aeb.social_credit_code=eb.unified_social_credit_code " +
@@ -48,6 +48,6 @@ public class EnterprisesPunishmentDao extends SimpleHibernateTemplate<Enterprise
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
-    }
+}
 
 }

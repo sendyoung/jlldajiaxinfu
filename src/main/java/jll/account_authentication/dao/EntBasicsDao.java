@@ -54,7 +54,11 @@ public class EntBasicsDao extends SimpleHibernateTemplate<EntBasics> {
      * 修改工商信息
      * */
     public void updateEntBasics(EntBasics entBasics){
-        this.getSession().saveOrUpdate(entBasics);
+        if(entBasics.getEnt_id()!=null&&!entBasics.getEnt_id().equals("")){
+            this.getSession().saveOrUpdate(entBasics);
+        }else{
+            this.getSession().save(entBasics);
+        }
     }
 
 }
