@@ -4,6 +4,8 @@ import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import com.cn.zyzs.hibernate.util.Page;
 import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.authentication.AuthEnterpriseBase;
+import jll.model.enterprise.EntBasics;
+import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
@@ -79,14 +81,61 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
         if(name!=null&&!name.equals("")){
             sql.append(" and aeb.enterprise_name='"+name+"' ");
         }
-        if(createTime!=null&&!createTime.equals("")){
+        if(code!=null&&!code.equals("")){
             sql.append(" and aeb.social_credit_code='"+code+"' ");
         }
-        if(code!=null&&!code.equals("")){
+        if(createTime!=null&&!createTime.equals("")){
             sql.append(" and aeb.create_time='"+createTime+"' ");
         }
         sql.append("order by aeb.create_time desc");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
+    /**
+     * 修改认证审核状态
+     * */
+    public void updateUserForAuthenticationType(String userId,String type){
+        StringBuffer sql = new StringBuffer();
+        sql.append("update org_user_account set authentication_type='"+type+"' where user_id='"+userId+"' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        query.executeUpdate();
+    }
+    /**
+     * 查询认证信息
+     * */
+    public AuthEnterpriseBase queryAuthEnterpriseBaseByUserId(String userId){
+        StringBuffer sql = new StringBuffer();
+        sql.append("select aeb.enterprise_introduction,aeb.business_scope,aeb.residence,aeb.registration_authority " +
+                ",aeb.date_establishment,aeb.types_enterprises,aeb.registered_capital,aeb.enterprise_name,aeb.social_credit_code " +
+                "from org_user_account oua left join auth_enterprise_base aeb on oua.authentication_id=aeb.auth_enterprise_id " +
+                "where oua.user_id='"+userId+"' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List list=query.list();
+        if(list==null||list.size()==0){
+            return null;
+        }
+        AuthEnterpriseBase aeb=(AuthEnterpriseBase) MapTrunPojo.map2Object((Map)list.get(0),AuthEnterpriseBase.class);
+        return aeb;
+    }
+    /**
+     * 根据认证社会统一代码查询工商信息
+     * */
+    public EntBasics queryEntBasicsByCode(String code){
+        StringBuffer sql = new StringBuffer();
+        sql.append("select eb.company_introduce,eb.business_scope,eb.company_registration_address,eb.registration_authority " +
+                ",eb.date_of_establishment,eb.company_type,eb.registered_capital,eb.company_name,eb.unified_social_credit_code " +
+                "from ent_basics eb left join auth_enterprise_base aeb on eb.unified_social_credit_code=aeb.social_credit_code " +
+                "where aeb.social_credit_code='"+code+"' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List list=query.list();
+        if(list==null||list.size()==0){
+            return null;
+        }
+        EntBasics aeb=(EntBasics) MapTrunPojo.map2Object((Map)list.get(0),EntBasics.class);
+        return aeb;
+    }
+
 
 }

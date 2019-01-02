@@ -65,7 +65,7 @@ public class ScoreResultDao extends SimpleHibernateTemplate<ScoreResult> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,aeb.enterprise_name from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
+        sql.append("select eae.auth_enterprise_id,eae.apply_evaluate_id,aeb.enterprise_name from auth_enterprise_base aeb left join eva_apply_evaluate eae" +
                 " on eae.auth_enterprise_id=aeb.auth_enterprise_id " +
                 " left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id" +
                 " where 1=1 and eae.auth_org_id='"+authOrgId+"' and eae.audit_status=4 and esr.level='"+level+"' ");

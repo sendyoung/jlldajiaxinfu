@@ -26,9 +26,15 @@ public class CreditReportController {
     @Autowired
     private CreditFileService creditFileService;//信用档案
 
+    /**
+     * 生成PDF档案
+     * authEnterpriseId认证企业ID
+     * name生成文件名
+     * memo备注名
+     * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditCreditFile",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object getBarData(HttpServletRequest request, @RequestParam String authEnterpriseId,@RequestParam(required = false) String name,@RequestParam(required = false) String memo) {
+    public @ResponseBody Object editCreditFile(HttpServletRequest request, @RequestParam String authEnterpriseId,@RequestParam(required = false) String name,@RequestParam(required = false) String memo) {
         //报告详细信息
         DetailsInformation dic=new DetailsInformation();
         //生成路径
@@ -51,6 +57,7 @@ public class CreditReportController {
     }
     /**
      * 回显企业档案
+     * authEnterpriseId认证企业ID
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/FindCreditFileByAuthEnterpriseId",method = { RequestMethod.GET, RequestMethod.POST })
