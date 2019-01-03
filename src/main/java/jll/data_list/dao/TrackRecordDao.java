@@ -1,13 +1,14 @@
 package jll.data_list.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
-import jll.model.data_list.FamilyInfo;
 import jll.model.data_list.TrackRecord;
+import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class TrackRecordDao extends SimpleHibernateTemplate<TrackRecord> {
@@ -22,9 +23,10 @@ public class TrackRecordDao extends SimpleHibernateTemplate<TrackRecord> {
         sql.append(" select etr.* from ent_track_record etr where 1=1 and employee_id='"+employee_id+"'");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        List<TrackRecord>trList=query.list();
+        List trList=query.list();
         if(trList!=null){
-            for(TrackRecord tr:trList){
+            for(int i=0;i<trList.size();i++){
+                TrackRecord tr=(TrackRecord)MapTrunPojo.map2Object((Map)trList.get(0),TrackRecord.class);
                 this.getSession().delete(tr);
             }
         }

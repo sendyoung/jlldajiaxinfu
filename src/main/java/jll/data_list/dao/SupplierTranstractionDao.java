@@ -2,11 +2,13 @@ package jll.data_list.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import jll.model.data_list.SupplierTranstraction;
+import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class SupplierTranstractionDao extends SimpleHibernateTemplate<SupplierTranstraction> {
@@ -21,10 +23,11 @@ public class SupplierTranstractionDao extends SimpleHibernateTemplate<SupplierTr
         sql.append(" select est.* from ent_supplier_transtraction est where 1=1 and supplier_id='"+supplier_id+"'");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        List<SupplierTranstraction>fiList=query.list();
+        List fiList=query.list();
         if(fiList!=null){
-            for(SupplierTranstraction fi:fiList){
-                this.getSession().delete(fi);
+            for(int i=0;i<fiList.size();i++){
+                SupplierTranstraction st=(SupplierTranstraction)MapTrunPojo.map2Object((Map)fiList.get(0),SupplierTranstraction.class);
+                this.getSession().delete(st);
             }
         }
     }

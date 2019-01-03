@@ -2,11 +2,13 @@ package jll.data_list.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import jll.model.data_list.ResearchInput;
+import jll.utils.MapTrunPojo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ResearchInputDao extends SimpleHibernateTemplate<ResearchInput> {
@@ -21,11 +23,12 @@ public class ResearchInputDao extends SimpleHibernateTemplate<ResearchInput> {
         sql.append(" select eri.* from ent_research_input eri where 1=1 and period='"+period+"' and ent_id='"+entId+"'");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        List<ResearchInput> list=query.list();
-        if(list==null){
+        List list=query.list();
+        if(list==null||list.size()==0){
             return null;
         }
-        return (ResearchInput)query.list().get(0);
+        ResearchInput ri=(ResearchInput)MapTrunPojo.map2Object((Map)list.get(0),ResearchInput.class);
+        return ri;
     }
 
     /**

@@ -60,5 +60,20 @@ public class EntBasicsDao extends SimpleHibernateTemplate<EntBasics> {
             this.getSession().save(entBasics);
         }
     }
+    /**
+     * 根据工商ID查询工商信息
+     * */
+    public EntBasics queryEntBasicsByEntId(String entId){
+        StringBuffer sql = new StringBuffer();
+        sql.append(" SELECT eb.* from ent_basics eb where 1=1 and eb.ent_id='"+entId+"' ");
+        Query query = this.getSession().createSQLQuery(sql.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List list=query.list();
+        if(list==null||list.size()==0){
+            return null;
+        }
+        EntBasics eb=(EntBasics)MapTrunPojo.map2Object((Map)list.get(0),EntBasics.class);
+        return eb;
+    }
 
 }

@@ -71,6 +71,9 @@ public class EvaluateListServiceImpl implements EvaluateListService {
     public Object findEvaluateListByDate(String authOrgId, String date, Integer page, Integer rows) {
         //年度榜单
         EvaluateList el=evaluateListDao.queryEvaluateListForStatus(authOrgId,"1",null,date);
+        if(el==null){
+            return "暂未生成榜单";
+        }
         String evaluateListId=el.getEvaluate_list_id();
         //根据榜单ID查询详情
         try {

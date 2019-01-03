@@ -1,5 +1,8 @@
 package jll.data_list.service.Impl;
 
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
+import com.cn.zyzs.utils.utils.PageView;
 import jll.data_list.dao.EmployeeDao;
 import jll.data_list.dao.FamilyInfoDao;
 import jll.data_list.dao.TrackRecordDao;
@@ -9,6 +12,7 @@ import jll.utils.ObjectIsNullUtils;
 import jll.model.data_list.Employee;
 import jll.model.data_list.FamilyInfo;
 import jll.model.data_list.TrackRecord;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 @Service("employeeService")
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -222,6 +228,92 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         }
     }
+
+    @Override
+    public Object findEmployeeByOtherTopManager(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=employeeDao.queryEmployeeByStype(entId,"0");
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findEmployeeByStaffPerson(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=employeeDao.queryEmployeeByStype(entId,"1");
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findEmployeeByEnterprisePrincipal(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=employeeDao.queryEmployeeByStype(entId,"2");
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findEmployeeByTechnologyPrincipal(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=employeeDao.queryEmployeeByStype(entId,"3");
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findEmployeeByMiddleManager(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=employeeDao.queryEmployeeByStype(entId,"4");
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
     //获取履历
     public List<TrackRecord> getRecord(String record){
         List<TrackRecord> emptrList=new ArrayList<TrackRecord>();

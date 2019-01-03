@@ -1,5 +1,8 @@
 package jll.data_list.service.Impl;
 
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
+import com.cn.zyzs.utils.utils.PageView;
 import jll.data_list.dao.CustomerDao;
 import jll.data_list.dao.CustomerTranstractionDao;
 import jll.data_list.service.CustomerService;
@@ -7,6 +10,7 @@ import jll.utils.DateUtils;
 import jll.utils.ObjectIsNullUtils;
 import jll.model.data_list.Customer;
 import jll.model.data_list.CustomerTranstraction;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service("customerService")
 @Transactional
@@ -155,6 +160,23 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             }
 
+        }
+    }
+
+    @Override
+    public Object findCustomerByEntId(String entId, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=customerDao.queryCustomerByEntId(entId);
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
         }
     }
 }

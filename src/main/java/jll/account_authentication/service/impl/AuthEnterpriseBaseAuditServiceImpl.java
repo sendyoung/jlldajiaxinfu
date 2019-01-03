@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Map;
 
 @Service("authEnterpriseBaseAuditService")
@@ -53,8 +54,11 @@ public class AuthEnterpriseBaseAuditServiceImpl implements AuthEnterpriseBaseAud
         //查询认证信息
         AuthEnterpriseBase aeb=authEnterpriseBaseDao.queryAuthEnterpriseBaseByUserId(userId);
        //根据认证社会统一代码查询工商信息
-        EntBasics entBasics=new EntBasics();
-        entBasics=authEnterpriseBaseDao.queryEntBasicsByCode(aeb.getSocial_credit_code());
+        //EntBasics entBasics=new EntBasics();
+        EntBasics entBasics=authEnterpriseBaseDao.queryEntBasicsByCode(aeb.getSocial_credit_code());
+        if(entBasics==null){
+            entBasics=new EntBasics();
+        }
         entBasics.setCompany_introduce(aeb.getEnterprise_introduction());
         entBasics.setBusiness_scope(aeb.getBusiness_scope());
         entBasics.setCompany_registration_address(aeb.getResidence());
@@ -64,6 +68,7 @@ public class AuthEnterpriseBaseAuditServiceImpl implements AuthEnterpriseBaseAud
         entBasics.setRegistered_capital(aeb.getRegistered_capital());
         entBasics.setUnified_social_credit_code(aeb.getSocial_credit_code());
         entBasics.setCompany_name(aeb.getEnterprise_name());
+        entBasics.setUpdate_time(new Date());
         //操作工商信息
         entBasicsDao.updateEntBasics(entBasics);
     }

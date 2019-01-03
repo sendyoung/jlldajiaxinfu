@@ -123,8 +123,7 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
      * */
     public EntBasics queryEntBasicsByCode(String code){
         StringBuffer sql = new StringBuffer();
-        sql.append("select eb.company_introduce,eb.business_scope,eb.company_registration_address,eb.registration_authority " +
-                ",eb.date_of_establishment,eb.company_type,eb.registered_capital,eb.company_name,eb.unified_social_credit_code " +
+        sql.append("select eb.* " +
                 "from ent_basics eb left join auth_enterprise_base aeb on eb.unified_social_credit_code=aeb.social_credit_code " +
                 "where aeb.social_credit_code='"+code+"' ");
         Query query = this.getSession().createSQLQuery(sql.toString());
