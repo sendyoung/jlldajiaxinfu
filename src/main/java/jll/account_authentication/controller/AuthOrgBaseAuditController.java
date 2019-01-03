@@ -30,8 +30,7 @@ public class AuthOrgBaseAuditController {
             RequestMethod.POST}, value = "/examinelist")
     public @ResponseBody
     PageView findAuthOrgBaseAuditList(@RequestParam(required = false) String orgName,@RequestParam(required = false) String authTime,@RequestParam(required = false) String creditCode, @RequestParam(defaultValue = "1") int currentPage, @RequestParam(defaultValue = "10") int rows){
-        authOrgBaseAuditService.findAuthOrgBaseAuditList(orgName,authTime,creditCode,currentPage,rows);
-    return null;
+        return authOrgBaseAuditService.findAuthOrgBaseAuditList(orgName,authTime,creditCode,currentPage,rows);
     }
 
     /**
@@ -48,7 +47,7 @@ public class AuthOrgBaseAuditController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/examineorg")
     public @ResponseBody
-    XinfuResult examineOrg(String userId,String authType){
-       return authOrgBaseAuditService.examineOrg(userId,authType);
+    XinfuResult examineOrg(String userId){
+       return authOrgBaseAuditService.examineOrg(userId);
     }
 }

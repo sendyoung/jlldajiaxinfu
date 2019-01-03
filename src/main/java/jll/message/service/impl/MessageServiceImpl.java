@@ -287,4 +287,44 @@ public class MessageServiceImpl implements MessageService {
         return null;
     }
 
+    @Override
+    public XinfuResult sendExaminedMessage(String userId, String receiveUserId, String receivename, String messagetitle, String messagecontent) {
+        OrgSendMessage sendMessage = new OrgSendMessage();
+        OrgReceiveMessage receiveMessage = new OrgReceiveMessage();
+        Date date = new Date();
+        try {
+            //发件箱
+            sendMessage.setSend_type("0");//0代表系统发消息   1组织对企业 2企业对组织 3群发
+            sendMessage.setMessage_status("1");//这里写死的,1代表已发送   0草稿 1已发送
+            sendMessage.setMessage_type("0");//消息类型1申请评价2评价申诉3评价审核4消息提醒5会内通知6历史评价0系统消息
+            sendMessage.setSender_id(userId);
+            sendMessage.setSender_name("系统管理员");
+            sendMessage.setReceiver_id(receiveUserId);
+            sendMessage.setReceiver_name(receivename);
+            sendMessage.setMessage_title(messagetitle);
+            sendMessage.setMessage_content(messagecontent);
+            sendMessage.setIsDelete("0");//默认未删除
+            sendMessage.setCreate_time(date);
+
+            //收件箱
+            receiveMessage.setSender_id(userId);
+            receiveMessage.setSender_name("系统管理员");
+            receiveMessage.setReceiver_id(receiveUserId);
+            receiveMessage.setReceiver_name(receivename);
+            receiveMessage.setMessage_title(messagetitle);
+            receiveMessage.setMessage_content(messagecontent);
+            receiveMessage.setMessage_type("0");//消息类型1申请评价2评价申诉3评价审核4消息提醒5会内通知6历史评价0系统消息
+            receiveMessage.setMessage_status("0");//默认未读   0未读 1已读
+            receiveMessage.setIsDelete("0");//默认未删除
+            receiveMessage.setSend_type("0");// 1组织对企业  2企业对组织  3群发  0系统发消息
+            receiveMessage.setCreate_time(date);
+
+            sendMessageDao.addSendMessage(sendMessage);
+            receiveMessageDao.addReceiveMessage(receiveMessage);
+            return XinfuResult.build(200,"系统审核消息发送成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return XinfuResult.build(400,"系统审核消息发送失败");
+        }
+    }
 }

@@ -19,5 +19,5 @@ public interface AuthOrgBaseAuditService {
     public XinfuResult updateUserRoleMiddle(String userId,String roleId);
 
     //组织认证审核
-    public XinfuResult examineOrg(String userId,String authType);
+    public XinfuResult examineOrg(String userId);
 }

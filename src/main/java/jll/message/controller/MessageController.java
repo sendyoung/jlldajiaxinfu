@@ -146,4 +146,19 @@ public class MessageController {
         return messageService.findOrgEntMember(authOrgId);
     }
 
+    /**
+     * 会内通知
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST},value = {"/examineMessage"})
+    public @ResponseBody XinfuResult examineMessage(@RequestBody Map map){
+        String userId = (String)map.get("userId");
+        String receiveUserId = (String)map.get("receiveUserId");
+        String receivename = (String)map.get("receivename");
+        String messagetitle = (String)map.get("messagetitle");
+        String messagecontent = (String)map.get("messagecontent");
+        return messageService.sendExaminedMessage(userId,receiveUserId,receivename,messagetitle,messagecontent);
+    }
+
 }

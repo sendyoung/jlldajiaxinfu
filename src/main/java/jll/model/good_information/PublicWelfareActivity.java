@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * 公益活动
+ */
 @Entity(name="ent_public_welfare_activity")
 public class PublicWelfareActivity extends InformationPrivided {
     private String public_welfare_activity_id;//公益活动ID

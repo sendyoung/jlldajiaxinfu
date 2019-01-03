@@ -35,6 +35,8 @@ public class EntBasics extends Base_Model {
     private String company_tel;//公司电话
     private String company_email;//公司邮箱
     private String company_website;//公司网址
+    private String region;//所属区域(具体到市)
+    private String personalScale;//人员规模
 
     @Id
     @GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -213,5 +215,21 @@ public class EntBasics extends Base_Model {
 
     public void setCompany_website(String company_website) {
         this.company_website = company_website;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getPersonalScale() {
+        return personalScale;
+    }
+
+    public void setPersonalScale(String personalScale) {
+        this.personalScale = personalScale;
     }
 }
