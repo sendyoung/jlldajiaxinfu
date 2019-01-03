@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,6 +20,7 @@ public class HistoryBrowseController {
     private HistoryBrowseService historyBrowseService;
 
 
+    //添加历史记录
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/addhistory")
