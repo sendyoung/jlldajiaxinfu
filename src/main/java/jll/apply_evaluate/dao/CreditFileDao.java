@@ -1,13 +1,14 @@
 package jll.apply_evaluate.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.apply_evaluate.CreditFile;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class CreditFileDao extends SimpleHibernateTemplate<CreditFile> {
@@ -39,6 +40,23 @@ public class CreditFileDao extends SimpleHibernateTemplate<CreditFile> {
             return null;
         }
         return list.get(0);
+    }
+    /**
+     * 历史档案
+     * */
+    public Page queryHistoryCreditFile(String authEnterpriseId,String name,String date){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append("select * from eva_credit_file where auth_enterprise_id='"+authEnterpriseId+"' ");
+        if(date!=null&&!date.equals("")){
+            sql.append("and date_format(create_time,'%Y-%c-%d')='"+date+"' ");
+        }
+        if(name!=null&&!name.equals("")){
+            sql.append("and doc_name='"+name+"' ");
+        }
+        sql.append("order by create_time desc");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 
 }

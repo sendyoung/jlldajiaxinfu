@@ -29,9 +29,9 @@ public class EvaluateListDetailsDao extends SimpleHibernateTemplate<EvaluateList
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("SELECT" +
-                "aeb.enterprise_name,esr.score,esr.level,eae.apply_evaluate_id " +
-                "FROM " +
+        sql.append("SELECT " +
+                " aeb.enterprise_name,esr.score,esr.level,eae.apply_evaluate_id " +
+                " FROM " +
                 " eva_evaluate_list_details eeld " +
                 " LEFT JOIN eva_apply_evaluate eae ON eae.apply_evaluate_id = eeld.apply_evaluate_id " +
                 " LEFT JOIN eva_score_result esr ON esr.apply_evaluate_id = eae.apply_evaluate_id " +

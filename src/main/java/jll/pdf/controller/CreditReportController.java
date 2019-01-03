@@ -64,5 +64,16 @@ public class CreditReportController {
     public @ResponseBody Object findCreditFileByAuthEnterpriseId(@RequestParam String authEnterpriseId){
         return creditFileService.findCreditFileByAuthEnterpriseId(authEnterpriseId);
     }
-
+    /**
+     * authEnterpriseId企业认证ID
+     * name档案名称
+     * date档案生成时间
+     * 企业档案生成历史
+     * page,rows
+     * */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/FindHistoryCreditFile",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object findHistoryCreditFile(@RequestParam String authEnterpriseId,@RequestParam(required = false) String name,@RequestParam(required = false) String date,@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "10")Integer rows){
+        return creditFileService.findHistoryCreditFile(authEnterpriseId,name,date,page,rows);
+    }
 }

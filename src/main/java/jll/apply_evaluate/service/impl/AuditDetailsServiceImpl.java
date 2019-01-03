@@ -112,6 +112,7 @@ public class AuditDetailsServiceImpl implements AuditDetailsService {
         String twoYear=DateUtils.getYear(2)+"";
         String threeYear=DateUtils.getYear(3)+"";
         Map map=new HashMap();
+        map.put("year",DateUtils.getYear(0));
         map.put("incomeStatement",incomeStatementDao.queryIncomeStatementByEntId(entId,oneYear,twoYear,threeYear));
         map.put("cashFlowStatement",cashFlowStatementDao.queryCashFlowStatementByEntId(entId,oneYear,twoYear,threeYear));
         map.put("offBalanceSheet",offBalanceSheetDao.queryOffBalanceSheetByEntId(entId,oneYear,twoYear,threeYear));

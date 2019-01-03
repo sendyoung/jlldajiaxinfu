@@ -12,4 +12,8 @@ public interface CreditFileService {
      * 回显企业档案
      * */
     public Object findCreditFileByAuthEnterpriseId(String authEnterpriseId);
+    /**
+     * 历史档案
+     * */
+    public Object findHistoryCreditFile(String authEnterpriseId,String name,String date,Integer page,Integer rows);
 }

@@ -18,9 +18,9 @@ public class OffBalanceSheetDao extends SimpleHibernateTemplate<OffBalanceSheet>
     public List queryOffBalanceSheetByEntId(String entId,String oneYear,String twoYear,String threeYear){
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT account_name, " +
-                "    MAX(CASE left(period,4) WHEN '"+oneYear+"' THEN account_value ELSE 0 END )  '"+oneYear+"', " +
-                "    MAX(CASE left(period,4) WHEN '"+twoYear+"' THEN account_value ELSE 0 END )  '"+twoYear+"', " +
-                "    MAX(CASE left(period,4) WHEN '"+threeYear+"' THEN account_value ELSE 0 END )  '"+threeYear+"' " +
+                "    MAX(CASE left(period,4) WHEN '"+oneYear+"' THEN account_value ELSE 0 END )  'oneYear', " +
+                "    MAX(CASE left(period,4) WHEN '"+twoYear+"' THEN account_value ELSE 0 END )  'twoYear', " +
+                "    MAX(CASE left(period,4) WHEN '"+threeYear+"' THEN account_value ELSE 0 END )  'threeYear' " +
                 "FROM ent_off_balance_sheet where 1=1 and ent_id='"+entId+"' " +
                 "GROUP BY account_name");
         Query query = this.getSession().createSQLQuery(sql.toString());
