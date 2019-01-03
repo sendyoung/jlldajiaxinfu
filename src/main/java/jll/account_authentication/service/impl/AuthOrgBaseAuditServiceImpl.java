@@ -59,23 +59,23 @@ public class AuthOrgBaseAuditServiceImpl implements AuthOrgBaseAuditService {
      * 审核组织认证
      */
     @Override
-    public XinfuResult examineOrg(String userId,String authType){
+    public XinfuResult examineOrg(String userId){
         try {
             //通过(组织认证通过状态为4
-            if(authType == "4"){
+            //if(authType == "4"){
                 //修改认证类型和用户类型
-                userDao.updateUserAuthType(userId,authType);
+                userDao.updateUserAuthType(userId,"4");
                 //修改用户角色
                 userRoleMiddleDao.updateUserRoleMiddle(userId,"3");
                 return XinfuResult.build(200,"认证通过,恭喜你已成为组织用户");
-            }
+           // }
             //不通过(组织认证驳回状态为6
-            if(authType == "6"){
+            /*if(authType == "6"){
                 //修改认证类型为组织已驳回
                 userDao.updateUserAuthType(userId,authType);
                 return XinfuResult.build(300,"认证不通过,请重新来过");
             }
-            return XinfuResult.build(400,"参数异常");
+            return XinfuResult.build(400,"参数异常");*/
         } catch (Exception e) {
             e.printStackTrace();
             return XinfuResult.build(400,"程序运行出现问题了呢");

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * 行业基础建设
+ */
 @Entity(name="ent_industry_infrastructure")
 public class IndustryInfrastructure extends InformationPrivided {
 

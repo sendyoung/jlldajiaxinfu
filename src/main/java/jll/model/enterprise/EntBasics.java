@@ -31,6 +31,12 @@ public class EntBasics extends Base_Model {
     private String company_name;//公司名称
     private String unified_social_credit_code;//统一社会信用代码
     private String management_state;//经营状态
+    private String company_logo;//公司logo
+    private String company_tel;//公司电话
+    private String company_email;//公司邮箱
+    private String company_website;//公司网址
+    private String region;//所属区域(具体到市)
+    private String personalScale;//人员规模
 
     @Id
     @GenericGenerator(name = "systemUUID", strategy = "uuid")
@@ -177,5 +183,53 @@ public class EntBasics extends Base_Model {
 
     public void setManagement_state(String management_state) {
         this.management_state = management_state;
+    }
+
+    public String getCompany_logo() {
+        return company_logo;
+    }
+
+    public void setCompany_logo(String company_logo) {
+        this.company_logo = company_logo;
+    }
+
+    public String getCompany_tel() {
+        return company_tel;
+    }
+
+    public void setCompany_tel(String company_tel) {
+        this.company_tel = company_tel;
+    }
+
+    public String getCompany_email() {
+        return company_email;
+    }
+
+    public void setCompany_email(String company_email) {
+        this.company_email = company_email;
+    }
+
+    public String getCompany_website() {
+        return company_website;
+    }
+
+    public void setCompany_website(String company_website) {
+        this.company_website = company_website;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getPersonalScale() {
+        return personalScale;
+    }
+
+    public void setPersonalScale(String personalScale) {
+        this.personalScale = personalScale;
     }
 }

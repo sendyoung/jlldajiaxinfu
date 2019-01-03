@@ -20,6 +20,7 @@ public interface MessageService {
     /**
      * 申请评价(关联)
      * 评价申诉
+     * 历史评价
      * 以上两类消息是企业给组织发消息
      */
     public XinfuResult entToOrgMessage(String userId, String sendAuthId, String receiveAuthId,String messagetitle,String messagecontent,String messagetype);
@@ -39,4 +40,10 @@ public interface MessageService {
 
     //查询组织下所有成员的名称和ID
     public List findOrgEntMember(String auth_org_id);
+
+    /**
+     * 审核认证通过或不通过后发一条消息
+     */
+    public XinfuResult sendExaminedMessage(String userId,String receiveUserId,String receivename,String messagetitle,String messagecontent);
+
 }
