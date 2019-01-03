@@ -54,8 +54,11 @@ public class AuthEnterpriseBaseAuditServiceImpl implements AuthEnterpriseBaseAud
         //查询认证信息
         AuthEnterpriseBase aeb=authEnterpriseBaseDao.queryAuthEnterpriseBaseByUserId(userId);
        //根据认证社会统一代码查询工商信息
-        EntBasics entBasics=new EntBasics();
-        entBasics=authEnterpriseBaseDao.queryEntBasicsByCode(aeb.getSocial_credit_code());
+        //EntBasics entBasics=new EntBasics();
+        EntBasics entBasics=authEnterpriseBaseDao.queryEntBasicsByCode(aeb.getSocial_credit_code());
+        if(entBasics==null){
+            entBasics=new EntBasics();
+        }
         entBasics.setCompany_introduce(aeb.getEnterprise_introduction());
         entBasics.setBusiness_scope(aeb.getBusiness_scope());
         entBasics.setCompany_registration_address(aeb.getResidence());
