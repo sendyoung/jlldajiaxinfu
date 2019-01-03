@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Map;
 
 @Service("authEnterpriseBaseAuditService")
@@ -64,6 +65,7 @@ public class AuthEnterpriseBaseAuditServiceImpl implements AuthEnterpriseBaseAud
         entBasics.setRegistered_capital(aeb.getRegistered_capital());
         entBasics.setUnified_social_credit_code(aeb.getSocial_credit_code());
         entBasics.setCompany_name(aeb.getEnterprise_name());
+        entBasics.setUpdate_time(new Date());
         //操作工商信息
         entBasicsDao.updateEntBasics(entBasics);
     }

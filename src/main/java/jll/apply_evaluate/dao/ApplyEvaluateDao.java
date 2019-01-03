@@ -117,8 +117,9 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.auth_enterprise_id,eae.audit_status,eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,(select count(eam.apply_module_id) from eva_apply_module eam where eam.apply_evaluate_id=eae.apply_evaluate_id) count " +
+        sql.append("select eb.ent_id,eae.auth_enterprise_id,eae.audit_status,eae.apply_evaluate_id,aeb.enterprise_name,aeb.social_credit_code,aeb.legal_representative,(select count(eam.apply_module_id) from eva_apply_module eam where eam.apply_evaluate_id=eae.apply_evaluate_id) count " +
                 "from auth_enterprise_base aeb right join eva_apply_evaluate eae on aeb.auth_enterprise_id=eae.auth_enterprise_id " +
+                "left join ent_basics eb on aeb.social_credit_code=eb.unified_social_credit_code " +
                 "where 1=1 ");
         if(status!=null&&!status.equals("")){
             sql.append("and eae.audit_status='"+status+"' ");

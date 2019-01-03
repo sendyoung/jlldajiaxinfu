@@ -15,7 +15,7 @@ import java.util.Date;
 public class Employee extends InformationPrivided {
     private String employee_id;
     private String name;//姓名
-    private String gender;//性别：男，女
+    private String gender;//性别：2男，3女
     private String nation;//民族
     private Float height;//身高cm
     private Float weight;//体重kg
