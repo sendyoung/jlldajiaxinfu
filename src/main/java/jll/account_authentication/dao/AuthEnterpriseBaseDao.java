@@ -105,7 +105,8 @@ public class AuthEnterpriseBaseDao extends SimpleHibernateTemplate<AuthEnterpris
      * */
     public AuthEnterpriseBase queryAuthEnterpriseBaseByUserId(String userId){
         StringBuffer sql = new StringBuffer();
-        sql.append("select aeb.enterprise_introduction,aeb.business_scope,aeb.residence,aeb.registration_authority " +
+        sql.append("select aeb.enterprise_logo,aeb.enterprise_tel,aeb.enterprise_email,aeb.enterprise_website" +
+                ",aeb.enterprise_introduction,aeb.business_scope,aeb.residence,aeb.registration_authority " +
                 ",aeb.date_establishment,aeb.types_enterprises,aeb.registered_capital,aeb.enterprise_name,aeb.social_credit_code " +
                 "from org_user_account oua left join auth_enterprise_base aeb on oua.authentication_id=aeb.auth_enterprise_id " +
                 "where oua.user_id='"+userId+"' ");

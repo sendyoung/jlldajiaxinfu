@@ -1,15 +1,15 @@
 package jll.apply_evaluate.controller;
 
-import jll.apply_evaluate.service.ApplyEvaluateService;
-import jll.apply_evaluate.service.EnterprisesPunishmentService;
-import jll.apply_evaluate.service.ScoreRecordService;
-import jll.apply_evaluate.service.ScoreResultService;
+import com.alibaba.fastjson.JSONArray;
+import jll.apply_evaluate.service.*;
+import jll.model.apply_evaluate.ScoreRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,6 +29,9 @@ public class ScoreResultController {
     @Autowired
     private ApplyEvaluateService applyEvaluateService;//申请评价
 
+    @Autowired
+    private ScoreDetailsService scoreDetailsService;//评分记录详情
+
     /**
      * 保存评分
      * */
@@ -36,9 +39,10 @@ public class ScoreResultController {
     @RequestMapping(value = "/EditScoreResult",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object editScoreResult(@RequestParam String authOrgId,@RequestParam String applyEvaluateId,@RequestParam(required = false) String content){
         //保存评分记录
-
+        List<ScoreRule> srList=(List<ScoreRule>)JSONArray.parseArray(content,ScoreRule.class);
         //计算总评分
-        Float score=scoreRecordService.findScoreRecord(applyEvaluateId);
+        Double score=scoreDetailsService.findScoreRule(srList,applyEvaluateId);
+        //Double score=scoreRecordService.findScoreRecord(applyEvaluateId);
         //保存评分结果
         scoreResultService.editScoreResult(authOrgId,applyEvaluateId,score);
         //请求状态变化

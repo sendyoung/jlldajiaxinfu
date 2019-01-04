@@ -5,7 +5,7 @@ public interface ScoreResultService {
     /**
      * 保存评分结果
      * */
-    public void editScoreResult(String authOrgId,String applyEvaluateId,Float score);
+    public void editScoreResult(String authOrgId,String applyEvaluateId,Double score);
     /**
      * 组织评分结果数
      * */

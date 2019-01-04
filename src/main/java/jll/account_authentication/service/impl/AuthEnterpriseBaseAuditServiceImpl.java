@@ -69,6 +69,11 @@ public class AuthEnterpriseBaseAuditServiceImpl implements AuthEnterpriseBaseAud
         entBasics.setUnified_social_credit_code(aeb.getSocial_credit_code());
         entBasics.setCompany_name(aeb.getEnterprise_name());
         entBasics.setUpdate_time(new Date());
+        entBasics.setIsDelete("0");
+        entBasics.setCompany_logo(aeb.getEnterprise_logo());
+        entBasics.setCompany_email(aeb.getEnterprise_email());
+        entBasics.setCompany_tel(aeb.getEnterprise_tel());
+        entBasics.setCompany_website(aeb.getEnterprise_website());
         //操作工商信息
         entBasicsDao.updateEntBasics(entBasics);
     }
