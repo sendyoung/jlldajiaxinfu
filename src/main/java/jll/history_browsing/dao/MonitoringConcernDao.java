@@ -5,7 +5,6 @@ import jll.model.history_browsing.MonitoringConcern;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -25,9 +24,9 @@ public class MonitoringConcernDao extends SimpleHibernateTemplate<MonitoringConc
     /**
      * 查询监控或关注的企业
      */
-    public List findMonitoringConcern(String userId){
+   /* public List findMonitoringConcern(String userId){
         return null;
-    }
+    }*/
 
 
 }

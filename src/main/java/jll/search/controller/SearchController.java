@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Controller
 @Scope("prototype")
+@RequestMapping("/search")
 public class SearchController {
 
     @Autowired
