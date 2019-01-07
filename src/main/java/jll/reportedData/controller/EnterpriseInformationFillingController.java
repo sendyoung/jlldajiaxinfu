@@ -22,6 +22,7 @@ import java.util.Map;
 @Controller
 @Scope("prototype")
 @RequestMapping("/enterprise")
+
 public class EnterpriseInformationFillingController {
     @Autowired
     private AdministrativeLicenseService administrativeLicenseService; //行政许可
@@ -122,6 +123,7 @@ public class EnterpriseInformationFillingController {
     @Autowired
     private WorkCopyrightService workCopyrightService; //作品著作权
 
+    @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/write")
     @ResponseBody
     public String getBarData(HttpServletRequest request, HttpServletResponse response) {
@@ -293,6 +295,7 @@ public class EnterpriseInformationFillingController {
      * @param entId
      * @return
      */
+
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/query",method = { RequestMethod.GET, RequestMethod.POST })
 
