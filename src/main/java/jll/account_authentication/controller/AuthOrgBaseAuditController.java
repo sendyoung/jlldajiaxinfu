@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Controller
 @Scope("prototype")
 @RequestMapping("/authOrgBaseAudit")
@@ -47,7 +49,20 @@ public class AuthOrgBaseAuditController {
     @RequestMapping(method = {RequestMethod.GET,
             RequestMethod.POST}, value = "/examineorg")
     public @ResponseBody
-    XinfuResult examineOrg(String userId){
-       return authOrgBaseAuditService.examineOrg(userId);
+    XinfuResult examineOrg(@RequestParam Map map){
+        String userId = (String)map.get("userId");
+        String authOrgId =(String)map.get("authOrgId");
+        String org_user_role_middle = (String)map.get("org_user_role_middle");
+        if(org_user_role_middle=="3"){
+            return authOrgBaseAuditService.examineOrg(userId);
+        }else if(org_user_role_middle=="1"){
+            //添加默认数据
+            authOrgBaseAuditService.addDefualtData(authOrgId);
+            //变更用户类型以及认证状态
+            authOrgBaseAuditService.examineOrg(userId);
+            return XinfuResult.build(200,"第一次认证审核通过并且添加了默认的组织机构和职务信息");
+        }else{
+            return XinfuResult.build(401,"参数传输错误或者接口调用错误");
+        }
     }
 }

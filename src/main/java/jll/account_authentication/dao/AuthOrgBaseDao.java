@@ -69,7 +69,7 @@ public class AuthOrgBaseDao extends SimpleHibernateTemplate<AuthOrgBase> {
     //筛选条件(名称,申请认证时间,社会信用统一代码)
     public Page findAuthOrgBaseAuditList(String orgName,String authTime,String creditCode){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT oua.user_id,oua.username,oua.authentication_type,aob.auth_org_id,aob.organization_name,aob.social_credit_code,aob.legal_representative,aob.create_time FROM org_user_account oua LEFT JOIN auth_org_base aob ON oua.authentication_id = aob.auth_org_id WHERE oua.isDelete = '0' AND oua.authentication_type = '3' ");
+        sql.append("SELECT oua.user_id,oua.org_user_role_middle,oua.username,oua.authentication_type,aob.auth_org_id,aob.organization_name,aob.social_credit_code,aob.legal_representative,aob.create_time FROM org_user_account oua LEFT JOIN auth_org_base aob ON oua.authentication_id = aob.auth_org_id WHERE oua.isDelete = '0' AND oua.authentication_type = '3' ");
         if(orgName!=null&&!orgName.equals("")){
             sql.append(" AND aob.organization_name LIKE '%"+orgName+"%' ");
         }
