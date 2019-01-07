@@ -147,7 +147,7 @@ public class MessageController {
     }
 
     /**
-     * 会内通知
+     * 审核通过发消息
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(method = {RequestMethod.GET,
