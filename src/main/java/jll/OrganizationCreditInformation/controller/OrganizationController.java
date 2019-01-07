@@ -63,8 +63,8 @@ public class OrganizationController {
         System.out.println("进入回显数据!");
         Map map=new HashMap();
 //        request.getParameter("")
-        map.put("fill_in_organization",organizationInfoService.queryOrganizationInfo("123").get(0));
-        map.put("associated_member",queryAssociatedServiceMember.queryAssociatedMember("123").replace("{COUNT(*)=", "").replace("}",""));
+        map.put("fill_in_organization",organizationInfoService.queryOrganizationInfo(auth_org_id).get(0));
+        map.put("associated_member",queryAssociatedServiceMember.queryAssociatedMember(auth_org_id).replace("{COUNT(*)=", "").replace("}",""));
         return map;
     }
     /**
