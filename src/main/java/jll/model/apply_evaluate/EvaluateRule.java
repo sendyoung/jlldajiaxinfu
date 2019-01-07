@@ -15,9 +15,9 @@ public class EvaluateRule extends Base_Model {
     private String rule_id;//规则ID
     private String standard_id;//评分标准ID
     private String referrence;//评分规则描述
-    private Float top_limit;//取值上限
-    private Float bottom_limit;//取值下限
-    private Float score;//单项评分
+    private Double top_limit;//取值上限
+    private Double bottom_limit;//取值下限
+    private Double score;//单项评分
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -46,27 +46,27 @@ public class EvaluateRule extends Base_Model {
         this.referrence = referrence;
     }
 
-    public Float getTop_limit() {
+    public Double getTop_limit() {
         return top_limit;
     }
 
-    public void setTop_limit(Float top_limit) {
+    public void setTop_limit(Double top_limit) {
         this.top_limit = top_limit;
     }
 
-    public Float getBottom_limit() {
+    public Double getBottom_limit() {
         return bottom_limit;
     }
 
-    public void setBottom_limit(Float bottom_limit) {
+    public void setBottom_limit(Double bottom_limit) {
         this.bottom_limit = bottom_limit;
     }
 
-    public Float getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(Float score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 }

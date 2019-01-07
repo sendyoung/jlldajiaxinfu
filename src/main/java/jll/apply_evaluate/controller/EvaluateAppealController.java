@@ -42,7 +42,8 @@ public class EvaluateAppealController {
     @RequestMapping(value = "/UploadEvaluateAppealFile",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object uploadEvaluateAppealFile(HttpServletRequest request, @RequestParam(name="multfile") MultipartFile multfile){
         //上传文件路径
-        String path = request.getSession().getServletContext().getRealPath("/appeal/");
+        //String path = request.getSession().getServletContext().getRealPath("/appeal/");
+        String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/appeal/");
         String result=null;
         // 保存文件
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();

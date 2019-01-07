@@ -1,5 +1,8 @@
 package jll.apply_evaluate.service.impl;
 
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
+import com.cn.zyzs.utils.utils.PageView;
 import jll.account_authentication.dao.EntBasicsDao;
 import jll.apply_evaluate.service.AuditDetailsService;
 import jll.bad_information.dao.*;
@@ -9,6 +12,7 @@ import jll.good_information.dao.IndustryInfrastructureDao;
 import jll.good_information.dao.OthersCertificateDao;
 import jll.good_information.dao.PublicWelfareActivityDao;
 import jll.utils.DateUtils;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -117,5 +121,71 @@ public class AuditDetailsServiceImpl implements AuditDetailsService {
         map.put("cashFlowStatement",cashFlowStatementDao.queryCashFlowStatementByEntId(entId,oneYear,twoYear,threeYear));
         map.put("offBalanceSheet",offBalanceSheetDao.queryOffBalanceSheetByEntId(entId,oneYear,twoYear,threeYear));
         return map;
+    }
+
+    @Override
+    public Object findGoodInformationForPage(String entId, String info, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=new Page();
+            if("honor".equals(info)){
+                pages=honorDao.queryHonorForPage(entId);
+            }else if("industryInfrastructure".equals(info)){
+                pages=industryInfrastructureDao.queryIndustryInfrastructureForPage(entId);
+            }else if("othersCertificate".equals(info)){
+                pages=othersCertificateDao.queryOthersCertificateForPage(entId);
+            }else if("publicWelfareActivity".equals(info)){
+                pages=publicWelfareActivityDao.queryPublicWelfareActivityForPage(entId);
+            }
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
+    }
+
+    @Override
+    public Object findBadInformationForPage(String entId, String info, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=new Page();
+            if("adjudicativeDocument".equals(info)){
+                pages=adjudicativeDocumentDao.queryAdjudicativeDocumentForPage(entId);
+            }else if("administrativePublishment".equals(info)){
+                pages=administrativePublishmentDao.queryAdministrativePublishmentForPage(entId);
+            }else if("administrativeSanction".equals(info)){
+                pages=administrativeSanctionDao.queryAdministrativeSanctionForPage(entId);
+            }else if("contravention".equals(info)){
+                pages=contraventionDao.queryContraventionForPage(entId);
+            }else if("courtSessionNotice".equals(info)){
+                pages=courtSessionNoticeDao.queryCourtSessionNoticeForPage(entId);
+            }else if("discreditExecutor".equals(info)){
+                pages=discreditExecutorDao.queryDiscreditExecutorForPage(entId);
+            }else if("environmentPunishment".equals(info)){
+                pages=environmentPunishmentDao.queryEnvironmentPunishmentForPage(entId);
+            }else if("executor".equals(info)){
+                pages=executorDao.queryExecutorForPage(entId);
+            }else if("judicialAssistance".equals(info)){
+                pages=judicialAssistanceDao.queryJudicialAssistanceForPage(entId);
+            }else if("judicialAuction".equals(info)){
+                pages=judicialAuctionDao.queryJudicialAuctionForPage(entId);
+            }else if("unusualBusinessList".equals(info)){
+                pages=unusualBusinessListDao.queryUnusualBusinessListForPage(entId);
+            }
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
     }
 }

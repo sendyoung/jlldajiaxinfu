@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,7 +55,7 @@ public class ScoreResultController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/FindScoreResultForCount",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object findScoreResultForCount(@RequestParam String authOrgId){
-        Map map=new HashMap();
+        Map map=new LinkedHashMap();
         map.put("AAA",scoreResultService.findScoreResultForCount(authOrgId,"AAA"));
         map.put("AA",scoreResultService.findScoreResultForCount(authOrgId,"AA"));
         map.put("A",scoreResultService.findScoreResultForCount(authOrgId,"A"));

@@ -63,12 +63,16 @@ public class ScoreResultServiceImpl implements ScoreResultService {
                     level=rateRule.getRank_code();
                     break;
                 }
-            }else if(rateRule.getRank_code().equals("C")){
+            }/*else if(rateRule.getRank_code().equals("C")){
                 if(score==0){
                     level=rateRule.getRank_code();
                     break;
                 }
-            }else{
+            }*/else{
+                System.out.println("===================");
+                System.out.println(rateRule.getRank_code());
+                System.out.println(rateRule.getScore_top());
+                System.out.println(rateRule.getScore_bottom());
                 if(score<rateRule.getScore_top()&&score>=rateRule.getScore_bottom()){
                     level=rateRule.getRank_code();
                     break;
