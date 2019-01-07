@@ -4,6 +4,7 @@ import jll.model.User;
 import jll.model.User_Role_Middle;
 import jll.user.dao.UserDao;
 import jll.user.service.UserService;
+import jll.utils.Encrypt;
 import jll.utils.MapTrunPojo;
 import jll.utils.XinfuResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -179,6 +180,11 @@ public class UserServiceImpl implements UserService {
         return list;
     }
 
+    /**
+     * 测试方法
+     * @param user
+     * @return
+     */
     @Override
     public XinfuResult test(User user){
         try {
@@ -207,4 +213,26 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    /**
+     *
+     * @param username   用户手机号
+     * @param newPassWord  新密码,未加密的
+     * @return
+     */
+    @Override
+    public XinfuResult resetPassWord(String username, String newPassWord) {
+        try {
+            User user = new User();
+            user.setUsername(username);
+            String newpw = Encrypt.md5(newPassWord, "junlelian");
+            user.setPassword(newpw);
+            userdao.updateUser(user);
+            return XinfuResult.build(200,"修改用户密码成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return XinfuResult.build(400,"修改用户密码失败");
+        }
+    }
+
 }
