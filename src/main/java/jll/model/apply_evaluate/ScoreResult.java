@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity(name="eva_score_result")
 public class ScoreResult{
     private String score_result_id;//评分结果ID
-    private Float score;//综合评分
+    private Double score;//综合评分
     private String level;//评分等级
     private String apply_evaluate_id;//申请评价ID
     private Date create_time;
@@ -32,11 +32,11 @@ public class ScoreResult{
         this.score_result_id = score_result_id;
     }
 
-    public Float getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(Float score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

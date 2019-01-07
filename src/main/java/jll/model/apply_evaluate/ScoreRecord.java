@@ -16,7 +16,7 @@ public class ScoreRecord extends Base_Model {
     private String standard_id;//评分标准ID
     private String apply_evaluate_id;//申请评价ID
     private String index_item;//指标项
-    private Float score;//指标项得分
+    private Double score;//指标项得分
 
     @Id
     @GenericGenerator(name="systemUUID",strategy="uuid")
@@ -53,11 +53,11 @@ public class ScoreRecord extends Base_Model {
         this.index_item = index_item;
     }
 
-    public Float getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(Float score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 }

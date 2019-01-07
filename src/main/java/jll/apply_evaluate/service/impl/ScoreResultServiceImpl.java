@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,11 +29,15 @@ public class ScoreResultServiceImpl implements ScoreResultService {
     private RateRuleDao rateRuleDao;//评级规则
 
     @Override
-    public void editScoreResult(String authOrgId,String applyEvaluateId, Float score) {
+    public void editScoreResult(String authOrgId,String applyEvaluateId, Double score) {
         //查询评分结果是否存在
-        ScoreResult sr=new ScoreResult();
-        ScoreResult scoreResult=scoreResultDao.queryScoreResultByApplyEvaluateId(applyEvaluateId);
-        if(scoreResult!=null){
+        ScoreResult sr=scoreResultDao.queryScoreResultByApplyEvaluateId(applyEvaluateId);
+        if(sr==null){
+            sr=new ScoreResult();
+            sr.setCreate_time(new Date());
+            sr.setIsDelete("0");
+        }
+        /*if(scoreResult!=null){
             sr.setLevel(scoreResult.getLevel());
             sr.setApply_evaluate_id(scoreResult.getApply_evaluate_id());
             sr.setScore(scoreResult.getScore());
@@ -41,12 +46,16 @@ public class ScoreResultServiceImpl implements ScoreResultService {
             sr.setCreate_time(scoreResult.getCreate_time());
             sr.setIsDelete(scoreResult.getIsDelete());
             sr.setUpdate_time(scoreResult.getUpdate_time());
-        }
+        }*/
+        sr.setUpdate_time(new Date());
         sr.setScore(score);
         sr.setApply_evaluate_id(applyEvaluateId);
         //计算评分等级
         String level=null;
         List list=rateRuleDao.queryRateRuleByAuthOrgId(authOrgId);
+        if(list==null||list.size()==0){
+            list=rateRuleDao.queryRateRuleByAuthOrgId("0");
+        }
         for(int i=0;i<list.size();i++){
             RateRule rateRule=(RateRule)MapTrunPojo.map2Object((Map)list.get(i),RateRule.class);
             if(rateRule.getRank_code().equals("AAA")){

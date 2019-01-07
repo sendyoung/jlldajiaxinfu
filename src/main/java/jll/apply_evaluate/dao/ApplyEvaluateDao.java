@@ -178,6 +178,8 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         }
         if(auditStatus!=null&&!auditStatus.equals("")){
             sql.append("and eae.audit_status='"+auditStatus+"' ");
+        }else{
+            sql.append(" and eae.audit_status in('1','2','3','4')");
         }
         sql.append(" and eae.auth_org_id='"+authOrgId+"' ");
         return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
@@ -224,7 +226,7 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
+        sql.append("select eae.auth_org_id,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
                 "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status in ('1','2','3','4')");
@@ -244,10 +246,10 @@ public class ApplyEvaluateDao extends SimpleHibernateTemplate<ApplyEvaluate> {
         Map<String, Object> param = new HashMap<String, Object>();
         StringBuffer sql = new StringBuffer();
         LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-        sql.append("select eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
+        sql.append("select eae.auth_org_id,eae.create_time,eae.apply_evaluate_id,eae.audit_status,eae.title,eae.remarks,esr.level,aob.organization_name from eva_apply_evaluate eae " +
                 "left join eva_score_result esr on esr.apply_evaluate_id=eae.apply_evaluate_id " +
                 "left join auth_org_base aob on aob.auth_org_id=eae.auth_org_id " +
-                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 or appeal_status is null and appeal_status not in('1','2','4','3') ");
+                "where 1=1 and eae.auth_enterprise_id='"+authEnterpriseId+"' and audit_status=4 and (appeal_status not in('1','2','4','3') or appeal_status is null) ");
         if(date!=null&&!date.equals("")){
             sql.append(" and date_format(eae.create_time,'%Y-%c-%d')='"+date+"' ");
         }

@@ -19,8 +19,8 @@ public class ScoreRecordServiceImpl implements ScoreRecordService {
     private ScoreRecordDao scoreRecordDao;//评分记录
 
     @Override
-    public Float findScoreRecord(String applyEvaluateId) {
-        Float score=0f;
+    public Double findScoreRecord(String applyEvaluateId) {
+        Double score=0d;
         List list=scoreRecordDao.queryScoreRecordByApplyEvaluateId(applyEvaluateId);
         for(int i=0;i<list.size();i++){
             ScoreRecord sr=(ScoreRecord)MapTrunPojo.map2Object((Map)list.get(i),ScoreRecord.class);
