@@ -1,6 +1,8 @@
 package jll.bad_information.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.Statistics;
 import jll.model.bad_information.AdjudicativeDocument;
 import jll.utils.MapTrunPojo;
@@ -9,6 +11,8 @@ import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +31,16 @@ public class AdjudicativeDocumentDao extends SimpleHibernateTemplate<Adjudicativ
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
     }
-
+    /**
+     * 分页查询裁判文书信息
+     * */
+    public Page queryAdjudicativeDocumentForPage(String entId){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append(" select ead.* from ent_adjudicative_document ead where 1=1 and ent_id='"+entId+"'");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
+    }
     /**
      * 添加裁判文书信息
      * */

@@ -44,8 +44,14 @@ public class AuditDetailsController {
         if("basicInformation".equals(type)){
             return auditDetailsService.findBasicInformation(entId);
         }else if("goodInformation".equals(type)){
+            if(info!=null&&!info.equals("")){
+                return auditDetailsService.findGoodInformationForPage(entId,info,page,rows);
+            }
             return auditDetailsService.findGoodInformationForCount(entId);
         }else if("badInformation".equals(type)){
+            if(info!=null&&!info.equals("")){
+                return auditDetailsService.findBadInformationForPage(entId,info,page,rows);
+            }
             return auditDetailsService.findBadInformationForCount(entId);
         }else if("employeeInformation".equals(type)){
             Map map=new HashMap();
