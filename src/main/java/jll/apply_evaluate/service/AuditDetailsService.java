@@ -22,4 +22,12 @@ public interface AuditDetailsService {
      * 查询财务信息
      * */
     public Object findFinanceInformation(String entId);
+    /**
+     * 查询良好信息
+     * */
+    public Object findGoodInformationForPage(String entId,String info,Integer page,Integer rows);
+    /**
+     * 查询不良信息
+     * */
+    public Object findBadInformationForPage(String entId,String info,Integer page,Integer rows);
 }

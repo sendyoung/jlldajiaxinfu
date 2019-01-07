@@ -1,6 +1,8 @@
 package jll.good_information.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.Statistics;
 import jll.model.good_information.Honor;
 import jll.utils.MapTrunPojo;
@@ -9,6 +11,8 @@ import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +57,16 @@ public class HonorDao extends SimpleHibernateTemplate<Honor> {
         Statistics statistics=(Statistics) MapTrunPojo.map2Object((Map)list.get(0),Statistics.class);
         System.out.println("------------"+statistics.getCount());
         return statistics.getCount();
+    }
+    /**
+     * 分页查询表彰信息
+     * */
+    public Page queryHonorForPage(String entId){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append(" select eh.* from ent_honor eh where 1=1 and ent_id='"+entId+"'");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 
 }
