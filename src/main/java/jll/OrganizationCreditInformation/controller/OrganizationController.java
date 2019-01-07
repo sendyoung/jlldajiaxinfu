@@ -37,7 +37,7 @@ public class OrganizationController {
     private QueryAssociatedServiceMember queryAssociatedServiceMember;  //查询已关联会员数量
 
     /**
-     * 组织信息填报
+     * 组织信息填报(龚力)
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/writeOrgInfo",method = { RequestMethod.GET, RequestMethod.POST })
