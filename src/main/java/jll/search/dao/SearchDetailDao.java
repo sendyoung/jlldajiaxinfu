@@ -70,13 +70,42 @@ public class SearchDetailDao extends SimpleHibernateTemplate<Object> {
          return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
      }
 
-    /**
-     * 软件著作权      ent_software_copyright   多条数据
-     * 作品著作权      ent_copyright_works      多条数据
-     * 网站备案        ent_website_records      多条数据
-     * 商标信息        ent_trademark			 多条数据
-     * 主体信用评价    ent_subjectCredit_evaluation  多条数据
-     */
+    //软件著作权
+    public Page findEntSoftwareCopyright(String entId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT * FROM ent_software_copyright WHERE isDelete = '0' AND ent_id = '" + entId + "'");
+        return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
+    }
+
+    //作品著作权
+    public Page findEntCopyrightWorks(String entId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT * FROM ent_copyright_works WHERE isDelete = '0' AND ent_id = '" + entId + "'");
+        return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
+    }
+
+
+    //网站备案
+    public Page findEntWebsiteRecords(String entId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT * FROM ent_website_records WHERE isDelete = '0' AND ent_id = '" + entId + "'");
+        return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
+    }
+
+    //商标信息
+    public Page findEntTrademark(String entId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT * FROM ent_trademark WHERE isDelete = '0' AND ent_id = '" + entId + "'");
+        return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
+    }
+
+    //主体信用评价
+    public Page findEntSubjectCreditEvaluation(String entId) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT * FROM ent_subjectCredit_evaluation WHERE isDelete = '0' AND ent_id = '" + entId + "'");
+        return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
+    }
+
 /**
  * 二.社会信用信息
  * 行政许可        ent_administrative_licensing   多条数据
