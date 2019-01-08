@@ -1,10 +1,7 @@
 package jll.organization_creditInformation.controller;
 
 import com.alibaba.fastjson.JSON;
-import jll.model.org_organization.Organization;
-import jll.model.org_organization.Position;
-import jll.model.org_organization.PositionDetail;
-import jll.model.org_organization.Structure;
+import jll.model.org_organization.*;
 import jll.organization_creditInformation.service.org.OrganizationInfoService;
 import jll.organization_creditInformation.service.org.OrganizationMechanismService;
 import jll.organization_creditInformation.service.org.OrganizationalLeadershipService;
@@ -41,7 +38,7 @@ public class OrganizationController {
     @Autowired
     private OrganizationalLeadershipService organizationalLeadershipService;      //组织领导
     /**
-     * 组织信息填报(龚力)
+     * 组织信息  填报
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/writeOrgInfo",method = { RequestMethod.GET, RequestMethod.POST })
@@ -62,15 +59,35 @@ public class OrganizationController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/queryOrgInfo",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object OrganizationInfoFill(@RequestParam String auth_org_id){
+        System.out.println("进入组织信息  回显");
         Map map=new HashMap();
         map.put("fill_in_organization",organizationInfoService.queryOrganizationInfo(auth_org_id).get(0));
+        System.out.println("第一个map结束");
         map.put("associated_member",queryAssociatedServiceMember.queryAssociatedMember(auth_org_id).replace("{COUNT(*)=", "").replace("}",""));
         return map;
     }
 
 
+
+
+
     /**
-     * 组织机构添加
+     * 组织机构回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryMechanism",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryMechanism(@RequestParam String auth_org_id){
+        Map map = new HashMap();
+        List list = organizationMechanismService.queryOrganization(auth_org_id);
+
+        map.put("mechanism", list);
+        return map;
+    }
+
+
+
+    /**
+     * 组织机构 以及 部门信息 填报
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/writeMechanism",method = { RequestMethod.GET, RequestMethod.POST })
@@ -84,32 +101,52 @@ public class OrganizationController {
         return "success";
     }
 
+
+
     /**
-     * 组织机构回显
+     * 添加组织机构 (--部门--)
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "/queryMechanism",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object queryMechanism(@RequestParam String auth_org_id){
+    @RequestMapping(value = "/writeDepartment",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object writeDepartment(HttpServletRequest request){
+        List<Department> department = JSON.parseArray(request.getParameter("fill_in_information"), Department.class);
+        for (Department dt : department){
+            System.out.println("打印dt"+dt);
+            organizationMechanismService.addOrganizationDepartment(dt);
+        }
+
+        Position position =JSON.parseObject(request.getParameter("fill_in_information"), Position.class);
+        organizationalLeadershipService.addOrganizationalLeadership(position);
+
+        String str = request.getParameter("fill_in_information");
+        System.out.println("str的值------------------"+str);
+
+        return "success";
+    }
+
+
+
+
+
+
+
+    /**
+     * 组织机构 部门回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryDepartment",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryDepartment(@RequestParam String org_structure_id){
         Map map = new HashMap();
 
-        List list = organizationMechanismService.queryOrganization(auth_org_id);
+        System.out.println("进入组织机构部门回显");
 
-        map.put("mechanism", list);
+        List list = organizationMechanismService.queryOrganizationDepartment(org_structure_id);
+        map.put("mepartment", list);
         return map;
     }
 
 
-    /**
-     * 组织领导添加
-     */
-    @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "/writeQrganizationlLeadership",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object writeQrganizationlLeadership(HttpServletRequest request){
 
-        Position position =JSON.parseObject(request.getParameter("fill_in_information"), Position.class);
-        organizationalLeadershipService.addOrganizationalLeadership(position);
-        return "success";
-    }
     /**
      * 组织领导 详情 添加
      */
@@ -147,6 +184,8 @@ public class OrganizationController {
         System.out.println("进入组织领导详情回显数据");
         return organizationalLeadershipService.queryOrganizationalLeadershipDetail(post_id);
     }
+
+
 
 
 

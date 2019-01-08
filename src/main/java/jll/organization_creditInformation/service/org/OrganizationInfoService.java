@@ -20,4 +20,7 @@ public interface OrganizationInfoService {
      * 回显组织信息
      */
     public List queryOrganizationInfo(String auth_org_id);
+
+
+
 }

@@ -19,7 +19,10 @@ public class QueryAssociatedServiceMemberImpl implements QueryAssociatedServiceM
 
     @Override
     public String queryAssociatedMember(String org_id) {
+        System.out.println("进入接口实现!");
         String Count = queryAssociatedMemberDao.queryAssociatedMember(org_id);
-        return Count.toString();
+
+        return Count;
     }
+
 }
