@@ -2,6 +2,7 @@ package jll.organization_creditInformation.controller;
 
 import com.alibaba.fastjson.JSON;
 import jll.model.org_organization.Organization;
+import jll.model.org_organization.Structure;
 import jll.organization_creditInformation.service.OrganizationInfoService;
 import jll.organization_creditInformation.service.OrganizationMechanismService;
 import jll.organization_creditInformation.service.QueryAssociatedServiceMember;
@@ -66,11 +67,15 @@ public class OrganizationController {
      * 组织机构添加
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "/addMechanism",method = { RequestMethod.GET, RequestMethod.POST })
-    public @ResponseBody Object addMechanism(@RequestParam String auth_org_id){
+    @RequestMapping(value = "/writeMechanism",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object writeMechanism(@RequestParam String org_structure){
+        System.out.println("要添加的组织机构信息"+org_structure);
 
-        return null;
+        //序列化
+        Structure structure = JSON.parseObject(org_structure, Structure.class);
 
+        organizationMechanismService.addOrganization(structure);
+        return "success";
     }
 
     /**
@@ -83,10 +88,19 @@ public class OrganizationController {
 
         List list = organizationMechanismService.queryOrganization(auth_org_id);
 
-        map.put("fill_in_organization", list);
+        map.put("mechanism", list);
         return map;
     }
 
 
 
+    /**
+     * 组织领导回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryQrganizationlPosition",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryQrganizationlPosition(@RequestParam String auth_org_id){
+
+        return null;
+    }
 }

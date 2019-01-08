@@ -15,13 +15,14 @@ public class OrganizationMechanismServiceImpl implements OrganizationMechanismSe
 
     @Autowired
     private OrganizationDao organizationDao;   // 组织机构  dao
+
     /**
      * 添加组织机构
      * @param structure
      */
     @Override
     public void addOrganization(Structure structure) {
-
+        organizationDao.addOrganization(structure);
     }
 
     /**
@@ -32,7 +33,10 @@ public class OrganizationMechanismServiceImpl implements OrganizationMechanismSe
     @Override
     public List queryOrganization(String auth_org_id) {
 
-        List list = organizationDao.queryOrganization(auth_org_id);
-        return list;
+        List result = organizationDao.queryOrganization(auth_org_id);
+        if(null!=result && result.size()>0){
+            return result;
+        }
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package jll.organization_creditInformation.dao;
 
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import jll.model.org_organization.Structure;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
@@ -15,13 +16,9 @@ public class OrganizationDao extends SimpleHibernateTemplate<Object> {
     /**
      * 添加组织机构信息
      */
-    public void addOrganization(){
+    public void addOrganization(Structure structure){
 
-        StringBuffer sql = new StringBuffer();
-        sql.append("selector * frome test");
-//        this.getSession().createSQLQuery(sql.toString());
-//        String result = this.session.createSQLQuery(sql);
-//        System.out.println(result);
+         this.getSession().merge(structure);
 
     }
 
