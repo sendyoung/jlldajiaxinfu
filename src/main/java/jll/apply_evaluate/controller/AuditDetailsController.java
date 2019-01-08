@@ -42,7 +42,45 @@ public class AuditDetailsController {
     public @ResponseBody
     Object findAuditDetails(@RequestParam String entId,@RequestParam String type,@RequestParam(required = false) String info,@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows){
         if("basicInformation".equals(type)){
-            return auditDetailsService.findBasicInformation(entId);
+            Map map=new HashMap();
+            if(info!=null&&!info.equals("")){
+                return auditDetailsService.findBasicInformation(entId,info,page,rows);
+            }
+            map.put("entBasics",auditDetailsService.findBasicInformation(entId));
+            map.put("administrativeLicense",auditDetailsService.findBasicInformation(entId,"administrativeLicense",page,rows));
+            map.put("autoConstruction",auditDetailsService.findBasicInformation(entId,"autoConstruction",page,rows));
+            map.put("bidding",auditDetailsService.findBasicInformation(entId,"bidding",page,rows));
+            map.put("certification",auditDetailsService.findBasicInformation(entId,"certification",page,rows));
+            map.put("changeInformation",auditDetailsService.findBasicInformation(entId,"changeInformation",page,rows));
+            map.put("chattelMortgage",auditDetailsService.findBasicInformation(entId,"chattelMortgage",page,rows));
+            map.put("contactStaff",auditDetailsService.findBasicInformation(entId,"contactStaff",page,rows));
+            map.put("creativity",auditDetailsService.findBasicInformation(entId,"creativity",page,rows));
+            map.put("creditEvaluation",auditDetailsService.findBasicInformation(entId,"creditEvaluation",page,rows));
+            map.put("creditHistory",auditDetailsService.findBasicInformation(entId,"creditHistory",page,rows));
+            map.put("customsCredit",auditDetailsService.findBasicInformation(entId,"customsCredit",page,rows));
+            map.put("customsRegistration",auditDetailsService.findBasicInformation(entId,"customsRegistration",page,rows));
+            map.put("debtfinancing",auditDetailsService.findBasicInformation(entId,"debtfinancing",page,rows));
+            map.put("debtInvestment",auditDetailsService.findBasicInformation(entId,"debtInvestment",page,rows));
+            map.put("environmentalCertification",auditDetailsService.findBasicInformation(entId,"environmentalCertification",page,rows));
+            map.put("equityFinancing",auditDetailsService.findBasicInformation(entId,"equityFinancing",page,rows));
+            map.put("equityInvestment",auditDetailsService.findBasicInformation(entId,"equityInvestment",page,rows));
+            map.put("equityRegistration",auditDetailsService.findBasicInformation(entId,"equityRegistration",page,rows));
+            map.put("externalGuarantee",auditDetailsService.findBasicInformation(entId,"externalGuarantee",page,rows));
+            map.put("inPropertyRights",auditDetailsService.findBasicInformation(entId,"inPropertyRights",page,rows));
+            map.put("patent",auditDetailsService.findBasicInformation(entId,"patent",page,rows));
+            map.put("product",auditDetailsService.findBasicInformation(entId,"product",page,rows));
+            map.put("publicNotice",auditDetailsService.findBasicInformation(entId,"publicNotice",page,rows));
+            map.put("shareholdersInvestment",auditDetailsService.findBasicInformation(entId,"shareholdersInvestment",page,rows));
+            map.put("socialSecurity",auditDetailsService.findBasicInformation(entId,"socialSecurity",page,rows));
+            map.put("softwareCopyright",auditDetailsService.findBasicInformation(entId,"softwareCopyright",page,rows));
+            map.put("spotCheck",auditDetailsService.findBasicInformation(entId,"spotCheck",page,rows));
+            map.put("taxRating",auditDetailsService.findBasicInformation(entId,"taxRating",page,rows));
+            map.put("theActualController",auditDetailsService.findBasicInformation(entId,"theActualController",page,rows));
+            map.put("theProductionStatus",auditDetailsService.findBasicInformation(entId,"theProductionStatus",page,rows));
+            map.put("trademark",auditDetailsService.findBasicInformation(entId,"trademark",page,rows));
+            map.put("websiteFiling",auditDetailsService.findBasicInformation(entId,"websiteFiling",page,rows));
+            map.put("workCopyright",auditDetailsService.findBasicInformation(entId,"workCopyright",page,rows));
+            return map;
         }else if("goodInformation".equals(type)){
             if(info!=null&&!info.equals("")){
                 return auditDetailsService.findGoodInformationForPage(entId,info,page,rows);

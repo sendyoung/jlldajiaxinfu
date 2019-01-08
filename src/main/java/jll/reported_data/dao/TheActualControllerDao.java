@@ -1,12 +1,18 @@
 package jll.reported_data.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import com.cn.zyzs.hibernate.util.Page;
+import com.cn.zyzs.utils.utils.PageContext;
 import jll.model.basic_pnformation_submit.ActualController;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 @Repository
 public class TheActualControllerDao extends SimpleHibernateTemplate<ActualController> {
     /**
@@ -27,6 +33,16 @@ public class TheActualControllerDao extends SimpleHibernateTemplate<ActualContro
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         return query.list();
 
+    }
+    /**
+     * 分页查询实际控制人填报
+     * */
+    public Page queryTheActualControllerForPage(String entId){
+        Map<String, Object> param = new HashMap<String, Object>();
+        StringBuffer sql = new StringBuffer();
+        LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+        sql.append("select * from ent_actual_controller where 1=1 and ent_id='"+entId+"'");
+        return sqlqueryForpage1(sql.toString(), param, PageContext.getPageSize(), PageContext.getOffSet(), orderby);
     }
 
 

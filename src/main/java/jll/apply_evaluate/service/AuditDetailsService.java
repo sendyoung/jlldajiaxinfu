@@ -6,6 +6,7 @@ public interface AuditDetailsService {
      * 查询工商信息
      * */
     public Object findBasicInformation(String entId);
+    public Object findBasicInformation(String entId,String info,Integer page,Integer rows);
     /**
      * 统计良好信息
      * */

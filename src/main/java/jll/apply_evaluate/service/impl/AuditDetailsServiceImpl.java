@@ -11,6 +11,7 @@ import jll.good_information.dao.HonorDao;
 import jll.good_information.dao.IndustryInfrastructureDao;
 import jll.good_information.dao.OthersCertificateDao;
 import jll.good_information.dao.PublicWelfareActivityDao;
+import jll.reported_data.dao.*;
 import jll.utils.DateUtils;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,13 +67,160 @@ public class AuditDetailsServiceImpl implements AuditDetailsService {
     private CashFlowStatementDao cashFlowStatementDao;//财务现金流量
     @Autowired
     private OffBalanceSheetDao offBalanceSheetDao;//财务资产负债
-
+    @Autowired
+    private AdministrativeLicenseDao administrativeLicenseDao;//行政许可信息
+    @Autowired
+    private AutoConstructionDao autoConstructionDao;//自动化建设信息
+    @Autowired
+    private BiddingDao biddingDao;//招投标信息
+    @Autowired
+    private CertificationDao certificationDao;//资质认证
+    @Autowired
+    private ChangeInformationDao changeInformationDao;//变更记录信息
+    @Autowired
+    private ChattelMortgageDao chattelMortgageDao;//动产抵押
+    @Autowired
+    private ContactStaffDao contactStaffDao;//联系人员填报
+    @Autowired
+    private CreativityDao creativityDao;//创新能力
+    @Autowired
+    private CreditEvaluationDao creditEvaluationDao;//主体信用评价
+    @Autowired
+    private CreditHistoryDao creditHistoryDao;//信用记录
+    @Autowired
+    private CustomsCreditDao customsCreditDao;//海关信用信息
+    @Autowired
+    private CustomsRegistrationDao customsRegistrationDao;//海关注册信息
+    @Autowired
+    private DebtfinancingDao debtfinancingDao;//债权融资
+    @Autowired
+    private DebtInvestmentDao debtInvestmentDao;//债权投资
+    @Autowired
+    private EnvironmentalCertificationDao environmentalCertificationDao;//环保体系认证
+    @Autowired
+    private EquityFinancingDao equityFinancingDao;//股权融资
+    @Autowired
+    private EquityInvestmentDao equityInvestmentDao;//股权投资
+    @Autowired
+    private EquityRegistrationDao equityRegistrationDao;//股权出质登记信息
+    @Autowired
+    private ExternalGuaranteeDao externalGuaranteeDao;//对外担保信息
+    @Autowired
+    private InPropertyRightsDao inPropertyRightsDao;//知识产权出质信息
+    @Autowired
+    private PatentDao patentDao;//专利信息
+    @Autowired
+    private ProductDao productDao;//产品信息
+    @Autowired
+    private PublicNoticeDao publicNoticeDao;//公示催告
+    @Autowired
+    private ShareholdersInvestmentDao shareholdersInvestmentDao;//股东出资信息
+    @Autowired
+    private SocialSecurityDao socialSecurityDao;//社保方面
+    @Autowired
+    private SoftwareCopyrightDao softwareCopyrightDao;//软件著作权
+    @Autowired
+    private SpotCheckDao spotCheckDao;//检查信息
+    @Autowired
+    private TaxRatingDao taxRatingDao;//纳税评级
+    @Autowired
+    private TheActualControllerDao theActualControllerDao;//实际控制人填报
+    @Autowired
+    private TheProductionStatusDao theProductionStatusDao;//生产情况
+    @Autowired
+    private TrademarkDao trademarkDao;//商标信息
+    @Autowired
+    private WebsiteFilingDao websiteFilingDao;//网站备案
+    @Autowired
+    private WorkCopyrightDao workCopyrightDao;//作品著作权
 
     @Override
     public Object findBasicInformation(String entId) {
-        Map map=new HashMap();
-        map.put("entBasics",entBasicsDao.queryEntBasicsByEntId(entId));
-        return map;
+        return entBasicsDao.queryEntBasicsByEntId(entId);
+    }
+
+    @Override
+    public Object findBasicInformation(String entId, String info, Integer page, Integer rows) {
+        try {
+            Map param = new HashedMap();
+            PageContext.setOffSet(page);
+            PageContext.setPageSize(rows);
+            Page pages=new Page();
+            if("administrativeLicense".equals(info)){
+                pages=administrativeLicenseDao.queryAdministrativeLicenseForPage(entId);//行政许可信息
+            }else if("autoConstruction".equals(info)){
+                pages=autoConstructionDao.queryAutomationConstructionForPage(entId);
+            }else if("bidding".equals(info)){
+                pages=biddingDao.queryBiddingForPage(entId);
+            }else if("certification".equals(info)){
+                pages=certificationDao.queryCertificationForPage(entId);
+            }else if("changeInformation".equals(info)){
+                pages=changeInformationDao.queryChangeInformationForPage(entId);
+            }else if("chattelMortgage".equals(info)){
+                pages=chattelMortgageDao.queryChattelMortgageForPage(entId);
+            }else if("contactStaff".equals(info)){
+                pages=contactStaffDao.queryContactStaffForPage(entId);
+            }else if("creativity".equals(info)){
+                pages=creativityDao.queryCreativityForPage(entId);
+            }else if("creditEvaluation".equals(info)){
+                pages=creditEvaluationDao.queryCreditEvaluationForPage(entId);
+            }else if("creditHistory".equals(info)){
+                pages=creditHistoryDao.queryCreditHistoryForPage(entId);
+            }else if("customsCredit".equals(info)){
+                pages=customsCreditDao.queryCustomsCreditForPage(entId);
+            }else if("customsRegistration".equals(info)){
+                pages=customsRegistrationDao.queryCustomsRegistrationForPage(entId);
+            }else if("debtfinancing".equals(info)){
+                pages=debtfinancingDao.queryDebtfinancingForPage(entId);
+            }else if("debtInvestment".equals(info)){
+                pages=debtInvestmentDao.queryDebtInvestmentForPage(entId);
+            }else if("environmentalCertification".equals(info)){
+                pages=environmentalCertificationDao.queryEnvironmentalCertificationForPage(entId);
+            }else if("equityFinancing".equals(info)){
+                pages=equityFinancingDao.queryEquityFinancingForPage(entId);
+            }else if("equityInvestment".equals(info)){
+                pages=equityInvestmentDao.queryEquityInvestmentForPage(entId);
+            }else if("equityRegistration".equals(info)){
+                pages=equityRegistrationDao.queryEquityRegistrationForPage(entId);
+            }else if("externalGuarantee".equals(info)){
+                pages=externalGuaranteeDao.queryExternalGuaranteeForPage(entId);
+            }else if("inPropertyRights".equals(info)){
+                pages=inPropertyRightsDao.queryInPropertyRightsForPage(entId);
+            }else if("patent".equals(info)){
+                pages=patentDao.queryPatentForPage(entId);
+            }else if("product".equals(info)){
+                pages=productDao.queryProductForPage(entId);
+            }else if("publicNotice".equals(info)){
+                pages=publicNoticeDao.queryPublicNoticeForPage(entId);
+            }else if("shareholdersInvestment".equals(info)){
+                pages=shareholdersInvestmentDao.queryShareholdersInvestmentForPage(entId);
+            }else if("socialSecurity".equals(info)){
+                pages=socialSecurityDao.querySocialSecurityForPage(entId);
+            }else if("softwareCopyright".equals(info)){
+                pages=softwareCopyrightDao.querySoftwareCopyrightForPage(entId);
+            }else if("spotCheck".equals(info)){
+                pages=spotCheckDao.querySpotCheckForPage(entId);
+            }else if("taxRating".equals(info)){
+                pages=taxRatingDao.queryTaxRatingForPage(entId);
+            }else if("theActualController".equals(info)){
+                pages=theActualControllerDao.queryTheActualControllerForPage(entId);
+            }else if("theProductionStatus".equals(info)){
+                pages=theProductionStatusDao.queryTheProductionStatusForPage(entId);
+            }else if("trademark".equals(info)){
+                pages=trademarkDao.queryTrademarkForPage(entId);
+            }else if("websiteFiling".equals(info)){
+                pages=websiteFilingDao.queryWebsiteFilingForPage(entId);
+            }else if("workCopyright".equals(info)){
+                pages=workCopyrightDao.queryWorkCopyrightForPage(entId);
+            }
+            PageView pageView = new PageView(PageContext.getPageSize(), PageContext.getOffSet());
+            pageView.setTotalpage(pages.getTotal());
+            pageView.setRecords(pages.getItems());
+            return pageView;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "500";
+        }
     }
 
     @Override
