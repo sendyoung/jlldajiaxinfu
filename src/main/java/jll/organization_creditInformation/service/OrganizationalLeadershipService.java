@@ -15,6 +15,6 @@ public interface OrganizationalLeadershipService {
     /**
      * 查询
      */
-    public List queryOrganizationalLeadership();
+    public List queryOrganizationalLeadership(String auth_org_id);
 
 }

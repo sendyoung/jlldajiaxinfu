@@ -5,6 +5,7 @@ import jll.model.org_organization.Organization;
 import jll.model.org_organization.Structure;
 import jll.organization_creditInformation.service.OrganizationInfoService;
 import jll.organization_creditInformation.service.OrganizationMechanismService;
+import jll.organization_creditInformation.service.OrganizationalLeadershipService;
 import jll.organization_creditInformation.service.QueryAssociatedServiceMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -35,6 +36,8 @@ public class OrganizationController {
     @Autowired
     private OrganizationMechanismService organizationMechanismService;                            // 组织机构
 
+    @Autowired
+    private OrganizationalLeadershipService organizationalLeadershipService;      //组织领导
     /**
      * 组织信息填报(龚力)
      */
@@ -100,7 +103,10 @@ public class OrganizationController {
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/queryQrganizationlPosition",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object queryQrganizationlPosition(@RequestParam String auth_org_id){
+        Map map = new HashMap();
 
-        return null;
+        List list = organizationalLeadershipService.queryOrganizationalLeadership(auth_org_id);
+        map.put("fill_in_organization", list);
+        return map;
     }
 }
