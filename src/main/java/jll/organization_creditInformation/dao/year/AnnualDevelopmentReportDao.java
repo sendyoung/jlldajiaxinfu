@@ -1,6 +1,7 @@
 package jll.organization_creditInformation.dao.year;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import jll.model.org_organization.AnnualDevelopmentReport;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
@@ -14,9 +15,11 @@ import java.util.List;
 public class AnnualDevelopmentReportDao extends SimpleHibernateTemplate<Object> {
 
     /**
-     * 添加
+     * 添加 年度发展报告
      */
-
+    public void addAnnualDevelopmentReport(AnnualDevelopmentReport annualDevelopmentReport){
+        this.getSession().merge(annualDevelopmentReport);
+    }
 
 
     /**

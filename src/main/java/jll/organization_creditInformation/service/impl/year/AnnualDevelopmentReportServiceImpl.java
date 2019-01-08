@@ -1,5 +1,6 @@
 package jll.organization_creditInformation.service.impl.year;
 
+import jll.model.org_organization.AnnualDevelopmentReport;
 import jll.organization_creditInformation.dao.year.AnnualDevelopmentReportDao;
 import jll.organization_creditInformation.service.year.AnnualDevelopmentReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 年度发展报告
+ */
 @Service
 @Transactional
 public class AnnualDevelopmentReportServiceImpl implements AnnualDevelopmentReportService {
@@ -16,15 +20,15 @@ public class AnnualDevelopmentReportServiceImpl implements AnnualDevelopmentRepo
     private AnnualDevelopmentReportDao annualDevelopmentReportDao;     // 年度发展报告
 
     /**
-     * 添加年度报告
+     * 添加年度发展报告
      */
     @Override
-    public void addAnnualDevelopmentReport() {
-
+    public void addAnnualDevelopmentReport(AnnualDevelopmentReport annualDevelopmentReport) {
+        annualDevelopmentReportDao.addAnnualDevelopmentReport(annualDevelopmentReport);
     }
 
     /**
-     * 回显年度报告
+     * 回显年度发展报告
      */
     @Override
     public List queryAnnualDevelopmentReport(String auth_org_id) {

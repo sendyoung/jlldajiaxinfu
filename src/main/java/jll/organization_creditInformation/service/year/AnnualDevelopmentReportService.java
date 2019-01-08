@@ -1,5 +1,7 @@
 package jll.organization_creditInformation.service.year;
 
+import jll.model.org_organization.AnnualDevelopmentReport;
+
 import java.util.List;
 
 /**
@@ -9,7 +11,7 @@ public interface AnnualDevelopmentReportService {
     /**
      * 添加
      */
-    public void addAnnualDevelopmentReport();
+    public void addAnnualDevelopmentReport(AnnualDevelopmentReport annualDevelopmentReport);
 
     /**
      * 查询

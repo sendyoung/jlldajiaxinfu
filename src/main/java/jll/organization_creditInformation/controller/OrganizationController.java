@@ -77,6 +77,7 @@ public class OrganizationController {
         //序列化
         Structure structure = JSON.parseObject(org_structure, Structure.class);
 
+
         organizationMechanismService.addOrganization(structure);
         return "success";
     }
