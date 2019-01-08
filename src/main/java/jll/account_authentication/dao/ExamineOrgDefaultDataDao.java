@@ -14,7 +14,7 @@ public class ExamineOrgDefaultDataDao  extends SimpleHibernateTemplate<Object> {
     public String addDefaultStruture(String authOrgId,String pid,String name){
         StringBuffer sql = new StringBuffer();
         String id = UUID.randomUUID().toString().replace("-","");
-        sql.append("INSERT INTO org_structure(org_structure_id,auth_org_id,pid,name,isDelete) ");
+        sql.append("INSERT INTO org_structure(org_structure_id,auth_org_id,pid,name,is_delete) ");
         sql.append(" VALUES('" + id +"','" + authOrgId + "','" + pid + "','"+ name +"','0')");
         Query query = this.getSession().createSQLQuery(sql.toString());
         query.executeUpdate();

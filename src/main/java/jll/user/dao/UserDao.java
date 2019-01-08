@@ -245,9 +245,9 @@ public class UserDao extends SimpleHibernateTemplate<User> {
         sql.append(" UPDATE org_user_account SET ");
         sql.append(" authentication_type = '" + authType + "'");
         //认证状态为4时代表已经通过审核,将用户类型修改为3组织用户,否则不通过对用户类型不做修改
-        if(authType=="4"){
+        if("4".equals(authType)){
             sql.append(", org_user_role_middle = '3'" );
-        }else if(authType=="2"){//认证状态为2时代表企业认证通过,将用户类型修改为2企业用户,否则不做修改
+        }else if("2".equals(authType)){//认证状态为2时代表企业认证通过,将用户类型修改为2企业用户,否则不做修改
             sql.append(", org_user_role_middle = '2'" );
         }
         sql.append("  WHERE user_id = '" + userId + "'");

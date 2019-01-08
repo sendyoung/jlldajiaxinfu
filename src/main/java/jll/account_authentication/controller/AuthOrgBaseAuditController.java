@@ -53,9 +53,9 @@ public class AuthOrgBaseAuditController {
         String userId = (String)map.get("userId");
         String authOrgId =(String)map.get("authOrgId");
         String org_user_role_middle = (String)map.get("org_user_role_middle");
-        if(org_user_role_middle=="3"){
+        if("3".equals(org_user_role_middle)){
             return authOrgBaseAuditService.examineOrg(userId);
-        }else if(org_user_role_middle=="1"){
+        }else if("1".equals(org_user_role_middle)){
             //添加默认数据
             authOrgBaseAuditService.addDefualtData(authOrgId);
             //变更用户类型以及认证状态
