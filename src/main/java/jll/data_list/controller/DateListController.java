@@ -2,10 +2,9 @@ package jll.data_list.controller;
 
 import com.cn.zyzs.utils.base.BaseClass;
 import jll.data_list.service.*;
+import jll.model.data_list.ReportFile;
 import jll.utils.DateUtils;
 import jll.utils.FileUploadUtil;
-import jll.utils.POIUtil;
-import jll.model.data_list.ReportFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -56,7 +54,7 @@ public class DateListController extends BaseClass {
      * entId企业ID
      * 上传填报材料
      * */
-    @CrossOrigin(origins = "*", maxAge = 3600)
+    /*@CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/EditDateList",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object editDateList(HttpServletRequest request,@RequestParam String type,@RequestParam String entId,@RequestParam(name="multfile") MultipartFile multfile) throws IOException {
         if("employee".equals(type)){
@@ -93,7 +91,7 @@ public class DateListController extends BaseClass {
             researchInputService.editResearchInput(entId,list);
         }
         return "success";
-    }
+    }*/
     /**
      * entId企业ID
      * 上传填报材料
@@ -159,7 +157,7 @@ public class DateListController extends BaseClass {
      * */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/DownloadDateListFile",method = { RequestMethod.GET, RequestMethod.POST })
-    public void downloadDataListFile(HttpServletResponse response,@RequestParam  String fileUrl,@RequestParam String fileName){
+    public void downloadDataListFile(HttpServletResponse response,@RequestParam(required = false)  String fileUrl,@RequestParam(required = false) String fileName){
         /*response.setContentType("multipart/form-data");
         response.setHeader("Content-Disposition","fileName="+fileName);
         File file=new File(fileUrl);
@@ -176,6 +174,12 @@ public class DateListController extends BaseClass {
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+        /*if(fileUrl==null||fileUrl.equals("")){
+            fileUrl="F:/idea_work/jlldajiaxingfu/target/jll-dajiaxinfu-1.0-SNAPSHOT/WEB-INF/classes/appeal/timg.jpg";
+        }
+        if(fileName==null||fileName.equals("")){
+            fileName="timg.jpg";
         }*/
         File file = new File(fileUrl);
         response.reset();
