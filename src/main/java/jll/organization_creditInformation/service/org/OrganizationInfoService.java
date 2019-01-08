@@ -17,7 +17,7 @@ public interface OrganizationInfoService {
     public void addOrganizationInfo(Organization organization);
 
     /**
-     * 返回组织信息
+     * 回显组织信息
      */
     public List queryOrganizationInfo(String auth_org_id);
 }

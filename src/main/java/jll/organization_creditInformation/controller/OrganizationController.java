@@ -53,6 +53,7 @@ public class OrganizationController {
             System.out.println(str);
             return "ok";
     }
+
     /**
      *  组织信息  回显
      */
@@ -110,4 +111,18 @@ public class OrganizationController {
         map.put("position", list);
         return map;
     }
+
+    /**
+     * 组织领导详情回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryQrganizationlPositionDetail",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryQrganizationlPositionDetail(@RequestParam String post_id){
+        System.out.println("进入组织领导详情回显数据");
+        return organizationalLeadershipService.queryOrganizationalLeadershipDetail(post_id);
+    }
+
+
+
+
 }

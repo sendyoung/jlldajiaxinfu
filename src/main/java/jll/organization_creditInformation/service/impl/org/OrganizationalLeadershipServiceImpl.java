@@ -37,4 +37,18 @@ public class OrganizationalLeadershipServiceImpl implements OrganizationalLeader
         }
         return null;
     }
+
+
+    /**
+     * 组织领导职位详情
+     * @param post_id
+     * @return
+     */
+    @Override
+    public String queryOrganizationalLeadershipDetail(String post_id) {
+
+        String result = organizationalLeadershipDao.queryOrganizationalLeadershipDetail(post_id);
+
+        return result;
+    }
 }
