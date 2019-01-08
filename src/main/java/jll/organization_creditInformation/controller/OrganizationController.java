@@ -106,7 +106,7 @@ public class OrganizationController {
         Map map = new HashMap();
 
         List list = organizationalLeadershipService.queryOrganizationalLeadership(auth_org_id);
-        map.put("fill_in_organization", list);
+        map.put("position", list);
         return map;
     }
 }

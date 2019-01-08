@@ -1,5 +1,7 @@
 package jll.organization_creditInformation.service.year;
 
+import java.util.List;
+
 /**
  * 年度发展报告
  */
@@ -12,5 +14,5 @@ public interface AnnualDevelopmentReportService {
     /**
      * 查询
      */
-    public void queryAnnualDevelopmentReport();
+    public List queryAnnualDevelopmentReport(String auth_org_id);
 }

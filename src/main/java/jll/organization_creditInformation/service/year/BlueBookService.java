@@ -12,5 +12,5 @@ public interface BlueBookService {
     /**
      * 回显
      */
-    public void queryBlueBook();
+    public void queryBlueBook(String auth_org_id);
 }
