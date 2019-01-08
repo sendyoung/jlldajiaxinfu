@@ -1,6 +1,8 @@
 package jll.organization_creditInformation.service.impl.org;
 
 
+import jll.model.org_organization.Position;
+import jll.model.org_organization.PositionDetail;
 import jll.organization_creditInformation.dao.org.OrganizationalLeadershipDao;
 import jll.organization_creditInformation.service.org.OrganizationalLeadershipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,17 @@ public class OrganizationalLeadershipServiceImpl implements OrganizationalLeader
      * 添加组织领导
      */
     @Override
-    public void addOrganizationalLeadership() {
+    public void addOrganizationalLeadership(Position position) {
+        organizationalLeadershipDao.addOrganizationalLeadership(position);
+    }
 
+    /**
+     * 添加组织领导详情信息
+     * @param positionDetail
+     */
+    @Override
+    public void addaddOrganizationalLeadershipDetail(PositionDetail positionDetail) {
+        organizationalLeadershipDao.addOrganizationalLeadershipDetail(positionDetail);
     }
 
     /**

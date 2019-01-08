@@ -2,6 +2,8 @@ package jll.organization_creditInformation.dao.org;
 
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import jll.model.org_organization.Position;
+import jll.model.org_organization.PositionDetail;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
@@ -18,7 +20,16 @@ public class OrganizationalLeadershipDao extends SimpleHibernateTemplate<Object>
     /**
      * 组织领导 添加
      */
+    public void addOrganizationalLeadership(Position position){
+        this.getSession().merge(position);
+    }
 
+    /**
+     * 组织领导详情数据添加
+     */
+    public void addOrganizationalLeadershipDetail(PositionDetail positionDetail){
+        this.getSession().merge(positionDetail);
+    }
 
     /**
      * 回向 组织领导
