@@ -2,6 +2,8 @@ package jll.organization_creditInformation.controller;
 
 import com.alibaba.fastjson.JSON;
 import jll.model.org_organization.Organization;
+import jll.model.org_organization.Position;
+import jll.model.org_organization.PositionDetail;
 import jll.model.org_organization.Structure;
 import jll.organization_creditInformation.service.org.OrganizationInfoService;
 import jll.organization_creditInformation.service.org.OrganizationMechanismService;
@@ -34,7 +36,7 @@ public class OrganizationController {
     private QueryAssociatedServiceMember queryAssociatedServiceMember;  //查询已关联会员数量
 
     @Autowired
-    private OrganizationMechanismService organizationMechanismService;                            // 组织机构
+    private OrganizationMechanismService organizationMechanismService;  // 组织机构
 
     @Autowired
     private OrganizationalLeadershipService organizationalLeadershipService;      //组织领导
@@ -53,6 +55,7 @@ public class OrganizationController {
             System.out.println(str);
             return "ok";
     }
+
     /**
      *  组织信息  回显
      */
@@ -77,7 +80,6 @@ public class OrganizationController {
         //序列化
         Structure structure = JSON.parseObject(org_structure, Structure.class);
 
-
         organizationMechanismService.addOrganization(structure);
         return "success";
     }
@@ -97,6 +99,31 @@ public class OrganizationController {
     }
 
 
+    /**
+     * 组织领导添加
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/writeQrganizationlLeadership",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object writeQrganizationlLeadership(HttpServletRequest request){
+
+        Position position =JSON.parseObject(request.getParameter("fill_in_information"), Position.class);
+        organizationalLeadershipService.addOrganizationalLeadership(position);
+        return "success";
+    }
+    /**
+     * 组织领导 详情 添加
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/writeQrganizationlPositionDetail",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object writeQrganizationlPositionDetail(HttpServletRequest request){
+
+        PositionDetail positionDetail =JSON.parseObject(request.getParameter("fill_in_information"), PositionDetail.class);
+        organizationalLeadershipService.addaddOrganizationalLeadershipDetail(positionDetail);
+        return "success";
+
+
+    }
+
 
     /**
      * 组织领导回显
@@ -110,4 +137,18 @@ public class OrganizationController {
         map.put("position", list);
         return map;
     }
+
+    /**
+     * 组织领导详情回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryQrganizationlPositionDetail",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryQrganizationlPositionDetail(@RequestParam String post_id){
+        System.out.println("进入组织领导详情回显数据");
+        return organizationalLeadershipService.queryOrganizationalLeadershipDetail(post_id);
+    }
+
+
+
+
 }
