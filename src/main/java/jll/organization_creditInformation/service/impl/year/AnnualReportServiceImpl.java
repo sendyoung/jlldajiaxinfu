@@ -23,7 +23,11 @@ public class AnnualReportServiceImpl implements AnnualReportService {
      * 添加
      */
     @Override
-    public void addAnnualReport(AnnualReport annualReport) {
+    public void addAnnualReport(List<AnnualReport> annualReport) {
+
+        for (AnnualReport ar:annualReport){
+            annualReportDao.addAnnualReport(ar);
+        }
 
     }
 

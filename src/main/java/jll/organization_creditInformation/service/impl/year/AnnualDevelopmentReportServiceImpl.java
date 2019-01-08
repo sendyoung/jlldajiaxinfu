@@ -23,8 +23,10 @@ public class AnnualDevelopmentReportServiceImpl implements AnnualDevelopmentRepo
      * 添加年度发展报告
      */
     @Override
-    public void addAnnualDevelopmentReport(AnnualDevelopmentReport annualDevelopmentReport) {
-        annualDevelopmentReportDao.addAnnualDevelopmentReport(annualDevelopmentReport);
+    public void addAnnualDevelopmentReport(List<AnnualDevelopmentReport> annualDevelopmentReport) {
+        for (AnnualDevelopmentReport ar:annualDevelopmentReport){
+            annualDevelopmentReportDao.addAnnualDevelopmentReport(ar);
+        }
     }
 
     /**

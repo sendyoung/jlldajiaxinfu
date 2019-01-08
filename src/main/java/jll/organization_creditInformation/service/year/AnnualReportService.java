@@ -12,7 +12,7 @@ public interface AnnualReportService {
     /**
      * 添加
      */
-    public void addAnnualReport(AnnualReport annualReport);
+    public void addAnnualReport(List<AnnualReport> annualReport);
 
 
     /**

@@ -43,13 +43,13 @@ public class AnnualReportController {
     public @ResponseBody Object fill(HttpServletRequest request){
 
         if(request.getParameter("table_name").equals("org_annual_development_report")){
-            AnnualDevelopmentReport annualDevelopmentReport = JSON.parseObject( request.getParameter("fill_in_information"), AnnualDevelopmentReport.class);
+            List<AnnualDevelopmentReport> annualDevelopmentReport = JSON.parseArray(request.getParameter("fill_in_information"), AnnualDevelopmentReport.class);
             annualDevelopmentReportService.addAnnualDevelopmentReport(annualDevelopmentReport);
         }else if(request.getParameter("table_name").equals("org_blue_book")){
             List<BlueBook> blueBook = JSON.parseArray( request.getParameter("fill_in_information"), BlueBook.class);
             blueBookService.addBlueBook(blueBook);
         }else if(request.getParameter("table_name").equals("org_annual_report")){
-            AnnualReport annualReport = JSON.parseObject( request.getParameter("fill_in_information"), AnnualReport.class);
+            List<AnnualReport> annualReport = JSON.parseArray(request.getParameter("fill_in_information"), AnnualReport.class);
             annualReportService.addAnnualReport(annualReport);
         }
 

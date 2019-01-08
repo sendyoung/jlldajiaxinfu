@@ -11,7 +11,7 @@ public interface AnnualDevelopmentReportService {
     /**
      * 添加
      */
-    public void addAnnualDevelopmentReport(AnnualDevelopmentReport annualDevelopmentReport);
+    public void addAnnualDevelopmentReport(List<AnnualDevelopmentReport> annualDevelopmentReport);
 
     /**
      * 查询
