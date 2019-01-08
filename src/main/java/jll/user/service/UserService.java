@@ -75,4 +75,9 @@ public interface UserService {
 	 * 根据用户ID查询认证id
 	 */
 	public String findAuthIdByUserId(String userId);
+
+	/**
+	 * 重置密码
+	 */
+	public XinfuResult resetPassWord(String username, String newPassWord);
 }

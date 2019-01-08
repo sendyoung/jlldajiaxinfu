@@ -1,10 +1,6 @@
 package jll.user.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
-import com.google.gson.JsonObject;
 import jll.model.User;
 import jll.user.service.CheckDataService;
 import jll.user.service.UserService;
@@ -150,6 +146,18 @@ public class CheckDataController {
         }else{
             return XinfuResult.build(400,"您输入的验证码有误,请重试!");
         }*/
+    }
+
+    /**
+     *  (忘记密码)校验验证码成功后修改密码
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(method = {RequestMethod.GET,
+            RequestMethod.POST}, value = "/resetPassword")
+    public @ResponseBody XinfuResult resetPassWord(@RequestBody Map map){
+        String username = (String)map.get("username");
+        String newPassWord = (String)map.get("newPassWord");
+        return userService.resetPassWord(username,newPassWord);
     }
 
 }
