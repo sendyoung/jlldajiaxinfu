@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.CreditorRightsInvestment;
+import jll.model.basic_pnformation_submit.CreditorRightsInvestment;
 
 import java.util.List;
 

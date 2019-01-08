@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.CopyrightInWorks;
+import jll.model.basic_pnformation_submit.CopyrightInWorks;
 import jll.reported_data.dao.WorkCopyrightDao;
 import jll.reported_data.service.WorkCopyrightService;
 import org.springframework.beans.factory.annotation.Autowired;

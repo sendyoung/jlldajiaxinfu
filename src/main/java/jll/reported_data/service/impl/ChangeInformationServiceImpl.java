@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ChangeRecord;
+import jll.model.basic_pnformation_submit.ChangeRecord;
 import jll.reported_data.dao.ChangeInformationDao;
 import jll.reported_data.service.ChangeInformationService;
 import org.springframework.beans.factory.annotation.Autowired;

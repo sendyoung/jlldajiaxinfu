@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ShareholderContributionInfo;
+import jll.model.basic_pnformation_submit.ShareholderContributionInfo;
 import jll.reported_data.dao.ShareholdersInvestmentDao;
 import jll.reported_data.service.ShareholdersInvestmentService;
 import org.springframework.beans.factory.annotation.Autowired;

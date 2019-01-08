@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ProductionStatus;
+import jll.model.basic_pnformation_submit.ProductionStatus;
 import jll.reported_data.dao.TheProductionStatusDao;
 import jll.reported_data.service.TheProductionStatusService;
 import org.springframework.beans.factory.annotation.Autowired;

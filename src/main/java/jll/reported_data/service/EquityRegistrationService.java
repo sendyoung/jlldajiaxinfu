@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.SharePledgeRegistration;
+import jll.model.basic_pnformation_submit.SharePledgeRegistration;
 
 import java.util.List;
 

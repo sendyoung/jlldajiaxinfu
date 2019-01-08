@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.WebsiteRecords;
+import jll.model.basic_pnformation_submit.WebsiteRecords;
 import jll.reported_data.dao.WebsiteFilingDao;
 import jll.reported_data.service.WebsiteFilingService;
 import org.springframework.beans.factory.annotation.Autowired;

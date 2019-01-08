@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.IntellectualProperty;
+import jll.model.basic_pnformation_submit.IntellectualProperty;
 import jll.reported_data.dao.InPropertyRightsDao;
 import jll.reported_data.service.InPropertyRightsService;
 import org.springframework.beans.factory.annotation.Autowired;

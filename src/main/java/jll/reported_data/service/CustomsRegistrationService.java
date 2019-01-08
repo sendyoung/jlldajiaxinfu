@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.CustomsRegistrationInformation;
+import jll.model.basic_pnformation_submit.CustomsRegistrationInformation;
 
 import java.util.List;
 

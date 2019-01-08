@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.CustomsCreditInformation;
+import jll.model.basic_pnformation_submit.CustomsCreditInformation;
 import jll.reported_data.dao.CustomsCreditDao;
 import jll.reported_data.service.CustomsCreditService;
 import org.springframework.beans.factory.annotation.Autowired;

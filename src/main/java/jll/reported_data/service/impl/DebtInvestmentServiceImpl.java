@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.CreditorRightsInvestment;
+import jll.model.basic_pnformation_submit.CreditorRightsInvestment;
 import jll.reported_data.dao.DebtInvestmentDao;
 import jll.reported_data.service.DebtInvestmentService;
 import org.springframework.beans.factory.annotation.Autowired;

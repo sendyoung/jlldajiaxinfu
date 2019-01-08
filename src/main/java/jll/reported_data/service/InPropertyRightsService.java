@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.IntellectualProperty;
+import jll.model.basic_pnformation_submit.IntellectualProperty;
 
 import java.util.List;
 

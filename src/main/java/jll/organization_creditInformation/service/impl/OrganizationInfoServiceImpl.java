@@ -2,7 +2,7 @@ package jll.organization_creditInformation.service.impl;
 
 import jll.organization_creditInformation.dao.OrganizationInfoDao;
 import jll.organization_creditInformation.service.OrganizationInfoService;
-import jll.model.OrgOrganization.Organization;
+import jll.model.org_organization.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

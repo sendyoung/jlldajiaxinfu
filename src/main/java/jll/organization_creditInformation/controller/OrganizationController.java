@@ -1,8 +1,9 @@
 package jll.organization_creditInformation.controller;
 
 import com.alibaba.fastjson.JSON;
-import jll.model.OrgOrganization.Organization;
+import jll.model.org_organization.Organization;
 import jll.organization_creditInformation.service.OrganizationInfoService;
+import jll.organization_creditInformation.service.OrganizationMechanismService;
 import jll.organization_creditInformation.service.QueryAssociatedServiceMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +31,9 @@ public class OrganizationController {
     @Autowired
     private QueryAssociatedServiceMember queryAssociatedServiceMember;  //查询已关联会员数量
 
+    @Autowired
+    private OrganizationMechanismService organizationMechanismService;                            // 组织机构
+
     /**
      * 组织信息填报(龚力)
      */
@@ -42,13 +47,10 @@ public class OrganizationController {
             Organization organization = JSON.parseObject(request.getParameter("fill_in_organization"), Organization.class);
             organizationInfoService.addOrganizationInfo(organization);
             System.out.println(str);
-
             return "ok";
     }
-
-
     /**
-     *  组织信息回显
+     *  组织信息  回显
      */
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/queryOrgInfo",method = { RequestMethod.GET, RequestMethod.POST })
@@ -56,14 +58,34 @@ public class OrganizationController {
         Map map=new HashMap();
         map.put("fill_in_organization",organizationInfoService.queryOrganizationInfo(auth_org_id).get(0));
         map.put("associated_member",queryAssociatedServiceMember.queryAssociatedMember(auth_org_id).replace("{COUNT(*)=", "").replace("}",""));
-
         return map;
     }
 
 
+    /**
+     * 组织机构添加
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/addMechanism",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object addMechanism(@RequestParam String auth_org_id){
 
+        return null;
 
+    }
 
+    /**
+     * 组织机构回显
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/queryMechanism",method = { RequestMethod.GET, RequestMethod.POST })
+    public @ResponseBody Object queryMechanism(@RequestParam String auth_org_id){
+        Map map = new HashMap();
+
+        List list = organizationMechanismService.queryOrganization(auth_org_id);
+
+        map.put("fill_in_organization", list);
+        return map;
+    }
 
 
 

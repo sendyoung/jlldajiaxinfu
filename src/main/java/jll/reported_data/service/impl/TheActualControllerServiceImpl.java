@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ActualController;
+import jll.model.basic_pnformation_submit.ActualController;
 import jll.reported_data.dao.TheActualControllerDao;
 import jll.reported_data.service.TheActualControllerService;
 import org.springframework.beans.factory.annotation.Autowired;

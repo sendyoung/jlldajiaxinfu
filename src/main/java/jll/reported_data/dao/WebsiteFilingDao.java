@@ -1,7 +1,7 @@
 package jll.reported_data.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
-import jll.model.BasicPnformationSubmit.WebsiteRecords;
+import jll.model.basic_pnformation_submit.WebsiteRecords;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.SubjectCreditEvaluation;
+import jll.model.basic_pnformation_submit.SubjectCreditEvaluation;
 import jll.reported_data.dao.CreditEvaluationDao;
 import jll.reported_data.service.CreditEvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;

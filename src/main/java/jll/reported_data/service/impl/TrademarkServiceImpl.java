@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.Trademark;
+import jll.model.basic_pnformation_submit.Trademark;
 import jll.reported_data.dao.TrademarkDao;
 import jll.reported_data.service.TrademarkService;
 import org.springframework.beans.factory.annotation.Autowired;

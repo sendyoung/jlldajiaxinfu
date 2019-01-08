@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.EquityFinancing;
+import jll.model.basic_pnformation_submit.EquityFinancing;
 
 import java.util.List;
 

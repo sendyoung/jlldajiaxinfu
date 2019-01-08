@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.PatentInformation;
+import jll.model.basic_pnformation_submit.PatentInformation;
 import jll.reported_data.dao.PatentDao;
 import jll.reported_data.service.PatentService;
 import org.springframework.beans.factory.annotation.Autowired;

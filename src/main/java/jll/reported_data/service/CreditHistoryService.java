@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.CreditRecord;
+import jll.model.basic_pnformation_submit.CreditRecord;
 
 import java.util.List;
 

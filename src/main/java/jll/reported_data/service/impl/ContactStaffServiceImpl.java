@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ContactPersonnel;
+import jll.model.basic_pnformation_submit.ContactPersonnel;
 import jll.reported_data.dao.ContactStaffDao;
 import jll.reported_data.service.ContactStaffService;
 import org.springframework.beans.factory.annotation.Autowired;

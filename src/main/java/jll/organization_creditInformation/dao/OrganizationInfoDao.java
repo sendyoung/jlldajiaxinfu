@@ -1,7 +1,7 @@
 package jll.organization_creditInformation.dao;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
-import jll.model.OrgOrganization.Organization;
+import jll.model.org_organization.Organization;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;

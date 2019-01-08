@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.ProductionStatus;
+import jll.model.basic_pnformation_submit.ProductionStatus;
 
 import java.util.List;
 

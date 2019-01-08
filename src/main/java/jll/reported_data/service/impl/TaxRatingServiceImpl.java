@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.TaxRating;
+import jll.model.basic_pnformation_submit.TaxRating;
 import jll.reported_data.dao.TaxRatingDao;
 import jll.reported_data.service.TaxRatingService;
 import org.springframework.beans.factory.annotation.Autowired;

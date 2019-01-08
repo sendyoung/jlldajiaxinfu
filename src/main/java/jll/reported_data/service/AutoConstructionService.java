@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.AutomationConstruction;
+import jll.model.basic_pnformation_submit.AutomationConstruction;
 
 import java.util.List;
 

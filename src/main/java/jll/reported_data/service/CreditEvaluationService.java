@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.SubjectCreditEvaluation;
+import jll.model.basic_pnformation_submit.SubjectCreditEvaluation;
 
 import java.util.List;
 

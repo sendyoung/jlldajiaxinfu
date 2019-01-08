@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.BondFinancing;
+import jll.model.basic_pnformation_submit.BondFinancing;
 import jll.reported_data.dao.DebtfinancingDao;
 import jll.reported_data.service.DebtfinancingService;
 import org.springframework.beans.factory.annotation.Autowired;

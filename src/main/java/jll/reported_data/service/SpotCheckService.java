@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.Check;
+import jll.model.basic_pnformation_submit.Check;
 
 import java.util.List;
 

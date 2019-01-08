@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ServiceByPublication;
+import jll.model.basic_pnformation_submit.ServiceByPublication;
 import jll.reported_data.dao.PublicNoticeDao;
 import jll.reported_data.service.PublicNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;

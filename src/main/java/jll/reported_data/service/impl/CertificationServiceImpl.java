@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.QualificationAuthentication;
+import jll.model.basic_pnformation_submit.QualificationAuthentication;
 import jll.reported_data.dao.CertificationDao;
 import jll.reported_data.service.CertificationService;
 import org.springframework.beans.factory.annotation.Autowired;

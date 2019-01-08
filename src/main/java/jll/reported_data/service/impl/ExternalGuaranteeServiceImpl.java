@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ExternalGuaranteeInformation;
+import jll.model.basic_pnformation_submit.ExternalGuaranteeInformation;
 import jll.reported_data.dao.ExternalGuaranteeDao;
 import jll.reported_data.service.ExternalGuaranteeService;
 import org.springframework.beans.factory.annotation.Autowired;

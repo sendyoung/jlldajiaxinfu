@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.Check;
+import jll.model.basic_pnformation_submit.Check;
 import jll.reported_data.dao.SpotCheckDao;
 import jll.reported_data.service.SpotCheckService;
 import org.springframework.beans.factory.annotation.Autowired;

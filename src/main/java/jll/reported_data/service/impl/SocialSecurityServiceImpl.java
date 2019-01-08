@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.SocialSecurity;
+import jll.model.basic_pnformation_submit.SocialSecurity;
 import jll.reported_data.dao.SocialSecurityDao;
 import jll.reported_data.service.SocialSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;

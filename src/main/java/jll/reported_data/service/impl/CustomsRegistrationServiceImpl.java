@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.CustomsRegistrationInformation;
+import jll.model.basic_pnformation_submit.CustomsRegistrationInformation;
 import jll.reported_data.dao.CustomsRegistrationDao;
 import jll.reported_data.service.CustomsRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;

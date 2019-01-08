@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ChattelMortgage;
+import jll.model.basic_pnformation_submit.ChattelMortgage;
 import jll.reported_data.dao.ChattelMortgageDao;
 import jll.reported_data.service.ChattelMortgageService;
 import org.springframework.beans.factory.annotation.Autowired;

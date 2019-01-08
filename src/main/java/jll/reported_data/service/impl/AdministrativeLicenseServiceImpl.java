@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.AdministrativeLicensing;
+import jll.model.basic_pnformation_submit.AdministrativeLicensing;
 import jll.reported_data.dao.AdministrativeLicenseDao;
 import jll.reported_data.service.AdministrativeLicenseService;
 import org.springframework.beans.factory.annotation.Autowired;

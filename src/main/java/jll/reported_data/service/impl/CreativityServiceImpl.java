@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.InnovationAbility;
+import jll.model.basic_pnformation_submit.InnovationAbility;
 import jll.reported_data.dao.CreativityDao;
 import jll.reported_data.service.CreativityService;
 import org.springframework.beans.factory.annotation.Autowired;

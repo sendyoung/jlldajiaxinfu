@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.ShareholderContributionInfo;
+import jll.model.basic_pnformation_submit.ShareholderContributionInfo;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.AutomationConstruction;
+import jll.model.basic_pnformation_submit.AutomationConstruction;
 import jll.reported_data.dao.AutoConstructionDao;
 import jll.reported_data.service.AutoConstructionService;
 import org.springframework.beans.factory.annotation.Autowired;

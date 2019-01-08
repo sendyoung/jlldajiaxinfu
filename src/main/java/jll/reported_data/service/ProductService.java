@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.ProductInformation;
+import jll.model.basic_pnformation_submit.ProductInformation;
 
 import java.util.List;
 

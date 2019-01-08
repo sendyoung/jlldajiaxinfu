@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.ContactPersonnel;
+import jll.model.basic_pnformation_submit.ContactPersonnel;
 
 import java.util.List;
 

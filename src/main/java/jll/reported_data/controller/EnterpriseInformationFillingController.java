@@ -2,7 +2,7 @@ package jll.reported_data.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import jll.model.BasicPnformationSubmit.*;
+import jll.model.basic_pnformation_submit.*;
 import jll.reported_data.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

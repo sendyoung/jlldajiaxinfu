@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.PatentInformation;
+import jll.model.basic_pnformation_submit.PatentInformation;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.TaxRating;
+import jll.model.basic_pnformation_submit.TaxRating;
 
 import java.util.List;
 

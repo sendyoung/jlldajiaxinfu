@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.SharePledgeRegistration;
+import jll.model.basic_pnformation_submit.SharePledgeRegistration;
 import jll.reported_data.dao.EquityRegistrationDao;
 import jll.reported_data.service.EquityRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;

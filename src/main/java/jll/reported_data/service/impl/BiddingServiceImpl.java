@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.Bidding;
+import jll.model.basic_pnformation_submit.Bidding;
 import jll.reported_data.dao.BiddingDao;
 import jll.reported_data.service.BiddingService;
 import org.springframework.beans.factory.annotation.Autowired;

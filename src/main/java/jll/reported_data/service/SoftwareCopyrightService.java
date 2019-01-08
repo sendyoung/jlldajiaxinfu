@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.SoftwareCopyright;
+import jll.model.basic_pnformation_submit.SoftwareCopyright;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.ProductInformation;
+import jll.model.basic_pnformation_submit.ProductInformation;
 import jll.reported_data.dao.ProductDao;
 import jll.reported_data.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

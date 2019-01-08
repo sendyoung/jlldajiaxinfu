@@ -1,6 +1,6 @@
 package jll.reported_data.service;
 
-import jll.model.BasicPnformationSubmit.AdministrativeLicensing;
+import jll.model.basic_pnformation_submit.AdministrativeLicensing;
 
 import java.util.List;
 

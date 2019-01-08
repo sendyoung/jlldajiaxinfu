@@ -1,7 +1,7 @@
 package jll.reported_data.service;
 
 
-import jll.model.BasicPnformationSubmit.InnovationAbility;
+import jll.model.basic_pnformation_submit.InnovationAbility;
 
 import java.util.List;
 

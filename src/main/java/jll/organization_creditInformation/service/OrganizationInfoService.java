@@ -1,7 +1,7 @@
 package jll.organization_creditInformation.service;
 
 
-import jll.model.OrgOrganization.Organization;
+import jll.model.org_organization.Organization;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package jll.reported_data.service.impl;
 
-import jll.model.BasicPnformationSubmit.EquityInvestment;
+import jll.model.basic_pnformation_submit.EquityInvestment;
 import jll.reported_data.dao.EquityInvestmentDao;
 import jll.reported_data.service.EquityInvestmentService;
 import org.springframework.beans.factory.annotation.Autowired;
