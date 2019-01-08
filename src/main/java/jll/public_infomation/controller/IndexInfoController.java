@@ -28,10 +28,7 @@ public class IndexInfoController {
     /**
      * 回显首页需要的数据
      */
-    //        "creditRedList"    //信用红名单
-//        "creditBlacklist"   //信用黑名单
-//        "creditEvaluation"    //信用评价
-//        "informationPublicity"    // 信息公示
+
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping(value = "/queryCreditSet",method = { RequestMethod.GET, RequestMethod.POST })
     public @ResponseBody Object queryIndexData(){
