@@ -53,7 +53,7 @@ public class EvaluateAppealController {
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
         result=FileUploadUtil.imageUpload(multfile, path,filename);
         if(result.equals("success")){
-            return path+filename;
+            return "http://192.168.0.105/images/"+filename;
         }
         return "error";
     }
