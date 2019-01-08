@@ -2,9 +2,9 @@ package jll.apply_evaluate.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import jll.apply_evaluate.service.EvaluateAppealService;
+import jll.model.apply_evaluate.EvaluateAppeal;
 import jll.utils.DateUtils;
 import jll.utils.FileUploadUtil;
-import jll.model.apply_evaluate.EvaluateAppeal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 
 @Controller
@@ -43,7 +47,7 @@ public class EvaluateAppealController {
     public @ResponseBody Object uploadEvaluateAppealFile(HttpServletRequest request, @RequestParam(name="multfile") MultipartFile multfile){
         //上传文件路径
         //String path = request.getSession().getServletContext().getRealPath("/appeal/");
-        String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/appeal/");
+        String path=request.getSession().getServletContext().getRealPath("/images/");
         String result=null;
         // 保存文件
         String filename = DateUtils.DateToStringForNumber(new Date())+multfile.getOriginalFilename();
@@ -115,6 +119,38 @@ public class EvaluateAppealController {
         evaluateAppealService.editEvaluateAppealForAuthOrgId(authOrgId,ea,appealStatus);
         return "success";
     }
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/seekExperts",method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public String createFolw(HttpServletRequest request,
+                             HttpServletResponse response,@RequestParam(required = false) String path) {
+        //根据图片ID取路径
+        if(path==null||path.equals("")){
+            path="F:/idea_work/jlldajiaxingfu/target/jll-dajiaxinfu-1.0-SNAPSHOT/WEB-INF/classes/appeal/timg.jpg";
+        }
+                FileInputStream fis = null;
+                OutputStream os = null;
+                try {
+                        fis = new FileInputStream(path);
+                        os = response.getOutputStream();
+                       int count = 0;
+                        byte[] buffer = new byte[1024 * 8];
+                        while ((count = fis.read(buffer)) != -1) {
+                                os.write(buffer, 0, count);
+                                os.flush();
+                            }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                try {
+                        fis.close();
+                     os.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                return "ok";
+            }
+
 
 
 }
