@@ -1,4 +1,4 @@
-package jll.organization_creditInformation.dao;
+package jll.organization_creditInformation.dao.org;
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
 import org.hibernate.Query;

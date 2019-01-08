@@ -1,7 +1,7 @@
-package jll.organization_creditInformation.service.impl;
+package jll.organization_creditInformation.service.impl.org;
 
-import jll.organization_creditInformation.dao.QueryAssociatedMemberDao;
-import jll.organization_creditInformation.service.QueryAssociatedServiceMember;
+import jll.organization_creditInformation.dao.org.QueryAssociatedMemberDao;
+import jll.organization_creditInformation.service.org.QueryAssociatedServiceMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

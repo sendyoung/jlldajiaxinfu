@@ -1,4 +1,4 @@
-package jll.organization_creditInformation.service;
+package jll.organization_creditInformation.service.org;
 
 import java.util.List;
 

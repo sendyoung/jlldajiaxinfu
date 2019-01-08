@@ -1,8 +1,8 @@
-package jll.organization_creditInformation.service.impl;
+package jll.organization_creditInformation.service.impl.org;
 
 import jll.model.org_organization.Structure;
-import jll.organization_creditInformation.dao.OrganizationDao;
-import jll.organization_creditInformation.service.OrganizationMechanismService;
+import jll.organization_creditInformation.dao.org.OrganizationDao;
+import jll.organization_creditInformation.service.org.OrganizationMechanismService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
