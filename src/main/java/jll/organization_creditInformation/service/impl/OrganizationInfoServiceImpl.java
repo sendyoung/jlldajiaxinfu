@@ -18,7 +18,7 @@ public class OrganizationInfoServiceImpl implements OrganizationInfoService {
     private OrganizationInfoDao organizationInfoDao;
 
     /**
-     * 添加
+     * 添加 组织信息
      * @param organization
      */
     @Override
@@ -31,7 +31,7 @@ public class OrganizationInfoServiceImpl implements OrganizationInfoService {
         }
 
     /**
-     * 查询
+     * 查询  组织信息
      * @param auth_org_id
      * @return
      */

@@ -16,7 +16,7 @@ public class QueryAssociatedMemberDao extends SimpleHibernateTemplate {
         sq.append("select COUNT(*) from eva_apply_evaluate where 1=1 and auth_org_id='"+auth_org_id+"' and apply_status in ('2','4')");
         Query query = this.getSession().createSQLQuery(sq.toString());
         query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-        System.out.println("打印查询出来的结果:"+query.list().get(0));
+//        System.out.println("打印查询出来的结果:"+query.list().get(0));
         return query.list().get(0).toString();
     }
 }
