@@ -32,7 +32,7 @@ public class OrganizationalLeadershipDao extends SimpleHibernateTemplate<Object>
     }
 
     /**
-     * 回向 组织领导
+     * 回显 组织领导
      */
     public List queryOrganizationalLeadership(String auth_org_id){
         StringBuffer sq = new StringBuffer();
@@ -56,5 +56,7 @@ public class OrganizationalLeadershipDao extends SimpleHibernateTemplate<Object>
 
         return query.list().toString();
     }
+
+
 
 }

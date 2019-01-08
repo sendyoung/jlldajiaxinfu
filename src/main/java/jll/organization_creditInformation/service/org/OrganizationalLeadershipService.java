@@ -31,4 +31,8 @@ public interface OrganizationalLeadershipService {
      */
     public String queryOrganizationalLeadershipDetail(String post_id);
 
+
+
+
+
 }

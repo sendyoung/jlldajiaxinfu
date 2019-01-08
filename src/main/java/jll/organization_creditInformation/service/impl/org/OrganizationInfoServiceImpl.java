@@ -37,7 +37,10 @@ public class OrganizationInfoServiceImpl implements OrganizationInfoService {
      */
     @Override
     public List queryOrganizationInfo(String auth_org_id) {
-        List result=organizationInfoDao.queryOrganizationInfo(auth_org_id);
-        return result;
+        List result = organizationInfoDao.queryOrganizationInfo(auth_org_id);
+        if(null!=result && result.size()>0){
+            return result;
+        }
+        return null;
     }
 }

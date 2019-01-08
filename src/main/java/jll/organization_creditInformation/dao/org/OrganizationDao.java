@@ -2,6 +2,7 @@ package jll.organization_creditInformation.dao.org;
 
 
 import com.cn.zyzs.hibernate.SimpleHibernateTemplate;
+import jll.model.org_organization.Department;
 import jll.model.org_organization.Structure;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
@@ -35,5 +36,25 @@ public class OrganizationDao extends SimpleHibernateTemplate<Object> {
 
         return query.list();
 
+    }
+    /**
+     * 添加组织部门
+     */
+    public void addOrganizationDepartment(Department department){
+        this.getSession().merge(department);
+    }
+
+    /**
+     * 回显组织部门
+     */
+    public List queryOrganizationDepartment(String org_structure_id){
+
+        StringBuffer sq = new StringBuffer();
+        sq.append("select * from org_department where 1=1 and org_structure_id='"+org_structure_id+"'");
+        Query query = this.getSession().createSQLQuery(sq.toString());
+        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        System.out.println("回显 组织部门 结果:"+query.list());
+
+        return query.list();
     }
 }

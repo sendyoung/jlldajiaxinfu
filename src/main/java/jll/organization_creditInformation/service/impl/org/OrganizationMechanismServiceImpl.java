@@ -1,5 +1,6 @@
 package jll.organization_creditInformation.service.impl.org;
 
+import jll.model.org_organization.Department;
 import jll.model.org_organization.Structure;
 import jll.organization_creditInformation.dao.org.OrganizationDao;
 import jll.organization_creditInformation.service.org.OrganizationMechanismService;
@@ -34,6 +35,30 @@ public class OrganizationMechanismServiceImpl implements OrganizationMechanismSe
     public List queryOrganization(String auth_org_id) {
 
         List result = organizationDao.queryOrganization(auth_org_id);
+        if(null!=result && result.size()>0){
+            return result;
+        }
+        return null;
+    }
+
+    /**
+     * 组织部门添加
+     * @param department
+     */
+    @Override
+    public void addOrganizationDepartment(Department department) {
+        organizationDao.addOrganizationDepartment(department);
+    }
+
+    /**
+     * 组织部门 回显
+     * @param org_structure_id
+     * @return
+     */
+    @Override
+    public List queryOrganizationDepartment(String org_structure_id) {
+        List result = organizationDao.queryOrganizationDepartment(org_structure_id);
+
         if(null!=result && result.size()>0){
             return result;
         }
