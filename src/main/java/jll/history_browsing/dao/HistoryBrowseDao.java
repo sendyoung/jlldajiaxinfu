@@ -27,7 +27,7 @@ public class HistoryBrowseDao extends SimpleHibernateTemplate<HistoryBrowsing> {
      */
     public Page findHistoryList(String userId){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT browse_id,user_id,ent_id,ent_name,create_time FROM org_history_browse_records WHERE 1=1 AND isDelete = '1' AND user_id = '" + userId + "' ORDER BY create_time DESC");
+        sql.append("SELECT browse_id,user_id,ent_id,ent_name,create_time FROM org_history_browse_records WHERE 1=1 AND isDelete = '0' AND user_id = '" + userId + "' ORDER BY create_time DESC");
         return sqlqueryForpage1(sql.toString(), null, PageContext.getPageSize(), PageContext.getOffSet(), null);
     }
 }
