@@ -17,7 +17,7 @@ public class MonitorFollowDao extends SimpleHibernateTemplate<Object> {
      */
     public Page findMonitorFollowList(String userId, String type, String behaviorClassification){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT c.*,e.company_name FROM ");
+        sql.append("SELECT c.*,e.company_name,e.unified_social_credit_code,e.legal_representative FROM ");
         sql.append(" (SELECT b.* FROM (SELECT ent_id,max(create_time) m FROM org_monitor_credit_record WHERE date_sub(CURDATE(),interval 7 DAY) <= create_time GROUP BY ent_id) a,org_monitor_credit_record b where a.ent_id = b.ent_id and a.m = b.create_time GROUP BY ent_id) c,ent_basics e,org_monitoring_concern omc ");
         sql.append(" WHERE c.ent_id = e.ent_id AND omc.ent_id = c.ent_id AND omc.user_id = '" + userId + "' AND omc.type = '" + type + "'");
         if(behaviorClassification !=null && !"".equals(behaviorClassification)){
@@ -31,7 +31,7 @@ public class MonitorFollowDao extends SimpleHibernateTemplate<Object> {
      */
     public Page findMonitorUnchangedList(String userId){
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT omcr.*,e.company_name  FROM org_monitor_credit_record omcr,ent_basics e,org_monitoring_concern omc WHERE omcr.create_time = (select max(create_time) from org_monitor_credit_record where ent_id = omcr.ent_id) and omcr.ent_id not in " +
+        sql.append("SELECT omcr.*,e.company_name,e.unified_social_credit_code,e.legal_representative FROM org_monitor_credit_record omcr,ent_basics e,org_monitoring_concern omc WHERE omcr.create_time = (select max(create_time) from org_monitor_credit_record where ent_id = omcr.ent_id) and omcr.ent_id not in " +
                 "(SELECT b.ent_id FROM (SELECT ent_id,max(create_time) m FROM org_monitor_credit_record WHERE date_sub(CURDATE(),interval 7 DAY) <= create_time GROUP BY ent_id) a,org_monitor_credit_record b where a.ent_id = b.ent_id and a.m = b.create_time GROUP BY ent_id ) " +
                 "AND omcr.ent_id = e.ent_id AND omc.ent_id = omcr.ent_id AND omc.user_id = '" + userId + "' AND omc.type = '1' ");
         //sql.append("AND (omcr.behavior_classification = '1'  or omcr.behavior_classification = '2' or omcr.behavior_classification = '3')");
